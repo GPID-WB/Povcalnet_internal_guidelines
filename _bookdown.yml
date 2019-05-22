@@ -1,5 +1,5 @@
 book_filename: "SARMD-Guidelines"
-repo: https://github.com/worldbank/SARMD_guidelines/
+repo: https://github.com/randrescastaneda/Povcalnet_internal_guidelines/
 output_dir: "docs"
 delete_merged_file: true
 language:
@@ -10,11 +10,11 @@ language:
     edit: "Edit"
     chapter_name: "Chapter "
 
-#rmd_files: [
-#  "index.Rmd",
-#  "intro.Rmd",
-#
-#  "PartBasics.Rmd",
+rmd_files: [
+  "index.Rmd",
+  "intro.Rmd",
+
+  "Folder_structure.Rmd",
 #  "datalibweb.Rmd",
 #  "poverty.Rmd",
 #  "methodology.Rmd",
@@ -39,7 +39,7 @@ language:
 #  "NoteD.Rmd",
 #  "NoteE.Rmd",
 #
-#  "references.Rmd",
-#]
+  "references.Rmd",
+]
 
 before_chapter_script: "_common.R"
