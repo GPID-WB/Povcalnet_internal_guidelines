@@ -5,7 +5,7 @@ bookdown::gitbook:
       collapse: section
       scroll_highlight: yes
       before: |
-        <li><a href="./">SARMD User Guidelines</a></li>
+        <li><a href="./">PovcalNet Internal Guidelines</a></li>
       after: |
         <li><a href="https://github.com/randrescastaneda/SARMD_guidelines" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
