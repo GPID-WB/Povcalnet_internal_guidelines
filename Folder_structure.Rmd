@@ -1,0 +1,143 @@
+# Folder Strcuture
+
+This short note provides everything you need to understand the new folder structure of the PovcalNet workflow, which is suggested with the following objectives in mind:
+
+#### Objectives
+1. Share documents (i.e, editable files) among the team members through a stable, friendly, and vintage-control suitable platform.
+2. Store vintages of data for replicability purposes
+3. Execute, load, and save data uninterruptedly and, if possible, in a fast manner.
+
+Unfortunately, the World Bank systems do not provide an ITS service that allows us to meet all the objectives, and thus we are forced to use different platforms. OneDrive for the first objective, a Network drive for the second one, and server (super computer) of remote execution for the third one. 
+
+## OneDrive
+
+OneDrive has a double storage functionality. On the one hand, each person has been granted with 5TB of memory in a [personal folder](https://worldbankgroup-my.sharepoint.com/) that is accessible through either the web browser or through the Window Explorer. 
+
+On the other hand, OneDrive offers shared libraries for collaboration among the members of a [private team](https://teams.microsoft.com/_#/?lm=deeplink&lmsrc=officeWaffle). The PovcalNet team currently has assigned the library called [PovcalNet Data, Systems and Management](https://worldbankgroup.sharepoint.com/teams/PovcalNetDataSystemsandManagement-WBGroup) and it is accessible either through the [web browser](https://teams.microsoft.com/_#) or through the Microsoft Teams app. In general, the shared library in OneDrive works in the same way as the personal OneDrive folder with the exception that *MS Teams* automatically creates a folder in the root of the library for each new channel that is added to team. Besides this inconvenience, the suggested folder structure is as follows
+
+```{r load, echo = FALSE, results='hide', message = FALSE}
+
+# intitial conditions
+drive <- "//wbntpcifs/PovcalNet/TestFolder"
+
+current <- tibble(path = list.dirs(drive)) %>%
+  mutate(path = str_replace_all(path, paste0(drive, "/"), ""))
+
+tree <- read_csv(paste0("files/folder_tree.csv")) %>%  # Load data
+  unite(path, everything(), sep = "/") %>%                  # Put together all variables for folder levels
+  mutate(path = str_replace_all(path, "/NA", ""))          # drop missings section
+
+tree <- tree %>% anti_join(current)
+
+# create folders
+
+if (nrow(tree) > 0) {
+  for (i in 1:nrow(tree)) {
+    dir.create(file.path(drive,tree[i,]),
+               recursive = TRUE)
+  }
+} else {
+  print("there is not new folder to be created")
+}
+
+```
+
+```{r tree, echo = FALSE}
+as.Node(data.frame(pathString =
+                    list.dirs(getwd())))
+```
+
+In general, the folder structure is divided by topics according to their functionality. 01.admin, 02.core_team, and 03.projects. Notice that up to the third level in the folder structure, all folders are prefixed with two-digit numbers. This system guarantees that folders will be sorted as they are added and it is useful for navigation when using the keyboard. Also notice that there are no blank spaces in folders names, but rather underscores (_) are used when the name of the folder has two or more words. This is to avoid problems with some systems. 
+
+* `01.admin` This folder contains everything related to administrative information. Each subfolder corresponds to a big subtopic such as recruitment, funding, or concept notes.
+
+* `02.core_team` This folder contains information that is common and useful to all the members of the team and intersects two or more functions (or projects). For instance, the `Stata` and `R` packages to query the PovcalNet API might be used in many different projects and do not belong to any project besides the production of the packages itself. Thus, four main categories of common information have been added: code, dashboard, PPT, and minutes.
+
+* `03.projects` This folder contains all the analytic projects in which the PovcalNet team participates. By default, each project contains six subfolders, `/01.data`, `/02.Code`, `/03.results`, `/04.writeup`,`/05.Literature`, and `/_aux`, but these structure could be modified by following any of the following examples: [example1](http://projecttemplate.net/architecture.html), [example2](http://blog.jom.link/implementation_basic_reproductible_workflow.html), or [my favorite](https://itsalocke.com/starters/).
+
+## Network Drive
+
+The Network drive would be mainly used to archive data. Currently, it is known as the P drive, but it could be disconnected and remapped by following the steps [below](#steps). 
+
+This drive has many folders in its root, but under the new folder structure only two folder would take predominance, `01.Povcalnet` and `02.personal`. 
+
+* `01.povcalnet`has four main subfulders and follow the structure below:
+
+    ```{r tree2, echo = FALSE}
+    as.Node(data.frame(pathString =
+                        list.dirs("//wbntpcifs/PovcalNet/01.PovcalNet/")))
+    ```
+
+  + `/00.Master` contains everything related to the master.xlsx file that is uploaded into the PovcalNet system. This file has its own way for proper use and requires a separate explanation.
+  + `/01.QA` is a working folder that is getting constantly modified.
+  + `/02.Vintage_control` contains the historical data of PovcalNet. Eventually, this would be folder accessible through `datalibweb`.
+  + `/03.Production` is the folder with the current version of the data in the PovcalNet system.
+* `02.personal` contains one folder for each member of the team. The name of the folder is the UPI of the user preceded by the the letters 'wb'. 
+```{r tree3, echo = FALSE}
+as.Node(data.frame(pathString =
+                    list.dirs("//wbntpcifs/PovcalNet/02.personal/")))
+```
+
+
+#### Steps to map drives {#steps}
+
+In these steps, we disconnect any mapped drive that has previously assigned to letters P, N, or D. Then, we assign to letter D the former P network drive and to letter D the high-speed drive in the [server](#server). 
+
+1.	Open Notepad. 
+2.	Copy and paste the following lines:
+```
+net use /del P: /Y
+net use /del N: /Y
+net use /del D: /Y
+net use N: \\wbntpcifs\PovCalNet /PERSISTENT:YES
+net use D: \\wbgmsddg001\PovcalNet /PERSISTENT:YES
+```
+3.	Save it in your desktop as `link_drives.bat`
+4.	Close Notepad
+5.	Double click file `link_drives.bat` in your desktop. 
+
+
+## Remote server connection {#server}
+
+The server is a 'super computer' with 8 processor and 64GB of RAM memory. All the 
+
+#### Steps to connect to the server {#connect}
+In order to get access to the remote server, please do the following: 
+
+1. Click on Start, type 'remote', and click on "Remote Desktop Connection"
+
+![](x:/01.personal/wb384996/temporal/R/folder_structure/remote1.PNG)
+
+2. Type `WBGMSDDG001` in the field 'Computer:' and click on 'show options'
+3. Make sure the box 'Always ask for credentials' is **unchecked**
+
+![](x:/01.personal/wb384996/temporal/R/folder_structure/remote2.PNG)
+
+4. Click tab 'Local Resources' and make sure boxes 'Printers' and 'Clipboard' are checked. Then click 'More...'
+
+![](x:/01.personal/wb384996/temporal/R/folder_structure/remote3.PNG)
+
+5. Make sure that only boxes '(C:)OSDisk' and 'Drives that I plug in later' are **checked** and then click OK.
+6. click connect. 
+7. Enter your username (i.e., wbXXXXXX) and Windows passphrase, where XXXXXX is your UPI number.
+8. Once your in the server, enter again your username and Windows passphrase.
+
+![](x:/01.personal/wb384996/temporal/R/folder_structure/remote4.PNG)
+
+You need to execute steps 2 to 7 only once. Next time you login into the server you only need to execute steps 1 and 8. 
+
+
+#### Map Network drive in the server
+
+Once you're in the server, open Window Explorer and go to the path `D:\PovcalNet\02.core_team\_aux\` in which you will see a file called `link_NDrive.bat`. Double click that file in order to map the PovcalNet network drive in the server. This procedure has to be done only once. After that, the network drive will be always mapped in the server for you. 
+
+
+## Additional topics to discuss {#add}
+
+### R or Stata or both?
+
+### GitHub
+
+
+ss
+
