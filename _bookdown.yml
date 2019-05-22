@@ -10,36 +10,37 @@ language:
     edit: "Edit"
     chapter_name: "Chapter "
 
-rmd_files: [
-  "index.Rmd",
-  "intro.Rmd",
-
-  "PartBasics.Rmd",
-  "datalibweb.Rmd",
-  "poverty.Rmd",
-  "methodology.Rmd",
-
-  "Partmetadata.Rmd",
-  "inventory.Rmd",
-  "formularies.Rmd",
-
-  "PartqualityControl.Rmd",
-  "dictionary.Rmd",
-  "qcheck1.Rmd",
-  "qcheck2.Rmd",
-  "qcheck3.Rmd",
-
-  "PartAnalysis.Rmd",
-  "Note1.Rmd",
-  "Note2.Rmd",
-  "Note3.Rmd",
-  "NoteA.Rmd",
-  "NoteB.Rmd",
-  "NoteC.Rmd",
-  "NoteD.Rmd",
-  "NoteE.Rmd",
-
-  "references.Rmd",
-]
+#rmd_files: [
+#  "index.Rmd",
+#  "intro.Rmd",
+#
+#  "PartBasics.Rmd",
+#  "datalibweb.Rmd",
+#  "poverty.Rmd",
+#  "methodology.Rmd",
+#
+#  "Partmetadata.Rmd",
+#  "inventory.Rmd",
+#  "formularies.Rmd",
+#
+#  "PartqualityControl.Rmd",
+#  "dictionary.Rmd",
+#  "qcheck1.Rmd",
+#  "qcheck2.Rmd",
+#  "qcheck3.Rmd",
+#
+#  "PartAnalysis.Rmd",
+#  "Note1.Rmd",
+#  "Note2.Rmd",
+#  "Note3.Rmd",
+#  "NoteA.Rmd",
+#  "NoteB.Rmd",
+#  "NoteC.Rmd",
+#  "NoteD.Rmd",
+#  "NoteE.Rmd",
+#
+#  "references.Rmd",
+#]
 
 before_chapter_script: "_common.R"
+output_dir: "docs"
