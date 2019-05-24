@@ -2,7 +2,7 @@
 
 This short note provides everything you need to understand the new folder structure of the PovcalNet workflow, which is suggested with the following objectives in mind:
 
-#### Objectives
+#### Objectives {-}
 1. Share documents (i.e, editable files) among the team members through a stable, friendly, and vintage-control suitable platform.
 2. Store vintages of data for replicability purposes
 3. Execute, load, and save data uninterruptedly and, if possible, in a fast manner.
@@ -44,7 +44,7 @@ if (nrow(tree) > 0) {
 
 ```{r tree, echo = FALSE}
 as.Node(data.frame(pathString =
-                    list.dirs(getwd())))
+                    list.dirs(drive)))
 ```
 
 In general, the folder structure is divided by topics according to their functionality. 01.admin, 02.core_team, and 03.projects. Notice that up to the third level in the folder structure, all folders are prefixed with two-digit numbers. This system guarantees that folders will be sorted as they are added and it is useful for navigation when using the keyboard. Also notice that there are no blank spaces in folders names, but rather underscores (_) are used when the name of the folder has two or more words. This is to avoid problems with some systems. 
@@ -86,11 +86,8 @@ In these steps, we disconnect any mapped drive that has previously assigned to l
 1.	Open Notepad. 
 2.	Copy and paste the following lines:
 ```
-net use /del P: /Y
-net use /del N: /Y
-net use /del D: /Y
-net use N: \\wbntpcifs\PovCalNet /PERSISTENT:YES
-net use D: \\wbgmsddg001\PovcalNet /PERSISTENT:YES
+net use /del E: /Y
+net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES
 ```
 3.	Save it in your desktop as `link_drives.bat`
 4.	Close Notepad
