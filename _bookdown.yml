@@ -15,6 +15,7 @@ rmd_files: [
   "intro.Rmd",
 
   "Folder_structure.Rmd",
+  "Collaboration_in_Git.Rmd",
   "references.Rmd",
 ]
 

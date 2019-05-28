@@ -103,23 +103,23 @@ In order to get access to the remote server, please do the following:
 
 1. Click on Start, type 'remote', and click on "Remote Desktop Connection"
 
-![](x:/01.personal/wb384996/temporal/R/folder_structure/remote1.PNG)
+![](images/remote1.PNG)
 
 2. Type `WBGMSDDG001` in the field 'Computer:' and click on 'show options'
 3. Make sure the box 'Always ask for credentials' is **unchecked**
 
-![](x:/01.personal/wb384996/temporal/R/folder_structure/remote2.PNG)
+![](images/remote2.PNG)
 
 4. Click tab 'Local Resources' and make sure boxes 'Printers' and 'Clipboard' are checked. Then click 'More...'
 
-![](x:/01.personal/wb384996/temporal/R/folder_structure/remote3.PNG)
+![](images/remote3.PNG)
 
 5. Make sure that only boxes '(C:)OSDisk' and 'Drives that I plug in later' are **checked** and then click OK.
 6. click connect. 
 7. Enter your username (i.e., wbXXXXXX) and Windows passphrase, where XXXXXX is your UPI number.
 8. Once your in the server, enter again your username and Windows passphrase.
 
-![](x:/01.personal/wb384996/temporal/R/folder_structure/remote4.PNG)
+![](images/remote4.PNG)
 
 You need to execute steps 2 to 7 only once. Next time you login into the server you only need to execute steps 1 and 8. 
 

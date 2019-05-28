@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2019-05-24" />
+<meta name="date" content="2019-05-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="intro.html">
-<link rel="next" href="references.html">
+<link rel="next" href="collaboration-in-git.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -80,6 +80,9 @@
 <li class="chapter" data-level="2.4.1" data-path="folder-strcuture.html"><a href="folder-strcuture.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
 <li class="chapter" data-level="2.4.2" data-path="folder-strcuture.html"><a href="folder-strcuture.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a><ul>
+<li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.1</b> Initial Set up</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -224,11 +227,8 @@
 <li>Open Notepad.</li>
 <li>Copy and paste the following lines:</li>
 </ol>
-<pre><code>net use /del P: /Y
-net use /del N: /Y
-net use /del D: /Y
-net use N: \\wbntpcifs\PovCalNet /PERSISTENT:YES
-net use D: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
+<pre><code>net use /del E: /Y
+net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Save it in your desktop as <code>link_drives.bat</code></li>
 <li>Close Notepad</li>
@@ -245,23 +245,23 @@ net use D: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
 <ol style="list-style-type: decimal">
 <li>Click on Start, type ‘remote’, and click on “Remote Desktop Connection”</li>
 </ol>
-<p><img src="x:/01.personal/wb384996/temporal/R/folder_structure/remote1.PNG" /></p>
+<p><img src="images/remote1.PNG" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Type <code>WBGMSDDG001</code> in the field ‘Computer:’ and click on ‘show options’</li>
 <li>Make sure the box ‘Always ask for credentials’ is <strong>unchecked</strong></li>
 </ol>
-<p><img src="x:/01.personal/wb384996/temporal/R/folder_structure/remote2.PNG" /></p>
+<p><img src="images/remote2.PNG" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Click tab ‘Local Resources’ and make sure boxes ‘Printers’ and ‘Clipboard’ are checked. Then click ‘More…’</li>
 </ol>
-<p><img src="x:/01.personal/wb384996/temporal/R/folder_structure/remote3.PNG" /></p>
+<p><img src="images/remote3.PNG" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Make sure that only boxes ‘(C:)OSDisk’ and ‘Drives that I plug in later’ are <strong>checked</strong> and then click OK.</li>
 <li>click connect.</li>
 <li>Enter your username (i.e., wbXXXXXX) and Windows passphrase, where XXXXXX is your UPI number.</li>
 <li>Once your in the server, enter again your username and Windows passphrase.</li>
 </ol>
-<p><img src="x:/01.personal/wb384996/temporal/R/folder_structure/remote4.PNG" /></p>
+<p><img src="images/remote4.PNG" /></p>
 <p>You need to execute steps 2 to 7 only once. Next time you login into the server you only need to execute steps 1 and 8.</p>
 </div>
 <div id="map-network-drive-in-the-server" class="section level4">
@@ -287,7 +287,7 @@ net use D: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="collaboration-in-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

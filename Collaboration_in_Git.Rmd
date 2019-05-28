@@ -1,0 +1,67 @@
+# Collaboration in Git
+***
+
+This chapter presents how to work with [Git](https://git-scm.com/), [GitKraken](https://www.gitkraken.com/), and [GitHub](https://github.com/). 
+
+In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc) has changed, but it won't tell how it changed. To get the most out of Git, programers combin it with GitHub, which is a website that to share code with anybody (including people outsite the World Bank), solicit improvements via pull requests, and track issues. 
+
+## Initial Set up
+
+### Installation {-}
+Make you follow the step below:
+
+1.	Open a GitHub account using your World Bank email account. [Here](https://github.com/join?source=header-home) or [here](https://github.com/).
+
+2.	Download [GitKraken](https://www.gitkraken.com/git-client) and install it. You don’t need admin permissions to install it, but do NOT download it in the "downloads" folder. You may pick any other directory to download it as long as it is not in “downloads”. 
+
+  * Open GitKraken and sign in using your Github account rather than creating a "gitkraken account." **Make sure you're using Google Chrome instead of IE.**
+
+3.	[Install GIT](https://git-scm.com/downloads) (Optional). This step is optional because the two steps above suffice for working with Git. However, if you got into Git and want to do really advance stuff, you need to work with GIT directly. 
+
+4.	Make sure R and RStudio are installed and updated in your computer. Even though we have not decided whether or not to work with R from now on, Rstudio is great IDE that allows us to do a lot of things including GIT management
+
+  
+## Basic Git Jargon
+
+Git is a program originally executed at the command line. However, learning the syntax and commands may be time-consuming and using it in this way is maingly useful for high-level developers. Thus, we recommend the use of a Git GUI such as GitKraken. However, if you're interested on learning Git at the command line, we recommend the book **Pro Git** by Scott Chacon and Ben Straub, which is available [online for free](https://git-scm.com/book/en/v2). 
+
+### Create a repository
+
+In Git, a repository refers to a folder with all the files and sub-folders of a project. In other words, it refers to the folder of a project. It is possible to create a git repository in an existing project folder, but it is recommended to intialize a Git repository before you start working on your project. 
+
+1. Open GitKraken and click on the folder icon at the upper-left side of the screen and then click `Iniut`. Alternatively, you coul go to `file -> Init repo`, or use the shortcut `Ctrl + I`.
+
+2. Given that we are going to be working with GitHub, click on the icon `GitHub.com`.
+  2.1. Select your account in case you have more than one GitHub account. 
+  
+  2.2. Provide a name for your repository. The name cannot have spaces. 
+  
+  2.3. If you want, add a description of the project. 
+  
+  2.4. Select Public or Private repository. Keep in mind that if you have a free GitHub account:
+    * You can have unlimited public repositories with unlimited collaborators. 
+    * You can have unlimited *private* repositories with no more than **three collaborators**. This is very inconvinient for large teams like PovcalNet. 
+  
+  2.5. Check the box `Clone after init`
+  
+  2.6. Select the folder in your computer where you want to clone the repository. Make you do NOT create a folder for the repositoy because Git will created for you using the name provided in step 2.2. You only need provide the root folder. 
+  
+  2.7. Do not do anything on the field `Full Path`. It is just for your information. 
+  
+  2.8. Do not select anything on `.gitignore` yet. We wil cover that below.
+  
+  2.9. If you are creating a package or a document that must be cited if used, select `MIT license`
+  
+  2.10. leave unchecked the box `initialize with LFS`
+
+  Your screen should look something like this:
+  ![](images/init_repo.PNG)
+
+3. Once you have create your repository, make sure to open it and initialize it.
+
+
+### Clonning a repository
+
+If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. We will focus 
+
+
