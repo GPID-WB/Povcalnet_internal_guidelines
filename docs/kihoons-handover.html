@@ -125,24 +125,18 @@
 <div id="gpwg-process" class="section level2">
 <h2><span class="header-section-number">A.1</span> GPWG process</h2>
 <ol style="list-style-type: decimal">
-<li>Ask Minh to send us the list with the most recent data files in the PRIMUS/datalibweb system.</li>
-</ol>
-<p>1.1. Data list received in May 2016 was in "p:_all_DTAs_20160502-101732.xlsx"
-1.2. Data list received in April 2017 was in "p:_latest.dta"</p>
-<ol start="2" style="list-style-type: decimal">
-<li>Using the list, download the all the datasets using datalibweb. Datalibweb is an upgraded program to download the GPWG surveys from July 2018.</li>
-</ol>
-<p>2.2. Download using do-file: (p:_Get_Data.2019.02.06.do)
-2.2. The download is saved in C hard drive and then copied to P drive: p:2000_dlw.dta
-2.2. Each time data is downloaded it is placed in a particular folder according to the date of download.
-2.2. Each GPWG file is renamed to CCCYYYYZ_dlw.dta, where CCC refers to the country and YYYY to the year, Z refers to income or consumption if there are multiple welfare sources. This happens in ECA regional countries and Mexico.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Using do-file (p:_All_Summary.do), calculate summary statistics.</li>
-</ol>
-<p>3.3. One log file per update.
-3.3. results are copied and pasted manually in Excel files (For example, p:_All_Summary_2015.06.17.xlsx).
-3.3. Generate the differences between the current and the previous updates and report them to Shaohua/Prem.)For example, p:_All_Summary_2017.04.11.xlsx)</p>
-<ol start="4" style="list-style-type: decimal">
+<li><p>Ask Minh to send us the list with the most recent data files in the PRIMUS/datalibweb system.</p>
+<p>1.1. Data list received in May 2016 was in "p:_all_DTAs_20160502-101732.xlsx"</p>
+<p>1.2. Data list received in April 2017 was in "p:_latest.dta"</p></li>
+<li><p>Using the list, download the all the datasets using datalibweb. Datalibweb is an upgraded program to download the GPWG surveys from July 2018.</p>
+<p>2.1. Download using do-file: (p:_Get_Data.2019.02.06.do)</p>
+<p>2.2. The download is saved in C hard drive and then copied to P drive: p:2000_dlw.dta</p>
+<p>2.3. Each time data is downloaded it is placed in a particular folder according to the date of download.</p>
+<p>2.4. Each GPWG file is renamed to CCCYYYYZ_dlw.dta, where CCC refers to the country and YYYY to the year, Z refers to income or consumption if there are multiple welfare sources. This happens in ECA regional countries and Mexico.</p></li>
+<li><p>Using do-file (p:_All_Summary.do), calculate summary statistics.</p>
+<p>3.1. One log file per update.</p>
+<p>3.2. results are copied and pasted manually in Excel files (For example, p:_All_Summary_2015.06.17.xlsx).</p>
+<p>3.3. Generate the differences between the current and the previous updates and report them to Shaohua/Prem.)For example, p:_All_Summary_2017.04.11.xlsx)</p></li>
 <li><p>Using do-file (p:_All_Text.do) generate text files and place them in P drive: P:\2019</p></li>
 <li><p>Prem generates .pcb files from there.</p></li>
 </ol>
@@ -150,52 +144,48 @@
 <div id="lis-data-process" class="section level2">
 <h2><span class="header-section-number">A.2</span> LIS Data Process</h2>
 <ol style="list-style-type: decimal">
-<li><p>Register to the LIS datacenter for LIS data access. Renew the registration annually.
-1.1. Password is given by the datacenter.
-1.1. My id and password are: “kihlee” and “5qco48j”</p></li>
-<li><p>Send the STATA do program to <a href="mailto:postbox@lisdatacenter.org" class="email">postbox@lisdatacenter.org</a>
-2.1 First 4 lines of the program should be</p></li>
-</ol>
+<li><p>Register to the LIS datacenter for LIS data access. Renew the registration annually.</p>
+<p>1.1. Password is given by the datacenter.</p>
+<p>1.2. My id and password are: “kihlee” …</p></li>
+<li><p>Send the STATA do program to <a href="mailto:postbox@lisdatacenter.org" class="email">postbox@lisdatacenter.org</a></p>
+<p>2.1 First 4 lines of the program should be</p>
 <ul>
 <li>user=kihlee</li>
 <li>password =</li>
 <li>project = lis</li>
 <li>package = stata</li>
 </ul>
-<p>2.2. When the World Bank email system was Lotus Notes, there was no problem to send the program with no font changes. But after the email system has been changed to Microsoft Outlook, you have to change the font to “text”. If not, the LIS server cannot read the program.
-2.3. In the menu, go to “Format Text” and select “Aa Plain Text”.
-2.3. I have copied some programs that I have sent to “p:and LIS".
-2.3. Generate 400 bins:”p:and LIS400 bins 2019.txt"
-2.3. Education data: “p:and LISin LIS data.txt”
-2.3. Gini coefficients: “p:and LISgini coefficient.txt”</p>
-<ol start="3" style="list-style-type: decimal">
+<p>2.2. When the World Bank email system was Lotus Notes, there was no problem to send the program with no font changes. But after the email system has been changed to Microsoft Outlook, you have to change the font to “text”. If not, the LIS server cannot read the program.</p>
+<p>2.3. In the menu, go to “Format Text” and select “Aa Plain Text”.</p>
+<p>2.4. I have copied some programs that I have sent to "p:and LIS".</p>
+<p>2.5. Generate 400 bins: “p:and LIS400 bins 2019.txt”</p>
+<p>2.6. Education data: “p:and LISin LIS data.txt”</p>
+<p>2.7. Gini coefficients: “p:and LISgini coefficient.txt”</p></li>
 <li><p>The result will arrive in a few minutes depending on the time of processing and the environment of the LIS datacenter server.</p></li>
 <li><p>There are 8 countries we use in the PovcalNet database. They are not available from other sources than the LIS data. We collect the data for Taiwan but not publish. Australia, Canada, Germany, Israel, Japan, , Republic of Korea, Taiwan, U.S.A.</p></li>
-<li><p>As of now 89 LIS data points are available. Compared with last update in August 2018, I found that 15 surveys were either added or revised. Therefore, this time I have generated the text file of the surveys and sent them to Minh.</p></li>
-</ol>
-<p>5.1. Australia 2004, 2014
-5.2. Germany 1995, 1998, 2002, 2003, 2005, 2008, 2009, 2012, 2015
-5.3. Israel 2010, 2012, 2014, 2016</p>
-<ol start="6" style="list-style-type: decimal">
+<li><p>As of now 89 LIS data points are available. Compared with last update in August 2018, I found that 15 surveys were either added or revised. Therefore, this time I have generated the text file of the surveys and sent them to Minh.</p>
+<p>5.1. Australia 2004, 2014</p>
+<p>5.2. Germany 1995, 1998, 2002, 2003, 2005, 2008, 2009, 2012, 2015</p>
+<p>5.3. Israel 2010, 2012, 2014, 2016</p></li>
 <li><p>For some EU countries, EU-SILC data are only available after 2003. The LIS data center has the data for previous years. We use the historical data of the countries when the data are compatible. (Austria, Belgium, Czech Republic, Denmark, Finland, France, Greece, Ireland, Italy, Luxembourg, Netherlands, Norway, Poland, Slovakia, Slovenia, Spain, Sweden, Switzerland, UK)</p></li>
-<li>Copy and paste the result to empty Excel file.
-7.1. The space in the output file of the result is not the same space in the Microsoft Office.
-7.2. You may need to either</li>
-</ol>
+<li><p>Copy and paste the result to empty Excel file.</p>
+<p>7.1. The space in the output file of the result is not the same space in the Microsoft Office.</p>
+<p>7.2. You may need to either</p>
 <ul>
 <li>copy and paste to text editor first and copy and paste again to Excel.</li>
 <li>Or copy and paste to Excel and when you use “text to columns” use the output file space as a delimiter.</li>
 <li>A sample result is in “p:and LIS8 Countries 400 bins and nobs.xlsx”.</li>
 <li>For each survey-year data, copy 400 bins and name it as CCCYYYY.TXT and copy them into “p:\2019” in case of 2019 update.</li>
-</ul>
-<ol start="8" style="list-style-type: decimal">
-<li><p>Using the LIS data we generate 400 bin data for each country and provide them to Minh and he uploads them to the PRIMUS.
-8.1. Some LIS data files include negative income households. Before 2018, we included them but from last year we changed our policy and excluded them from the sample. Zero income households are still included.
-8.2. Previously, we used xtile command to generate the 400 bin data file but we use _ebin command written by poverty GP. When there are multiple households with the same welfare indicators, _ebin separate them into bins in the way more evenly than xtile.
-8.3. The income reference year is the calendar year for which income data has been collected, which is different from EU-SILC data where the income data is a year before the survey.
-8.4. Per Capita Disposable income is selected as a welfare indicator.
-DHI: disposable household income, which includes total monetary and nonmonetary current income net of income taxes and social security contributions (HI-HXIT)</p></li>
-<li><p>It is important to cross check that the statistics from the original files and those from the 400 bin data do not have a significant difference. Because of the rounding errors, they are not 100% identical but the difference should be very small.</p></li>
+</ul></li>
+<li><p>Using the LIS data we generate 400 bin data for each country and provide them to Minh and he uploads them to the PRIMUS.</p>
+<p>8.1. Some LIS data files include negative income households. Before 2018, we included them but from last year we changed our policy and excluded them from the sample. Zero income households are still included.</p>
+<p>8.2. Previously, we used xtile command to generate the 400 bin data file but we use _ebin command written by poverty GP. When there are multiple households with the same welfare indicators, _ebin separate them into bins in the way more evenly than xtile.</p>
+<p>8.3. The income reference year is the calendar year for which income data has been collected, which is different from EU-SILC data where the income data is a year before the survey.</p>
+<p>8.4. Per Capita Disposable income is selected as a welfare indicator.</p></li>
+</ol>
+<p>DHI: disposable household income, which includes total monetary and nonmonetary current income net of income taxes and social security contributions (HI-HXIT)</p>
+<ol start="9" style="list-style-type: decimal">
+<li>It is important to cross check that the statistics from the original files and those from the 400 bin data do not have a significant difference. Because of the rounding errors, they are not 100% identical but the difference should be very small.</li>
 </ol>
 
 </div>
