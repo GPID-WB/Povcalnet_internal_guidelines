@@ -1,6 +1,6 @@
 
 # preview just one chapter
-file <- "Collaboration_in_Git.Rmd"
+file <- "Handover.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 

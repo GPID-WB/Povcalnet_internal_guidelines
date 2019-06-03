@@ -16,6 +16,8 @@ rmd_files: [
 
   "Folder_structure.Rmd",
   "Collaboration_in_Git.Rmd",
+
+  "Handover.Rmd",
   "references.Rmd",
 ]
 

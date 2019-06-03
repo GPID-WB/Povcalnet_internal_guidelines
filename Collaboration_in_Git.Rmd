@@ -5,9 +5,6 @@ This chapter presents how to work with [Git](https://git-scm.com/), [GitKraken](
 
 In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc) has changed, but it won't tell how it changed. To get the most out of Git, programers combin it with GitHub, which is a website that to share code with anybody (including people outsite the World Bank), solicit improvements via pull requests, and track issues. 
 
-## Getting to know [Git](https://git-scm.com/)
-Git is a [Distributed Version Control System](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). This means that Git is a sysmte to fully clones the project and in its history into any client's repository or local computer.  Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshopts of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS softaware, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don't know how those files change with respect to the changes applied to other files of the same project. 
-
 ## Initial Set up
 Make you follow the step below:
 
@@ -21,6 +18,9 @@ Make you follow the step below:
 
 4.	Make sure R and RStudio are installed and updated in your computer. Even though we have not decided whether or not to work with R from now on, Rstudio is great IDE that allows us to do a lot of things including GIT management
 
+## Getting to know [Git](https://git-scm.com/)
+Git is a [Distributed Version Control System](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). This means that Git is a sysmte to fully clones the project and in its history into any client's repository or local computer.  Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshopts of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS softaware, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don't know how those files change with respect to the changes applied to other files of the same project. 
+
 ## Getting to know [GitKraken](https://www.gitkraken.com/)
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1] 
 
@@ -28,11 +28,11 @@ Among the GUIs avialable, we thinkg GitKraken is the best one to get you started
 
 The best place to learn everything about GitKraken is the [GitKraken Support](https://support.gitkraken.com/) webpage. However, bellow you will finde the most basic things that you need to know about it and, when considered necessary, you will find either reference links for more detailed inforamtion or embeded videos. For instance, the video bellow shows the basics of GitKraken.
 
-```{r video1, echo=FALSE, fig.align="center"}
+```{r video1, echo=FALSE, fig.align="center", fig.cap = "Introduction to GitKraken"}
 knitr::include_url("https://www.youtube.com/embed/ub9GfRziCtU")
 ```
 
-### GItKraken Interface
+### GItKraken Interface {-}
 
 ```{r GKinterface, echo=FALSE, fig.cap = "GitKraken Interface"}
 knitr::include_graphics("images/gitKraken_ide.png")
@@ -56,9 +56,11 @@ knitr::include_graphics("images/GK_colorsGuide.PNG")
 knitr::include_graphics("images/GK_nodes.PNG")
 ```
 
+## Basics of Git
+
 ### Working with repositories
 
-### Create a repository
+#### Create a repository {-}
 
 In Git, a repository refers to a folder with all the files and sub-folders of a project. In other words, it refers to the folder of a project. It is possible to create a git repository in an existing project folder, but it is recommended to intialize a Git repository before you start working on your project. 
 
@@ -94,7 +96,7 @@ Your screen should look something like this:
 
 13. Once you have create your repository, make sure to open it and initialize it.
 
-### Clonning a repository
+#### Clonning a repository {-}
 
 If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you're an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if your are an external user of the repository, you can't push your work into the original respotory but your can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a [pull request](https://support.gitkraken.com/working-with-repositories/pull-requests/). 
 
@@ -103,7 +105,7 @@ In order to contribute into any of the PovcalNet repositories you must be an exi
 1. Go the to the repository you want clone in GitHub. 
 2. Clik on the green button "Clone or download" and copy the whole url. 
 
-```{r GHclone, echo=FALSE, fig.cap = "Nodes meaning"}
+```{r GHclone, echo=FALSE, fig.cap = "GitHub link to clone repo"}
 knitr::include_graphics("images/GH_clone_download.PNG")
 ```
 
@@ -115,25 +117,50 @@ knitr::include_graphics("images/GH_clone_download.PNG")
 
 6. Select the repository from the menu. 
 
-```{r GKclone, echo=FALSE, fig.cap = "Nodes meaning"}
+```{r GKclone, echo=FALSE, fig.cap = "Clone repo in GitKraken"}
 knitr::include_graphics("images/GK_clone.png")
 ```
 
-## General process to commit and push
+### Working with commits
 
-These are the general steps you must take into account to commit in your repository. **Bold** means the corresponding pane in the *Commit panel*:
+A commit is a snapshot of your project but, as you work on it, you're able to decide how the snapshot would look like. You can select what parts or files of your progress will be commited (or snapshoted) and even select what file are not going to be tracked in your progress. All of this is done as follows:
 
-1. **Unstaged Files** — Watched files in your working directory that have changed since the last commit. modified (orange), deleted (red), created (green) or renamed (blue)
-2. **Staged Files** — Files manually added to the index that are ready to commit. You may have several files modified in the **unstaged** pane, but you only stage those that you want to commit. 
-3. In addition, you may want to commit only individual lines, hunks, or all of the changes in your commit. This can be done by click in the the filename in the **unstage** pane and click on the lines or hunks to be added. When some lines or hunks are left *unstaged*, the file itself would be in both the **unstaged** pane and the **staged** pane. 
-4. Record your commit message for the staged changes to the repository. In **Summary** you include a brief but meaningful message supporting your commit. This text will appear in the graph and is mandatory. In **Description** you may add extended message to provide more details behind the changes.
+1. Once your files have been modified (Fig. \@ref(fig:GKnodes)) and saved, GitKraken identifies them as work in progress (//WIP) and shows you the details in the **Unstaged file** box.  
+
+```{r GKwip, echo=FALSE, fig.cap = "GitKraken Work In Progress"}
+  knitr::include_graphics("images/GK_wip.PNG")
+```
+
+2. By clinking in the name of any file in the commit panel (Fig. \ref(fig:GKinterface)), the commit graph will be replace by the [*GitKraken diffs*](https://support.gitkraken.com/working-with-commits/diff/) interface which shows what was added or removed from a file. Red is for lines where content was removed whereas green is for new lines added.
+
+3. You can select [1] all the files, [2] some of the files, or [3] even some hunks within each file to be *stage*. Your select will compose the next commit. If you decide you don't want make a staged file part of your next commit, you can unstage it. 
+
+4. Record your commit message for the staged files to the repository. In **Summary** you include a brief but meaningful message supporting your commit. This text will appear in the graph and is mandatory. In **Description** you may add extended message to provide more details behind the changes.
+
 5. Click **Commit changes**
+
 6. You may repeat this process as many times you want. When you're ready, you may push your work to the remote repository into your own branch. 
 
 
+### Branching and Merging
 
+Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. "Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch."[^branching]
+
+```{r,echo=FALSE}
+  DiagrammeR::mermaid("
+  graph TD
+  A[Check out master branch]-->B[update master by pulling]
+  B-->C2[Solve conflicts]
+  B-->|if no conflicts|C[create your own branch]
+  C2-->C
+  C-->D[commit as many times you want]
+  D-->E[Push YOUR branch to remote for backup]
+  D-->A
+  C2[]
+  ")
+```
 
 
 [^1]: Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). [sect. 1.4](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line)
 
-
+[^branching]: Atlassian, "Git Branch | Atlassian Git Tutorial" Atlassian, accessed June 3, 2019, [link](https://www.atlassian.com/git/tutorials/using-branches).
