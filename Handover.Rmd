@@ -7,16 +7,19 @@ The documentation below has been directly copied from Kihoon's files.
 ## GPWG process
 
 1.	Ask Minh to send us the list with the most recent data files in the PRIMUS/datalibweb system. 
+
 1.1.	Data list received in May 2016 was in "p:\Kihoon\Handover\GPWG\Datalib_all_DTAs_20160502-101732.xlsx"
 1.2.	Data list received in April 2017 was in "p:\Kihoon\Handover\GPWG\GPWG_latest.dta"
 
 2.	Using the list, download the all the datasets using datalibweb. Datalibweb is an upgraded program to download the GPWG surveys from July 2018. 
+
 2.2.	Download using do-file: (p:\Kihoon\Handover\GPWG\Program\GPWG_Get_Data.2019.02.06.do)
 2.2.	The download is saved in C hard drive and then copied to P drive: p:\Kihoon\Handover\Data\GPWG\AGO2000_dlw.dta
 2.2.	Each time data is downloaded it is placed in a particular folder according to the date of download. 
 2.2.	Each GPWG file is renamed to CCCYYYYZ_dlw.dta, where CCC refers to the country and YYYY to the year, Z refers to income or consumption if there are multiple welfare sources.  This happens in ECA regional countries and Mexico.
 
 3.	Using do-file (p:\Kihoon\Handover\GPWG\Program\DLW_All_Summary.do), calculate summary statistics. 
+
 3.3.	One log file per update. 
 3.3.	results are copied and pasted manually in Excel files  (For example, p:\Kihoon\Handover\GPWG\GPWG_All_Summary_2015.06.17.xlsx).
 3.3.	Generate the differences between the current and the previous updates and report them to Shaohua/Prem.)For example, p:\Kihoon\Handover\GPWG\GPWG_All_Summary_2017.04.11.xlsx)

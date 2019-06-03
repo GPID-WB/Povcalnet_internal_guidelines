@@ -49,14 +49,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 
 
@@ -133,18 +125,24 @@
 <div id="gpwg-process" class="section level2">
 <h2><span class="header-section-number">A.1</span> GPWG process</h2>
 <ol style="list-style-type: decimal">
-<li><p>Ask Minh to send us the list with the most recent data files in the PRIMUS/datalibweb system.
-1.1. Data list received in May 2016 was in "p:_all_DTAs_20160502-101732.xlsx"
-1.2. Data list received in April 2017 was in "p:_latest.dta"</p></li>
-<li><p>Using the list, download the all the datasets using datalibweb. Datalibweb is an upgraded program to download the GPWG surveys from July 2018.
-2.2. Download using do-file: (p:_Get_Data.2019.02.06.do)
+<li>Ask Minh to send us the list with the most recent data files in the PRIMUS/datalibweb system.</li>
+</ol>
+<p>1.1. Data list received in May 2016 was in "p:_all_DTAs_20160502-101732.xlsx"
+1.2. Data list received in April 2017 was in "p:_latest.dta"</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Using the list, download the all the datasets using datalibweb. Datalibweb is an upgraded program to download the GPWG surveys from July 2018.</li>
+</ol>
+<p>2.2. Download using do-file: (p:_Get_Data.2019.02.06.do)
 2.2. The download is saved in C hard drive and then copied to P drive: p:2000_dlw.dta
 2.2. Each time data is downloaded it is placed in a particular folder according to the date of download.
-2.2. Each GPWG file is renamed to CCCYYYYZ_dlw.dta, where CCC refers to the country and YYYY to the year, Z refers to income or consumption if there are multiple welfare sources. This happens in ECA regional countries and Mexico.</p></li>
-<li><p>Using do-file (p:_All_Summary.do), calculate summary statistics.
-3.3. One log file per update.
+2.2. Each GPWG file is renamed to CCCYYYYZ_dlw.dta, where CCC refers to the country and YYYY to the year, Z refers to income or consumption if there are multiple welfare sources. This happens in ECA regional countries and Mexico.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Using do-file (p:_All_Summary.do), calculate summary statistics.</li>
+</ol>
+<p>3.3. One log file per update.
 3.3. results are copied and pasted manually in Excel files (For example, p:_All_Summary_2015.06.17.xlsx).
-3.3. Generate the differences between the current and the previous updates and report them to Shaohua/Prem.)For example, p:_All_Summary_2017.04.11.xlsx)</p></li>
+3.3. Generate the differences between the current and the previous updates and report them to Shaohua/Prem.)For example, p:_All_Summary_2017.04.11.xlsx)</p>
+<ol start="4" style="list-style-type: decimal">
 <li><p>Using do-file (p:_All_Text.do) generate text files and place them in P drive: P:\2019</p></li>
 <li><p>Prem generates .pcb files from there.</p></li>
 </ol>
