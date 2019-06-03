@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2019-06-01" />
+<meta name="date" content="2019-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -82,17 +82,15 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a><ul>
-<li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.1</b> Initial Set up</a><ul>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#installation"><i class="fa fa-check"></i>Installation</a></li>
+<li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-git"><i class="fa fa-check"></i><b>3.1</b> Getting to know <span>Git</span></a></li>
+<li class="chapter" data-level="3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.2</b> Initial Set up</a></li>
+<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.3</b> Getting to know <span>GitKraken</span></a><ul>
+<li class="chapter" data-level="3.3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i><b>3.3.1</b> GItKraken Interface</a></li>
+<li class="chapter" data-level="3.3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-repositories"><i class="fa fa-check"></i><b>3.3.2</b> Working with repositories</a></li>
+<li class="chapter" data-level="3.3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#create-a-repository"><i class="fa fa-check"></i><b>3.3.3</b> Create a repository</a></li>
+<li class="chapter" data-level="3.3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clonning-a-repository"><i class="fa fa-check"></i><b>3.3.4</b> Clonning a repository</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.2</b> Getting to know GitKraken</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i><b>3.2.1</b> GItKraken Interface</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basic-git-jargon"><i class="fa fa-check"></i><b>3.3</b> Basic Git Jargon</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#create-a-repository"><i class="fa fa-check"></i><b>3.3.1</b> Create a repository</a></li>
-<li class="chapter" data-level="3.3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clonning-a-repository"><i class="fa fa-check"></i><b>3.3.2</b> Clonning a repository</a></li>
-<li class="chapter" data-level="3.3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#general-process-to-commit-and-push"><i class="fa fa-check"></i><b>3.3.3</b> General process to commit and push</a></li>
-</ul></li>
+<li class="chapter" data-level="3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#general-process-to-commit-and-push"><i class="fa fa-check"></i><b>3.4</b> General process to commit and push</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -120,10 +118,12 @@
 <hr />
 <p>This chapter presents how to work with <a href="https://git-scm.com/">Git</a>, <a href="https://www.gitkraken.com/">GitKraken</a>, and <a href="https://github.com/">GitHub</a>.</p>
 <p>In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc) has changed, but it won’t tell how it changed. To get the most out of Git, programers combin it with GitHub, which is a website that to share code with anybody (including people outsite the World Bank), solicit improvements via pull requests, and track issues.</p>
+<div id="getting-to-know-git" class="section level2">
+<h2><span class="header-section-number">3.1</span> Getting to know <a href="https://git-scm.com/">Git</a></h2>
+<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a sysmte to fully clones the project and in its history into any client’s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshopts of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS softaware, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don’t know how those files change with respect to the changes applied to other files of the same project.</p>
+</div>
 <div id="initial-set-up" class="section level2">
-<h2><span class="header-section-number">3.1</span> Initial Set up</h2>
-<div id="installation" class="section level3 unnumbered">
-<h3>Installation</h3>
+<h2><span class="header-section-number">3.2</span> Initial Set up</h2>
 <p>Make you follow the step below:</p>
 <ol style="list-style-type: decimal">
 <li><p>Open a GitHub account using your World Bank email account. <a href="https://github.com/join?source=header-home">Here</a> or <a href="https://github.com/">here</a>.</p></li>
@@ -137,15 +137,15 @@
 <li><p>Make sure R and RStudio are installed and updated in your computer. Even though we have not decided whether or not to work with R from now on, Rstudio is great IDE that allows us to do a lot of things including GIT management</p></li>
 </ol>
 </div>
-</div>
 <div id="getting-to-know-gitkraken" class="section level2">
-<h2><span class="header-section-number">3.2</span> Getting to know GitKraken</h2>
-<p>Git is a program originally executed at the command line. However, learning the syntax and commands may be time-consuming and using it in this way is maingly useful for high-level developers. Thus, we recommend the use of a Git GUI such as GitKraken. However, if you’re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
+<h2><span class="header-section-number">3.3</span> Getting to know <a href="https://www.gitkraken.com/">GitKraken</a></h2>
+<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that “most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Among the GUIs avialable, we thinkg GitKraken is the best one to get you started. However, if you’re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
 <p>The best place to learn everything about GitKraken is the <a href="https://support.gitkraken.com/">GitKraken Support</a> webpage. However, bellow you will finde the most basic things that you need to know about it and, when considered necessary, you will find either reference links for more detailed inforamtion or embeded videos. For instance, the video bellow shows the basics of GitKraken.</p>
 <iframe src="https://www.youtube.com/embed/ub9GfRziCtU" width="70%" height="400px">
 </iframe>
 <div id="gitkraken-interface" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> GItKraken Interface</h3>
+<h3><span class="header-section-number">3.3.1</span> GItKraken Interface</h3>
 <div class="figure" style="text-align: center"><span id="fig:GKinterface"></span>
 <img src="images/gitKraken_ide.png" alt="GitKraken Interface" width="70%" />
 <p class="caption">
@@ -165,7 +165,7 @@ Figure 3.2: color guide for file symbols
 </p>
 </div>
 <ol start="4" style="list-style-type: decimal">
-<li>The <strong>commit graph</strong> is the core of your repo and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>“[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.”</em></li>
+<li>The <strong>commit graph</strong> is the core of your repository’s development and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>“[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.”</em></li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:GKnodes"></span>
 <img src="images/GK_nodes.PNG" alt="Nodes meaning" width="70%" />
@@ -174,45 +174,71 @@ Figure 3.3: Nodes meaning
 </p>
 </div>
 </div>
+<div id="working-with-repositories" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Working with repositories</h3>
 </div>
-<div id="basic-git-jargon" class="section level2">
-<h2><span class="header-section-number">3.3</span> Basic Git Jargon</h2>
 <div id="create-a-repository" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Create a repository</h3>
+<h3><span class="header-section-number">3.3.3</span> Create a repository</h3>
 <p>In Git, a repository refers to a folder with all the files and sub-folders of a project. In other words, it refers to the folder of a project. It is possible to create a git repository in an existing project folder, but it is recommended to intialize a Git repository before you start working on your project.</p>
 <ol style="list-style-type: decimal">
-<li><p>Open GitKraken and click on the folder icon at the upper-left side of the screen and then click <code>Iniut</code>. Alternatively, you coul go to <code>file -&gt; Init repo</code>, or use the shortcut <code>Ctrl + I</code>.</p></li>
+<li><p>Open GitKraken and click on the folder icon at the upper-left side of the screen and then click <code>Init</code>. Alternatively, you coul go to <code>file -&gt; Init repo</code>, or use the shortcut <code>Ctrl + I</code>.</p></li>
 <li><p>Given that we are going to be working with GitHub, click on the icon <code>GitHub.com</code>.</p></li>
+<li><p>Select your account in case you have more than one GitHub account.</p></li>
+<li><p>Provide a name for your repository. The name cannot have spaces.</p></li>
+<li><p>If you want, add a description of the project.</p></li>
+<li>Select Public or Private repository. Keep in mind that if you have a free GitHub account:</li>
 </ol>
-<p>2.1. Select your account in case you have more than one GitHub account.</p>
-<p>2.2. Provide a name for your repository. The name cannot have spaces.</p>
-<p>2.3. If you want, add a description of the project.</p>
-<p>2.4. Select Public or Private repository. Keep in mind that if you have a free GitHub account:
-* You can have unlimited public repositories with unlimited collaborators.
-* You can have unlimited <em>private</em> repositories with no more than <strong>three collaborators</strong>. This is very inconvinient for large teams like PovcalNet.</p>
-<p>2.5. Check the box <code>Clone after init</code></p>
-<p>2.6. Select the folder in your computer where you want to clone the repository. Make you do NOT create a folder for the repositoy because Git will created for you using the name provided in step 2.2. You only need provide the root folder.</p>
-<p>2.7. Do not do anything on the field <code>Full Path</code>. It is just for your information.</p>
-<p>2.8. Do not select anything on <code>.gitignore</code> yet. We wil cover that below.</p>
-<p>2.9. If you are creating a package or a document that must be cited if used, select <code>MIT license</code></p>
-<p>2.10. leave unchecked the box <code>initialize with LFS</code></p>
+<ul>
+<li>You can have unlimited public repositories with unlimited collaborators.</li>
+<li>You can have unlimited <em>private</em> repositories with no more than <strong>three collaborators</strong>. This is very inconvinient for large teams like PovcalNet.</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li><p>Check the box <code>Clone after init</code></p></li>
+<li><p>Select the folder in your computer where you want to clone the repository. Make you do NOT create a folder for the repositoy because Git will created for you using the name provided in step 2.2. You only need provide the root folder.</p></li>
+<li><p>Do not do anything on the field <code>Full Path</code>. It is just for your information.</p></li>
+<li><p>Do not select anything on <code>.gitignore</code> yet. We wil cover that below.</p></li>
+<li><p>If you are creating a package or a document that must be cited if used, select <code>MIT license</code></p></li>
+<li>leave unchecked the box <code>initialize with LFS</code>
 Your screen should look something like this:
 <div class="figure" style="text-align: center"><span id="fig:initrepo"></span>
 <img src="images/init_repo.PNG" alt="Initialize repo" width="70%" />
 <p class="caption">
 Figure 3.4: Initialize repo
 </p>
-</div>
-<ol start="3" style="list-style-type: decimal">
-<li>Once you have create your repository, make sure to open it and initialize it.</li>
+</div></li>
+<li><p>Once you have create your repository, make sure to open it and initialize it.</p></li>
 </ol>
 </div>
 <div id="clonning-a-repository" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Clonning a repository</h3>
-<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. We will focus</p>
+<h3><span class="header-section-number">3.3.4</span> Clonning a repository</h3>
+<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you’re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if your are an external user of the repository, you can’t push your work into the original respotory but your can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
+<p>In order to contribute into any of the PovcalNet repositories you must be an existing collaborator. Thus, in this section you will learn how to clone a repository.</p>
+<ol style="list-style-type: decimal">
+<li>Go the to the repository you want clone in GitHub.</li>
+<li>Clik on the green button “Clone or download” and copy the whole url.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:GHclone"></span>
+<img src="images/GH_clone_download.PNG" alt="Nodes meaning" width="70%" />
+<p class="caption">
+Figure 3.5: Nodes meaning
+</p>
 </div>
-<div id="general-process-to-commit-and-push" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> General process to commit and push</h3>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Go to GitKraken and click on the folder icon at the upper-left side of the screen and then click <code>clone</code>. Alternatively, you coul go to <code>file -&gt; Clone repo</code>, or use the shortcut <code>Ctrl + N</code>.</p></li>
+<li><p>Select the Github.com icon</p></li>
+<li><p>Select the folder where the repository is going to be cloned</p></li>
+<li><p>Select the repository from the menu.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:GKclone"></span>
+<img src="images/GK_clone.png" alt="Nodes meaning" width="70%" />
+<p class="caption">
+Figure 3.6: Nodes meaning
+</p>
+</div>
+</div>
+</div>
+<div id="general-process-to-commit-and-push" class="section level2">
+<h2><span class="header-section-number">3.4</span> General process to commit and push</h2>
 <p>These are the general steps you must take into account to commit in your repository. <strong>Bold</strong> means the corresponding pane in the <em>Commit panel</em>:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Unstaged Files</strong> — Watched files in your working directory that have changed since the last commit. modified (orange), deleted (red), created (green) or renamed (blue)</li>
@@ -225,6 +251,11 @@ Figure 3.4: Initialize repo
 
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
