@@ -10,7 +10,7 @@ The documentation below has been directly copied from Kihoon's files.
 
 *	Prior to 2014, PovcalNet team obtained the survey data from regional focal points with the assistance of Minh. 
 *	Global Poverty Working Group (GPWG) was formed to compile and harmonize the surveys from regional teams. 
-*	In May 2014, the GPWG database started with ECA (257 surveys) and LAC (242 surveys) regional surveys. 
+*	In May 2014, the GPWG database started with ECA (257 surveys) and LAC (242 surveys) regional surveys.
 *	In September 2014, EAP (48 surveys) and MNA (16 surveys) were added. 
 *	In May 2015, SAR (21 surveys) and SSA (107 surveys) regional surveys were added, so that all the 6 regional surveys were compiled for GPWG database. 
 *	As of 2019, about 1000 survey data from GPWG data are used for the PovcalNet poverty statistics update, which is more than 60% of all data used in the total PovcalNet database. 
@@ -48,12 +48,21 @@ The documentation below has been directly copied from Kihoon's files.
 	
 4.  Using do-file (p:/Kihoon/Handover/GPWG/Program/GPWG_All_Text.do) generate text files and place them in P drive: P:/2019/Textfiles/GPWG 
 
-5.	Prem generates .pcb files using “p:/UnitRecordConvertor/unitdataConvertor.exe” from there.
+5.	Prem generates .pcb files using "p:/UnitRecordConvertor/unitdataConvertor.exe" from there.
 
 >Note: From 2018, PRIMUS system started to synchronize the two database and to be used to generate PovcalNet statistics directly, currently the GPWG process is not necessary any more.
 
 
 ## LIS Data Process
+
+### Introduction {-}
+
+*	LIS database is harmonized microdata collected from 50 countries in Europe, North America, Latin America, Africa, Asia, and Oceania. Out of the microdata from the 50 countries, the surveys of 7 high income countries were not currently available in the World Bank microdata database. 
+*	The welfare variable that PovcalNet elected from the 7 high income countries (OHI) is per capita disposable income excluding negative income households.
+*	Under the contract for privacy and confidentiality, we do not offer the users original microdata. We generate distributional data from the raw microdata and provide them to the users for poverty simulation. The differences between using raw microdata and using distributional data are negligible.
+
+### How to download surveys from the LIS data server and generate pcb file {-}
+
 1.	Register to the LIS datacenter for LIS data access.  Renew the registration annually.
 
     1.1. Password is given by the datacenter.

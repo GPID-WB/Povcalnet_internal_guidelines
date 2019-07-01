@@ -15,3 +15,5 @@ purrr
 stringr
 forcats
 data.tree
+devtools
+usethis
