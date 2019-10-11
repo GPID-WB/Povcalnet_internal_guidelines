@@ -1,4 +1,3 @@
-
 # preview just one chapter
 file <- "Collaboration_in_Git.Rmd"
 file <- "Handover.Rmd"

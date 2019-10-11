@@ -26,4 +26,3 @@ load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded pack
 
 if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
 inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
-
