@@ -1,0 +1,16 @@
+# Upload Group Data to the Data Management System {#DMGroupData}
+
+
+* Server: (http://wbgmsrech001/povcalnet/DB_Management.aspx)
+
+* Given that anyone may have access to the Data Base Management Syste, the username and password are not provided in this document. 
+
+## Preparing the data
+
+Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the [Povcalnet Website](http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx). For the case of China 2016, which is the example that we use in this text, data comes in type 5,[^1] which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein.  If the data comes disaggregated by urban and rural population, each 
+
+
+
+
+
+[^1]: Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5
