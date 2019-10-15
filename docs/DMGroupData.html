@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 4 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 4 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="randrescastaneda/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 4 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="folder-strcuture.html"/>
+<link rel="prev" href="collaboration-in-git.html"/>
+<link rel="next" href="kihoons-handover.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -143,21 +143,47 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>PovcalNet is an interactive computational tool that allows you to replicate the calculations made by the World Bank’s researchers in estimating the extent of absolute poverty in the world. PovcalNet also allows you to calculate the poverty measures under different assumptions and to assemble the estimates using alternative economy groupings or for any set of individual economies of the user’s choosing. PovcalNet is self-contained; it has reliable built-in software that quickly does the relevant calculations for you from the built-in database.</p>
-<p>In March 2019, the World Bank released revised estimates of global poverty from 1981 to 2015 based on 2011 PPPs. The new poverty estimates combine Purchasing Power Parity (PPP) exchange rates for household consumption from the 2011 International Comparison Program with data from more than one thousand five hundred household surveys across 164 economies in the world, including 26 high income economies not included in PovcalNet’s geographic regions. Over two million randomly sampled households were interviewed for the 2015 estimate, representing 65 percent of the population of the whole world.</p>
-<p>PovcalNet is the source of, and allows users to replicate, the Bank’s official global, regional and internationally comparable economy level poverty estimates published in the <a href="http://datatopics.worldbank.org/world-development-indicators/">World Development Indicators</a> and the <a href="https://openknowledge.worldbank.org/bitstream/handle/10986/25078/9781464809583.pdf">Poverty and Shared Prosperity report</a>. It also provides crucial inputs to the <a href="http://povertydata.worldbank.org/poverty/home/">Poverty and Equity Data Portal</a>. If you would like to duplicate the World Bank’s regional poverty estimates please click the first button; or go to the second button to form your own group of economies. PovcalNet uses unit-record data whenever possible. For other cases, grouped distributions are used. New survey data become available to us on a continuous basis and these will be added to PovcalNet in regular updates.</p>
-<p><em>PovcalNet was developed for the sole purpose of public replication of the World Bank’s poverty measures for its widely used international poverty lines, including $1.90 a day and $3.20 a day in 2011 PPP. The methods built into PovcalNet are considered reliable for that purpose. However, we cannot be confident that the methods work well for other purposes, including tracing out the entire distribution of income. We would especially warn that estimates of the densities near the bottom and top tails of the distribution could be quite unreliable, and no attempt has been made by the Bank’s staff to validate the tool for such purposes.</em></p>
+<div id="DMGroupData" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Upload Group Data to the Data Management System</h1>
+<ul>
+<li><p>Server: (<a href="http://wbgmsrech001/povcalnet/DB_Management.aspx" class="uri">http://wbgmsrech001/povcalnet/DB_Management.aspx</a>)</p></li>
+<li><p>Given that anyone may have access to the Data Base Management Syste, the username and password are not provided in this document.</p></li>
+</ul>
+<div id="preparing-the-data" class="section level2">
+<h2><span class="header-section-number">4.1</span> Preparing the data</h2>
+<p>Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text file. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet Website</a>. For the case of China 2016, which is the database used as example in this text, data comes in type 5 format,<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein. If the data comes broken down by urban and rural population, it is necessary to create one text file for each distribution.</p>
+<div id="naming-convention" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Naming convention</h3>
+<p>Text files must be saved with the following naming convention,</p>
+<blockquote>
+<p><code>ccccgXX.T0F</code>, where the only literal piece of the naming convention is <code>T0</code>. All the other are as follows,</p>
+</blockquote>
+<ul>
+<li><code>cccc</code> refers to the name of the country</li>
+<li><code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for national</li>
+<li><code>XX</code> stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then <code>XX</code> would be 16.</li>
+<li><code>F</code> refers to the type formatting of the data. In the case of China 2016 it would be 5.</li>
+</ul>
 
+</div>
+</div>
+</div>
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="folder-strcuture.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="collaboration-in-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kihoons-handover.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
