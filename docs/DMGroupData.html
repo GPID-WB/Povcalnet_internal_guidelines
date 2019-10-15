@@ -52,14 +52,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 
 
@@ -108,6 +100,12 @@
 <li class="chapter" data-level="4.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>4.1</b> Preparing the data</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>4.1.1</b> Naming convention</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>4.2</b> Upload the data.</a></li>
+<li class="chapter" data-level="4.3" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>4.3</b> Master File</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-master-file"><i class="fa fa-check"></i><b>4.3.1</b> Preparing the Master File</a></li>
+<li class="chapter" data-level="4.3.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-master-file"><i class="fa fa-check"></i><b>4.3.2</b> Upload Master file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>4.4</b> Making sure everything works</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a><ul>
@@ -146,26 +144,74 @@
 <div id="DMGroupData" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Upload Group Data to the Data Management System</h1>
 <ul>
-<li><p>Server: (<a href="http://wbgmsrech001/povcalnet/DB_Management.aspx" class="uri">http://wbgmsrech001/povcalnet/DB_Management.aspx</a>)</p></li>
+<li><p>Server: <a href="http://wbgmsrech001/povcalnet/DB_Management.aspx" class="uri">http://wbgmsrech001/povcalnet/DB_Management.aspx</a></p></li>
 <li><p>Given that anyone may have access to the Data Base Management Syste, the username and password are not provided in this document.</p></li>
 </ul>
 <div id="preparing-the-data" class="section level2">
 <h2><span class="header-section-number">4.1</span> Preparing the data</h2>
-<p>Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text file. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet Website</a>. For the case of China 2016, which is the database used as example in this text, data comes in type 5 format,<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein. If the data comes broken down by urban and rural population, it is necessary to create one text file for each distribution.</p>
+<p>Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text file. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet Website</a>. For the case of China 2016, which is the database used as example in this text, data comes in type 5 format,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein. If the data comes broken down by urban and rural population, it is necessary to create one text file for each distribution.</p>
 <div id="naming-convention" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Naming convention</h3>
 <p>Text files must be saved with the following naming convention,</p>
 <blockquote>
-<p><code>ccccgXX.T0F</code>, where the only literal piece of the naming convention is <code>T0</code>. All the other are as follows,</p>
+<p><code>ccccgXX.T0F,</code></p>
 </blockquote>
-<ul>
-<li><code>cccc</code> refers to the name of the country</li>
-<li><code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for national</li>
-<li><code>XX</code> stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then <code>XX</code> would be 16.</li>
-<li><code>F</code> refers to the type formatting of the data. In the case of China 2016 it would be 5.</li>
-</ul>
-
+<p>where the only literal piece of the naming convention is <code>T0</code>. All the other are as follows:
+* <code>cccc</code> refers to the name of the country
+* <code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for national
+* <code>XX</code> stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then <code>XX</code> would be 16.
+* <code>F</code> refers to the type formatting of the data. In the case of China 2016 it would be 5.</p>
+<p>Make sure the text does not have the extension <code>txt</code>. In software used to save the text file includes the extension <code>txt</code> by default, make sure to remove it manually.</p>
 </div>
+</div>
+<div id="upload-the-data." class="section level2">
+<h2><span class="header-section-number">4.2</span> Upload the data.</h2>
+<p>After logging into the server, the new group data must be uploaded by clicking on <code>choose Files</code>, next to the <em>Data file(s)</em> legend, and choosing the corresponding file from the files explorer. Finally, you have to click on <code>Upload data file(s)</code> at the very right of the page. This process has to be done file by file. Apparently, before the last update of the system, it was possible to upload several files at the same time.</p>
+<div class="figure"><span id="fig:DM-upload-files"></span>
+<img src="images/DM_upload_files.png" alt="Upload files" width="50%" />
+<p class="caption">
+Figure 4.1: Upload files
+</p>
+</div>
+<p><img src="images/DM_upload_click.png" alt="Upload files" width="50%" /></p>
+</div>
+<div id="master-file" class="section level2">
+<h2><span class="header-section-number">4.3</span> Master File</h2>
+<div id="preparing-the-master-file" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Preparing the Master File</h3>
+<p>The following sheets must be modified in the master file (p:/01.PovcalNet/00.Master/Master.xlsm):</p>
+<ul>
+<li><p><strong>MasterMean:</strong> Add one row with the corresponding information of each group data file uploaded. Make sure columns <code>CountryCode</code> and <code>SurveyTime</code> get updated. Finally, make sure to include the mean of each distribution in the <code>SurveyMean_LCU</code> column. If the mean is not provided, the PovcalNet system does not work.</p></li>
+<li><p><strong>SurveyInfo:</strong> Add a row for each country/year data point rather than for urban/rural breakdown. The information in this sheet goes directly into the Info page of each country in the PovcalNet server.</p></li>
+<li><p><strong>CPI:</strong> Make sure there is CPI information for the year of the survey.</p></li>
+</ul>
+</div>
+<div id="upload-master-file" class="section level3">
+<h3><span class="header-section-number">4.3.2</span> Upload Master file</h3>
+<p>Once the master file has been updated using the <em>Master file tool</em>, you may proceed to upload the latest version of the master file by selecting the most recent file in the folder p:/01.PovcalNet/00.Master/02.vintage. Then, click on <code>Choose file</code> next to the <strong>Metadata file</strong> legend. Once the file has chosen, you may click on <code>Upload metadata</code> and then on <code>Reload metadata</code>.</p>
+<div class="figure"><span id="fig:DM-metadata"></span>
+<img src="images/DM_metadata_file.png" alt="Upload files" width="50%" />
+<p class="caption">
+Figure 4.2: Upload files
+</p>
+</div>
+</div>
+</div>
+<div id="making-sure-everything-works" class="section level2">
+<h2><span class="header-section-number">4.4</span> Making sure everything works</h2>
+<p>Once the new data and the updated metadata are uploaded, you may proceed to click one by one of the buttons shown in Figure <a href="DMGroupData.html#fig:DM-check">4.3</a>. Make sure,</p>
+<ol style="list-style-type: decimal">
+<li>The box <code>Re-make all dataset</code> remain <strong>un</strong>checked.</li>
+<li>Do <strong>NOT</strong> click on <code>Clean up data files.</code> (Not shown in Figure <a href="DMGroupData.html#fig:DM-check">4.3</a>)</li>
+</ol>
+<div class="figure"><span id="fig:DM-check"></span>
+<img src="images/DM_check_files.png" alt="Upload files" width="50%" />
+<p class="caption">
+Figure 4.3: Upload files
+</p>
+</div>
+<p>Finally, click on <code>Rebuild listed Ecinomy docs</code> (which needs to be done only once, in case of uploading several times the master file) and then click on <code>Restart PovcalNet</code>.</p>
+
 </div>
 </div>
 
@@ -173,8 +219,8 @@
 
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref3" class="footnote-back">↩</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
