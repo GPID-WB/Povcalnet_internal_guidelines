@@ -158,14 +158,17 @@
 <h3><span class="header-section-number">4.1.2</span> Naming convention</h3>
 <p>Text files must be saved with the following naming convention,</p>
 <blockquote>
-<p><code>ccccgXX.T0F,</code></p>
+<p><code>CCCgXX.T0F,</code></p>
 </blockquote>
-<p>where the only literal piece of the naming convention is <code>T0</code>. All the other are as follows:
-* <code>cccc</code> refers to the name of the country
-* <code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for national
-* <code>XX</code> stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then <code>XX</code> would be 16.
-* <code>F</code> refers to the type formatting of the data. In the case of China 2016 it would be 5.</p>
+<p>where the only literal piece of the naming convention is <code>T0</code>. All the other are as follows:</p>
+<ul>
+<li><code>CCC</code> refers to the country code. However, the name of the country has been used in the past.</li>
+<li><code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for national</li>
+<li><code>XX</code> stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then <code>XX</code> would be 16.</li>
+<li><code>F</code> refers to the type formatting of the data. In the case of China 2016 it would be 5.</li>
+</ul>
 <p>Make sure the text does not have the extension <code>txt</code>. In software used to save the text file includes the extension <code>txt</code> by default, make sure to remove it manually.</p>
+<p>So, the final name for rural China 2016 would be <code>CHNr16.T05</code></p>
 </div>
 <div id="upload-the-data." class="section level3">
 <h3><span class="header-section-number">4.1.3</span> Upload the data.</h3>
@@ -204,7 +207,7 @@ Figure 4.2: Upload files
 <h2><span class="header-section-number">4.3</span> Making sure everything works</h2>
 <p>Once the new data and the updated metadata are uploaded, you may proceed to click one by one of the buttons shown in Figure <a href="DMGroupData.html#fig:DM-check">4.3</a>. Make sure,</p>
 <ol style="list-style-type: decimal">
-<li>The box <code>Re-make all dataset</code> remain <strong>un</strong>checked.</li>
+<li>The box <code>Re-make all dataset</code> remain should be checked.</li>
 <li>Do <strong>NOT</strong> click on <code>Clean up data files.</code> (Not shown in Figure <a href="DMGroupData.html#fig:DM-check">4.3</a>)</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:DM-check"></span>

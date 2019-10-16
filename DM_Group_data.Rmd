@@ -15,15 +15,18 @@ Once the Group Data is received from the regional focal point of the Poverty GP,
 
 Text files must be saved with the following naming convention, 
 
-> `ccccgXX.T0F,` 
+> `CCCgXX.T0F,` 
 
 where the only literal piece of the naming convention is `T0`. All the other are as follows: 
-* `cccc` refers to the name of the country
+
+* `CCC` refers to the country code. However, the name of the country has been used in the past. 
 * `g` refers to the geographic area: `r` for rural, `u` for urban, and `n` for national 
 * `XX` stands for the last two digits of the corresponding year of the survey. For example, if the year is 2016, then `XX` would be 16. 
 * `F` refers to the type formatting of the data. In the case of China 2016 it would be 5. 
 
 Make sure the text does not have the extension `txt`. In software used to save the text file includes the extension `txt` by default, make sure to remove it manually. 
+
+So, the final name for rural China 2016 would be `CHNr16.T05`
 
 ### Upload the data. 
 
@@ -58,7 +61,7 @@ knitr::include_graphics("images/DM_metadata_file.png")
 
 Once the new data and the updated metadata are uploaded, you may proceed to click one by one of the buttons shown in Figure \@ref(fig:DM-check). Make sure, 
 
-1. The box `Re-make all dataset` remain **un**checked.
+1. The box `Re-make all dataset` remain should be checked.
 2. Do **NOT** click on `Clean up data files.` (Not shown in Figure \@ref(fig:DM-check))
 
 ```{r DM-check, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", out.width = "50%", fig.align = "center"} 
