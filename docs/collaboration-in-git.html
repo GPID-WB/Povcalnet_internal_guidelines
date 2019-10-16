@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
@@ -26,15 +26,15 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2019-07-01" />
+<meta name="date" content="2019-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="folder-strcuture.html">
-<link rel="next" href="kihoons-handover.html">
+<link rel="prev" href="folder-strcuture.html"/>
+<link rel="next" href="DMGroupData.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -42,6 +42,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -49,7 +50,9 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -99,6 +102,11 @@
 <li class="chapter" data-level="3.4.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-repositories"><i class="fa fa-check"></i><b>3.4.1</b> Working with repositories</a></li>
 <li class="chapter" data-level="3.4.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-commits"><i class="fa fa-check"></i><b>3.4.2</b> Working with commits</a></li>
 <li class="chapter" data-level="3.4.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#branching-and-merging"><i class="fa fa-check"></i><b>3.4.3</b> Branching and Merging</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>4</b> Upload Group Data to the Data Management System</a><ul>
+<li class="chapter" data-level="4.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>4.1</b> Preparing the data</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>4.1.1</b> Naming convention</a></li>
 </ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -215,10 +223,11 @@ Figure 3.4: Nodes meaning
 <li><p>Select your account in case you have more than one GitHub account.</p></li>
 <li><p>Provide a name for your repository. The name cannot have spaces.</p></li>
 <li><p>If you want, add a description of the project.</p></li>
-<li>Select Public or Private repository. Keep in mind that if you have a free GitHub account:</li>
+<li><p>Select Public or Private repository. Keep in mind that if you have a free GitHub account:</p></li>
 </ol>
 <ul>
-<li>You can have unlimited public repositories with unlimited collaborators.</li>
+<li>You can have unlimited public repositories with unlimited collaborators.<br />
+</li>
 <li>You can have unlimited <em>private</em> repositories with no more than <strong>three collaborators</strong>. This is very inconvinient for large teams like PovcalNet.</li>
 </ul>
 <ol start="7" style="list-style-type: decimal">
@@ -227,8 +236,8 @@ Figure 3.4: Nodes meaning
 <li><p>Do not do anything on the field <code>Full Path</code>. It is just for your information.</p></li>
 <li><p>Do not select anything on <code>.gitignore</code> yet. We wil cover that below.</p></li>
 <li><p>If you are creating a package or a document that must be cited if used, select <code>MIT license</code></p></li>
-<li>leave unchecked the box <code>initialize with LFS</code>
-Your screen should look something like this:
+<li><p>leave unchecked the box <code>initialize with LFS</code>
+Your screen should look something like this:</p>
 <div class="figure" style="text-align: center"><span id="fig:initrepo"></span>
 <img src="images/init_repo.PNG" alt="Initialize repo" width="70%" />
 <p class="caption">
@@ -243,7 +252,8 @@ Figure 3.5: Initialize repo
 <p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you’re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if your are an external user of the repository, you can’t push your work into the original respotory but your can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
 <p>In order to contribute into any of the PovcalNet repositories you must be an existing collaborator. Thus, in this section you will learn how to clone a repository.</p>
 <ol style="list-style-type: decimal">
-<li>Go the to the repository you want clone in GitHub.</li>
+<li>Go the to the repository you want clone in GitHub.<br />
+</li>
 <li>Clik on the green button “Clone or download” and copy the whole url.</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:GHclone"></span>
@@ -290,18 +300,15 @@ Figure 3.8: GitKraken Work In Progress
 <h3><span class="header-section-number">3.4.3</span> Branching and Merging</h3>
 <p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <div id="htmlwidget-1d9f9b9fdca3023baa83" style="width:70%;height:355.968px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1d9f9b9fdca3023baa83">{"x":{"diagram":"\n  graph TD\n  A[Check out master branch]-->B[update master by pulling]\n  B-->C2[Solve conflicts]\n  B-->|if no conflicts|C[create your own branch]\n  C2-->C\n  C-->D[commit as many times you want]\n  D-->E[Push YOUR branch to remote for backup]\n  D-->A\n  "},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1d9f9b9fdca3023baa83">{"x":{"diagram":" \n  graph TD \n  A[Check out master branch]-->B[update master by pulling] \n  B-->C2[Solve conflicts] \n  B-->|if no conflicts|C[create your own branch] \n  C2-->C \n  C-->D[commit as many times you want] \n  D-->E[Push YOUR branch to remote for backup] \n  D-->A \n  "},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
 </div>
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="collaboration-in-git.html#fnref1" class="footnote-back">↩</a></p></li>
 <li id="fn2"><p>Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, <a href="https://www.atlassian.com/git/tutorials/using-branches">link</a>.<a href="collaboration-in-git.html#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
@@ -311,16 +318,18 @@ Figure 3.8: GitKraken Work In Progress
         </div>
       </div>
 <a href="folder-strcuture.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="kihoons-handover.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DMGroupData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
