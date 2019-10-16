@@ -30,10 +30,8 @@ Make sure the text does not have the extension `txt`. In software used to save t
 After logging into the server, the new group data must be uploaded by clicking on `choose Files`, next to the *Data file(s)* legend, and choosing the corresponding file from the files explorer. Finally, you have to click on `Upload data file(s)` at the very right of the page. This process has to be done file by file. Apparently, before the last update of the system, it was possible to upload several files at the same time. 
 
 
-```{r DM-upload-files, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", out.width = "50%", fig.align = "default"} 
+```{r DM-upload-files, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", fig.align = "center"} 
 knitr::include_graphics("images/DM_upload_files.png")
-
-knitr::include_graphics("images/DM_upload_click.png") 
 ``` 
 
 ## Master File
@@ -67,6 +65,6 @@ Once the new data and the updated metadata are uploaded, you may proceed to clic
 knitr::include_graphics("images/DM_check_files.png")
 ``` 
 
-Finally, click on `Rebuild listed Ecinomy docs` (which needs to be done only once, in case of uploading several times the master file) and then click on `Restart PovcalNet`.
+Finally, click on `Rebuild listed Economy docs` (which needs to be done only once, in case of uploading several times the master file) and then click on `Restart PovcalNet`.
 
 [^1]: Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5
