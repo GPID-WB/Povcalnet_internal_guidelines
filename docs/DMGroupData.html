@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2019-10-16" />
+<meta name="date" content="2020-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,14 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.5/DiagrammeR.js"></script>
 
 
 
@@ -75,13 +83,19 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="folder-strcuture.html"><a href="folder-strcuture.html"><i class="fa fa-check"></i><b>2</b> Folder Strcuture</a><ul>
-<li class="chapter" data-level="2.1" data-path="folder-strcuture.html"><a href="folder-strcuture.html#onedrive"><i class="fa fa-check"></i><b>2.1</b> OneDrive</a></li>
-<li class="chapter" data-level="2.2" data-path="folder-strcuture.html"><a href="folder-strcuture.html#network-drive"><i class="fa fa-check"></i><b>2.2</b> Network Drive</a></li>
-<li class="chapter" data-level="2.3" data-path="folder-strcuture.html"><a href="folder-strcuture.html#server"><i class="fa fa-check"></i><b>2.3</b> Remote server connection</a></li>
-<li class="chapter" data-level="2.4" data-path="folder-strcuture.html"><a href="folder-strcuture.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="folder-strcuture.html"><a href="folder-strcuture.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
-<li class="chapter" data-level="2.4.2" data-path="folder-strcuture.html"><a href="folder-strcuture.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
+<li class="chapter" data-level="2" data-path="folder-strcutures.html"><a href="folder-strcutures.html"><i class="fa fa-check"></i><b>2</b> Folder Strcutures</a><ul>
+<li class="chapter" data-level="2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#network-drive"><i class="fa fa-check"></i><b>2.1</b> Network Drive</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#steps"><i class="fa fa-check"></i><b>2.1.1</b> Steps to map drives</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#server"><i class="fa fa-check"></i><b>2.2</b> Remote server connection</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#connect"><i class="fa fa-check"></i><b>2.2.1</b> Steps to connect to the server</a></li>
+<li class="chapter" data-level="2.2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#map-network-drive-in-the-server"><i class="fa fa-check"></i><b>2.2.2</b> Map Network drive in the server</a></li>
+<li class="chapter" data-level="2.2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#folder-strcuture-in-the-server."><i class="fa fa-check"></i><b>2.2.3</b> Folder strcuture in the server.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#onedrive"><i class="fa fa-check"></i><b>2.3</b> OneDrive</a></li>
+<li class="chapter" data-level="2.4" data-path="folder-strcutures.html"><a href="folder-strcutures.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a><ul>
@@ -152,7 +166,7 @@
 <h2><span class="header-section-number">4.1</span> Group Data</h2>
 <div id="preparing-the-data" class="section level3">
 <h3><span class="header-section-number">4.1.1</span> Preparing the data</h3>
-<p>Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text file. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet Website</a>. For the case of China 2016, which is the database used as example in this text, data comes in type 5 format,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein. If the data comes broken down by urban and rural population, it is necessary to create one text file for each distribution.</p>
+<p>Once the Group Data is received from the regional focal point of the Poverty GP, It has to be copied and pasted into a text file. Two columns of data must be pasted into the text file; one for weight and one for welfare, which may come in three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet Website</a>. For the case of China 2016, which is the database used as example in this text, data comes in type 5 format,<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> which means that the weight variable is the share of the population in a given quantile and the welfare variable is the mean of welfare therein. If the data comes broken down by urban and rural population, it is necessary to create one text file for each distribution.</p>
 </div>
 <div id="naming-convention" class="section level3">
 <h3><span class="header-section-number">4.1.2</span> Naming convention</h3>
@@ -225,8 +239,8 @@ Figure 4.3: Upload files
 
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref1" class="footnote-back">↩</a></p></li>
+<ol start="3">
+<li id="fn3"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -254,12 +268,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -271,6 +284,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
