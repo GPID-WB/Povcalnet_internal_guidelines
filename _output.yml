@@ -1,5 +1,4 @@
 bookdown::gitbook:
-  css: style.css
   config:
     toc:
       collapse: section
@@ -7,8 +6,25 @@ bookdown::gitbook:
       before: |
         <li><a href="./">PovcalNet Internal Guidelines</a></li>
       after: |
-        <li><a href="https://github.com/randrescastaneda/SARMD_guidelines" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/worldbank/Povcalnet_internal_guidelines" target="blank">Published with bookdown</a></li>
     download: ["pdf", "epub"]
+    toolbar:
+      position: fixed
+    edit : null
+    search: yes
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    sharing:
+      facebook: no
+      github: no
+      twitter: no
+      linkedin: no
+      weibo: no
+      instapaper: no
+      vk: no
+    info: yes
 
 bookdown::pdf_book:
   includes:

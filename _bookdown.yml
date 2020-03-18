@@ -1,5 +1,5 @@
 book_filename: "Povcalnet_internal_guidelines"
-repo: https://github.com/randrescastaneda/Povcalnet_internal_guidelines/
+repo: https://github.com/worldbank/Povcalnet_internal_guidelines/
 output_dir: "docs"
 delete_merged_file: true
 language:

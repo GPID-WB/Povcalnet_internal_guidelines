@@ -9,12 +9,7 @@ biblio-style: apalike
 link-citations: yes
 links-as-notes: true
 colorlinks: yes
-lot: yes
-lof: yes
-fontsize: 12pt
-monofont: "Source Code Pro" 
-monofontoptions: "Scale=0.7" 
-github-repo: randrescastaneda/Povcalnet_internal_guidelines
+github-repo: worldbank/Povcalnet_internal_guidelines
 description: "PovcalNet guidelines and protocols for internal workflow" 
 documentclass: book 
 ---
