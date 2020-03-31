@@ -147,16 +147,16 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. "Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch."[^branching] 
  
 ```{r,echo=FALSE} 
-  DiagrammeR::mermaid(" 
-  graph TD 
-  A[Check out master branch]-->B[update master by pulling] 
-  B-->C2[Solve conflicts] 
-  B-->|if no conflicts|C[create your own branch] 
-  C2-->C 
-  C-->D[commit as many times you want] 
-  D-->E[Push YOUR branch to remote for backup] 
-  D-->A 
-  ") 
+  # DiagrammeR::mermaid(" 
+  # graph TD 
+  # A[Check out master branch]-->B[update master by pulling] 
+  # B-->C2[Solve conflicts] 
+  # B-->|if no conflicts|C[create your own branch] 
+  # C2-->C 
+  # C-->D[commit as many times you want] 
+  # D-->E[Push YOUR branch to remote for backup] 
+  # D-->A 
+  # ") 
 ``` 
  
  
