@@ -1,0 +1,9 @@
+
+graph TD
+A[Check out master branch]-->B[update master by pulling]
+B-->C2[Solve conflicts]
+B-->|if no conflicts|C[create your own branch]
+C2-->C
+C-->D[commit as many times you want]
+D-->E[Push YOUR branch to remote for backup]
+D-->A

@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-03-17" />
+<meta name="date" content="2020-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,10 +56,10 @@
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.js"></script>
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.5/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.5.9000/DiagrammeR.js"></script>
 
 
 
@@ -311,8 +311,8 @@ Figure 3.8: GitKraken Work In Progress
 <div id="branching-and-merging" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> Branching and Merging</h3>
 <p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch.”<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div id="htmlwidget-e3479f292a01744eb530" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e3479f292a01744eb530">{"x":{"diagram":" \n  graph TD \n  A[Check out master branch]-->B[update master by pulling] \n  B-->C2[Solve conflicts] \n  B-->|if no conflicts|C[create your own branch] \n  C2-->C \n  C-->D[commit as many times you want] \n  D-->E[Push YOUR branch to remote for backup] \n  D-->A \n  "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1b4ff99564eb6e8884a5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"diagram":"\ngraph TD\nA[Check out master branch]-->B[update master by pulling]\nB-->C2[Solve conflicts]\nB-->|if no conflicts|C[create your own branch]\nC2-->C\nC-->D[commit as many times you want]\nD-->E[Push YOUR branch to remote for backup]\nD-->A"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
