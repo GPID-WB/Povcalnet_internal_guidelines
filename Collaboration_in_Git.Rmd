@@ -63,15 +63,17 @@ How to stage, commit, push, pull, create a new branch, and merge.
 
 ### Important keyboard shortcut process {-}
 
+### Nice features of SmartGit {-}
 
 ### Advance Git process {-}
 
 - Creating pull request from SmartGit
-- Staching
+- stashing
 - discarding
 - revert commits
 - History of files
 - Solve merge conflicts
+- Ammend a commit
 - Other things
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
