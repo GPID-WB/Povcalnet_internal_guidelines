@@ -123,7 +123,12 @@ How to stage, commit, push, pull, create a new branch, and merge.
 ### Advance Git process {-}
 
 - Creating pull request from SmartGit
-- 
+- Staching
+- discarding
+- revert commits
+- History of files
+- Solve merge conflicts
+- Other things
 
 ## Basics of Git 
  
