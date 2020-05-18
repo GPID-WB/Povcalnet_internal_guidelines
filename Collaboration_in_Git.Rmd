@@ -56,11 +56,7 @@ knitr::include_graphics("images/GK_colorsGuide.PNG")
 knitr::include_graphics("images/GK_nodes.PNG") 
 ``` 
  
-## Basics of Git 
- 
-### Working with repositories 
- 
-#### Create a repository {-} 
+### Create a repository {-} 
  
 In Git, a repository refers to a folder with all the files and sub-folders of a project. In other words, it refers to the folder of a project. It is possible to create a git repository in an existing project folder, but it is recommended to intialize a Git repository before you start working on your project.  
  
@@ -95,6 +91,44 @@ Your screen should look something like this:
 ``` 
  
 13. Once you have create your repository, make sure to open it and initialize it. 
+
+
+
+## Getting to know [SmartGit](https://www.syntevo.com/smartgit/)
+
+### Installation {-}
+
+blah blah
+
+### Integration with GitHub {-}
+
+blah blah
+
+### Initializing Repos {-}
+
+blah blah
+
+### Cloning Repos {-}
+
+blah blah
+
+### Organizing Repos by groups {-}
+
+blah blah
+
+### Basic Git process {-}
+
+How to stage, commit, push, pull, create a new branch, and merge. 
+
+### Advance Git process {-}
+
+- Creating pull request from SmartGit
+- 
+
+## Basics of Git 
+ 
+### Working with repositories 
+
  
 #### Clonning a repository {-} 
  
