@@ -20,7 +20,65 @@ Make you follow the step below:
  
 ## Getting to know [Git](https://git-scm.com/) 
 Git is a [Distributed Version Control System](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). This means that Git is a sysmte to fully clones the project and in its history into any client's repository or local computer.  Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshopts of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS softaware, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don't know how those files change with respect to the changes applied to other files of the same project.  
+
+## Basics of Git
  
+### Working with repositories 
+blah 
+
+### Branching and Merging 
+ 
+Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. "Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch."[^branching] 
+ 
+```{r,echo=FALSE} 
+  DiagrammeR::mermaid("branch_merge.mmd")
+``` 
+ 
+ 
+[^1]: Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). [sect. 1.4](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line) 
+ 
+[^branching]: Atlassian, "Git Branch | Atlassian Git Tutorial" Atlassian, accessed June 3, 2019, [link](https://www.atlassian.com/git/tutorials/using-branches). 
+
+## Getting to know [SmartGit](https://www.syntevo.com/smartgit/)
+
+### Installation {-}
+
+blah blah
+
+### Integration with GitHub {-}
+
+blah blah
+
+
+### Initializing Repos {-}
+
+blah blah
+
+### Cloning Repos {-}
+
+blah blah
+
+### Organizing Repos by groups {-}
+
+blah blah
+
+### Basic Git process {-}
+
+How to stage, commit, push, pull, create a new branch, and merge. 
+
+### Important keyboard shortcut process {-}
+
+
+### Advance Git process {-}
+
+- Creating pull request from SmartGit
+- Staching
+- discarding
+- revert commits
+- History of files
+- Solve merge conflicts
+- Other things
+
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1]  
  
@@ -93,49 +151,7 @@ Your screen should look something like this:
 13. Once you have create your repository, make sure to open it and initialize it. 
 
 
-
-## Getting to know [SmartGit](https://www.syntevo.com/smartgit/)
-
-### Installation {-}
-
-blah blah
-
-### Integration with GitHub {-}
-
-blah blah
-
-### Initializing Repos {-}
-
-blah blah
-
-### Cloning Repos {-}
-
-blah blah
-
-### Organizing Repos by groups {-}
-
-blah blah
-
-### Basic Git process {-}
-
-How to stage, commit, push, pull, create a new branch, and merge. 
-
-### Advance Git process {-}
-
-- Creating pull request from SmartGit
-- Staching
-- discarding
-- revert commits
-- History of files
-- Solve merge conflicts
-- Other things
-
-## Basics of Git 
- 
-### Working with repositories 
-
- 
-#### Clonning a repository {-} 
+### Clonning a repository {-} 
  
 If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you're an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if your are an external user of the repository, you can't push your work into the original respotory but your can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a [pull request](https://support.gitkraken.com/working-with-repositories/pull-requests/).  
  
@@ -160,7 +176,10 @@ knitr::include_graphics("images/GH_clone_download.PNG")
 knitr::include_graphics("images/GK_clone.png") 
 ``` 
  
-### Working with commits 
+
+
+
+### Working with commits {-}
  
 A commit is a snapshot of your project but, as you work on it, you're able to decide how the snapshot would look like. You can select what parts or files of your progress will be commited (or snapshoted) and even select what file are not going to be tracked in your progress. All of this is done as follows: 
  
@@ -179,17 +198,6 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 5. Click **Commit changes** 
  
 6. You may repeat this process as many times you want. When you're ready, you may push your work to the remote repository into your own branch.  
- 
- 
-### Branching and Merging 
- 
-Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. "Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch."[^branching] 
- 
-```{r,echo=FALSE} 
-  DiagrammeR::mermaid("branch_merge.mmd")
-``` 
- 
- 
-[^1]: Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). [sect. 1.4](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line) 
- 
-[^branching]: Atlassian, "Git Branch | Atlassian Git Tutorial" Atlassian, accessed June 3, 2019, [link](https://www.atlassian.com/git/tutorials/using-branches). 
+
+
+
