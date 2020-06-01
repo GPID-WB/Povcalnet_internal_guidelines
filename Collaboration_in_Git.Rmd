@@ -3,20 +3,32 @@
  
 This chapter presents how to work with [Git](https://git-scm.com/), [GitKraken](https://www.gitkraken.com/), and [GitHub](https://github.com/).  
  
-In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc) has changed, but it won't tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.  
+In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc.) has changed, but it won't tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.  
  
-## Initial Set up 
+## Initial Set up
+
 Make you follow the step below: 
  
 1.	Open a GitHub account using your World Bank email account. [Here](https://github.com/join?source=header-home) or [here](https://github.com/). 
  
-2.	Download [GitKraken](https://www.gitkraken.com/git-client) and install it. You don’t need admin permissions to install it, but do NOT download it in the "downloads" folder.   
+2.	Download [SmartGit](https://www.syntevo.com/smartgit/download/) and install it. Download the files into the the folder that you'll use for installation and NOT into the "downloads" folder. If SmartGit automatically downloads the zip file into the "downloads" folder, then extract it into the folder you'll install it in. You don’t need admin permissions to install it, but download the _Portable Bundle_. The installation files can be found here: 'SmartGit > bin > smartgit.exe'.
+
+Note: (1) During the installation process pick the "non-commercial use" option; (2) Integration with GitHub might be easier if you use the same username and email as that of your GitHub account. 
  
-  * Open GitKraken and sign in using your Github account rather than creating a "gitkraken account." **Make sure you're using Google Chrome instead of IE.** 
+3. Once SmartGit is installed, do the following to integrate your GitHub account:
+
+(a) Go to 'Edit > Preferences > Hosting Providers'. Click the "Add..." button on the top-right of the window.
+
+(b) There are a few ways to integrate. The easiest is to pick the 'Use OAuth token for repository authentication (instead of password)' option. This should generate a token in your web browser. Use this token to complete the integration.
+
+(d) Once the GitHub account is added, your GitHub account should be listed in 'Hosting Providers' window in SmartGit. You can also check your GitHub account to make sure that SmartGit has been authorized. To see this, in your GitHub account, go to 'settings > applications'. You should see SmartGit listed under 'Authorized Apps'.
+
+Note: You can find the instructions on integration here: http://www.syntevo.com/doc/display/SG/GitHub+integration.
+
  
-3.	[Install GIT](https://git-scm.com/downloads) (Optional). This step is optional because the two steps above suffice for working with Git. However, if you got into Git and want to do really advance stuff, you need to work with GIT directly.  
+4.	[Install GIT](https://git-scm.com/downloads) (Optional). This step is optional because the two steps above suffice for working with Git. However, if you get into Git and want to do really advance stuff, you need to work with GIT directly.  
  
-4.	Make sure R and RStudio are installed and updated in your computer. Even though we have not decided whether or not to work with R from now on, Rstudio is great IDE that allows us to do a lot of things including GIT management 
+5.	Make sure R and RStudio are installed and updated in your computer. Even though we have not decided whether or not to work with R from now on, Rstudio is great IDE that allows us to do a lot of things including GIT management .
  
 ## Getting to know [Git](https://git-scm.com/) 
 Git is a [Distributed Version Control System](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control). This means that Git is a system to fully clones the project and in its history into any client's repository or local computer.  Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don't know how those files change with respect to the changes applied to other files of the same project.  
