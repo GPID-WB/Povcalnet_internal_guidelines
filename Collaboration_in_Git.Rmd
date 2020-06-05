@@ -94,11 +94,12 @@ knitr::include_graphics("images/interface.PNG")
 
 Now, let us see how to stage and commit a .do file.
 ```{r video0, echo=FALSE, fig.align="center", fig.cap = "Stage and commit a .do file"} 
-knitr::include_url("https://www.youtube.com/watch?v=wDM5sQX5lEU") 
+knitr::include_url("https://www.youtube.com/embed/wDM5sQX5lEU") 
 ``` 
  We can also stage and commit binary files (e.g. MS office files). However, Git will not track changes. This video also shows how to push your files to the host. 
- ```{r video3, echo=FALSE, fig.align="center", fig.cap = "Stage and commit a .do file"} 
-knitr::include_url("https://www.youtube.com/watch?v=dOUheWAKx_U") 
+
+```{r video3, echo=FALSE, fig.align="center", fig.cap = "Stage, commit and push a file"} 
+knitr::include_url("https://www.youtube.com/embed/dOUheWAKx_U") 
 ``` 
 
  5. Pull
