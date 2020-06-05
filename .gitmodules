@@ -1,0 +1,3 @@
+[submodule "samuel"]
+	path = samuel
+	url = https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git

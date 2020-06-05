@@ -29,10 +29,12 @@ blah
 ### Branching and Merging 
  
 Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. "Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch."[^branching] 
+
+###install.packages("DiagrammeR")
  
-```{r,echo=FALSE} 
-  DiagrammeR::mermaid("branch_merge.mmd")
-``` 
+###```{r,echo=FALSE} 
+###  DiagrammeR::mermaid("branch_merge.mmd")
+###``` 
  
 ## Getting to know [SmartGit](https://www.syntevo.com/smartgit/)
 
@@ -47,15 +49,196 @@ blah blah
 
 ### Initialize Repos {-}
 
-blah blah
+install.packages("knitr")
+
+1. Go to **Repository** | **Add or Create Repository**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_repo.PNG") 
+```
+
+2. Select a folder that you created and saved in your computer (e.g., new_repo).
+
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/new_repo.PNG") 
+```
+
+3. Select Initialize. 
+
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/initialize_v1.PNG") 
+```
 
 ### Clone Repos {-}
 
-blah blah
+1. Go to **Repository** | **Clone**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_clone_repo.PNG") 
+```
+
+2. Get and insert URL of Git repository you want to clone (e.g., https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git). 
+
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/select_repo_to_be_cloned.PNG") 
+```
+
+You could also select from a list of repositories in your GitHub account. Use these steps:  
+(i) Click on the drop-down arrow and select github.com from the drop-down menu. 
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/select_repo_to_be_cloned_github.PNG") 
+```  
+(ii) Select the repository you want to clone from the list of repositories in your GitHub account.  
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/select_repo_to_be_cloned_github_repos.PNG") 
+```
+
+3. Specify the local directory for the new repository.  
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/select_local_directory.PNG") 
+``` 
 
 ### Organize Repos by groups {-}
 
-blah blah
+1. Have some repositories that you can put into groups (e.g., GitHub, R, SmartGit, Stata).  
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/repos_to_organize.PNG") 
+```
+
+
+2. Go to **Repository** | **Add Group**  
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_repo_add.PNG") 
+``` 
+
+
+3. Enter the group name (e.g., 'Version Control' for GitHub and SmartGit).  
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/version_control.PNG") 
+``` 
+
+3. Drag and drop repositories into the relevant group. 
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/drag_and_drop.PNG") 
+```
+
+### How do you link a repository that is your local machine to your GitHub account? {-}
+
+1. Set up a new repository in GitHub.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/new_repo_github.PNG") 
+```
+
+2. Enter name of repository, select Public or Private, and do **NOT** select Initialize.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/do_not_select_initialize.PNG") 
+```
+
+3. Go to **Repository** | **Add or Create**
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_repo.PNG") 
+```
+
+4. Select a folder saved in your machine (e.g., dofiles_for_github). 
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/dofiles_for_github.PNG") 
+```
+
+5. Select Initialize.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/initialize_v2.PNG") 
+```
+
+6. Go to **Local** | **Stage**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_local_stage.PNG") 
+```
+
+7. Select Stage.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/stage.PNG") 
+```
+
+8. Go to **Local** | **Commit**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_local_commit.PNG") 
+```
+
+9. Enter a commit message and hit Commit.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/enter_commit_message.PNG") 
+```
+
+10. Go to **Remote** | **Add**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/go_to_remote_add.PNG") 
+```
+
+11. Select the new GitHub repository that you created in Step 1.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/add_url.PNG") 
+```
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/github.PNG") 
+```
+
+12. Add the remote repository.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/add_remote_repo.PNG") 
+```
+
+13. Select master branch and origin.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/select_master_origin.PNG") 
+```
+
+14. Right-click repository you want to push to GitHub, go to **Push**.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/right_click_repo.PNG") 
+```
+
+15. Select Push
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/push.PNG") 
+```
+
+16. Check if you have the repository on GitHub.
+
+```{r GKnodes, echo=FALSE, fig.cap = ""} 
+knitr::include_graphics("images/samuel/check_github.PNG") 
+```
+
+
+
+
+
+
 
 ### Basic Git process {-}
 
