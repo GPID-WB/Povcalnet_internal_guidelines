@@ -44,17 +44,6 @@ blah blah
 
 blah blah
 
-### Organize your toolbar {-}
-You can add convenient commands to your toolbar from the Edit> Customize > Toolbar menu.
-```{r toolbar1, echo=FALSE, fig.cap = "Toolbar"} 
-knitr::include_graphics("images/Toolbar1.PNG") 
-``` 
-```{r toolbar2, echo=FALSE, fig.cap = "Customize menu"} 
-knitr::include_graphics("images/Toolbar2.PNG") 
-``` 
-```{r toolbar3, echo=FALSE, fig.cap = "Add/delete commands"} 
-knitr::include_graphics("images/Toolbar3.PNG") 
-``` 
 
 ### Initialize Repos {-}
 
@@ -69,6 +58,7 @@ blah blah
 blah blah
 
 ### Basic Git process {-}
+
 
 1. Stage
 Use to prepare a commit. This command saves your file's content from the working tree to the index. 
@@ -139,6 +129,7 @@ After you click on checkout the "MartaS" branch will change to bold characters i
 knitr::include_graphics("images/branch4.PNG") 
 ``` 
 All commits will be now saved to the branch "MartaS" and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.
+
 
 ### Important keyboard shortcut process {-}
 
