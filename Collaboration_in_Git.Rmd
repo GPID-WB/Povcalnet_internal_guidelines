@@ -44,17 +44,6 @@ blah blah
 
 blah blah
 
-### Organize your toolbar {-}
-You can add convenient commands to your toolbar from the Edit> Customize > Toolbar menu.
-```{r toolbar1, echo=FALSE, fig.cap = "Toolbar"} 
-knitr::include_graphics("images/Toolbar1.PNG") 
-``` 
-```{r toolbar2, echo=FALSE, fig.cap = "Customize menu"} 
-knitr::include_graphics("images/Toolbar2.PNG") 
-``` 
-```{r toolbar3, echo=FALSE, fig.cap = "Add/delete commands"} 
-knitr::include_graphics("images/Toolbar3.PNG") 
-``` 
 
 ### Initialize Repos {-}
 
@@ -70,74 +59,7 @@ blah blah
 
 ### Basic Git process {-}
 
-1. Stage
-Use to prepare a commit. This command saves your file's content from the working tree to the index. 
-```{r sg_stage, echo=FALSE, fig.cap = "Stage command"} 
-knitr::include_graphics("images/SG_stage.PNG") 
-``` 
-2. Commit
-This command saves local changes to your local repository. Each commit is accompanied by a commit message. It is good practice to commit your changes often in order to save them in the repository. 
-```{r sg_commit, echo=FALSE, fig.cap = "Commit command"} 
-knitr::include_graphics("images/SG_commit.PNG") 
-``` 
-
-3. Push
-This command saves local commits to a remote repository hosted in the cloud, e.g. in Github. This is the key step for your work to be always backed-up in the cloud and accessible to other members in the team.
-```{r sg_push, echo=FALSE, fig.cap = "Push command"} 
-knitr::include_graphics("images/SG_push.PNG") 
-``` 
-4. How to stage commit and push
-First, let us take a look at the SmartGit interface.
-```{r interface, echo=FALSE, fig.cap = "SmartGit Interface"} 
-knitr::include_graphics("images/interface.PNG") 
-``` 
-
-Now, let us see how to stage and commit a .do file.
-```{r video0, echo=FALSE, fig.align="center", fig.cap = "Stage and commit a .do file"} 
-knitr::include_url("https://www.youtube.com/watch?v=wDM5sQX5lEU") 
-``` 
- We can also stage and commit binary files (e.g. MS office files). However, Git will not track changes. This video also shows how to push your files to the host. 
- ```{r video3, echo=FALSE, fig.align="center", fig.cap = "Stage and commit a .do file"} 
-knitr::include_url("https://www.youtube.com/watch?v=dOUheWAKx_U") 
-``` 
-
- 5. Pull
-This command fetches commits from a remote repository and includes them into your local branch. You can pull from the remote repository clicking on the pull icon and selecting Pull in the window that appears on your screen:
-```{r pull1, echo=FALSE, fig.cap = "Pull icon"} 
-knitr::include_graphics("images/pull1.PNG") 
-``` 
-```{r pull2, echo=FALSE, fig.cap = "Pull or fetch only"} 
-knitr::include_graphics("images/pull2.PNG") 
-```
-Once you click on pull you should see a confirmation of a successful pull (unless there is a conflict, more on this later on).
-```{r pull1, echo=FALSE, fig.cap = "Successful (rebase) pull"} 
-knitr::include_graphics("images/pull3.PNG") 
-``` 
-
-6. Create a new branch
-Branching is a crucial step in collaborating with others in Git. You start a new branch to store your work independently from the master tree. Remember that in Smartgit you need to double click on your local branch to check-out: this simply means that you are making the selected branch your local one. 
-You can see the steps to create and check-out your new branch below.
-We start from the simplest example. We cloned a repository with only the master branch (see in the Branches window):
-```{r branch1, echo=FALSE, fig.cap = "Master Branch"} 
-knitr::include_graphics("images/branch1.PNG") 
-``` 
-We now click on the icon
-```{r sg_branch, echo=FALSE, fig.cap = "New Branch command"} 
-knitr::include_graphics("images/SG_branch.PNG") 
-``` 
-SmartGit will ask you to give a name to your branch, in this case "MartaS" and click on "Add branch"
-```{r branch2, echo=FALSE, fig.cap = "Add new branch"} 
-knitr::include_graphics("images/branch2.PNG")
-``` 
-Remember we want to make sure that we are working on the "MartaS" branch (Working on the master branch might cause a lot of disruption especially if many people are starting their own branches from the master. Be careful!). Double click on the "MartaS" branch in the Branches window and this message will appear:
-```{r branch3, echo=FALSE, fig.cap = "Checkout a Branch"} 
-knitr::include_graphics("images/branch3.PNG") 
-``` 
-After you click on checkout the "MartaS" branch will change to bold characters in the Branches window. You are all set and can start working on your task!
-```{r branch4, echo=FALSE, fig.cap = "Local Branch changed from master to "MartaS""} 
-knitr::include_graphics("images/branch4.PNG") 
-``` 
-All commits will be now saved to the branch "MartaS" and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.
+How to stage, commit, push, pull, create a new branch, and merge. 
 
 ### Important keyboard shortcut process {-}
 
