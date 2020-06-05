@@ -110,7 +110,7 @@ knitr::include_graphics("images/pull1.PNG")
 knitr::include_graphics("images/pull2.PNG") 
 ```
 Once you click on pull you should see a confirmation of a successful pull (unless there is a conflict, more on this later on).
-```{r pull1, echo=FALSE, fig.cap = "Successful (rebase) pull"} 
+```{r pull3, echo=FALSE, fig.cap = "Successful (rebase) pull"} 
 knitr::include_graphics("images/pull3.PNG") 
 ``` 
 
@@ -134,7 +134,7 @@ Remember we want to make sure that we are working on the "MartaS" branch (Workin
 knitr::include_graphics("images/branch3.PNG") 
 ``` 
 After you click on checkout the "MartaS" branch will change to bold characters in the Branches window. You are all set and can start working on your task!
-```{r branch4, echo=FALSE, fig.cap = "Local Branch changed from master to "MartaS""} 
+```{r branch4, echo=FALSE, fig.cap = "Local Branch changed from master to MartaS"} 
 knitr::include_graphics("images/branch4.PNG") 
 ``` 
 All commits will be now saved to the branch "MartaS" and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.
