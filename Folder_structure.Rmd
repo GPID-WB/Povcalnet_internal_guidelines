@@ -1,3 +1,5 @@
+# (PART) Basics {-}
+
 # Folder Strcutures
 
 This short note provides everything you need to understand the folder structure of the PovcalNet workflow, which has the following objectives in mind:
