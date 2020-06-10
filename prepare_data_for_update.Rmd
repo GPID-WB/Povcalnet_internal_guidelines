@@ -1,0 +1,61 @@
+# (PART) Povcalnet Update {-}
+
+# Prepare data for PovcalNet update {#prepare}
+
+In this section we briefly describe what needs to be done with each auxiliary file to update PovcalNet
+
+## Population
+
+### Raw data
+Everything related population data should be placed in the folder `p:/01.PovcalNet/03.QA/03.Population`, hereafter (`./`).
+
+Population data is saved in the folder `./data`. The data is may come from two different sources, WDI or from an internal source in DECDG. Right now, the data is build and shared by `Emi Suzuki <esuzuki1@worldbank.org>` in an Excel file. 
+
+The file shared by Emi should be placed without modification in the folder `./data/original`. Then, the file is copied again into the folder `./data` with the name `population_country_yyyy-mm-dd.xlsx` where `yyyy-mm-dd` refers to the official release date of the population data. 
+
+
+### update master file
+
+Once the new raw population data is in the folder `./data` it is necessary to update the `population` sheet in the master file. This can be done by just type, 
+
+```{stata, eval = FALSE}
+pcn master, update(population)
+```
+
+Finally, you can check the differences between the two versions by using the following code, 
+
+```{stata, eval = FALSE}
+pcn master, load(Population) 
+rename population pop2
+
+tempfile pop2
+save `pop2'
+
+// the version to compare with must change depending on the vintage available
+pcn master, load(Population) version(20200529073145) 
+rename population pop1
+
+merge 1:1 countrycode coveragetype year using `pop2'
+
+tab year if _merge == 2
+
+tab countryname if _merge == 2 & year < 2019
+
+gen diffpop = pop1 - pop2
+sum diffpop
+br if abs(diffpop) > `r(mean)'*2*`r(sd)' & diffpop != .
+
+```
+
+## GDP and Consumption
+
+blah blah
+
+## PPP
+
+blah blah
+
+## CPI 
+
+blah blah
+

@@ -18,6 +18,8 @@ rmd_files: [
   "Collaboration_in_Git.Rmd",
   "DM_Group_data.Rmd",
 
+  "prepare_data_for_update.Rmd",
+
   "Handover.Rmd",
   "references.Rmd",
 ]
