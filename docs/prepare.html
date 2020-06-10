@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Folder Strcutures | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Folder Strcutures | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Folder Strcutures | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="collaboration-in-git.html"/>
+<link rel="prev" href="DMGroupData.html"/>
+<link rel="next" href="kihoons-handover.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -244,252 +244,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="folder-strcutures" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Folder Strcutures</h1>
-<p>This short note provides everything you need to understand the folder structure of the PovcalNet workflow, which has the following objectives in mind:</p>
-<ol style="list-style-type: decimal">
-<li>Store vintages of data for replicability purposes</li>
-<li>Share documents (i.e, editable files) among the team members through a stable, friendly, and vintage-control suitable platform.</li>
-<li>Execute, load, and save data uninterruptedly and, if possible, in a fast manner.</li>
-</ol>
-<p>Unfortunately, the World Bank systems do not provide an ITS service that allows us to meet all the objectives, and thus we are forced to use different platforms. A Network drive for the first objective, OneDrive for the second one, and a server (super computer) of remote execution for the third one.</p>
-<div id="network-drive" class="section level2">
-<h2><span class="header-section-number">2.1</span> Network Drive</h2>
-<p>The Network drive is mainly used to archive data. Currently, it is known as the <em>P drive</em>, but it could be disconnected and remapped by following the steps <a href="folder-strcutures.html#steps">below</a>.</p>
-<p>This drive has many folders in its root, but under the new folder structure only three folders would take predominance, <code>01.Povcalnet</code>, <code>02.personal</code>, and <code>03.ProjectX</code>. The latter is not explained in this document</p>
-<ul>
-<li><code>01.povcalnet</code>has four main subfulders and follow the structure below:</li>
-</ul>
-<pre><code>#&gt;                             levelName
-#&gt; 1  P:                                
-#&gt; 2   °--01.PovcalNet                  
-#&gt; 3       ¦--00.Master                 
-#&gt; 4       ¦   ¦--_vintage_control.xlsx 
-#&gt; 5       ¦   ¦--01.current            
-#&gt; 6       ¦   ¦--02.vintage            
-#&gt; 7       ¦   ¦--03.metadata           
-#&gt; 8       ¦   °--Master.xlsm           
-#&gt; 9       ¦--01.Vintage_control        
-#&gt; 10      ¦   ¦--_aux                  
-#&gt; 11      ¦   ¦   ¦--countries         
-#&gt; 12      ¦   ¦   ¦--cpi               
-#&gt; 13      ¦   ¦   ¦--info              
-#&gt; 14      ¦   ¦   ¦--pcn_create        
-#&gt; 15      ¦   ¦   °--price_framework   
-#&gt; 16      ¦   °--AGO                   
-#&gt; 17      ¦       ¦--AGO_2000_HBS      
-#&gt; 18      ¦       ¦--AGO_2008_IBEP-MICS
-#&gt; 19      ¦       °--AGO_2018_IDREA    
-#&gt; 20      ¦--02.Production             
-#&gt; 21      ¦   °--2020_SM               
-#&gt; 22      °--03.QA                     
-#&gt; 23          ¦--01.GroupData          
-#&gt; 24          ¦--02.PRIMUS             
-#&gt; 25          ¦--02.PRIMUS_pending     
-#&gt; 26          ¦--03.Population         
-#&gt; 27          ¦--04.NationalAccounts   
-#&gt; 28          ¦--05.PCN_estimates      
-#&gt; 29          ¦--06.LIS                
-#&gt; 30          °--07.historical</code></pre>
-<ul>
-<li><p><code>/00.Master</code> contains everything related to the master.xlsx file that is uploaded into the PovcalNet system. This file has its own way for proper use and requires a separate explanation.</p></li>
-<li><p><code>/01.Vintage_control</code> contains the historical data of PovcalNet. Eventually, this would be folder accessible through <code>datalibweb</code>.</p></li>
-<li><p><code>/02.Production</code> is the folder with the current version of the data in the PovcalNet system.</p></li>
-<li><p><code>/03.QA</code> is a working folder that is getting constantly modified. Each subfolder here contains the necessary material to work on particular stages of the PovcalNet process</p></li>
-<li><p><code>02.personal</code> contains one folder for each member of the team. The name of the folder is the UPI of the user preceded by the the letters <code>wb</code>.</p></li>
-</ul>
-<pre><code>#&gt;              levelName
-#&gt; 1  P:                 
-#&gt; 2   °--02.personal    
-#&gt; 3       ¦--_handover  
-#&gt; 4       ¦   ¦--Espen  
-#&gt; 5       ¦   ¦--Prem   
-#&gt; 6       ¦   °--Rebecca
-#&gt; 7       ¦--wb020687   
-#&gt; 8       ¦--wb108988   
-#&gt; 9       ¦--wb372541   
-#&gt; 10      ¦--wb384996   
-#&gt; 11      ¦--wb424681   
-#&gt; 12      ¦--wb463998   
-#&gt; 13      ¦--wb499754   
-#&gt; 14      ¦--wb514665   
-#&gt; 15      ¦--wb537472   
-#&gt; 16      ¦--wb548542   
-#&gt; 17      °--wb562318</code></pre>
-<div id="steps" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Steps to map drives</h3>
-<p>In these steps, we disconnect any mapped drive that has previously assigned to letters P or E. Then, we assign to letter P the network drive and to letter E the high-speed drive in the <a href="folder-strcutures.html#server">server</a>.</p>
-<ol style="list-style-type: decimal">
-<li>Open Notepad.</li>
-<li>Copy and paste the following lines:</li>
-</ol>
-<pre><code>net use /del P: /Y
-net use /del E: /Y
-
-net use P: \\wbntpcifs\povcalnet /PERSISTENT:YES
-net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Save it in your desktop as <code>link_drives.bat</code></li>
-<li>Close Notepad</li>
-<li>Double click file <code>link_drives.bat</code> in your desktop.</li>
-</ol>
+<div id="prepare" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Prepare data for PovcalNet update</h1>
+<p>In this section we briefly describe what needs to be done with each auxiliary file to update PovcalNet</p>
+<div id="population" class="section level2">
+<h2><span class="header-section-number">5.1</span> Population</h2>
+<div id="raw-data" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Raw data</h3>
+<p>Everything related population data should be placed in the folder <code>p:/01.PovcalNet/03.QA/03.Population</code>, hereafter (<code>./</code>).</p>
+<p>Population data is saved in the folder <code>./data</code>. The data is may come from two different sources, WDI or from an internal source in DECDG. Right now, the data is build and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in an Excel file.</p>
+<p>The file shared by Emi should be placed without modification in the folder <code>./data/original</code>. Then, the file is copied again into the folder <code>./data</code> with the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the official release date of the population data.</p>
+</div>
+<div id="update-master-file" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> update master file</h3>
+<p>Once the new raw population data is in the folder <code>./data</code> it is necessary to update the <code>population</code> sheet in the master file. This can be done by just type,</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="prepare.html#cb6-1"></a>pcn master, update(population)</span></code></pre></div>
+<p>Finally, you can check the differences between the two versions by using the following code,</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="prepare.html#cb7-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
+<span id="cb7-2"><a href="prepare.html#cb7-2"></a><span class="kw">rename</span> population pop2</span>
+<span id="cb7-3"><a href="prepare.html#cb7-3"></a></span>
+<span id="cb7-4"><a href="prepare.html#cb7-4"></a><span class="kw">tempfile</span> pop2</span>
+<span id="cb7-5"><a href="prepare.html#cb7-5"></a><span class="kw">save</span> <span class="ot">`pop2&#39;</span></span>
+<span id="cb7-6"><a href="prepare.html#cb7-6"></a></span>
+<span id="cb7-7"><a href="prepare.html#cb7-7"></a><span class="co">// the version to compare with must change depending on the vintage available</span></span>
+<span id="cb7-8"><a href="prepare.html#cb7-8"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(20200529073145) </span>
+<span id="cb7-9"><a href="prepare.html#cb7-9"></a><span class="kw">rename</span> population pop1</span>
+<span id="cb7-10"><a href="prepare.html#cb7-10"></a></span>
+<span id="cb7-11"><a href="prepare.html#cb7-11"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2&#39;</span></span>
+<span id="cb7-12"><a href="prepare.html#cb7-12"></a></span>
+<span id="cb7-13"><a href="prepare.html#cb7-13"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> <span class="dt">_merge</span> == 2</span>
+<span id="cb7-14"><a href="prepare.html#cb7-14"></a></span>
+<span id="cb7-15"><a href="prepare.html#cb7-15"></a><span class="kw">tab</span> countryname <span class="kw">if</span> <span class="dt">_merge</span> == 2 &amp; <span class="fu">year</span> &lt; 2019</span>
+<span id="cb7-16"><a href="prepare.html#cb7-16"></a></span>
+<span id="cb7-17"><a href="prepare.html#cb7-17"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
+<span id="cb7-18"><a href="prepare.html#cb7-18"></a><span class="kw">sum</span> diffpop</span>
+<span id="cb7-19"><a href="prepare.html#cb7-19"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)&#39;</span>*2*<span class="ot">`r(sd)&#39;</span> &amp; diffpop != .</span></code></pre></div>
 </div>
 </div>
-<div id="server" class="section level2">
-<h2><span class="header-section-number">2.2</span> Remote server connection</h2>
-<p>The server is a ‘super computer’ with 8 processor and 64GB of RAM memory. All the</p>
-<div id="connect" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Steps to connect to the server</h3>
-<p>In order to get access to the remote server, please do the following:</p>
-<ol style="list-style-type: decimal">
-<li>Click on Start, type ‘remote’, and click on “Remote Desktop Connection”</li>
-</ol>
-<p><img src="images/remote1.PNG" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Type <code>WBGMSDDG001</code> in the field ‘Computer:’ and click on ‘show options’</li>
-<li>Make sure the box ‘Always ask for credentials’ is <strong>unchecked</strong></li>
-</ol>
-<p><img src="images/remote2.PNG" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Click tab ‘Local Resources’ and make sure boxes ‘Printers’ and ‘Clipboard’ are checked. Then click ‘More…’</li>
-</ol>
-<p><img src="images/remote3.PNG" /></p>
-<ol start="5" style="list-style-type: decimal">
-<li>Make sure that only boxes ‘(C:)OSDisk’ and ‘Drives that I plug in later’ are <strong>checked</strong> and then click OK.</li>
-<li>click connect.</li>
-<li>Enter your username (i.e., wbXXXXXX) and Windows passphrase, where XXXXXX is your UPI number.</li>
-<li>Once your in the server, enter again your username and Windows passphrase.</li>
-</ol>
-<p><img src="images/remote4.PNG" /></p>
-<p>You need to execute steps 2 to 7 only once. Next time you login into the server you only need to execute steps 1 and 8.</p>
+<div id="gdp-and-consumption" class="section level2">
+<h2><span class="header-section-number">5.2</span> GDP and Consumption</h2>
+<p>blah blah</p>
 </div>
-<div id="map-network-drive-in-the-server" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Map Network drive in the server</h3>
-<p>Once you’re in the server, open Window Explorer and go to the path <code>E:\PovcalNet\02.core_team\_aux\</code> in which you will see a file called <code>link_P_Drive.bat</code>. Double click that file in order to map the PovcalNet network drive in the server. This procedure has to be done only once. After that, the network drive will be always mapped in the server for you.</p>
+<div id="ppp" class="section level2">
+<h2><span class="header-section-number">5.3</span> PPP</h2>
+<p>blah blah</p>
 </div>
-<div id="folder-strcuture-in-the-server." class="section level3">
-<h3><span class="header-section-number">2.2.3</span> Folder strcuture in the server.</h3>
-<p>If you already mapped P drive to the server, you will see that you have access to three drives: the <code>C:/</code> drive, which is the main drive of the server, the <code>P:/</code> drive, which is our team network drive, and the <code>E:/</code> drive.</p>
-<p>You are <strong>not</strong> supposed to use the <code>C:/</code> for anything. Some programs like R of Python save their packages or libraries in the <code>C:/</code>, which is fine. But the <code>C:/</code> drive is not for storing data, MS files, or anything personal. If you need to save something on the <code>C:/</code> drive, please let leads of the povcalnet team know.</p>
-<p>The <code>P:/</code> is fully accessible through the server, so any code pointing to the <code>P:/</code> drive in your computer will work effortlessly in the server.</p>
-<p>The <code>P:/</code> drive is a high speed drive to store big data or large ammount of files to execute fast. This is <strong>NOT</strong> and storage drive, since its capacity is limited. All your data should be stored in the <code>P:/</code> and copied to the <code>E:/</code> drive temporally for fast execution. Once you’re done with your analysis, you can copy back any results to the <code>P:/</code> drive and empty the <code>E:/</code> to allow others to use it. Ideally, we would increase the size of the <code>E:/</code> drive but that is not a possibility now.</p>
-<pre><code>#&gt;                     levelName
-#&gt; 1  E:                        
-#&gt; 2   ¦--01.personal           
-#&gt; 3   ¦   ¦--wb020687          
-#&gt; 4   ¦   ¦--wb108988          
-#&gt; 5   ¦   ¦--wb372541          
-#&gt; 6   ¦   ¦--wb384996          
-#&gt; 7   ¦   ¦--wb424681          
-#&gt; 8   ¦   ¦--wb499754          
-#&gt; 9   ¦   ¦--wb537472          
-#&gt; 10  ¦   ¦--wb548542          
-#&gt; 11  ¦   ¦--wb561460          
-#&gt; 12  ¦   ¦--wb562318          
-#&gt; 13  ¦   °--wb562350          
-#&gt; 14  ¦--02.core_team          
-#&gt; 15  ¦   ¦--_aux              
-#&gt; 16  ¦   ¦--01.admin          
-#&gt; 17  ¦   ¦--02.code           
-#&gt; 18  ¦   ¦--03.data           
-#&gt; 19  ¦   ¦--04.dashboard      
-#&gt; 20  ¦   ¦--05.writeups       
-#&gt; 21  ¦   °--06.PPT            
-#&gt; 22  ¦--03.pcn_update         
-#&gt; 23  ¦   ¦--00.Master         
-#&gt; 24  ¦   ¦--01.QA             
-#&gt; 25  ¦   ¦--02.Vintage_control
-#&gt; 26  ¦   °--03.Production     
-#&gt; 27  ¦--04.projects           
-#&gt; 28  ¦--05.CPI                
-#&gt; 29  ¦--06.National_accounts  
-#&gt; 30  °--07.ProjectX</code></pre>
-<p>In the subfolder <code>E:/01.personal</code> you may place all the date files you need for highspeed performance. For some particular projects, you will be asked to place the folders in the folder <code>E:/02.core_team</code>.</p>
-</div>
-</div>
-<div id="onedrive" class="section level2">
-<h2><span class="header-section-number">2.3</span> OneDrive</h2>
-<p>OneDrive has a double storage functionality. On the one hand, each person has been granted with 5TB of memory in a <a href="https://worldbankgroup-my.sharepoint.com/">personal folder</a> that is accessible through either the web browser or through the Window Explorer.</p>
-<p>On the other hand, OneDrive offers shared libraries for collaboration among the members of a <a href="https://teams.microsoft.com/_#/?lm=deeplink&amp;lmsrc=officeWaffle">private team</a>. The PovcalNet team currently has assigned the library called <a href="https://worldbankgroup.sharepoint.com/teams/PovcalNetDataSystemsandManagement-WBGroup">PovcalNet Data, Systems and Management</a> and it is accessible either through the <a href="https://teams.microsoft.com/_#">web browser</a> or through the Microsoft Teams app. In general, the shared library in OneDrive works in the same way as the personal OneDrive folder with the exception that <em>MS Teams</em> automatically creates a folder in the root of the library for each new channel that is added to team. Besides this inconvenience, the suggested folder structure is as follows</p>
-<pre><code>#&gt;                                       levelName
-#&gt; 1  wbntpcifs                                   
-#&gt; 2   °--PovcalNet                               
-#&gt; 3       °--TestFolder                          
-#&gt; 4           ¦--01.admin                        
-#&gt; 5           ¦   ¦--01.Recruitment              
-#&gt; 6           ¦   ¦--02.Funding                  
-#&gt; 7           ¦   °--03.Concept_note             
-#&gt; 8           ¦--02.core_team                    
-#&gt; 9           ¦   ¦--01.code                     
-#&gt; 10          ¦   ¦   ¦--01.packages             
-#&gt; 11          ¦   ¦   ¦   ¦--01.Stata            
-#&gt; 12          ¦   ¦   ¦   ¦--02.R                
-#&gt; 13          ¦   ¦   ¦   ¦--03.Python           
-#&gt; 14          ¦   ¦   ¦   °--04.VB               
-#&gt; 15          ¦   ¦   °--02.routines             
-#&gt; 16          ¦   ¦--02.dashboard                
-#&gt; 17          ¦   ¦--03.PPT                      
-#&gt; 18          ¦   °--04.Minutes                  
-#&gt; 19          °--03.projects                     
-#&gt; 20              ¦--01.Metadata                 
-#&gt; 21              ¦   ¦--01.CPI                  
-#&gt; 22              ¦   ¦--02.PPP                  
-#&gt; 23              ¦   ¦--03.National_accounts    
-#&gt; 24              ¦   °--04.Population           
-#&gt; 25              ¦--02.Nowcasting_error         
-#&gt; 26              ¦   ¦--_aux                    
-#&gt; 27              ¦   ¦--01.Data                 
-#&gt; 28              ¦   ¦--02.Code                 
-#&gt; 29              ¦   ¦--03.Results              
-#&gt; 30              ¦   ¦--04.Writeup              
-#&gt; 31              ¦   °--05.Literature           
-#&gt; 32              ¦--03.The_Real_Value_of_Poverty
-#&gt; 33              ¦   ¦--_aux                    
-#&gt; 34              ¦   ¦--01.Data                 
-#&gt; 35              ¦   ¦--02.Code                 
-#&gt; 36              ¦   ¦--03.Results              
-#&gt; 37              ¦   ¦--04.Writeup              
-#&gt; 38              ¦   °--05.Literature           
-#&gt; 39              ¦--04.Whats_New_notes          
-#&gt; 40              ¦   ¦--_aux                    
-#&gt; 41              ¦   ¦--01.Data                 
-#&gt; 42              ¦   ¦--02.Code                 
-#&gt; 43              ¦   ¦--03.Results              
-#&gt; 44              ¦   ¦--04.Writeup              
-#&gt; 45              ¦   °--05.Literature           
-#&gt; 46              °--05.Project_X                
-#&gt; 47                  ¦--_aux                    
-#&gt; 48                  ¦--01.Data                 
-#&gt; 49                  ¦--02.Code                 
-#&gt; 50                  ¦--03.Results              
-#&gt; 51                  ¦--04.Writeup              
-#&gt; 52                  °--05.Literature</code></pre>
-<p>In general, the folder structure is divided by topics according to their functionality. 01.admin, 02.core_team, and 03.projects. Notice that up to the third level in the folder structure, all folders are prefixed with two-digit numbers. This system guarantees that folders will be sorted as they are added and it is useful for navigation when using the keyboard. Also notice that there are no blank spaces in folders names, but rather underscores (_) are used when the name of the folder has two or more words. This is to avoid problems with some systems.</p>
-<ul>
-<li><p><code>01.admin</code> This folder contains everything related to administrative information. Each subfolder corresponds to a big subtopic such as recruitment, funding, or concept notes.</p></li>
-<li><p><code>02.core_team</code> This folder contains information that is common and useful to all the members of the team and intersects two or more functions (or projects). For instance, the <code>Stata</code> and <code>R</code> packages to query the PovcalNet API might be used in many different projects and do not belong to any project besides the production of the packages itself. Thus, four main categories of common information have been added: code, dashboard, PPT, and minutes.</p></li>
-<li><p><code>03.projects</code> This folder contains all the analytic projects in which the PovcalNet team participates. By default, each project contains six subfolders, <code>/01.data</code>, <code>/02.Code</code>, <code>/03.results</code>, <code>/04.writeup</code>,<code>/05.Literature</code>, and <code>/_aux</code>, but these structure could be modified by following any of the following examples: <a href="http://projecttemplate.net/architecture.html">example1</a>, <a href="http://blog.jom.link/implementation_basic_reproductible_workflow.html">example2</a>, or <a href="https://itsalocke.com/starters/">my favorite</a>.</p></li>
-</ul>
-</div>
-<div id="add" class="section level2">
-<h2><span class="header-section-number">2.4</span> Additional topics to discuss</h2>
-<div id="r-or-stata-or-both" class="section level3">
-<h3><span class="header-section-number">2.4.1</span> R or Stata or both?</h3>
-</div>
-<div id="github" class="section level3">
-<h3><span class="header-section-number">2.4.2</span> GitHub</h3>
-<p>ss</p>
+<div id="cpi" class="section level2">
+<h2><span class="header-section-number">5.4</span> CPI</h2>
+<p>blah blah</p>
 
 </div>
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="collaboration-in-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="DMGroupData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kihoons-handover.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
