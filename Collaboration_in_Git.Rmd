@@ -175,6 +175,8 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 **-history of files (i.e.,blame)**
 
+**-strawberries are really great**
+
 ### Important keyboard shortcut process {-}
 
 ### Nice features of SmartGit {-}
