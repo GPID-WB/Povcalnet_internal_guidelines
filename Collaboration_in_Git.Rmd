@@ -165,6 +165,16 @@ knitr::include_graphics("images/branch4.PNG")
 
 All commits will be now saved to the branch "MartaS" and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.
 
+### Discarding, revert commits, amend commits, and history of files (i.e.,blame) {-}
+
+**- Revert commits**
+
+**- Amend commits**
+
+**- Discarding**
+
+**-history of files (i.e.,blame)**
+
 ### Important keyboard shortcut process {-}
 
 ### Nice features of SmartGit {-}
