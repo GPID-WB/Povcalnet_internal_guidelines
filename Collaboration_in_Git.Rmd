@@ -169,6 +169,8 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 **- Revert commits**
 
+On the main window, select Branch|Revert to open the Revert dialog
+
 **- Amend commits**
 
 **- Discarding**
