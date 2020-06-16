@@ -171,14 +171,84 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 ### Advance Git process {-}
 
-- Creating pull request from SmartGit
-- stashing
-- discarding
-- revert commits
+#### How to work with commits 
+
+**- Stage vs Commit**   
+
+Staging is a necessary prestep before committing a change to your local repository. It does not however affect your repository in any significant way,  and does not change your Git history. A staged file can be easily unstaged to remove it from your Git index. 
+
+A commit saves changes to your local repository. This does affect your Git history. A commit can be reverted, but it is not as easy as a reset. The general rule is to commit often, but make sure your code works before you commit
+
+**- What is a good commit message** 
+
+Start with a one line short summary (max 50 chars)
+Be concise, but add necessary detail 
+Describe the why, not the what
+Convention is to write in the imperative (e.g. «Fix bug» not «Fixed bug» or «Fixes bug» 
+
+**- Amend a commit**
+You can amend a previous commit message if needed, e.g. if you made a significant typo in your last commit and want to correct it or if you want to add a more detailed explanation. 
+
+Caution: Do not amend commits that you have already pushed to a shared repository 
+
+#### How to undo stuff in the Git 
+
+**Unstage**
+Unstage a previously staged file. 
+
+**- Stashing** 
+put your uncommitted changes in a box and save the for later... E.g. when changing to a different branch 
+
+**- Discarding**
+Throw away you uncommitted changes (if you don't need them). E.g. when changing to a different branch
+
+**- Reset a commit** 
+
+
+**- Revert a commit**
+Inverts the changes introduced by a commit and appends a new commit with the resulting inverse content. 
+
+
+#### How to deal with merge conflicts 
+
+**- What is a merge conflict** 
+
+**- Solve merge conflicts** 
+
+#### How to work with pull requests 
+
+**- ...** 
+
+**- Creating a pull request from SmartGit** 
+
+#### DO's and DONT's 
+
+**Do's:**
+
+- Do commit early and often 
+- Do check that your code works before you commit 
+- Do write informative commit messages 
+- Do create a new branch before you start working on a new issue 
+- Do create a pull request before merging your branch to master 
+- Do add a reviewer to your pull request 
+- Do delete branches when the issue has been solved (i.e. branch has been merged to master) 
+- Do keep up to date (take note of other changes in the repo, e.g. use pull rebase) 
+
+**Don'ts:** 
+
+- Don't work directly on the master branch 
+- Don't create a pull request addressing multiple issues
+- Don't add binary (or other large files) to the repository 
+- Don't commit files that contain usernames, passwords or other credentials 
+- Don't modify or delete the published Git history 
+- Don't do a force push (unless absolutely sure about what you are doing) 
+- Don't panic :) 
+
+#### other 
+
+
 - History of files
-- Solve merge conflicts
-- Ammend a commit
-- Other things
+<!--- Other things -->
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1]  
