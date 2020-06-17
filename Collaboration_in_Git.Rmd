@@ -173,47 +173,111 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 #### How to work with commits 
 
+**- Commit best practices** 
+
+One of the most important habits when working with projects in Git is to commit *often* and *early*. The reason for this is at a commit should only contain changes related to a single problem. If you should discover a new problem, you should do a separate commit. This is much easier to achieve if start out by committing changes early on in the project. It is however of course also important that the commit solves the problem that it claims to solve, so doing an extra code check before you commit is a good idea. 
+
 **- Stage vs Commit**   
 
-Staging is a necessary prestep before committing a change to your local repository. It does not however affect your repository in any significant way,  and does not change your Git history. A staged file can be easily unstaged to remove it from your Git index. 
+Staging is a necessary pre-step before committing a change to your local repository. It does not however affect your repository in any significant way,  and does not change your Git history. A staged file can be easily unstaged to remove it from your Git index. 
 
 A commit saves changes to your local repository. This does affect your Git history. A commit can be reverted, but it is not as easy as a reset. The general rule is to commit often, but make sure your code works before you commit
 
-**- What is a good commit message** 
+**- Writing commit messages** 
 
-Start with a one line short summary (max 50 chars)
-Be concise, but add necessary detail 
-Describe the why, not the what
-Convention is to write in the imperative (e.g. «Fix bug» not «Fixed bug» or «Fixes bug» 
+A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working in a shared repository (but it could also be important for your future self!). Somebody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules)). 
+
+An example of a commit message's structure: 
+
+> Summarize changes in around 50 characters or less
+> 
+> More detailed explanatory text, if necessary. Wrap it to about 72
+> characters or so. In some contexts, the first line is treated as the
+> subject of the commit and the rest of the text as the body. The
+> blank line separating the summary from the body is critical (unless
+> you omit the body entirely); various tools like `log`, `shortlog`
+> and `rebase` can get confused if you run the two together.
+>
+> Explain the problem that this commit is solving. Focus on why you
+> are making this change as opposed to how (the code explains that).
+> Are there side effects or other unintuitive consequences of this
+> change? Here's the place to explain them.
+> 
+> Further paragraphs come after blank lines.
+> 
+> - Bullet points are okay, too
+> 
+> - Typically a hyphen or asterisk is used for the bullet, preceded
+>   by a single space, with blank lines in between, but conventions
+>   vary here
+> 
+> If you use an issue tracker, put references to them at the bottom,
+> like this:
+> 
+> Resolves: #123
+> See also: #456, #789
+
 
 **- Amend a commit**
-You can amend a previous commit message if needed, e.g. if you made a significant typo in your last commit and want to correct it or if you want to add a more detailed explanation. 
 
-Caution: Do not amend commits that you have already pushed to a shared repository 
+You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just add a new commit. It is also important to not amend commits that you have already pushed to a shared repository. 
+
+#### What to do with changes you don't want to commit 
+
+**- Unstage**
+
+In case you have staged a file (preparing it for a commit), but realize that the file need some more work it is easy to unstage the file. In SmartGit this can be done by clicking the below icon. 
+
+```{r sg_unstage, echo=FALSE}
+knitr::include_graphics("images/SG_unstage.png") 
+``` 
+
+**- Discard**
+
+If you don't need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon. 
+
+```{r sg_discard, echo=FALSE}
+knitr::include_graphics("images/SG_discard.png") 
+``` 
+
+**- Stash** 
+
+If have some uncommitted changes that you don't want to commit, but still want to save them for later use you can use the Stash option. The two commands for this is SmartGit are "Save Stash" and "Apply Stash", shown in the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box at later if you need to (with Apply Stash). 
+
+```{r sg_save_apply_stash, echo=FALSE}
+knitr::include_graphics("images/SG_save_apply_stash.png") 
+``` 
 
 #### How to undo stuff in the Git 
 
-**Unstage**
-Unstage a previously staged file. 
+**- Reset** 
 
-**- Stashing** 
-put your uncommitted changes in a box and save the for later... E.g. when changing to a different branch 
+Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is same as unstage) or reset commits in your local repository. 
 
-**- Discarding**
-Throw away you uncommitted changes (if you don't need them). E.g. when changing to a different branch
+It can however be a complex tool to use. There are important differences between doing a soft, mixed or hard reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when use git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so. 
 
-**- Reset a commit** 
+*It is also very important to never use Git reset on a commit that has been published to a shared repository*. This can create serious problems when your collaborators try to sync up with your repository. If you find yourself in a situation were you want to "undo" a commit in a shared repository you should always use git *revert*, not reset. In general git revert can also be seen as a safer option (see below). 
 
 
-**- Revert a commit**
-Inverts the changes introduced by a commit and appends a new commit with the resulting inverse content. 
+**- Revert**
 
+Inverts the changes introduced by a commit and appends a new commit with the resulting inverse content. Note that since this keeps the history 
+of the previous commit this is something you can do in a shared repository.  
+
+```{r sg_save_apply_stash, echo=FALSE}
+knitr::include_graphics("images/SG_revert.png") 
+``` 
 
 #### How to deal with merge conflicts 
 
 **- What is a merge conflict** 
 
 **- Solve merge conflicts** 
+
+**-How to avoid merge conflicts**
+
+Some general workflow advice on how to avoid merge conflicts is to always have *a separate branch for each issue*, only *one author per branch* and also to create *a pull request with a reviewer* before the branch is merged to master. 
+
 
 #### How to work with pull requests 
 
