@@ -181,13 +181,13 @@ One of the most important habits when working with projects in Git is to commit 
 
 Staging is a necessary pre-step before committing a change to your local repository. It does not however affect your repository in any significant way,  and does not change your Git history. A staged file can be easily unstaged to remove it from your Git index. 
 
-A commit saves changes to your local repository. This does affect your Git history. A commit can be reverted, but it is not as easy as a reset. The general rule is to commit often, but make sure your code works before you commit
+A commit saves changes to your local repository. This does affect your Git history. A commit can be reverted, but it is not as easy as a reset. The general rule is to commit often, but make sure your code works before you commit. 
 
 **- Writing commit messages** 
 
-A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working in a shared repository (but it could also be important for your future self!). Somebody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules)). 
+A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working in a shared repository (but it could also be important for your future self!). Somebody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules))[^writing-a-good-commit-message]. 
 
-An example of a commit message's structure: 
+An example of a good commit message's structure: 
 
 > Summarize changes in around 50 characters or less
 > 
@@ -224,14 +224,6 @@ You can amend a previous commit if needed, for example if you made a significant
 
 #### What to do with changes you don't want to commit 
 
-**- Unstage**
-
-In case you have staged a file (preparing it for a commit), but realize that the file need some more work it is easy to unstage the file. In SmartGit this can be done by clicking the below icon. 
-
-```{r sg_unstage, echo=FALSE}
-knitr::include_graphics("images/SG_unstage.png") 
-``` 
-
 **- Discard**
 
 If you don't need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon. 
@@ -250,21 +242,39 @@ knitr::include_graphics("images/SG_save_apply_stash.png")
 
 #### How to undo stuff in the Git 
 
+**- Unstage**
+
+This easiest "undo" operation in Git is to unstage a file you have already prepared for a commit. This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on. Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this a file can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made. 
+
+```{r sg_unstage, echo=FALSE}
+knitr::include_graphics("images/SG_unstage.png") 
+``` 
+
 **- Reset** 
 
-Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is same as unstage) or reset commits in your local repository. 
+```{r git_reset, echo=FALSE}
+knitr::include_graphics("images/git-reset.png") 
+```
 
-It can however be a complex tool to use. There are important differences between doing a soft, mixed or hard reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when use git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so. 
+Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is same as unstage) or resetting commits in your local repository. 
 
-*It is also very important to never use Git reset on a commit that has been published to a shared repository*. This can create serious problems when your collaborators try to sync up with your repository. If you find yourself in a situation were you want to "undo" a commit in a shared repository you should always use git *revert*, not reset. In general git revert can also be seen as a safer option (see below). 
+Reset can however be a complex tool to use. There are important differences between doing a soft, mixed or hard reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so.[^git-reset] 
 
+**It is very important to never use Git reset on a commit that has been published to a shared repository**. This can create serious problems when your collaborators try to sync up with your repository. If you find yourself in a situation where you want to "undo" a commit in a shared repository you should always use git *revert*, not reset. In general git revert can be seen as a safer option (see below). 
 
 **- Revert**
 
-Inverts the changes introduced by a commit and appends a new commit with the resulting inverse content. Note that since this keeps the history 
-of the previous commit this is something you can do in a shared repository.  
+```{r git_revert, echo=FALSE}
+knitr::include_graphics("images/git-revert.png") 
+``` 
 
-```{r sg_save_apply_stash, echo=FALSE}
+Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A git revert *inverts* the changes introduced by a commit and *appends a new commit* with the resulting inverse content. This is what makes the revert operation safer than a git reset. By adding a new commit git revert ensures that all the project's history is kept in place.[^git-revert]
+
+An other important difference between revert and reset is that git revert is able to target an individual commit at an arbitrary point in the history, whereas git reset can only work backward from the current commit.
+
+You can use following icon in SmartGit to do a git revert. 
+
+```{r sg_revert, echo=FALSE}
 knitr::include_graphics("images/SG_revert.png") 
 ``` 
 
@@ -274,7 +284,7 @@ knitr::include_graphics("images/SG_revert.png")
 
 **- Solve merge conflicts** 
 
-**-How to avoid merge conflicts**
+**- How to avoid merge conflicts**
 
 Some general workflow advice on how to avoid merge conflicts is to always have *a separate branch for each issue*, only *one author per branch* and also to create *a pull request with a reviewer* before the branch is merged to master. 
 
@@ -284,6 +294,8 @@ Some general workflow advice on how to avoid merge conflicts is to always have *
 **- ...** 
 
 **- Creating a pull request from SmartGit** 
+
+<!--- Add video here? --->  
 
 #### DO's and DONT's 
 
@@ -310,8 +322,8 @@ Some general workflow advice on how to avoid merge conflicts is to always have *
 
 #### other 
 
-
 - History of files
+- why you shouldn't modify the git history 
 <!--- Other things -->
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
@@ -440,3 +452,11 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 [^1]: Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). [sect. 1.4](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line) 
  
 [^branching]: Atlassian, "Git Branch | Atlassian Git Tutorial" Atlassian, accessed June 3, 2019, [link](https://www.atlassian.com/git/tutorials/using-branches). 
+
+[^writing-a-good-commit-message]: Chris Beams (2014). "How to Write a Git Commit Message", accessed June 16, 2020,
+[link](https://chris.beams.io/posts/git-commit/). 
+
+[^git-reset]: Atlassian, "Git Reset | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset). 
+
+[^git-revert]: Atlassian, "Git Revert | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert). 
+
