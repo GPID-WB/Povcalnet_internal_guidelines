@@ -175,17 +175,19 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 **- Commit best practices** 
 
-One of the most important habits when working with projects in Git is to commit *often* and *early*. The reason for this is at a commit should only contain changes related to a single problem. If you should discover a new problem, you should do a separate commit. This is much easier to achieve if start out by committing changes early on in the project. It is however of course also important that the commit solves the problem that it claims to solve, so doing an extra code check before you commit is a good idea. 
+One of the most important habits when working with projects in Git is to commit *often* and *early*. The reason for this is at a commit should only contain changes related to a single problem. If you discover a new problem, you should do a separate commit. This is much easier to achieve if you start out by committing changes early on in the project. It is of course also important that the commit solves the problem that it claims to solve, so doing an extra code check before you commit is a good idea. 
 
 **- Stage vs Commit**   
 
-Staging is a necessary pre-step before committing a change to your local repository. It does not however affect your repository in any significant way,  and does not change your Git history. A staged file can be easily unstaged to remove it from your Git index. 
+Staging is a necessary pre-step before committing a change to your local repository. It does not however affect your repository in any significant way,  and *does not change* your Git history. A staged file can be easily unstaged to remove it from your Git index. 
 
-A commit saves changes to your local repository. This does affect your Git history. A commit can be reverted, but it is not as easy as a reset. The general rule is to commit often, but make sure your code works before you commit. 
+A commit on the other hand saves changes to your local repository. This *does affect* your Git history. A commit can be reverted, but it is not as easy as unstaging a file. The general rule is to commit often, but make sure your code works before you commit. 
 
 **- Writing commit messages** 
 
-A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working in a shared repository (but it could also be important for your future self!). Somebody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules))[^writing-a-good-commit-message]. 
+A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working on a shared project (but it could also be important for your future self!). Anybody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. 
+
+It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules)).[^writing-a-good-commit-message]
 
 An example of a good commit message's structure: 
 
@@ -220,7 +222,7 @@ An example of a good commit message's structure:
 
 **- Amend a commit**
 
-You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just add a new commit. It is also important to not amend commits that you have already pushed to a shared repository. 
+You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just adding a new commit. **Note: It is important to not amend commits that you have already pushed to a shared repository.** 
 
 #### What to do with changes you don't want to commit 
 
@@ -234,7 +236,7 @@ knitr::include_graphics("images/SG_discard.png")
 
 **- Stash** 
 
-If have some uncommitted changes that you don't want to commit, but still want to save them for later use you can use the Stash option. The two commands for this is SmartGit are "Save Stash" and "Apply Stash", shown in the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box at later if you need to (with Apply Stash). 
+If have some uncommitted changes that you don't want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are "Save Stash" and "Apply Stash", shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash). 
 
 ```{r sg_save_apply_stash, echo=FALSE}
 knitr::include_graphics("images/SG_save_apply_stash.png") 
@@ -244,7 +246,9 @@ knitr::include_graphics("images/SG_save_apply_stash.png")
 
 **- Unstage**
 
-This easiest "undo" operation in Git is to unstage a file you have already prepared for a commit. This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on. Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this a file can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made. 
+This easiest "undo" operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on. 
+
+Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made. 
 
 ```{r sg_unstage, echo=FALSE}
 knitr::include_graphics("images/SG_unstage.png") 
@@ -256,11 +260,11 @@ knitr::include_graphics("images/SG_unstage.png")
 knitr::include_graphics("images/git-reset.png") 
 ```
 
-Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is same as unstage) or resetting commits in your local repository. 
+Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is the same as unstage) or resetting commits in your local repository. 
 
-Reset can however be a complex tool to use. There are important differences between doing a soft, mixed or hard reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so.[^git-reset] 
+Reset can however be a complex tool to use. There are important differences between doing a *soft*, *mixed* or *hard* reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so.[^git-reset] 
 
-**It is very important to never use Git reset on a commit that has been published to a shared repository**. This can create serious problems when your collaborators try to sync up with your repository. If you find yourself in a situation where you want to "undo" a commit in a shared repository you should always use git *revert*, not reset. In general git revert can be seen as a safer option (see below). 
+**It is very important to never use Git reset on a commit that has been published to a shared repository**. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the project's shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git *revert*, not reset. In general revert can be seen as a safer option (see below). 
 
 **- Revert**
 
@@ -268,11 +272,13 @@ Reset can however be a complex tool to use. There are important differences betw
 knitr::include_graphics("images/git-revert.png") 
 ``` 
 
-Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A git revert *inverts* the changes introduced by a commit and *appends a new commit* with the resulting inverse content. This is what makes the revert operation safer than a git reset. By adding a new commit git revert ensures that all the project's history is kept in place.[^git-revert]
+Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert *inverts* the changes introduced by a commit and *appends a new commit* with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the project's history is kept in place. 
 
-An other important difference between revert and reset is that git revert is able to target an individual commit at an arbitrary point in the history, whereas git reset can only work backward from the current commit.
+This is also why Git revert should always be the preferred option when reverting a commit that has been shared with others. As mentioned above you should never modify or delete published Git history, something which Git revert nicely avoids.  
 
-You can use following icon in SmartGit to do a git revert. 
+An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.[^git-revert]
+
+You can use the following button in SmartGit to initialize a revert process. 
 
 ```{r sg_revert, echo=FALSE}
 knitr::include_graphics("images/SG_revert.png") 
@@ -290,6 +296,8 @@ Some general workflow advice on how to avoid merge conflicts is to always have *
 
 
 #### How to work with pull requests 
+
+<!--- Also mention Github issues? --->  
 
 **- ...** 
 
@@ -324,6 +332,8 @@ Some general workflow advice on how to avoid merge conflicts is to always have *
 
 - History of files
 - why you shouldn't modify the git history 
+- fetch vs pull? 
+- pull merge vs pull rebase?  
 <!--- Other things -->
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
