@@ -171,6 +171,16 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 ### Advance Git process {-}
 
+#### Git workflow 
+
+An overview of Git commands... / the git workflow..     
+
+```{r git_commands, echo=FALSE}
+knitr::include_graphics("images/git-overview-of-commands.png") 
+``` 
+
+Picture source: [^git-overview-of-commands]. 
+
 #### How to work with commits 
 
 **- Commit best practices** 
@@ -469,4 +479,8 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 [^git-reset]: Atlassian, "Git Reset | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset). 
 
 [^git-revert]: Atlassian, "Git Revert | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert). 
+
+[^git-overview-of-commands]: Nikolas Begetis (2018). "Git: How to start code changes, commit and push changes when working in a team", accessed June 16, 2020, [link](https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c). 
+
+
 
