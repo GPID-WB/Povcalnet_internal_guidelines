@@ -169,9 +169,9 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 ### Nice features of SmartGit {-}
 
-### Advance Git process {-}
+## Advanced Git process
 
-#### Git workflow 
+### Git workflow 
 
 An overview of Git commands... / the git workflow..     
 
@@ -181,7 +181,7 @@ knitr::include_graphics("images/git-overview-of-commands.png")
 
 Picture source: [^git-overview-of-commands]. 
 
-#### How to work with commits 
+### How to work with commits 
 
 **- Commit best practices** 
 
@@ -234,7 +234,7 @@ An example of a good commit message's structure:
 
 You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just adding a new commit. **Note: It is important to not amend commits that you have already pushed to a shared repository.** 
 
-#### What to do with changes you don't want to commit 
+### What to do with changes you don't want to commit 
 
 **- Discard**
 
@@ -252,7 +252,7 @@ If have some uncommitted changes that you don't want to commit, but still want t
 knitr::include_graphics("images/SG_save_apply_stash.png") 
 ``` 
 
-#### How to undo stuff in the Git 
+### How to undo stuff in the Git 
 
 **- Unstage**
 
@@ -294,28 +294,69 @@ You can use the following button in SmartGit to initialize a revert process.
 knitr::include_graphics("images/SG_revert.png") 
 ``` 
 
-#### How to deal with merge conflicts 
+### How to deal with merge conflicts 
 
 **- What is a merge conflict** 
 
+Conflicts are usual, and you should not worry if you encounter one. Conflicts regularly arise when the same file was changed in the same line, customarily by two different collaborators.  Given a conflict git is unsure of which version is the correct one, and is up to the person carrying the merge to select it. Notice that the solution can be a particular version of a file or a combination of the conflicting versions. The collaborator caring out the merge is responsible for solving the conflicts.
+
 **- Solve merge conflicts** 
+
+Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and you'll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.
+
+The same can be done using Git command lines, although not covered here, If you're interested you can find more on this [here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts).
+
 
 **- How to avoid merge conflicts**
 
 Some general workflow advice on how to avoid merge conflicts is to always have *a separate branch for each issue*, only *one author per branch* and also to create *a pull request with a reviewer* before the branch is merged to master. 
 
 
-#### How to work with pull requests 
+### How to work with pull requests
 
-<!--- Also mention Github issues? --->  
+Working with Git is meant to be a collaborative experience, both dynamic and efficient. Pull requests are a powerful and crucial tool in such aspect.
 
-**- ...** 
+Pull request can be thought as embed way to let know others about changes you have pushed in a repository's branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.
+
+This is how a pull request looks in Github:
+
+```{r , echo=FALSE}
+knitr::include_graphics("images/pullR.png") 
+``` 
+
+Notice that this contains a title and a message clearly stating the nature of the request/feature. Moreover in this case a reviewer is designated:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/pullR1.png") 
+``` 
+
+The reviewer evaluates the changes approves them and merge the new features to the master branch, in this case. Also remark that a fluid conversation between reviewer and the collaborator arises.
+
+```{r , echo=FALSE}
+knitr::include_graphics("images/pullR2.png") 
+``` 
 
 **- Creating a pull request from SmartGit** 
 
+```{r videoPR, echo=FALSE, fig.align="center", fig.cap = "Pull request in SmartGit"} 
+knitr::include_url("https://youtu.be/ll7-1GpTj38") 
+``` 
+
+  <!--- Also mention Github issues? --->  
+
+**- Issues** 
+Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them. 
+
+An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue look something like this:
+
+```{r issue, echo=FALSE}
+knitr::include_graphics("images/issue.png") 
+```
+
+
 <!--- Add video here? --->  
 
-#### DO's and DONT's 
+### DO's and DONT's 
 
 **Do's:**
 
@@ -338,12 +379,13 @@ Some general workflow advice on how to avoid merge conflicts is to always have *
 - Don't do a force push (unless absolutely sure about what you are doing) 
 - Don't panic :) 
 
-#### other 
+### other 
 
 - History of files
 - why you shouldn't modify the git history 
 - fetch vs pull? 
 - pull merge vs pull rebase?  
+
 <!--- Other things -->
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
