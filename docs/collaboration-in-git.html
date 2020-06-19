@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-06-16" />
+<meta name="date" content="2020-06-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -176,6 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initialize-repos"><i class="fa fa-check"></i>Initialize Repos</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-repos"><i class="fa fa-check"></i>Clone Repos</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-repos-by-groups"><i class="fa fa-check"></i>Organize Repos by groups</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account"><i class="fa fa-check"></i>How do you link a repository that is your local machine to your GitHub account?</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basic-git-process"><i class="fa fa-check"></i>Basic Git process</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#important-keyboard-shortcut-process"><i class="fa fa-check"></i>Important keyboard shortcut process</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#nice-features-of-smartgit"><i class="fa fa-check"></i>Nice features of SmartGit</a></li>
@@ -261,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="getting-to-know-git" class="section level2">
 <h2><span class="header-section-number">3.2</span> Getting to know <a href="https://git-scm.com/">Git</a></h2>
-<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any client’s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don’t know how those files change with respect to the changes applied to other files of the same project.</p>
+<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any client’s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesnât store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don’t know how those files change with respect to the changes applied to other files of the same project.</p>
 </div>
 <div id="basics-of-git" class="section level2">
 <h2><span class="header-section-number">3.3</span> Basics of Git</h2>
@@ -271,9 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="branching-and-merging" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Branching and Merging</h3>
-<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div id="htmlwidget-1b4ff99564eb6e8884a5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"diagram":"\ngraph TD\nA[Check out master branch]-->B[update master by pulling]\nB-->C2[Solve conflicts]\nB-->|if no conflicts|C[create your own branch]\nC2-->C\nC-->D[commit as many times you want]\nD-->E[Push YOUR branch to remote for backup]\nD-->A"},"evals":[],"jsHooks":[]}</script>
+<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugâ”no matter how big or how smallâyou spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch."<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 </div>
 <div id="getting-to-know-smartgit" class="section level2">
@@ -317,15 +308,108 @@ Figure 3.3: Add/delete commands
 </div>
 <div id="initialize-repos" class="section level3 unnumbered">
 <h3>Initialize Repos</h3>
-<p>blah blah</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to <strong>Repository</strong> ➡ <strong>Add or Create Repository</strong>.</p></li>
+<li><p>Select a folder that you created and saved in your computer (e.g., new_repo).</p></li>
+</ol>
+<p><img src="images/new_repo.PNG" width="55%" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Select Initialize.</li>
+</ol>
+<p><img src="images/initialize_v1.PNG" width="55%" /></p>
 </div>
 <div id="clone-repos" class="section level3 unnumbered">
 <h3>Clone Repos</h3>
-<p>blah blah</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to <strong>Repository</strong> ➡ <strong>Clone</strong>.</p></li>
+<li><p>Get and insert URL of Git repository you want to clone (e.g., <a href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git" class="uri">https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git</a>).</p></li>
+</ol>
+<p><img src="images/select_repo_to_be_cloned.PNG" width="80%" /></p>
+<p>You could also select from a list of repositories in your GitHub account. Use these steps:</p>
+<ol style="list-style-type: lower-roman">
+<li>Click on the drop-down arrow and select github.com from the drop-down menu.</li>
+</ol>
+<p><img src="images/select_repo_to_be_cloned_github.PNG" width="100%" /></p>
+<ol start="2" style="list-style-type: lower-roman">
+<li>Select the repository you want to clone from the list of repositories in your GitHub account.</li>
+</ol>
+<p><img src="images/select_repo_to_be_cloned_github_repos.PNG" width="80%" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Specify the local directory for the new repository.</li>
+</ol>
+<p><img src="images/select_local_directory.PNG" width="80%" /></p>
 </div>
 <div id="organize-repos-by-groups" class="section level3 unnumbered">
 <h3>Organize Repos by groups</h3>
-<p>blah blah</p>
+<ol style="list-style-type: decimal">
+<li>Have some repositories that you can put into groups (e.g., GitHub, R, SmartGit, Stata).</li>
+</ol>
+<p><img src="images/repos_to_organize.PNG" width="100%" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Go to <strong>Repository</strong> ➡ <strong>Add Group</strong></p></li>
+<li><p>Enter the group name (e.g., ‘Version Control’ for GitHub and SmartGit).</p></li>
+</ol>
+<p><img src="images/version_control.PNG" width="40%" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Drag and drop repositories into the relevant group.</li>
+</ol>
+<p><img src="images/drag_and_drop.PNG" width="100%" /></p>
+</div>
+<div id="how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account" class="section level3 unnumbered">
+<h3>How do you link a repository that is your local machine to your GitHub account?</h3>
+<ol style="list-style-type: decimal">
+<li>Set up a new repository in GitHub.</li>
+</ol>
+<p><img src="images/new_repo_github.PNG" width="120%" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Enter name of repository, select Public or Private, and do <strong>NOT</strong> select Initialize.</li>
+</ol>
+<p><img src="images/do_not_select_initialize.PNG" width="100%" /></p>
+<p>NB: Steps (1) and (2) should be done in GitHub, and the next steps should be done in SmartGit.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Go to <strong>Repository</strong> ➡ <strong>Add or Create</strong></p></li>
+<li><p>Select a folder saved in your machine (e.g., dofiles_for_github).</p></li>
+</ol>
+<p><img src="images/dofiles_for_github.PNG" width="55%" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Select Initialize.</li>
+</ol>
+<p><img src="images/initialize_v2.PNG" width="55%" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Go to <strong>Local</strong> ➡ <strong>Stage</strong>.</p></li>
+<li><p>Select Stage.</p></li>
+</ol>
+<p><img src="images/stage.png" width="65%" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Go to <strong>Local</strong> ➡ <strong>Commit</strong>.</li>
+</ol>
+<p><img src="images/go_to_local_commit.PNG" width="100%" /></p>
+<ol start="9" style="list-style-type: decimal">
+<li>Enter a commit message and hit Commit.</li>
+</ol>
+<p><img src="images/enter_commit_message.PNG" width="80%" /></p>
+<ol start="10" style="list-style-type: decimal">
+<li><p>Go to <strong>Remote</strong> ➡ <strong>Add</strong>.</p></li>
+<li><p>Select the new GitHub repository that you created in Step 1.</p></li>
+</ol>
+<p><img src="images/add_url.png" width="80%" /></p>
+<p><img src="images/github.png" width="55%" /></p>
+<ol start="12" style="list-style-type: decimal">
+<li>Add the remote repository.</li>
+</ol>
+<p><img src="images/add_remote_repo.PNG" width="60%" /></p>
+<ol start="13" style="list-style-type: decimal">
+<li>Select master branch and origin.</li>
+</ol>
+<p><img src="images/select_master_origin.PNG" width="120%" /></p>
+<ol start="14" style="list-style-type: decimal">
+<li>Right-click repository you want to push to GitHub, and select <strong>Push</strong>.</li>
+</ol>
+<p><img src="images/right_click_repo.PNG" width="80%" /></p>
+<ol start="15" style="list-style-type: decimal">
+<li>Check if you have the repository on GitHub.</li>
+</ol>
+<p><img src="images/check_github.PNG" width="100%" /></p>
 </div>
 <div id="basic-git-process" class="section level3 unnumbered">
 <h3>Basic Git process</h3>

@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-06-16" />
+<meta name="date" content="2020-06-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,6 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -176,6 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initialize-repos"><i class="fa fa-check"></i>Initialize Repos</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-repos"><i class="fa fa-check"></i>Clone Repos</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-repos-by-groups"><i class="fa fa-check"></i>Organize Repos by groups</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account"><i class="fa fa-check"></i>How do you link a repository that is your local machine to your GitHub account?</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basic-git-process"><i class="fa fa-check"></i>Basic Git process</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#important-keyboard-shortcut-process"><i class="fa fa-check"></i>Important keyboard shortcut process</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#nice-features-of-smartgit"><i class="fa fa-check"></i>Nice features of SmartGit</a></li>
@@ -264,33 +257,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; 1  P:                                
 #&gt; 2   °--01.PovcalNet                  
 #&gt; 3       ¦--00.Master                 
-#&gt; 4       ¦   ¦--_vintage_control.xlsx 
-#&gt; 5       ¦   ¦--01.current            
-#&gt; 6       ¦   ¦--02.vintage            
-#&gt; 7       ¦   ¦--03.metadata           
-#&gt; 8       ¦   °--Master.xlsm           
-#&gt; 9       ¦--01.Vintage_control        
-#&gt; 10      ¦   ¦--_aux                  
-#&gt; 11      ¦   ¦   ¦--countries         
-#&gt; 12      ¦   ¦   ¦--cpi               
-#&gt; 13      ¦   ¦   ¦--info              
-#&gt; 14      ¦   ¦   ¦--pcn_create        
-#&gt; 15      ¦   ¦   °--price_framework   
-#&gt; 16      ¦   °--AGO                   
-#&gt; 17      ¦       ¦--AGO_2000_HBS      
-#&gt; 18      ¦       ¦--AGO_2008_IBEP-MICS
-#&gt; 19      ¦       °--AGO_2018_IDREA    
-#&gt; 20      ¦--02.Production             
-#&gt; 21      ¦   °--2020_SM               
-#&gt; 22      °--03.QA                     
-#&gt; 23          ¦--01.GroupData          
-#&gt; 24          ¦--02.PRIMUS             
-#&gt; 25          ¦--02.PRIMUS_pending     
-#&gt; 26          ¦--03.Population         
-#&gt; 27          ¦--04.NationalAccounts   
-#&gt; 28          ¦--05.PCN_estimates      
-#&gt; 29          ¦--06.LIS                
-#&gt; 30          °--07.historical</code></pre>
+#&gt; 4       ¦   ¦--_aux                  
+#&gt; 5       ¦   ¦--_vintage_control.xlsx 
+#&gt; 6       ¦   ¦--01.current            
+#&gt; 7       ¦   ¦--02.vintage            
+#&gt; 8       ¦   ¦--03.metadata           
+#&gt; 9       ¦   °--Master.xlsm           
+#&gt; 10      ¦--01.Vintage_control        
+#&gt; 11      ¦   ¦--_aux                  
+#&gt; 12      ¦   ¦   ¦--countries         
+#&gt; 13      ¦   ¦   ¦--cpi               
+#&gt; 14      ¦   ¦   ¦--info              
+#&gt; 15      ¦   ¦   ¦--pcn_create        
+#&gt; 16      ¦   ¦   °--price_framework   
+#&gt; 17      ¦   °--AGO                   
+#&gt; 18      ¦       ¦--AGO_2000_HBS      
+#&gt; 19      ¦       ¦--AGO_2008_IBEP-MICS
+#&gt; 20      ¦       °--AGO_2018_IDREA    
+#&gt; 21      ¦--02.Production             
+#&gt; 22      ¦   ¦--2020_JUL              
+#&gt; 23      ¦   °--2020_SM               
+#&gt; 24      °--03.QA                     
+#&gt; 25          ¦--01.GroupData          
+#&gt; 26          ¦--02.PRIMUS             
+#&gt; 27          ¦--02.PRIMUS_pending     
+#&gt; 28          ¦--03.Population         
+#&gt; 29          ¦--04.NationalAccounts   
+#&gt; 30          ¦--05.PCN_estimates      
+#&gt; 31          ¦--06.LIS                
+#&gt; 32          °--07.historical</code></pre>
 <ul>
 <li><p><code>/00.Master</code> contains everything related to the master.xlsx file that is uploaded into the PovcalNet system. This file has its own way for proper use and requires a separate explanation.</p></li>
 <li><p><code>/01.Vintage_control</code> contains the historical data of PovcalNet. Eventually, this would be folder accessible through <code>datalibweb</code>.</p></li>
