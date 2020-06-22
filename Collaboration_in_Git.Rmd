@@ -173,13 +173,13 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 ### Git workflow 
 
-An overview of Git commands... / the git workflow..     
+When working with Git it is important to be aware of the different steps of the Git workflow. The four different environments you can work with are 1) your *workspace*, 2) the *staging environment* (also know as the Git Index), 3) your *local repository* and 4) your *remote repository*  (typically on the Github). 
 
+An overview of common Git commands and the typical Git workflow can be found in the picture below.[^git-overview-of-commands] Note that the commands shown here are the actual [Git command line commands](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html).[^git-basic-commands] The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same. 
+ 
 ```{r git_commands, echo=FALSE}
 knitr::include_graphics("images/git-overview-of-commands.png") 
 ``` 
-
-Picture source: [^git-overview-of-commands]. 
 
 ### How to work with commits 
 
@@ -342,19 +342,16 @@ knitr::include_graphics("images/pullR2.png")
 knitr::include_url("https://youtu.be/ll7-1GpTj38") 
 ``` 
 
-  <!--- Also mention Github issues? --->  
-
 **- Issues** 
+
 Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them. 
 
-An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue look something like this:
+An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue looks something like this:
 
 ```{r issue, echo=FALSE}
 knitr::include_graphics("images/issue.png") 
 ```
 
-
-<!--- Add video here? --->  
 
 ### DO's and DONT's 
 
@@ -378,15 +375,6 @@ knitr::include_graphics("images/issue.png")
 - Don't modify or delete the published Git history 
 - Don't do a force push (unless absolutely sure about what you are doing) 
 - Don't panic :) 
-
-### other 
-
-- History of files
-- why you shouldn't modify the git history 
-- fetch vs pull? 
-- pull merge vs pull rebase?  
-
-<!--- Other things -->
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1]  
@@ -486,8 +474,6 @@ knitr::include_graphics("images/GK_clone.png")
 ``` 
  
 
-
-
 ### Working with commits {-}
  
 A commit is a snapshot of your project but, as you work on it, you're able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows: 
@@ -524,5 +510,4 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 
 [^git-overview-of-commands]: Nikolas Begetis (2018). "Git: How to start code changes, commit and push changes when working in a team", accessed June 16, 2020, [link](https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c). 
 
-
-
+[^git-basic-commands]: Atlassian, "Basic Git commands", accessed June 22, 2020, [link](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
