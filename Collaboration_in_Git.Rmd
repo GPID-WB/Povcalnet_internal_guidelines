@@ -325,16 +325,212 @@ All commits will be now saved to the branch "MartaS" and can be incorporated in 
 
 ### Nice features of SmartGit {-}
 
-### Advance Git process {-}
+## Advanced Git process
 
-- Creating pull request from SmartGit
-- stashing
-- discarding
-- revert commits
-- History of files
-- Solve merge conflicts
-- Ammend a commit
-- Other things
+### Git workflow 
+
+When working with Git it is important to be aware of the different steps of the Git workflow. The four different environments you can work with are 1) your *workspace*, 2) the *staging environment* (also know as the Git Index), 3) your *local repository* and 4) your *remote repository*  (typically on the Github). 
+
+An overview of common Git commands and the typical Git workflow can be found in the picture below.[^git-overview-of-commands] Note that the commands shown here are the actual [Git command line commands](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html).[^git-basic-commands] The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same. 
+ 
+```{r git_commands, echo=FALSE}
+knitr::include_graphics("images/git-overview-of-commands.png") 
+``` 
+
+### How to work with commits 
+
+**- Commit best practices** 
+
+One of the most important habits when working with projects in Git is to commit *often* and *early*. The reason for this is at a commit should only contain changes related to a single problem. If you discover a new problem, you should do a separate commit. This is much easier to achieve if you start out by committing changes early on in the project. It is of course also important that the commit solves the problem that it claims to solve, so doing an extra code check before you commit is a good idea. 
+
+**- Stage vs Commit**   
+
+Staging is a necessary pre-step before committing a change to your local repository. It does not however affect your repository in any significant way,  and *does not change* your Git history. A staged file can be easily unstaged to remove it from your Git index. 
+
+A commit on the other hand saves changes to your local repository. This *does affect* your Git history. A commit can be reverted, but it is not as easy as unstaging a file. The general rule is to commit often, but make sure your code works before you commit. 
+
+**- Writing commit messages** 
+
+A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working on a shared project (but it could also be important for your future self!). Anybody should be able to look at your commit message and get an instant sense of *why* the commit was implemented. 
+
+It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this [blog post](https://chris.beams.io/posts/git-commit/#seven-rules)).[^writing-a-good-commit-message]
+
+An example of a good commit message's structure: 
+
+> Summarize changes in around 50 characters or less
+> 
+> More detailed explanatory text, if necessary. Wrap it to about 72
+> characters or so. In some contexts, the first line is treated as the
+> subject of the commit and the rest of the text as the body. The
+> blank line separating the summary from the body is critical (unless
+> you omit the body entirely); various tools like `log`, `shortlog`
+> and `rebase` can get confused if you run the two together.
+>
+> Explain the problem that this commit is solving. Focus on why you
+> are making this change as opposed to how (the code explains that).
+> Are there side effects or other unintuitive consequences of this
+> change? Here's the place to explain them.
+> 
+> Further paragraphs come after blank lines.
+> 
+> - Bullet points are okay, too
+> 
+> - Typically a hyphen or asterisk is used for the bullet, preceded
+>   by a single space, with blank lines in between, but conventions
+>   vary here
+> 
+> If you use an issue tracker, put references to them at the bottom,
+> like this:
+> 
+> Resolves: #123
+> See also: #456, #789
+
+
+**- Amend a commit**
+
+You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just adding a new commit. **Note: It is important to not amend commits that you have already pushed to a shared repository.** 
+
+### What to do with changes you don't want to commit 
+
+**- Discard**
+
+If you don't need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon. 
+
+```{r sg_discard, echo=FALSE}
+knitr::include_graphics("images/SG_discard.png") 
+``` 
+
+**- Stash** 
+
+If have some uncommitted changes that you don't want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are "Save Stash" and "Apply Stash", shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash). 
+
+```{r sg_save_apply_stash, echo=FALSE}
+knitr::include_graphics("images/SG_save_apply_stash.png") 
+``` 
+
+### How to undo stuff in the Git 
+
+**- Unstage**
+
+This easiest "undo" operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on. 
+
+Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made. 
+
+```{r sg_unstage, echo=FALSE}
+knitr::include_graphics("images/SG_unstage.png") 
+``` 
+
+**- Reset** 
+
+```{r git_reset, echo=FALSE}
+knitr::include_graphics("images/git-reset.png") 
+```
+
+Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is the same as unstage) or resetting commits in your local repository. 
+
+Reset can however be a complex tool to use. There are important differences between doing a *soft*, *mixed* or *hard* reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to [read up on the different options](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset) before doing so.[^git-reset] 
+
+**It is very important to never use Git reset on a commit that has been published to a shared repository**. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the project's shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git *revert*, not reset. In general revert can be seen as a safer option (see below). 
+
+**- Revert**
+
+```{r git_revert, echo=FALSE}
+knitr::include_graphics("images/git-revert.png") 
+``` 
+
+Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert *inverts* the changes introduced by a commit and *appends a new commit* with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the project's history is kept in place. 
+
+This is also why Git revert should always be the preferred option when reverting a commit that has been shared with others. As mentioned above you should never modify or delete published Git history, something which Git revert nicely avoids.  
+
+An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.[^git-revert]
+
+You can use the following button in SmartGit to initialize a revert process. 
+
+```{r sg_revert, echo=FALSE}
+knitr::include_graphics("images/SG_revert.png") 
+``` 
+
+### How to deal with merge conflicts 
+
+**- What is a merge conflict** 
+
+Conflicts are usual, and you should not worry if you encounter one. Conflicts regularly arise when the same file was changed in the same line, customarily by two different collaborators.  Given a conflict git is unsure of which version is the correct one, and is up to the person carrying the merge to select it. Notice that the solution can be a particular version of a file or a combination of the conflicting versions. The collaborator caring out the merge is responsible for solving the conflicts.
+
+**- Solve merge conflicts** 
+
+Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and you'll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.
+
+The same can be done using Git command lines, although not covered here, If you're interested you can find more on this [here](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts).
+
+
+**- How to avoid merge conflicts**
+
+Some general workflow advice on how to avoid merge conflicts is to always have *a separate branch for each issue*, only *one author per branch* and also to create *a pull request with a reviewer* before the branch is merged to master. 
+
+
+### How to work with pull requests
+
+Working with Git is meant to be a collaborative experience, both dynamic and efficient. Pull requests are a powerful and crucial tool in such aspect.
+
+Pull request can be thought as embed way to let know others about changes you have pushed in a repository's branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.
+
+This is how a pull request looks in Github:
+
+```{r , echo=FALSE}
+knitr::include_graphics("images/pullR.png") 
+``` 
+
+Notice that this contains a title and a message clearly stating the nature of the request/feature. Moreover in this case a reviewer is designated:
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/pullR1.png") 
+``` 
+
+The reviewer evaluates the changes approves them and merge the new features to the master branch, in this case. Also remark that a fluid conversation between reviewer and the collaborator arises.
+
+```{r , echo=FALSE}
+knitr::include_graphics("images/pullR2.png") 
+``` 
+
+**- Creating a pull request from SmartGit** 
+
+```{r videoPR, echo=FALSE, fig.align="center", fig.cap = "Pull request in SmartGit"} 
+knitr::include_url("https://youtu.be/ll7-1GpTj38") 
+``` 
+
+**- Issues** 
+
+Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them. 
+
+An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue looks something like this:
+
+```{r issue, echo=FALSE}
+knitr::include_graphics("images/issue.png") 
+```
+
+
+### DO's and DONT's 
+
+**Do's:**
+
+- Do commit early and often 
+- Do check that your code works before you commit 
+- Do write informative commit messages 
+- Do create a new branch before you start working on a new issue 
+- Do create a pull request before merging your branch to master 
+- Do add a reviewer to your pull request 
+- Do delete branches when the issue has been solved (i.e. branch has been merged to master) 
+- Do keep up to date (take note of other changes in the repo, e.g. use pull rebase) 
+
+**Don'ts:** 
+
+- Don't work directly on the master branch 
+- Don't create a pull request addressing multiple issues
+- Don't add binary (or other large files) to the repository 
+- Don't commit files that contain usernames, passwords or other credentials 
+- Don't modify or delete the published Git history 
+- Don't do a force push (unless absolutely sure about what you are doing) 
+- Don't panic :) 
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1]  
@@ -434,8 +630,6 @@ knitr::include_graphics("images/GK_clone.png")
 ``` 
  
 
-
-
 ### Working with commits {-}
  
 A commit is a snapshot of your project but, as you work on it, you're able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows: 
@@ -462,3 +656,14 @@ A commit is a snapshot of your project but, as you work on it, you're able to de
 [^1]: Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). [sect. 1.4](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line) 
  
 [^branching]: Atlassian, "Git Branch | Atlassian Git Tutorial" Atlassian, accessed June 3, 2019, [link](https://www.atlassian.com/git/tutorials/using-branches). 
+
+[^writing-a-good-commit-message]: Chris Beams (2014). "How to Write a Git Commit Message", accessed June 16, 2020,
+[link](https://chris.beams.io/posts/git-commit/). 
+
+[^git-reset]: Atlassian, "Git Reset | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-reset). 
+
+[^git-revert]: Atlassian, "Git Revert | Atlassian Git Tutorial" Atlassian, accessed June 16, 2020, [link](https://www.atlassian.com/git/tutorials/undoing-changes/git-revert). 
+
+[^git-overview-of-commands]: Nikolas Begetis (2018). "Git: How to start code changes, commit and push changes when working in a team", accessed June 16, 2020, [link](https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c). 
+
+[^git-basic-commands]: Atlassian, "Basic Git commands", accessed June 22, 2020, [link](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
