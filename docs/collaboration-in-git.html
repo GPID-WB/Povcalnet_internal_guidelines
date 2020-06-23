@@ -26,11 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<<<<<<< HEAD
-<meta name="date" content="2020-06-19" />
-=======
-<meta name="date" content="2020-06-18" />
->>>>>>> origin/advanced_conepts
+<meta name="date" content="2020-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -58,6 +54,70 @@
 
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 </head>
 
@@ -121,7 +181,6 @@
 <li class="chapter" data-level="3.5.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-deal-with-merge-conflicts"><i class="fa fa-check"></i><b>3.5.5</b> How to deal with merge conflicts</a></li>
 <li class="chapter" data-level="3.5.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-pull-requests"><i class="fa fa-check"></i><b>3.5.6</b> How to work with pull requests</a></li>
 <li class="chapter" data-level="3.5.7" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#dos-and-donts"><i class="fa fa-check"></i><b>3.5.7</b> DO’s and DONT’s</a></li>
-<li class="chapter" data-level="3.5.8" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#other"><i class="fa fa-check"></i><b>3.5.8</b> other</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.6</b> Getting to know <span>GitKraken</span></a><ul>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i>GItKraken Interface</a></li>
@@ -213,13 +272,7 @@
 </div>
 <div id="branching-and-merging" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Branching and Merging</h3>
-<<<<<<< HEAD
 <p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugâ”no matter how big or how smallâyou spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch."<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-=======
-<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div id="htmlwidget-e3479f292a01744eb530" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e3479f292a01744eb530">{"x":{"diagram":"\ngraph TD\nA[Check out master branch]-->B[update master by pulling]\nB-->C2[Solve conflicts]\nB-->|if no conflicts|C[create your own branch]\nC2-->C\nC-->D[commit as many times you want]\nD-->E[Push YOUR branch to remote for backup]\nD-->A"},"evals":[],"jsHooks":[]}</script>
->>>>>>> origin/advanced_conepts
 </div>
 </div>
 <div id="getting-to-know-smartgit" class="section level2">
@@ -488,9 +541,9 @@ Figure 3.17: Local Branch changed from master to MartaS
 <h2><span class="header-section-number">3.5</span> Advanced Git process</h2>
 <div id="git-workflow" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Git workflow</h3>
-<p>An overview of Git commands… / the git workflow..</p>
+<p>When working with Git it is important to be aware of the different steps of the Git workflow. The four different environments you can work with are 1) your <em>workspace</em>, 2) the <em>staging environment</em> (also know as the Git Index), 3) your <em>local repository</em> and 4) your <em>remote repository</em> (typically on the Github).</p>
+<p>An overview of common Git commands and the typical Git workflow can be found in the picture below.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Note that the commands shown here are the actual <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">Git command line commands</a>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same.</p>
 <p><img src="images/git-overview-of-commands.png" width="700" /></p>
-<p>Picture source:.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 </div>
 <div id="how-to-work-with-commits" class="section level3">
 <h3><span class="header-section-number">3.5.2</span> How to work with commits</h3>
@@ -501,7 +554,7 @@ Figure 3.17: Local Branch changed from master to MartaS
 <p>A commit on the other hand saves changes to your local repository. This <em>does affect</em> your Git history. A commit can be reverted, but it is not as easy as unstaging a file. The general rule is to commit often, but make sure your code works before you commit.</p>
 <p><strong>- Writing commit messages</strong></p>
 <p>A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working on a shared project (but it could also be important for your future self!). Anybody should be able to look at your commit message and get an instant sense of <em>why</em> the commit was implemented.</p>
-<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>An example of a good commit message’s structure:</p>
 <blockquote>
 <p>Summarize changes in around 50 characters or less</p>
@@ -548,13 +601,13 @@ See also: #456, #789</p>
 <p><strong>- Reset</strong></p>
 <p><img src="images/git-reset.png" width="142" /></p>
 <p>Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is the same as unstage) or resetting commits in your local repository.</p>
-<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <p><strong>It is very important to never use Git reset on a commit that has been published to a shared repository</strong>. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the project’s shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git <em>revert</em>, not reset. In general revert can be seen as a safer option (see below).</p>
 <p><strong>- Revert</strong></p>
 <p><img src="images/git-revert.png" width="136" /></p>
 <p>Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert <em>inverts</em> the changes introduced by a commit and <em>appends a new commit</em> with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the project’s history is kept in place.</p>
 <p>This is also why Git revert should always be the preferred option when reverting a commit that has been shared with others. As mentioned above you should never modify or delete published Git history, something which Git revert nicely avoids.</p>
-<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 <p>You can use the following button in SmartGit to initialize a revert process.</p>
 <p><img src="images/SG_revert.png" width="46" /></p>
 </div>
@@ -586,12 +639,10 @@ See also: #456, #789</p>
 Figure 3.18: Pull request in SmartGit
 </p>
 </div>
-<p><!--- Also mention Github issues? ---></p>
-<p><strong>- Issues</strong>
-Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them.</p>
-<p>An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue look something like this:</p>
+<p><strong>- Issues</strong></p>
+<p>Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them.</p>
+<p>An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue looks something like this:</p>
 <p><img src="images/issue.png" width="520" /></p>
-<!--- Add video here? --->
 </div>
 <div id="dos-and-donts" class="section level3">
 <h3><span class="header-section-number">3.5.7</span> DO’s and DONT’s</h3>
@@ -617,20 +668,10 @@ Similar to pull request issues is a powerful collaborative tool of Github. An is
 <li>Don’t panic :)</li>
 </ul>
 </div>
-<div id="other" class="section level3">
-<h3><span class="header-section-number">3.5.8</span> other</h3>
-<ul>
-<li>History of files</li>
-<li>why you shouldn’t modify the git history</li>
-<li>fetch vs pull?</li>
-<li>pull merge vs pull rebase?</li>
-</ul>
-<!--- Other things -->
-</div>
 </div>
 <div id="getting-to-know-gitkraken" class="section level2">
 <h2><span class="header-section-number">3.6</span> Getting to know <a href="https://www.gitkraken.com/">GitKraken</a></h2>
-<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that “most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.”<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that “most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.”<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
 <p>Among the GUIs available, we thinkg GitKraken is the best one to get you started. However, if you’re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
 <p>The best place to learn everything about GitKraken is the <a href="https://support.gitkraken.com/">GitKraken Support</a> webpage. However, bellow you will find the most basic things that you need to know about it and, when considered necessary, you will find either reference links for more detailed information or embedded videos. For instance, the video bellow shows the basics of GitKraken.</p>
 <div class="figure" style="text-align: center"><span id="fig:video1"></span>
@@ -757,13 +798,14 @@ Figure 3.26: GitKraken Work In Progress
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, <a href="https://www.atlassian.com/git/tutorials/using-branches">link</a>.<a href="collaboration-in-git.html#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Nikolas Begetis (2018). “Git: How to start code changes, commit and push changes when working in a team”, accessed June 16, 2020, <a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c">link</a>.<a href="collaboration-in-git.html#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>Chris Beams (2014). “How to Write a Git Commit Message”, accessed June 16, 2020,
-<a href="https://chris.beams.io/posts/git-commit/">link</a>.<a href="collaboration-in-git.html#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p>Atlassian, “Git Reset | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">link</a>.<a href="collaboration-in-git.html#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>Atlassian, “Git Revert | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">link</a>.<a href="collaboration-in-git.html#fnref5" class="footnote-back">↩</a></p></li>
-<li id="fn6"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref6" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, <a href="https://www.atlassian.com/git/tutorials/using-branches">link</a>.<a href="collaboration-in-git.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Nikolas Begetis (2018). “Git: How to start code changes, commit and push changes when working in a team”, accessed June 16, 2020, <a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c">link</a>.<a href="collaboration-in-git.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Atlassian, “Basic Git commands”, accessed June 22, 2020, <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">link</a><a href="collaboration-in-git.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Chris Beams (2014). “How to Write a Git Commit Message”, accessed June 16, 2020,
+<a href="https://chris.beams.io/posts/git-commit/">link</a>.<a href="collaboration-in-git.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Atlassian, “Git Reset | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">link</a>.<a href="collaboration-in-git.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Atlassian, “Git Revert | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">link</a>.<a href="collaboration-in-git.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Even though there are only three types of grouped data, they are labeled type 1, type 2, and type5<a href="collaboration-in-git.html#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
