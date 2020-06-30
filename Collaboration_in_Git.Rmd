@@ -68,7 +68,7 @@ knitr::include_graphics("images/Toolbar3.PNG")
 
 
 
-1. Go to **Repository** ➡ **Add or Create Repository**.
+1. Go to **Repository** > **Add or Create Repository**.
 
 2. Select a folder that you created and saved in your computer (e.g., new_repo).
 
@@ -86,7 +86,7 @@ knitr::include_graphics("images/initialize_v1.PNG")
 
 ### Clone Repos {-}
 
-1. Go to **Repository** ➡  **Clone**.
+1. Go to **Repository** > **Clone**.
 
 2. Get and insert URL of Git repository you want to clone (e.g., https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git). 
 
@@ -124,7 +124,7 @@ knitr::include_graphics("images/repos_to_organize.PNG")
 ```
 
 
-2. Go to **Repository** ➡  **Add Group**  
+2. Go to **Repository** > **Add Group**  
 
 3. Enter the group name (e.g., 'Version Control' for GitHub and SmartGit).  
 
@@ -154,7 +154,7 @@ knitr::include_graphics("images/do_not_select_initialize.PNG")
 
 NB: Steps (1) and (2) should be done in GitHub, and the next steps should be done in SmartGit.
 
-3. Go to **Repository** ➡  **Add or Create**
+3. Go to **Repository** > **Add or Create**
 
 4. Select a folder saved in your machine (e.g., dofiles_for_github). 
 
@@ -168,7 +168,7 @@ knitr::include_graphics("images/dofiles_for_github.PNG")
 knitr::include_graphics("images/initialize_v2.PNG") 
 ```
 
-6. Go to **Local** ➡ **Stage**.
+6. Go to **Local** > **Stage**.
 
 7. Select Stage.
 
@@ -176,7 +176,7 @@ knitr::include_graphics("images/initialize_v2.PNG")
 knitr::include_graphics("images/stage.PNG") 
 ```
 
-8. Go to **Local** ➡ **Commit**.
+8. Go to **Local** > **Commit**.
 
 ```{r fig15, echo=FALSE, fig.cap = "", out.width="100%"} 
 knitr::include_graphics("images/go_to_local_commit.PNG") 
@@ -188,7 +188,7 @@ knitr::include_graphics("images/go_to_local_commit.PNG")
 knitr::include_graphics("images/enter_commit_message.PNG") 
 ```
 
-10. Go to **Remote** ➡ **Add**.
+10. Go to **Remote** > **Add**.
 
 11. Select the new GitHub repository that you created in Step 1.
 
@@ -531,6 +531,7 @@ knitr::include_graphics("images/issue.png")
 - Don't modify or delete the published Git history 
 - Don't do a force push (unless absolutely sure about what you are doing) 
 - Don't panic :) 
+
 
 ## Getting to know [GitKraken](https://www.gitkraken.com/) 
 Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that "most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available."[^1]  

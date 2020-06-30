@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-06-23" />
+<meta name="date" content="2020-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -210,6 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="prepare.html"><a href="prepare.html#gdp-and-consumption"><i class="fa fa-check"></i><b>5.2</b> GDP and Consumption</a></li>
 <li class="chapter" data-level="5.3" data-path="prepare.html"><a href="prepare.html#ppp"><i class="fa fa-check"></i><b>5.3</b> PPP</a></li>
 <li class="chapter" data-level="5.4" data-path="prepare.html"><a href="prepare.html#cpi"><i class="fa fa-check"></i><b>5.4</b> CPI</a></li>
+<li class="chapter" data-level="5.5" data-path="prepare.html"><a href="prepare.html#national-accounts-for-special-countries"><i class="fa fa-check"></i><b>5.5</b> National accounts for “special countries”</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a><ul>
@@ -293,6 +294,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="cpi" class="section level2">
 <h2><span class="header-section-number">5.4</span> CPI</h2>
 <p>blah blah</p>
+</div>
+<div id="national-accounts-for-special-countries" class="section level2">
+<h2><span class="header-section-number">5.5</span> National accounts for “special countries”</h2>
+<p>1.Get the latest national accounts file from <strong>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</strong>.</p>
+<p>2.Get the relevant data from the latest versions of the <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a> (WDI) and <a href="https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending">World Economic Outlook</a> (WEO).</p>
+<p>The WDI series for PCE is NE.CON.PRVT.PC.KD and the WDI series for GDP is <strong>NY.GDP.PCAP.KD</strong>. The WEO series for GDP is <strong>NGDPRPC</strong>. If <strong>NGDPRPC</strong> is not available, use the growth rate provided in <strong>NGDPRPPPPCPCH</strong> to splice on the series.</p>
+<p>Below you will find the descriptions of the series. (If the series change in future versions, you can choose related series with advice from R.Andrés Castañeda or Christoph Lakner.)</p>
+<ul>
+<li><p><em>NE.CON.PRVT.PC.KD</em>: Household final consumption expenditure per capita (constant 2010 US$).</p></li>
+<li><p><em>NY.GDP.PCAP.KD</em>: GDP per capita is gross domestic product divided by midyear population. Data are in constant 2010 U.S. dollars.</p></li>
+<li><p><em>NGDPRPC</em>: Gross domestic product per capita, constant prices. GDP is expressed in constant national currency per person. Data are derived by dividing constant price GDP by total population.*</p></li>
+<li><p><em>NGDPRPPPPCPCH</em>: Gross domestic product per capita, constant prices (purchasing power parity; percent change). Data are derived by dividing constant price purchasing-power parity (PPP) GDP by total population.</p></li>
+</ul>
+<p>3.Update the non-missing observations in the PCE and GDP series. Make sure there is no observation where both PCE and GDP are missing.</p>
+<p>4.In the Excel file for the national accounts, you will find the source of data and clues on how best to update each observation. Unless otherwise instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the latest version of the national accounts to update the relevant observations.</p>
+<p>5.For India, update the latest Excel file with pass-through calculations, which can be found at **P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux**. Follow instructions in the Excel file and Daniel Mahler to update rural and urban PCE.</p>
 
 </div>
 </div>
