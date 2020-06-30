@@ -59,3 +59,29 @@ blah blah
 
 blah blah
 
+
+
+## National accounts for “special countries” 
+
+1.Get the latest national accounts file from **P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data**.
+
+2.Get the relevant data from the latest versions of the [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators) (WDI) and [World Economic Outlook](https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending) (WEO).  
+
+The WDI series for PCE is NE.CON.PRVT.PC.KD and the WDI series for GDP is **NY.GDP.PCAP.KD**. The WEO series for GDP is **NGDPRPC**. If **NGDPRPC** is not available, use the growth rate provided in **NGDPRPPPPCPCH** to splice on the series.   
+
+Below you will find the descriptions of the series. (If the series change in future versions, you can choose related series with advice from R.Andrés Castañeda or Christoph Lakner.)
+
+*NE.CON.PRVT.PC.KD: Household final consumption expenditure per capita (constant 2010 US$). Household final consumption expenditure per capita (private consumption per capita) is calculated using private consumption in constant 2010 prices and World Bank population estimates. Household final consumption expenditure is the market value of all goods and services, including durable products (such as cars, washing machines, and home computers), purchased by households. It excludes purchases of dwellings but includes imputed rent for owner-occupied dwellings. It also includes payments and fees to governments to obtain permits and licenses. Here, household consumption expenditure includes the expenditures of nonprofit institutions serving households, even when reported separately by the country. Data are in constant 2010 U.S. dollars.*
+
+*NY.GDP.PCAP.KD: GDP per capita is gross domestic product divided by midyear population. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2010 U.S. dollars.*
+
+*NGDPRPC: Gross domestic product per capita, constant prices. GDP is expressed in constant national currency per person. Data are derived by dividing constant price GDP by total population.*
+
+*NGDPRPPPPCPCH: Gross domestic product per capita, constant prices (purchasing power parity; percent change). GDP is expressed in constant international dollars per person. Data are derived by dividing constant price purchasing-power parity (PPP) GDP by total population.*
+
+3.Update the non-missing observations in the PCE and GDP series. Make sure there is no observation where both PCE and GDP are missing.  
+
+4.In the Excel file for the national accountss, you will find the source of data and clues on how best to update each observation. Unless otherwise instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the latest version of the national accounts to update the relevant observations.  
+
+5.For India, update the latest Excel file with passthrough calculations, which can be found at **P:\\01.PovcalNet\\03.QA\\04.NationalAccounts\\data\\\_aux**. Follow instructions in the Excel file and Daniel Mahler to update rural and urban PCE. 
+
