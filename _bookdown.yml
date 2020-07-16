@@ -20,6 +20,8 @@ rmd_files: [
 
   "prepare_data_for_update.Rmd",
 
+  "Referencing_using_Zotero.Rmd",
+
   "Handover.Rmd",
   "references.Rmd",
 ]

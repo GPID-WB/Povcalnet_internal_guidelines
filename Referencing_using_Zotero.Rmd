@@ -1,3 +1,5 @@
+# (PART) Miscellaneous {-}
+
 # Referencing software: Zotero
 
 This chapter presents how to work with Zotero as a referencing software to be used in documents relevant for the Povcalnet team. The goal of using this software is to be able to collaborate on libraries that can be used in different documents by team members. Zotero is a free source referencing software with many convenient feature and that can be used within Word documents. 
@@ -16,7 +18,7 @@ Click on next and follow the instructions for installation. Once the installatio
 knitr::include_graphics("images/zotero2.PNG") 
 ``` 
 
-##Extensions and add-ons
+## Extensions and add-ons
 *Chrome Connector*
 
 Before we proceed with how to use Zotero, we need to install additional features that can make our life easier. 
@@ -56,7 +58,8 @@ Once the add-ons are installed you will be able to see a Zotero menu in your Wor
 ```{r wordaddon3, echo=FALSE, fig.align="center", fig.cap = "Zotero menu in Word"} 
 knitr::include_graphics("images/wordaddon3.png") 
 ```
-##Adding references to Zotero
+
+## Adding references to Zotero
 The next step is to see how to organize references in Zotero and add them. First let's take a look at how Zotero home screen is organized. On the top left-hand side corner you can see how your library is organized. Each Collection is a subset of the library and can be managed based on your preferences, in this case each project has a collection.
 ```{r zoterohome1, echo=FALSE, fig.align="center", fig.cap = "Zotero Home Page"} 
 knitr::include_graphics("images/zoterohome1.png") 

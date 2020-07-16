@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 6 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 6 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Prepare data for PovcalNet update | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 6 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="DMGroupData.html"/>
-<link rel="next" href="referencing-software-zotero.html"/>
+<link rel="prev" href="prepare.html"/>
+<link rel="next" href="kihoons-handover.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -251,54 +251,174 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="prepare" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Prepare data for PovcalNet update</h1>
-<p>In this section we briefly describe what needs to be done with each auxiliary file to update PovcalNet</p>
-<div id="population" class="section level2">
-<h2><span class="header-section-number">5.1</span> Population</h2>
-<div id="raw-data" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Raw data</h3>
-<p>Everything related population data should be placed in the folder <code>p:/01.PovcalNet/03.QA/03.Population</code>, hereafter (<code>./</code>).</p>
-<p>Population data is saved in the folder <code>./data</code>. The data is may come from two different sources, WDI or from an internal source in DECDG. Right now, the data is build and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in an Excel file.</p>
-<p>The file shared by Emi should be placed without modification in the folder <code>./data/original</code>. Then, the file is copied again into the folder <code>./data</code> with the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the official release date of the population data.</p>
+<div id="referencing-software-zotero" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> Referencing software: Zotero</h1>
+<p>This chapter presents how to work with Zotero as a referencing software to be used in documents relevant for the Povcalnet team. The goal of using this software is to be able to collaborate on libraries that can be used in different documents by team members. Zotero is a free source referencing software with many convenient feature and that can be used within Word documents.</p>
+<div id="installation" class="section level2">
+<h2><span class="header-section-number">6.1</span> Installation</h2>
+<p>The first step is to open your browser and download Zotero <a href="https://www.zotero.org/download/">Here</a>.
+Once you click on download, you will double click on the Zotero.exe file and still wil start the installation. You will be asked to give admin credentials as the installation process starts. Notice that, after you have put in your credentials the pop-up window will give you a red message reading: “This software requires elevation”. However, once you click on Cancel you will see that the installation can continue even without providing admin credentials, you will see this screen:</p>
+<div class="figure" style="text-align: center"><span id="fig:zotero1"></span>
+<img src="images/zotero1.png" alt="Click on Next" width="960" />
+<p class="caption">
+Figure 6.1: Click on Next
+</p>
 </div>
-<div id="update-master-file" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> update master file</h3>
-<p>Once the new raw population data is in the folder <code>./data</code> it is necessary to update the <code>population</code> sheet in the master file. This can be done by just type,</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="prepare.html#cb6-1"></a>pcn master, update(population)</span></code></pre></div>
-<p>Finally, you can check the differences between the two versions by using the following code,</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="prepare.html#cb7-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
-<span id="cb7-2"><a href="prepare.html#cb7-2"></a><span class="kw">rename</span> population pop2</span>
-<span id="cb7-3"><a href="prepare.html#cb7-3"></a></span>
-<span id="cb7-4"><a href="prepare.html#cb7-4"></a><span class="kw">tempfile</span> pop2</span>
-<span id="cb7-5"><a href="prepare.html#cb7-5"></a><span class="kw">save</span> <span class="ot">`pop2&#39;</span></span>
-<span id="cb7-6"><a href="prepare.html#cb7-6"></a></span>
-<span id="cb7-7"><a href="prepare.html#cb7-7"></a><span class="co">// the version to compare with must change depending on the vintage available</span></span>
-<span id="cb7-8"><a href="prepare.html#cb7-8"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(20200529073145) </span>
-<span id="cb7-9"><a href="prepare.html#cb7-9"></a><span class="kw">rename</span> population pop1</span>
-<span id="cb7-10"><a href="prepare.html#cb7-10"></a></span>
-<span id="cb7-11"><a href="prepare.html#cb7-11"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2&#39;</span></span>
-<span id="cb7-12"><a href="prepare.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="prepare.html#cb7-13"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> <span class="dt">_merge</span> == 2</span>
-<span id="cb7-14"><a href="prepare.html#cb7-14"></a></span>
-<span id="cb7-15"><a href="prepare.html#cb7-15"></a><span class="kw">tab</span> countryname <span class="kw">if</span> <span class="dt">_merge</span> == 2 &amp; <span class="fu">year</span> &lt; 2019</span>
-<span id="cb7-16"><a href="prepare.html#cb7-16"></a></span>
-<span id="cb7-17"><a href="prepare.html#cb7-17"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
-<span id="cb7-18"><a href="prepare.html#cb7-18"></a><span class="kw">sum</span> diffpop</span>
-<span id="cb7-19"><a href="prepare.html#cb7-19"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)&#39;</span>*2*<span class="ot">`r(sd)&#39;</span> &amp; diffpop != .</span></code></pre></div>
+<p>Click on next and follow the instructions for installation. Once the installation is complete you will be asked to Open Zotero. This is how the main screen looks like.</p>
+<div class="figure" style="text-align: center"><span id="fig:zotero2"></span>
+<img src="images/zotero2.png" alt="Zotero" width="960" />
+<p class="caption">
+Figure 6.2: Zotero
+</p>
 </div>
 </div>
-<div id="gdp-and-consumption" class="section level2">
-<h2><span class="header-section-number">5.2</span> GDP and Consumption</h2>
-<p>blah blah</p>
+<div id="extensions-and-add-ons" class="section level2">
+<h2><span class="header-section-number">6.2</span> Extensions and add-ons</h2>
+<p><em>Chrome Connector</em></p>
+<p>Before we proceed with how to use Zotero, we need to install additional features that can make our life easier.
+One nice feature is that Zotero can save your references directly from your browser and import them to your library. This is how you install the browser connector.</p>
+<p>When you visited the download page, you saw that you can add the Chrome Zotero Connetor <a href="https://www.zotero.org/download/">Here</a>. The Chrome Connector will automatically sense content as you browse the web and allow you to save it to Zotero with a single click. You can also download the connectors for other browsers following the link highlighted in the figure below.
+Click on install Chrome Connector</p>
+<div class="figure" style="text-align: center"><span id="fig:addons1"></span>
+<img src="images/addons1.png" alt="Install Chrome connector" width="960" />
+<p class="caption">
+Figure 6.3: Install Chrome connector
+</p>
 </div>
-<div id="ppp" class="section level2">
-<h2><span class="header-section-number">5.3</span> PPP</h2>
-<p>blah blah</p>
+<p>You will be sent to this page, where you should click on “Add to Chrome”:</p>
+<div class="figure" style="text-align: center"><span id="fig:addons2"></span>
+<img src="images/addons2.png" alt="Add Chrome extension" width="960" />
+<p class="caption">
+Figure 6.4: Add Chrome extension
+</p>
 </div>
-<div id="cpi" class="section level2">
-<h2><span class="header-section-number">5.4</span> CPI</h2>
-<p>blah blah</p>
+<p>Once you open a new tab/window in Chrome you will see the Zotero extension as a “Z” in the top right corner of the taskbar:</p>
+<div class="figure" style="text-align: center"><span id="fig:chrome1"></span>
+<img src="images/chrome1.jpg" alt="Zotero extension in Chrome homepage" width="960" />
+<p class="caption">
+Figure 6.5: Zotero extension in Chrome homepage
+</p>
+</div>
+<p><em>Word Add-ons</em>
+Another nice feature is that Zotero can be used within Word documents. This means that you can add your references and bibliography using two easy to install add-ons. Here is how to install them.</p>
+First, you open Zotero on you computer and click on Tools-&gt; Add-ons:
+<div class="figure" style="text-align: center"><span id="fig:wordaddon1"></span>
+<img src="images/wordaddon1.png" alt="Word Add-ons" width="972" />
+<p class="caption">
+Figure 6.6: Word Add-ons
+</p>
+</div>
+In the “Add-ons Manager” window you will see two add-ons: Zotero LibreOffice Integration and Zotero Word for Windows. Both need to be enabled (this might require for you to contact IT to request admin credentials).
+<div class="figure" style="text-align: center"><span id="fig:wordaddon2"></span>
+<img src="images/wordaddon2.png" alt="Add-ons Manager" width="784" />
+<p class="caption">
+Figure 6.7: Add-ons Manager
+</p>
+</div>
+Once the add-ons are installed you will be able to see a Zotero menu in your Word document:
+<div class="figure" style="text-align: center"><span id="fig:wordaddon3"></span>
+<img src="images/wordaddon3.png" alt="Zotero menu in Word" width="960" />
+<p class="caption">
+Figure 6.8: Zotero menu in Word
+</p>
+</div>
+</div>
+<div id="adding-references-to-zotero" class="section level2">
+<h2><span class="header-section-number">6.3</span> Adding references to Zotero</h2>
+The next step is to see how to organize references in Zotero and add them. First let’s take a look at how Zotero home screen is organized. On the top left-hand side corner you can see how your library is organized. Each Collection is a subset of the library and can be managed based on your preferences, in this case each project has a collection.
+<div class="figure" style="text-align: center"><span id="fig:zoterohome1"></span>
+<img src="images/zoterohome1.png" alt="Zotero Home Page" width="960" />
+<p class="caption">
+Figure 6.9: Zotero Home Page
+</p>
+</div>
+You can add a new collection using the New collection icon:
+<div class="figure" style="text-align: center"><span id="fig:newcoll"></span>
+<img src="images/newcollection.png" alt="New Collection" width="979" />
+<p class="caption">
+Figure 6.10: New Collection
+</p>
+</div>
+The actual references that you can use in your bibliography are the list of titles in the center of the page. You can add a reference manually clicking on the green icon with a white plus and fill-in the fields manually:
+<div class="figure" style="text-align: center"><span id="fig:newitem"></span>
+<img src="images/newitem.png" alt="New Item" width="974" />
+<p class="caption">
+Figure 6.11: New Item
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:newitem2"></span>
+<img src="images/newitem2.png" alt="Fill-in fields manually" width="960" />
+<p class="caption">
+Figure 6.12: Fill-in fields manually
+</p>
+</div>
+Although it is useful to add references manually (e.g. blogposts, websites), the nicest feature of Zotero is its connector with Chrome (and other browsers) that allows you to add references directly from Google Scholar or other websites with referencing information. Once you look for a reference in google scholar, you can right-click on the page and select “Save to Zotero”, select the document you want to add and click OK, you will see that the document has been added to your collection (right-hand side corner)
+<div class="figure" style="text-align: center"><span id="fig:scholar1"></span>
+<img src="images/addscholar.png" alt="Add reference from Google Scholar" width="956" />
+<p class="caption">
+Figure 6.13: Add reference from Google Scholar
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:scholar2"></span>
+<img src="images/addscholar2.png" alt="Add reference from Google Scholar" width="957" />
+<p class="caption">
+Figure 6.14: Add reference from Google Scholar
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:scholar3"></span>
+<img src="images/addscholar3.png" alt="Add reference from Google Scholar" width="956" />
+<p class="caption">
+Figure 6.15: Add reference from Google Scholar
+</p>
+</div>
+<p>You can save the references also from other pages that have embedded referencing metadata (this is not always well organized, so probably better to use scholar).</p>
+<div class="figure" style="text-align: center"><span id="fig:other1"></span>
+<img src="images/othersite.png" alt="Add reference from other website" width="976" />
+<p class="caption">
+Figure 6.16: Add reference from other website
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:other2"></span>
+<img src="images/othersite1.png" alt="Add reference from other website" width="972" />
+<p class="caption">
+Figure 6.17: Add reference from other website
+</p>
+</div>
+The final step in the basic use of Zotero is to add the saved references in your word document. This are the main steps. Open your Word document and click on add citation from the Zotero menu, and the icon “Add/Edit Citation” on the left-hand side corner:
+<div class="figure" style="text-align: center"><span id="fig:fromword"></span>
+<img src="images/fromword.png" alt="Add/Edit citation from Word" width="958" />
+<p class="caption">
+Figure 6.18: Add/Edit citation from Word
+</p>
+</div>
+You will be asked to choose the citation format:
+<div class="figure" style="text-align: center"><span id="fig:fromword1"></span>
+<img src="images/fromword1.png" alt="Choose citation style" width="966" />
+<p class="caption">
+Figure 6.19: Choose citation style
+</p>
+</div>
+You can now type the document you want to add (search by author name, title or date-all work):
+<div class="figure" style="text-align: center"><span id="fig:fromword2"></span>
+<img src="images/fromword2.png" alt="Select citation" width="956" />
+<p class="caption">
+Figure 6.20: Select citation
+</p>
+</div>
+You will see that the citation has been added to your document. The final step is to add your full bibliography.
+<div class="figure" style="text-align: center"><span id="fig:fromword3"></span>
+<img src="images/fromword3.png" alt="Add bibliography from Word" width="957" />
+<p class="caption">
+Figure 6.21: Add bibliography from Word
+</p>
+</div>
+This is the final result:
+<div class="figure" style="text-align: center"><span id="fig:fromword4"></span>
+<img src="images/fromword4.png" alt="Citation and bibliography added to document" width="956" />
+<p class="caption">
+Figure 6.22: Citation and bibliography added to document
+</p>
+</div>
 
 </div>
 </div>
@@ -310,8 +430,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="DMGroupData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="referencing-software-zotero.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prepare.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kihoons-handover.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

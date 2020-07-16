@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Folder Strcutures | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Folder Strcutures | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-06-12" />
+<meta name="date" content="2020-07-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
@@ -59,7 +60,7 @@
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.6.1/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.6.9000/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -210,6 +211,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.3" data-path="prepare.html"><a href="prepare.html#ppp"><i class="fa fa-check"></i><b>5.3</b> PPP</a></li>
 <li class="chapter" data-level="5.4" data-path="prepare.html"><a href="prepare.html#cpi"><i class="fa fa-check"></i><b>5.4</b> CPI</a></li>
 </ul></li>
+<li class="part"><span><b>III Miscellaneous</b></span></li>
+<li class="chapter" data-level="6" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>6</b> Referencing software: Zotero</a><ul>
+<li class="chapter" data-level="6.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a></li>
+<li class="chapter" data-level="6.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>6.2</b> Extensions and add-ons</a></li>
+<li class="chapter" data-level="6.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>6.3</b> Adding references to Zotero</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a><ul>
 <li class="chapter" data-level="A.1" data-path="kihoons-handover.html"><a href="kihoons-handover.html#gpwg-process"><i class="fa fa-check"></i><b>A.1</b> GPWG process</a><ul>
@@ -264,33 +271,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #&gt; 1  P:                                
 #&gt; 2   °--01.PovcalNet                  
 #&gt; 3       ¦--00.Master                 
-#&gt; 4       ¦   ¦--_vintage_control.xlsx 
-#&gt; 5       ¦   ¦--01.current            
-#&gt; 6       ¦   ¦--02.vintage            
-#&gt; 7       ¦   ¦--03.metadata           
-#&gt; 8       ¦   °--Master.xlsm           
-#&gt; 9       ¦--01.Vintage_control        
-#&gt; 10      ¦   ¦--_aux                  
-#&gt; 11      ¦   ¦   ¦--countries         
-#&gt; 12      ¦   ¦   ¦--cpi               
-#&gt; 13      ¦   ¦   ¦--info              
-#&gt; 14      ¦   ¦   ¦--pcn_create        
-#&gt; 15      ¦   ¦   °--price_framework   
-#&gt; 16      ¦   °--AGO                   
-#&gt; 17      ¦       ¦--AGO_2000_HBS      
-#&gt; 18      ¦       ¦--AGO_2008_IBEP-MICS
-#&gt; 19      ¦       °--AGO_2018_IDREA    
-#&gt; 20      ¦--02.Production             
-#&gt; 21      ¦   °--2020_SM               
-#&gt; 22      °--03.QA                     
-#&gt; 23          ¦--01.GroupData          
-#&gt; 24          ¦--02.PRIMUS             
-#&gt; 25          ¦--02.PRIMUS_pending     
-#&gt; 26          ¦--03.Population         
-#&gt; 27          ¦--04.NationalAccounts   
-#&gt; 28          ¦--05.PCN_estimates      
-#&gt; 29          ¦--06.LIS                
-#&gt; 30          °--07.historical</code></pre>
+#&gt; 4       ¦   ¦--_aux                  
+#&gt; 5       ¦   ¦--_vintage_control.xlsx 
+#&gt; 6       ¦   ¦--01.current            
+#&gt; 7       ¦   ¦--02.vintage            
+#&gt; 8       ¦   ¦--03.metadata           
+#&gt; 9       ¦   °--Master.xlsm           
+#&gt; 10      ¦--01.Vintage_control        
+#&gt; 11      ¦   ¦--_aux                  
+#&gt; 12      ¦   ¦   ¦--countries         
+#&gt; 13      ¦   ¦   ¦--cpi               
+#&gt; 14      ¦   ¦   ¦--info              
+#&gt; 15      ¦   ¦   ¦--pcn_create        
+#&gt; 16      ¦   ¦   °--price_framework   
+#&gt; 17      ¦   °--AGO                   
+#&gt; 18      ¦       ¦--AGO_2000_HBS      
+#&gt; 19      ¦       ¦--AGO_2008_IBEP-MICS
+#&gt; 20      ¦       °--AGO_2018_IDREA    
+#&gt; 21      ¦--02.Production             
+#&gt; 22      ¦   ¦--_aux                  
+#&gt; 23      ¦   ¦--2014_OCT              
+#&gt; 24      ¦   ¦--2015_OCT              
+#&gt; 25      ¦   ¦--2016_OCT              
+#&gt; 26      ¦   ¦--2017_OCT              
+#&gt; 27      ¦   ¦--2018_APR              
+#&gt; 28      ¦   ¦--2018_SEP              
+#&gt; 29      ¦   ¦--2019_MAR              
+#&gt; 30      ¦   ¦--2020_JUL              
+#&gt; 31      ¦   °--2020_SM               
+#&gt; 32      °--03.QA                     
+#&gt; 33          ¦--01.GroupData          
+#&gt; 34          ¦--02.PRIMUS             
+#&gt; 35          ¦--02.PRIMUS_pending     
+#&gt; 36          ¦--03.Population         
+#&gt; 37          ¦--04.NationalAccounts   
+#&gt; 38          ¦--05.PCN_estimates      
+#&gt; 39          ¦--06.LIS                
+#&gt; 40          °--07.historical</code></pre>
 <ul>
 <li><p><code>/00.Master</code> contains everything related to the master.xlsx file that is uploaded into the PovcalNet system. This file has its own way for proper use and requires a separate explanation.</p></li>
 <li><p><code>/01.Vintage_control</code> contains the historical data of PovcalNet. Eventually, this would be folder accessible through <code>datalibweb</code>.</p></li>

@@ -3,8 +3,9 @@
 # file <- "DM_Group_data.Rmd"
 # file <- "Folder_strcuture.Rmd"
 # file <- "prepare_data_for_update.Rmd"
-
-file <- "Collaboration_in_Git.Rmd"
+# file <- "Collaboration_in_Git.Rmd"
+#
+file <- "Referencing_using_Zotero.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 
