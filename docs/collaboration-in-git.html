@@ -53,14 +53,6 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.6.9000/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -223,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
 <li class="chapter" data-level="6" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>6</b> Referencing software: Zotero</a><ul>
-<li class="chapter" data-level="6.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a></li>
+<li class="chapter" data-level="6.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a></li>
 <li class="chapter" data-level="6.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>6.2</b> Extensions and add-ons</a></li>
 <li class="chapter" data-level="6.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>6.3</b> Adding references to Zotero</a></li>
 </ul></li>
@@ -288,9 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="branching-and-merging" class="section level3">
 <h3><span class="header-section-number">3.3.2</span> Branching and Merging</h3>
-<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch.”<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div id="htmlwidget-1b4ff99564eb6e8884a5" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1b4ff99564eb6e8884a5">{"x":{"diagram":"\ngraph TD\nA[Check out master branch]-->B[update master by pulling]\nB-->C2[Solve conflicts]\nB-->|if no conflicts|C[create your own branch]\nC2-->C\nC-->D[commit as many times you want]\nD-->E[Push YOUR branch to remote for backup]\nD-->A"},"evals":[],"jsHooks":[]}</script>
+<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugâ”no matter how big or how smallâyou spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch."<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 </div>
 </div>
 <div id="getting-to-know-smartgit" class="section level2">
@@ -817,7 +807,13 @@ Figure 3.26: GitKraken Work In Progress
 <hr />
 <ol start="1">
 <li id="fn1"><p>Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, <a href="https://www.atlassian.com/git/tutorials/using-branches">link</a>.<a href="collaboration-in-git.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Nikolas Begetis (2018). “Git: How to start code changes, commit and push changes when working in a team”, accessed June 16, 2020, <a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c">link</a>.<a href="collaboration-in-git.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Atlassian, “Basic Git commands”, accessed June 22, 2020, <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">link</a><a href="collaboration-in-git.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Chris Beams (2014). “How to Write a Git Commit Message”, accessed June 16, 2020,
+<a href="https://chris.beams.io/posts/git-commit/">link</a>.<a href="collaboration-in-git.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Atlassian, “Git Reset | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">link</a>.<a href="collaboration-in-git.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Atlassian, “Git Revert | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">link</a>.<a href="collaboration-in-git.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
