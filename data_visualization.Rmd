@@ -1,0 +1,36 @@
+# (PART) Miscellaneous {-}
+
+# Data visualization: Flourish studio
+
+This chapter presents the data visualization tools used by the PovcalNet team.
+
+Flourish studio is a user friendly data visualization platform to create interactive data stories. It creats charts, maps and interactive graphs starting from your data. 
+
+Flourish offers both a free (Public) and paid service(Personal or Business). All data in the free (Public) version is available to the public. For this reason the PovcalNet team shares a paid account. Important: do not use sensitive or unpublished data in your own free account as anyone with a Flourish account will be able to see it (this applies to data in production or in internal servers available to the team before PovcalNet updates). 
+
+*Here are the credentials for the team's paid account:*
+*Email*: dmahler@worldbank.org
+*PW*: PovcalNet
+
+A quick overview of Flourish and how to sign in follows.
+
+##Sign in
+Follow this [link](https://flourish.studio/) for the Flourish homepage:
+
+```{r flourish1, echo=FALSE, fig.align="center", fig.cap = "Flourish Homepage"} 
+knitr::include_graphics("images/flourish_home.PNG") 
+``` 
+Click on "SIGN IN" and use the credentials for the team's account:
+```{r flourish2, echo=FALSE, fig.align="center", fig.cap = "SIGN IN"} 
+knitr::include_graphics("images/flourish_credentials.PNG") 
+``` 
+This is how the team's account looks like:
+```{r flourish3, echo=FALSE, fig.align="center", fig.cap = "Flourish-PovcalNet Account"} 
+knitr::include_graphics("images/flourish_povcalnet.PNG") 
+``` 
+To start a new project, "Add a new folder" and title it with "Month/Year+Topic", for example "September 2020 COVID".
+
+Once you created the folder and opened it, click on "New Visualization" to create a chart/story/map:
+```{r flourish4, echo=FALSE, fig.align="center", fig.cap = "New Visualization"} 
+knitr::include_graphics("images/flourish_newviz.PNG") 
+``` 
