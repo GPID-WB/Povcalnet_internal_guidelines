@@ -21,6 +21,7 @@ rmd_files: [
   "prepare_data_for_update.Rmd",
 
   "Referencing_using_Zotero.Rmd",
+  "data_visualization_flourish.Rmd",
 
   "Handover.Rmd",
   "references.Rmd",
