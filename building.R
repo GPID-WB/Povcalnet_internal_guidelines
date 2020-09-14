@@ -5,7 +5,7 @@
 # file <- "prepare_data_for_update.Rmd"
 # file <- "Collaboration_in_Git.Rmd"
 #
-file <- "data_visualization.Rmd"
+file <- "data_visualization_flourish.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 
