@@ -154,7 +154,7 @@ for the GDP and [these
 lines](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L360-L508)
 for the PCE.
 
-## PPP and CPI
+## CPI and PPP
 
 Even though the CPI and PPP come from different sources, in the PovcalNet update
 process we use the most recent version provided by `datalibweb` (DLW). DLW
