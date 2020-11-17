@@ -1,28 +1,45 @@
-# (PART) Povcalnet Update {-}
+# (PART) PovcalNet Update {.unnumbered}
 
 # Prepare data for PovcalNet update {#prepare}
 
-In this section we briefly describe what needs to be done with each auxiliary file to update PovcalNet
+In this chapter we briefly describe what needs to be done with each auxiliary
+measure used to update PovcalNet. Each of th next section describes one measure
+and, in general, they are divided in **Raw Data** and **Update Master File**
+subsection.
+
+Most of the heavy load on updating the master file is carried by the
+`pcn master, udpate(sheet)` command in Stata, where `sheet` refers to name of
+the sheet in the master file. If you need to make any modification, please make
+sure to create a new branch from the most recent of the master branch in the
+[PovcalNet-Team/pcn](https://github.com/PovcalNet-Team/pcn) Github repository.
 
 ## Population
 
 ### Raw data
-Everything related population data should be placed in the folder `p:/01.PovcalNet/03.QA/03.Population`, hereafter (`./`).
 
-Population data is saved in the folder `./data`. The data is may come from two different sources, WDI or from an internal source in DECDG. Right now, the data is build and shared by `Emi Suzuki <esuzuki1@worldbank.org>` in an Excel file. 
+Everything related population data should be placed in the folder
+`p:/01.PovcalNet/03.QA/03.Population`, hereafter (`./`).
 
-The file shared by Emi should be placed without modification in the folder `./data/original`. Then, the file is copied again into the folder `./data` with the name `population_country_yyyy-mm-dd.xlsx` where `yyyy-mm-dd` refers to the official release date of the population data. 
+Population data is saved in the folder `./data`. The data is may come from two
+different sources, WDI or from an internal source in DECDG. Right now, the data
+is build and shared by `Emi Suzuki <esuzuki1@worldbank.org>` in an Excel file.
 
+The file shared by Emi should be placed without modification in the folder
+`./data/original`. Then, the file is copied again into the folder `./data` with
+the name `population_country_yyyy-mm-dd.xlsx` where `yyyy-mm-dd` refers to the
+official release date of the population data.
 
 ### update master file
 
-Once the new raw population data is in the folder `./data` it is necessary to update the `population` sheet in the master file. This can be done by just type, 
+Once the new raw population data is in the folder `./data` it is necessary to
+update the `population` sheet in the master file. This can be done by just type,
 
 ```{stata, eval = FALSE}
 pcn master, update(population)
 ```
 
-Finally, you can check the differences between the two versions by using the following code, 
+Finally, you can check the differences between the two versions by using the
+following code,
 
 ```{stata, eval = FALSE}
 pcn master, load(Population) 
@@ -32,9 +49,9 @@ tempfile pop2
 save `pop2'
 
 // the version to compare with must change depending on the vintage available
-pcn master, load(Population) version(20200529073145) 
-rename population pop1
 
+pcn master, load(Population) version(-1) 
+rename population pop1
 merge 1:1 countrycode coveragetype year using `pop2'
 
 tab year if _merge == 2
@@ -47,41 +64,165 @@ br if abs(diffpop) > `r(mean)'*2*`r(sd)' & diffpop != .
 
 ```
 
-## GDP and Consumption
+Keep in mind that option `version(-1)` refers to one version before the current
+one. If it were `version(-2)`, it would be two versions before the current one.
+Keep in mind that the negative integer in this function refers to the version of
+the master file and not to the version of the sheet you're loading. Currently,
+there is no way to track the versions of each sheet in the Master file.
 
-blah blah
+## GDP and Consumption (PCE)
 
-## PPP
+GDP and consumption data are used to measure economic growth for the
+interpolation and extrapolation calculations.
 
-blah blah
+### Raw data
 
-## CPI 
+The raw data of GDP and PCE data comes from WDI through the Stata command
+`wbopendata`. For GDP the ticket is `NY.GDP.PCAP.KD` and for PCE the ticket used
+is `NE.CON.PRVT.PC.KD`. For some countries, however, the economic growth data is
+not available in WDI, so it has to be gathered from other sources besides WDI.
+You can see [below](#scnac) a deeper explanation and process on how to update
+the auxiliary files of these *special cases*.
 
-blah blah
+**TODO:** Talk about the Maddisson data.
+
+#### National accounts for "special cases" {#scnac .unnumbered}
+
+The *Special Cases* can be found in the folder
+`P:/01.PovcalNet/03.QA/04.NationalAccounts/data`. This folder contains all the
+different versions previously used in **PovcalNet** with national accounts info
+of special cases. Each file is called `NAS special_YYYY-mm-dd.xlsx`, where
+`YYYY` refers to year, `mm`to month, and `dd`to day. When you update the
+information of these files make sure you,
+
+1.  open the most recent version,
+2.  save with the current date
+3.  edit it as needed
+
+In order to update the *special cases* file, do the following,
+
+1.  Get the relevant data from the latest versions of the [World Economic
+    Outlook](https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending)
+    (WEO). The WEO series for GDP is **NGDPRPC**. If **NGDPRPC** is not
+    available, use the growth rate provided in **NGDPRPPPPCPCH** to splice on
+    the series.
+2.  Update the non-missing observations in the PCE and GDP series. *Make sure
+    there is no observation where both PCE and GDP are missing*.
+3.  In the Excel file for the national accounts, you will find the source of
+    data and clues on how best to update each observation. Unless otherwise
+    instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the
+    latest version of the national accounts to update the relevant observations.
+4.  For India, update the latest Excel file with pass-through calculations,
+    which can be found at `P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux`.
+    Follow instructions in the Excel file and Daniel Mahler to update rural and
+    urban PCE.
+
+#### Description of series {.unnumbered}
+
+-   ***NE.CON.PRVT.PC.KD***: Household final consumption expenditure per capita
+    (constant 2010 US\$).
+
+-   ***NY.GDP.PCAP.KD***: GDP per capita is gross domestic product divided by
+    midyear population. Data are in constant 2010 U.S. dollars.
+
+-   ***NGDPRPC***: Gross domestic product per capita, constant prices. GDP is
+    expressed in constant national currency per person. Data are derived by
+    dividing constant price GDP by total population.\*
+
+-   ***NGDPRPPPPCPCH***: Gross domestic product per capita, constant prices
+    (purchasing power parity; percent change). Data are derived by dividing
+    constant price purchasing-power parity (PPP) GDP by total population.
+
+### Update master file
+
+Once the *special cases* file has been updated you must update the master file
+by using the following command lines,
+
+```{stata, eval = FALSE}
+pcn master, update(gdp)
+pcn master, update(pce)
+```
+
+The `pcn` command integrates all the WDI, Maddisson, and Special Cases files in
+the correct format of the master file. You can run these lines even if only one
+of the sources gets updated. If you want to understand the how these two sheets
+get updated, you can see the procedure in the file
+[*pcn\_master\_update.ado*](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado)*.*
+In particular, you can see [these
+lines](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L170-L354)
+for the GDP and [these
+lines](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L360-L508)
+for the PCE.
+
+## CPI and PPP
+
+Even though the CPI and PPP come from different sources, in the PovcalNet update
+process we use the most recent version provided by `datalibweb` (DLW). DLW
+provides a curated, clean, and organized file with all the CPIs and PPPs values
+for all the countries and years. If you want to load the most recent version
+directly from DLW, you use the following lines of code,
+
+```{stata, eval = FALSE}
+local cpipath "c:\ado\personal\Datalibweb\data\GMD\SUPPORT\SUPPORT_2005_CPI"
+local cpidirs: dir "`cpipath'" dirs "*CPI_*_M"
+
+local cpivins "0"
+foreach cpidir of local cpidirs {
+	if regexm("`cpidir'", "cpi_v([0-9]+)_m") local cpivin = regexs(1)
+	local cpivins "`cpivins', `cpivin'"
+}
+local cpivin = max(`cpivins')
 
 
+cap datalibweb, country(Support) year(2005) type(GMDRAW) /*
+*/	surveyid(Support_2005_CPI_v0`cpivin'_M) /* 
+*/	filename(Final_CPI_PPP_to_be_used.dta)	
 
-## National accounts for "special countries"
+```
 
-1.Get the latest national accounts file from **P:/01.PovcalNet/03.QA/04.NationalAccounts/data**.
+### Word of Caution {#cpicaution}
 
-2.Get the relevant data from the latest versions of the [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators) (WDI) and [World Economic Outlook](https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending) (WEO).  
+Be aware that as of today (2020-11-17) the `datalibweb` system is being updating
+and it is likely that the convention used to vintage control the CPI changes in
+the following month. That is, Dec 2020. If that is the case, the code above
+would be obsolete and it will need to be updated in the
+[pcn\_update\_cpi.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado)
+file and in the
+[pcn\_master\_update.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado).
 
-The WDI series for PCE is NE.CON.PRVT.PC.KD and the WDI series for GDP is **NY.GDP.PCAP.KD**. The WEO series for GDP is **NGDPRPC**. If **NGDPRPC** is not available, use the growth rate provided in **NGDPRPPPPCPCH** to splice on the series.   
+### Different CPI datasets
 
-Below you will find the descriptions of the series. (If the series change in future versions, you can choose related series with advice from R.Andrés Castañeda or Christoph Lakner.)
+The `pcn` command updates and loads *two* databases of the CPI and PPP, and
+thus, you need to update both datasets when the CPI or PPP data is updated in
+DLW.
 
-- *NE.CON.PRVT.PC.KD*: Household final consumption expenditure per capita (constant 2010 US$). 
+#### Internal data {.unnumbered}
 
-- *NY.GDP.PCAP.KD*: GDP per capita is gross domestic product divided by midyear population. Data are in constant 2010 U.S. dollars.
+This dataset is used only by *PovcalNet* team and could be loaded in Stata by
+using the `pcn load cpi, clear` directive and updated by using the directive
+`pcn update cpi`. This dataset is intended to be used for general purposes that
+require deflation such as reports, papers, or even internal tests. However, it
+can't be used to update the *CPI* sheet in the master file. Though the data is
+the same, the format and labels are very different between the two. If you need
+to update the format of this dataset, you need to modify the file
+[pcn\_update\_cpi.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado)
 
-- *NGDPRPC*: Gross domestic product per capita, constant prices. GDP is expressed in constant national currency per person. Data are derived by dividing constant price GDP by total population.*
+#### *CPI* sheet in the Master file {.unnumbered}
 
-- *NGDPRPPPPCPCH*: Gross domestic product per capita, constant prices (purchasing power parity; percent change). Data are derived by dividing constant price purchasing-power parity (PPP) GDP by total population.
+This dataset could be loaded though the directive, `pcn master, load(cpi)`. By
+default the data will be loaded in Stata in wide form, which is the original
+form in master file. You can load it in Stata basically for testing and checking
+purposes but it is highly discouraged to use this data for any data work
+related. It comes in very unfriendly format that is only useful for the
+PovcalNet system. `pcn`, however, provides the option
+`pcn master, load(cpi) shape(long)` that attempts to reshape the data in long
+format for ease of use, but it is still not as nice and friendly as the data
+loaded from `pcn load cpi`.
 
-3.Update the non-missing observations in the PCE and GDP series. Make sure there is no observation where both PCE and GDP are missing.  
-
-4.In the Excel file for the national accounts, you will find the source of data and clues on how best to update each observation. Unless otherwise instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the latest version of the national accounts to update the relevant observations.  
-
-5.For India, update the latest Excel file with pass-through calculations, which can be found at **P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux**. Follow instructions in the Excel file and Daniel Mahler to update rural and urban PCE. 
-
+In order to updated the *CPI* sheet in the master file, you must use the
+directives `pcn master, update(cpi)` and `pcn master, update(ppp)`. Even though
+the CPI and PPP come from the same file, they are split in two different sheets
+in the master file. Keep in mind that if the CPI vintage control in DLW changes
+as mention [above](#cpicaution), you will need to update the corresponding lines
+in
+[pcn\_master\_update.ado](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L71-L164).

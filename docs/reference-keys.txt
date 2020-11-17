@@ -94,10 +94,12 @@ prepare
 population
 raw-data
 update-master-file
-gdp-and-consumption
-ppp
-cpi
-national-accounts-for-special-countries
+gdp-and-consumption-pce
+raw-data-1
+update-master-file-1
+cpi-and-ppp
+cpicaution
+different-cpi-datasets
 referencing-software-zotero
 installation
 extensions-and-add-ons
