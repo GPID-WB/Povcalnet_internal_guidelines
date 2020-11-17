@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
   <meta property="og:title" content="PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-09-14" />
+<meta name="date" content="2020-11-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,6 +35,7 @@
   
 
 <link rel="next" href="intro.html"/>
+<script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,21 +54,23 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script async defer src="https://hypothes.is/embed.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +90,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -120,6 +123,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -135,34 +139,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">PovcalNet Internal Guidelines</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="part"><span><b>I Basics</b></span></li>
-<li class="chapter" data-level="2" data-path="folder-strcutures.html"><a href="folder-strcutures.html"><i class="fa fa-check"></i><b>2</b> Folder Strcutures</a><ul>
-<li class="chapter" data-level="2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#network-drive"><i class="fa fa-check"></i><b>2.1</b> Network Drive</a><ul>
+<li class="chapter" data-level="2" data-path="folder-strcutures.html"><a href="folder-strcutures.html"><i class="fa fa-check"></i><b>2</b> Folder Strcutures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#network-drive"><i class="fa fa-check"></i><b>2.1</b> Network Drive</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#steps"><i class="fa fa-check"></i><b>2.1.1</b> Steps to map drives</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#server"><i class="fa fa-check"></i><b>2.2</b> Remote server connection</a><ul>
+<li class="chapter" data-level="2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#server"><i class="fa fa-check"></i><b>2.2</b> Remote server connection</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#connect"><i class="fa fa-check"></i><b>2.2.1</b> Steps to connect to the server</a></li>
 <li class="chapter" data-level="2.2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#map-network-drive-in-the-server"><i class="fa fa-check"></i><b>2.2.2</b> Map Network drive in the server</a></li>
 <li class="chapter" data-level="2.2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#folder-strcuture-in-the-server."><i class="fa fa-check"></i><b>2.2.3</b> Folder strcuture in the server.</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#onedrive"><i class="fa fa-check"></i><b>2.3</b> OneDrive</a></li>
-<li class="chapter" data-level="2.4" data-path="folder-strcutures.html"><a href="folder-strcutures.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a><ul>
+<li class="chapter" data-level="2.4" data-path="folder-strcutures.html"><a href="folder-strcutures.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
 <li class="chapter" data-level="2.4.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a><ul>
+<li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.1</b> Initial Set up</a></li>
 <li class="chapter" data-level="3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-git"><i class="fa fa-check"></i><b>3.2</b> Getting to know <span>Git</span></a></li>
-<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basics-of-git"><i class="fa fa-check"></i><b>3.3</b> Basics of Git</a><ul>
+<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basics-of-git"><i class="fa fa-check"></i><b>3.3</b> Basics of Git</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-repositories"><i class="fa fa-check"></i><b>3.3.1</b> Working with repositories</a></li>
 <li class="chapter" data-level="3.3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#branching-and-merging"><i class="fa fa-check"></i><b>3.3.2</b> Branching and Merging</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-smartgit"><i class="fa fa-check"></i><b>3.4</b> Getting to know <span>SmartGit</span></a><ul>
+<li class="chapter" data-level="3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-smartgit"><i class="fa fa-check"></i><b>3.4</b> Getting to know <span>SmartGit</span></a>
+<ul>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#install-smartgit"><i class="fa fa-check"></i>Installation</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#integration-with-github"><i class="fa fa-check"></i>Integration with GitHub</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-your-toolbar"><i class="fa fa-check"></i>Organize your toolbar</a></li>
@@ -174,7 +186,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#important-keyboard-shortcut-process"><i class="fa fa-check"></i>Important keyboard shortcut process</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#nice-features-of-smartgit"><i class="fa fa-check"></i>Nice features of SmartGit</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#advanced-git-process"><i class="fa fa-check"></i><b>3.5</b> Advanced Git process</a><ul>
+<li class="chapter" data-level="3.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#advanced-git-process"><i class="fa fa-check"></i><b>3.5</b> Advanced Git process</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#git-workflow"><i class="fa fa-check"></i><b>3.5.1</b> Git workflow</a></li>
 <li class="chapter" data-level="3.5.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-commits"><i class="fa fa-check"></i><b>3.5.2</b> How to work with commits</a></li>
 <li class="chapter" data-level="3.5.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#what-to-do-with-changes-you-dont-want-to-commit"><i class="fa fa-check"></i><b>3.5.3</b> What to do with changes you don’t want to commit</a></li>
@@ -183,28 +196,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-pull-requests"><i class="fa fa-check"></i><b>3.5.6</b> How to work with pull requests</a></li>
 <li class="chapter" data-level="3.5.7" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#dos-and-donts"><i class="fa fa-check"></i><b>3.5.7</b> DO’s and DONT’s</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.6</b> Getting to know <span>GitKraken</span></a><ul>
+<li class="chapter" data-level="3.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.6</b> Getting to know <span>GitKraken</span></a>
+<ul>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i>GItKraken Interface</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#create-a-repository"><i class="fa fa-check"></i>Create a repository</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-a-repository"><i class="fa fa-check"></i>Clone a repository</a></li>
 <li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-commits"><i class="fa fa-check"></i>Working with commits</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>4</b> Upload Group Data to the Data Management System</a><ul>
-<li class="chapter" data-level="4.1" data-path="DMGroupData.html"><a href="DMGroupData.html#group-data"><i class="fa fa-check"></i><b>4.1</b> Group Data</a><ul>
+<li class="chapter" data-level="4" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>4</b> Upload Group Data to the Data Management System</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="DMGroupData.html"><a href="DMGroupData.html#group-data"><i class="fa fa-check"></i><b>4.1</b> Group Data</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>4.1.1</b> Preparing the data</a></li>
 <li class="chapter" data-level="4.1.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>4.1.2</b> Naming convention</a></li>
 <li class="chapter" data-level="4.1.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>4.1.3</b> Upload the data.</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>4.2</b> Master File</a><ul>
+<li class="chapter" data-level="4.2" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>4.2</b> Master File</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-master-file"><i class="fa fa-check"></i><b>4.2.1</b> Preparing the Master File</a></li>
 <li class="chapter" data-level="4.2.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-master-file"><i class="fa fa-check"></i><b>4.2.2</b> Upload Master file</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>4.3</b> Making sure everything works</a></li>
 </ul></li>
 <li class="part"><span><b>II Povcalnet Update</b></span></li>
-<li class="chapter" data-level="5" data-path="prepare.html"><a href="prepare.html"><i class="fa fa-check"></i><b>5</b> Prepare data for PovcalNet update</a><ul>
-<li class="chapter" data-level="5.1" data-path="prepare.html"><a href="prepare.html#population"><i class="fa fa-check"></i><b>5.1</b> Population</a><ul>
+<li class="chapter" data-level="5" data-path="prepare.html"><a href="prepare.html"><i class="fa fa-check"></i><b>5</b> Prepare data for PovcalNet update</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prepare.html"><a href="prepare.html#population"><i class="fa fa-check"></i><b>5.1</b> Population</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="prepare.html"><a href="prepare.html#raw-data"><i class="fa fa-check"></i><b>5.1.1</b> Raw data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="prepare.html"><a href="prepare.html#update-master-file"><i class="fa fa-check"></i><b>5.1.2</b> update master file</a></li>
 </ul></li>
@@ -214,19 +233,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="prepare.html"><a href="prepare.html#national-accounts-for-special-countries"><i class="fa fa-check"></i><b>5.5</b> National accounts for “special countries”</a></li>
 </ul></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
-<li class="chapter" data-level="6" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>6</b> Referencing software: Zotero</a><ul>
+<li class="chapter" data-level="6" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>6</b> Referencing software: Zotero</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>6.1</b> Installation</a></li>
 <li class="chapter" data-level="6.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>6.2</b> Extensions and add-ons</a></li>
 <li class="chapter" data-level="6.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>6.3</b> Adding references to Zotero</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>7</b> Data visualization: Flourish studio</a></li>
+<li class="chapter" data-level="7" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>7</b> Data visualization: Flourish studio</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>7.1</b> Sign in</a></li>
+<li class="chapter" data-level="7.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>7.2</b> Get started</a></li>
+</ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a><ul>
-<li class="chapter" data-level="A.1" data-path="kihoons-handover.html"><a href="kihoons-handover.html#gpwg-process"><i class="fa fa-check"></i><b>A.1</b> GPWG process</a><ul>
+<li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="kihoons-handover.html"><a href="kihoons-handover.html#gpwg-process"><i class="fa fa-check"></i><b>A.1</b> GPWG process</a>
+<ul>
 <li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-gpwg-data-and-generate-pcb-files"><i class="fa fa-check"></i>How to download surveys from the GPWG data and generate pcb files</a></li>
 </ul></li>
-<li class="chapter" data-level="A.2" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lis-data-process"><i class="fa fa-check"></i><b>A.2</b> LIS Data Process</a><ul>
+<li class="chapter" data-level="A.2" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lis-data-process"><i class="fa fa-check"></i><b>A.2</b> LIS Data Process</a>
+<ul>
 <li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-lis-data-server-and-generate-pcb-file"><i class="fa fa-check"></i>How to download surveys from the LIS data server and generate pcb file</a></li>
 </ul></li>
@@ -254,21 +281,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
+
+<div class = rmdreview>
+This book is in <b><a href="open.html#open">Open Review</a></b>. I want your feedback to make the book better for you and other readers. To add your annotation, <span style="background-color: #3297FD; color: white">select some text</span> and then click the <i class="h-icon-annotate"></i> on the pop-up menu. To see the annotations of others, click the <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
 <div id="header">
 <h1 class="title">PovcalNet Internal Guidelines and Protocols</h1>
 <p class="author"><em>PovcalNet team</em></p>
 <p class="author"><em>Development economics</em></p>
 <p class="author"><em>World Bank Group</em></p>
-<p class="date"><em>2020-09-14</em></p>
+<p class="date"><em>2020-11-17</em></p>
 </div>
-<div id="welcome" class="section level1 unnumbered">
+<div id="welcome" class="section level1 unnumbered" number="">
 <h1>Welcome</h1>
 <p>This book contains the guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you’re required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.</p>
-<div id="team" class="section level2 unnumbered">
+<div id="team" class="section level2 unnumbered" number="">
 <h2>Team</h2>
 <p>PovcalNet is a product of the World Bank’s Development Economics Division, in particular the Development Data Group and the Development Research Group, and the Poverty and Equity Global Practice. This version of the PovcalNet software was designed by Qinghua Zhao. The global poverty monitoring database is managed by R. Andrés Castañeda, Dean Jolliffe, Christoph Lakner, Espen B. Prydz and Prem Sangraula, with assistance from Tony Fujs and Kihoon Lee. Assembly of these data is undertaken under the auspices of the Global Poverty Working Group which brings together the PovcalNet team and economy- and regional-level counterparts in the World Bank’s Poverty and Equity Global Practice, and which compiles economy level data and assesses these for international comparability. Overall guidance is provided by Francisco H. G. Ferreira, Senior Advisor in the Poverty and Inequality team of the Research Department, Haishan Fu, Director of the Data Group, and Carolina Sánchez-Páramo, Senior Director of the Poverty and Equity Global Practice. The founder of PovcalNet and former Director of Research, Martin Ravallion, provides continued input on the methodology adopted in PovcalNet. A great many colleagues at the World Bank have helped the team in obtaining the necessary data for PovcalNet. An important acknowledgement goes to the staff of over 100 governmental statistics offices that collected the primary household and price survey data. The Development Data Group has provided the 2011 consumption PPPs, population and other National Accounts data used here.</p>
 
 </div>
+</div>
+
+<div class = rmdsale>
+Want to know when the book is for sale? Enter your email so I can let you know.
+<iframe src="email_submit.html" width="760" height="30" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 </div>
             </section>
 
