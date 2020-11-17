@@ -227,10 +227,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.1" data-path="prepare.html"><a href="prepare.html#raw-data"><i class="fa fa-check"></i><b>5.1.1</b> Raw data</a></li>
 <li class="chapter" data-level="5.1.2" data-path="prepare.html"><a href="prepare.html#update-master-file"><i class="fa fa-check"></i><b>5.1.2</b> update master file</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="prepare.html"><a href="prepare.html#gdp-and-consumption"><i class="fa fa-check"></i><b>5.2</b> GDP and Consumption</a></li>
+<li class="chapter" data-level="5.2" data-path="prepare.html"><a href="prepare.html#gdp-and-consumption-pce"><i class="fa fa-check"></i><b>5.2</b> GDP and Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prepare.html"><a href="prepare.html#raw-data-1"><i class="fa fa-check"></i><b>5.2.1</b> Raw data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="prepare.html"><a href="prepare.html#scnac"><i class="fa fa-check"></i><b>5.2.2</b> National accounts for “special countries”</a></li>
+<li class="chapter" data-level="5.2.3" data-path="prepare.html"><a href="prepare.html#update-master-file-1"><i class="fa fa-check"></i><b>5.2.3</b> update master file</a></li>
+</ul></li>
 <li class="chapter" data-level="5.3" data-path="prepare.html"><a href="prepare.html#ppp"><i class="fa fa-check"></i><b>5.3</b> PPP</a></li>
 <li class="chapter" data-level="5.4" data-path="prepare.html"><a href="prepare.html#cpi"><i class="fa fa-check"></i><b>5.4</b> CPI</a></li>
-<li class="chapter" data-level="5.5" data-path="prepare.html"><a href="prepare.html#national-accounts-for-special-countries"><i class="fa fa-check"></i><b>5.5</b> National accounts for “special countries”</a></li>
 </ul></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
 <li class="chapter" data-level="6" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>6</b> Referencing software: Zotero</a>
@@ -303,43 +307,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="update-master-file" class="section level3" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> update master file</h3>
 <p>Once the new raw population data is in the folder <code>./data</code> it is necessary to update the <code>population</code> sheet in the master file. This can be done by just type,</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="prepare.html#cb6-1"></a>pcn master, update(population)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="prepare.html#cb1-1"></a>pcn master, update(population)</span></code></pre></div>
 <p>Finally, you can check the differences between the two versions by using the following code,</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="prepare.html#cb7-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
-<span id="cb7-2"><a href="prepare.html#cb7-2"></a><span class="kw">rename</span> population pop2</span>
-<span id="cb7-3"><a href="prepare.html#cb7-3"></a></span>
-<span id="cb7-4"><a href="prepare.html#cb7-4"></a><span class="kw">tempfile</span> pop2</span>
-<span id="cb7-5"><a href="prepare.html#cb7-5"></a><span class="kw">save</span> <span class="ot">`pop2&#39;</span></span>
-<span id="cb7-6"><a href="prepare.html#cb7-6"></a></span>
-<span id="cb7-7"><a href="prepare.html#cb7-7"></a><span class="co">// the version to compare with must change depending on the vintage available</span></span>
-<span id="cb7-8"><a href="prepare.html#cb7-8"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(20200529073145) </span>
-<span id="cb7-9"><a href="prepare.html#cb7-9"></a><span class="kw">rename</span> population pop1</span>
-<span id="cb7-10"><a href="prepare.html#cb7-10"></a></span>
-<span id="cb7-11"><a href="prepare.html#cb7-11"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2&#39;</span></span>
-<span id="cb7-12"><a href="prepare.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="prepare.html#cb7-13"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> <span class="dt">_merge</span> == 2</span>
-<span id="cb7-14"><a href="prepare.html#cb7-14"></a></span>
-<span id="cb7-15"><a href="prepare.html#cb7-15"></a><span class="kw">tab</span> countryname <span class="kw">if</span> <span class="dt">_merge</span> == 2 &amp; <span class="fu">year</span> &lt; 2019</span>
-<span id="cb7-16"><a href="prepare.html#cb7-16"></a></span>
-<span id="cb7-17"><a href="prepare.html#cb7-17"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
-<span id="cb7-18"><a href="prepare.html#cb7-18"></a><span class="kw">sum</span> diffpop</span>
-<span id="cb7-19"><a href="prepare.html#cb7-19"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)&#39;</span>*2*<span class="ot">`r(sd)&#39;</span> &amp; diffpop != .</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="prepare.html#cb2-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
+<span id="cb2-2"><a href="prepare.html#cb2-2"></a><span class="kw">rename</span> population pop2</span>
+<span id="cb2-3"><a href="prepare.html#cb2-3"></a></span>
+<span id="cb2-4"><a href="prepare.html#cb2-4"></a><span class="kw">tempfile</span> pop2</span>
+<span id="cb2-5"><a href="prepare.html#cb2-5"></a><span class="kw">save</span> <span class="ot">`pop2&#39;</span></span>
+<span id="cb2-6"><a href="prepare.html#cb2-6"></a></span>
+<span id="cb2-7"><a href="prepare.html#cb2-7"></a><span class="co">// the version to compare with must change depending on the vintage available</span></span>
+<span id="cb2-8"><a href="prepare.html#cb2-8"></a></span>
+<span id="cb2-9"><a href="prepare.html#cb2-9"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(-1) </span>
+<span id="cb2-10"><a href="prepare.html#cb2-10"></a><span class="kw">rename</span> population pop1</span>
+<span id="cb2-11"><a href="prepare.html#cb2-11"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2&#39;</span></span>
+<span id="cb2-12"><a href="prepare.html#cb2-12"></a></span>
+<span id="cb2-13"><a href="prepare.html#cb2-13"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> <span class="dt">_merge</span> == 2</span>
+<span id="cb2-14"><a href="prepare.html#cb2-14"></a></span>
+<span id="cb2-15"><a href="prepare.html#cb2-15"></a><span class="kw">tab</span> countryname <span class="kw">if</span> <span class="dt">_merge</span> == 2 &amp; <span class="fu">year</span> &lt; 2019</span>
+<span id="cb2-16"><a href="prepare.html#cb2-16"></a></span>
+<span id="cb2-17"><a href="prepare.html#cb2-17"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
+<span id="cb2-18"><a href="prepare.html#cb2-18"></a><span class="kw">sum</span> diffpop</span>
+<span id="cb2-19"><a href="prepare.html#cb2-19"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)&#39;</span>*2*<span class="ot">`r(sd)&#39;</span> &amp; diffpop != .</span></code></pre></div>
+<p>Keep in mind that option <code>version(-1)</code> refers to one version before the current one. If it were <code>version(-2)</code>, it would be two versions before the current one. Keep in mind that the negative integer in this function refers to the version of the master file and not to the version of the sheet you’re loading. Currently, there is no way to track the versions of each sheet in the Master file.</p>
 </div>
 </div>
-<div id="gdp-and-consumption" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> GDP and Consumption</h2>
-<p>blah blah</p>
+<div id="gdp-and-consumption-pce" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> GDP and Consumption (PCE)</h2>
+<p>GDP and consumption data are used to measure economic growth for the interpolation and extrapolation calculations.</p>
+<div id="raw-data-1" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Raw data</h3>
+<p>The raw data of GDP and PCE data comes from WDI through the Stata command <code>wbopendata</code>. For GDP the ticket is <code>NY.GDP.PCAP.KD</code> and for PCE the ticket used is <code>NE.CON.PRVT.PC.KD</code>. For some countries, however, the economic growth data is not available in WDI, so it has to be gathered somewhere else. You can see <a href="prepare.html#scnac">below</a> for a deeper explanation.</p>
 </div>
-<div id="ppp" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> PPP</h2>
-<p>blah blah</p>
-</div>
-<div id="cpi" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> CPI</h2>
-<p>blah blah</p>
-</div>
-<div id="national-accounts-for-special-countries" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> National accounts for “special countries”</h2>
+<div id="scnac" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> National accounts for “special countries”</h3>
 <p>1.Get the latest national accounts file from <strong>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</strong>.</p>
 <p>2.Get the relevant data from the latest versions of the <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a> (WDI) and <a href="https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending">World Economic Outlook</a> (WEO).</p>
 <p>The WDI series for PCE is NE.CON.PRVT.PC.KD and the WDI series for GDP is <strong>NY.GDP.PCAP.KD</strong>. The WEO series for GDP is <strong>NGDPRPC</strong>. If <strong>NGDPRPC</strong> is not available, use the growth rate provided in <strong>NGDPRPPPPCPCH</strong> to splice on the series.</p>
@@ -353,6 +353,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>3.Update the non-missing observations in the PCE and GDP series. Make sure there is no observation where both PCE and GDP are missing.</p>
 <p>4.In the Excel file for the national accounts, you will find the source of data and clues on how best to update each observation. Unless otherwise instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the latest version of the national accounts to update the relevant observations.</p>
 <p>5.For India, update the latest Excel file with pass-through calculations, which can be found at **P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux**. Follow instructions in the Excel file and Daniel Mahler to update rural and urban PCE.</p>
+</div>
+<div id="update-master-file-1" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> update master file</h3>
+</div>
+</div>
+<div id="ppp" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> PPP</h2>
+<p>blah blah</p>
+</div>
+<div id="cpi" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> CPI</h2>
+<p>blah blah</p>
 
 </div>
 </div>
