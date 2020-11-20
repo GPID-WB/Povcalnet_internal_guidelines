@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 6 PRIMUS | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 6 PRIMUS | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 6 PRIMUS | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="DMGroupData.html"/>
-<link rel="next" href="data-visualization-flourish-studio.html"/>
+<link rel="prev" href="prepare.html"/>
+<link rel="next" href="DMGroupData.html"/>
 <script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -320,174 +320,245 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Thanks.&nbsp;</p>
  </div>
-<div id="referencing-software-zotero" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Referencing software: Zotero</h1>
-<p>This chapter presents how to work with Zotero as a referencing software to be used in documents relevant for the Povcalnet team. The goal of using this software is to be able to collaborate on libraries that can be used in different documents by team members. Zotero is a free source referencing software with many convenient feature and that can be used within Word documents.</p>
-<div id="installation" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Installation</h2>
-<p>The first step is to open your browser and download Zotero <a href="https://www.zotero.org/download/">Here</a>.
-Once you click on download, you will double click on the Zotero.exe file and still wil start the installation. You will be asked to give admin credentials as the installation process starts. Notice that, after you have put in your credentials the pop-up window will give you a red message reading: “This software requires elevation”. However, once you click on Cancel you will see that the installation can continue even without providing admin credentials, you will see this screen:</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero1"></span>
-<img src="images/zotero1.png" alt="Click on Next" width="960" />
-<p class="caption">
-Figure 8.1: Click on Next
-</p>
+<div id="primus" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> PRIMUS</h1>
+<p>According to the description in the Stata repository
+<a href="https://github.com/worldbank/primus">worldbank/primus</a>,</p>
+<blockquote>
+<p>The <strong>PRIMUS</strong> system is designed to facilitate this process of generating
+internal estimates of the World Bank’s poverty indicators and reduce the time
+needed for resolving discrepancies. It is a workflow management platform for
+the submission, review and approval of poverty estimates and a tracking
+facility to capture the inputs and results of the estimation process for
+future reference and audits.</p>
+</blockquote>
+<p>As such, <strong>PRIMUS</strong> is the platform used by the PovcalNet team to approve the
+adoption of new survey data into the PovcalNet system.</p>
+<div id="interacting-with-primus" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Interacting with PRIMUS</h2>
+<p>The interaction with <strong>PRIMUS</strong> is done through different systems, so it is best
+to begin by clarifying terms.</p>
+<div id="website-platform" class="section level3 unnumbered" number="">
+<h3>Website platform</h3>
+<p>PRIMUS can be accessed by typing in
+<a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a>
+your browser. As long as you’re connected to the intranet it should work fine.
+However, if you have any issues connecting to the platform, please send an email
+to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting for access.</p>
+<p>Each database uploaded into PRIMUS got a unique transaction ID. This ID is
+important because it is not unique to a dataset but unique to the transaction.
+That is, if one particular dataset is uploaded more than once, it will get two
+different transaction IDs. When talking to the Poverty GP, you better refer to
+the transaction ID rather than the survey (or not only the survey) because,
+though may be talking about the same country/year, you are actually talking
+about two different transactions. See for instance <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&amp;country=BRA&amp;year=2013">Brazil
+2013</a>.</p>
 </div>
-<p>Click on next and follow the instructions for installation. Once the installation is complete you will be asked to Open Zotero. This is how the main screen looks like.</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero2"></span>
-<img src="images/zotero2.png" alt="Zotero" width="960" />
-<p class="caption">
-Figure 8.2: Zotero
-</p>
+<div id="stata-command" class="section level3 unnumbered" number="">
+<h3>Stata command</h3>
+<p>The Poverty GP maintains the Stata repository
+<a href="https://github.com/worldbank/primus">worldbank/primus</a> from which you can
+download the command <code>primus</code>. Right now, this is the official place from which
+you can access this command. From now on, each time we refer to the command, it
+would <code>primus</code>, whereas when we refer to the website, it would be PRIMUS.</p>
+<p>Please, make sure you have it properly installed in your computer, by following
+the instruction section <a href="stata-github.html#stata-github">4</a>. Basically, You need to install
+first the <a href="https://github.com/haghish/github">github</a> Stata command by <a href="https://github.com/haghish">E. F.
+Haghish</a></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="primus.html#cb14-1"></a>net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span></code></pre></div>
+<p>Now, you can install <code>primus</code> by just typing the following in Stata</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="primus.html#cb15-1"></a>github install worldbank/primus</span></code></pre></div>
+<p>In case this does not work, follow instructions in section <a href="stata-github.html#stata-github">4</a>
+for alternative methods.</p>
 </div>
-</div>
-<div id="extensions-and-add-ons" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Extensions and add-ons</h2>
-<p><em>Chrome Connector</em></p>
-<p>Before we proceed with how to use Zotero, we need to install additional features that can make our life easier.
-One nice feature is that Zotero can save your references directly from your browser and import them to your library. This is how you install the browser connector.</p>
-<p>When you visited the download page, you saw that you can add the Chrome Zotero Connetor <a href="https://www.zotero.org/download/">Here</a>. The Chrome Connector will automatically sense content as you browse the web and allow you to save it to Zotero with a single click. You can also download the connectors for other browsers following the link highlighted in the figure below.
-Click on install Chrome Connector</p>
-<div class="figure" style="text-align: center"><span id="fig:addons1"></span>
-<img src="images/addons1.png" alt="Install Chrome connector" width="960" />
-<p class="caption">
-Figure 8.3: Install Chrome connector
-</p>
-</div>
-<p>You will be sent to this page, where you should click on “Add to Chrome”:</p>
-<div class="figure" style="text-align: center"><span id="fig:addons2"></span>
-<img src="images/addons2.png" alt="Add Chrome extension" width="960" />
-<p class="caption">
-Figure 8.4: Add Chrome extension
-</p>
-</div>
-<p>Once you open a new tab/window in Chrome you will see the Zotero extension as a “Z” in the top right corner of the taskbar:</p>
-<div class="figure" style="text-align: center"><span id="fig:chrome1"></span>
-<img src="images/chrome1.jpg" alt="Zotero extension in Chrome homepage" width="960" />
-<p class="caption">
-Figure 8.5: Zotero extension in Chrome homepage
-</p>
-</div>
-<p><em>Word Add-ons</em>
-Another nice feature is that Zotero can be used within Word documents. This means that you can add your references and bibliography using two easy to install add-ons. Here is how to install them.</p>
-First, you open Zotero on you computer and click on Tools-&gt; Add-ons:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon1"></span>
-<img src="images/wordaddon1.png" alt="Word Add-ons" width="972" />
-<p class="caption">
-Figure 8.6: Word Add-ons
-</p>
-</div>
-In the “Add-ons Manager” window you will see two add-ons: Zotero LibreOffice Integration and Zotero Word for Windows. Both need to be enabled (this might require for you to contact IT to request admin credentials).
-<div class="figure" style="text-align: center"><span id="fig:wordaddon2"></span>
-<img src="images/wordaddon2.png" alt="Add-ons Manager" width="784" />
-<p class="caption">
-Figure 8.7: Add-ons Manager
-</p>
-</div>
-Once the add-ons are installed you will be able to see a Zotero menu in your Word document:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon3"></span>
-<img src="images/wordaddon3.png" alt="Zotero menu in Word" width="960" />
-<p class="caption">
-Figure 8.8: Zotero menu in Word
-</p>
+<div id="corrections-to-primus-stata-command" class="section level3 unnumbered" number="">
+<h3>Corrections to <code>primus</code> Stata command</h3>
+<p>The <code>primus</code> command is maintained by the Poverty GP, so we have no control over
+modifications or improvements. The best you can do in case you need to fix or
+modify something in this command is to fork the repository, cloned the forked
+repo into your computer, check out a new branch, make any modification, and
+generate a pull request to the master branch of the original repository. Once
+you have done that, make sure to send an email with your suggestions for
+improvement to <a href="mailto:asilwal@worldbank.org">Ani Rudra Silwal</a>, copying to the
+D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).</p>
 </div>
 </div>
-<div id="adding-references-to-zotero" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Adding references to Zotero</h2>
-The next step is to see how to organize references in Zotero and add them. First let’s take a look at how Zotero home screen is organized. On the top left-hand side corner you can see how your library is organized. Each Collection is a subset of the library and can be managed based on your preferences, in this case each project has a collection.
-<div class="figure" style="text-align: center"><span id="fig:zoterohome1"></span>
-<img src="images/zoterohome1.png" alt="Zotero Home Page" width="960" />
-<p class="caption">
-Figure 8.9: Zotero Home Page
-</p>
+<div id="understanding-primus" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Understanding PRIMUS</h2>
+<p>Each time a database is uploaded into PRIMUS, it is assigned to a transaction
+ID. During the uploading process (or right after it has finished), the three
+three parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new
+or corrected data and approve them or reject them in the system. Depending on
+the decision of all the parties, each transaction will take one of three
+possible status, <em>pending</em>, <em>approved,</em> or <em>rejected</em>.</p>
+<div id="approve-primus" class="rmdbox rmdwarning">
+<p>As of today (2020-11-20), there is no one who represents DECRG. So, the
+approving process might be different and it will need to be changed in the
+PRIMUS system. Please check.</p>
 </div>
-You can add a new collection using the New collection icon:
-<div class="figure" style="text-align: center"><span id="fig:newcoll"></span>
-<img src="images/newcollection.png" alt="New Collection" width="979" />
-<p class="caption">
-Figure 8.10: New Collection
-</p>
+<p>The transaction ID is <em>pending</em> when at least one of the three parties (DECDG,
+DECRG, or the Poverty GP) has not approved it in the system. You can click on
+the check box <em>PENDING</em> in the PRIMUS website to see which surveys have such a
+status, or you can use the <code>primus</code> command list this,</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="primus.html#cb16-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, overallstatus(PENDING)</span>
+<span id="cb16-2"><a href="primus.html#cb16-2"></a><span class="ot">list</span> transaction_id country <span class="fu">year</span> date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
+<span id="cb16-3"><a href="primus.html#cb16-3"></a>     +----------------------------------------------+</span>
+<span id="cb16-4"><a href="primus.html#cb16-4"></a>     |              transaction_id   country   <span class="fu">year</span> |</span>
+<span id="cb16-5"><a href="primus.html#cb16-5"></a>     |----------------------------------------------|</span>
+<span id="cb16-6"><a href="primus.html#cb16-6"></a>  1. | TRN-000327173-EAP-IDN-QR48Q       IDN   2017 |</span>
+<span id="cb16-7"><a href="primus.html#cb16-7"></a>  2. | TRN-000327173-ECA-DEU-YJYVZ       DEU   1995 |</span>
+<span id="cb16-8"><a href="primus.html#cb16-8"></a>  3. | TRN-000327173-ECA-DEU-2P4DR       DEU   2002 |</span>
+<span id="cb16-9"><a href="primus.html#cb16-9"></a>  4. | TRN-000327173-ECA-DEU-LJN8R       DEU   2003 |</span>
+<span id="cb16-10"><a href="primus.html#cb16-10"></a>  5. | TRN-000327173-ECA-DEU-ZSN9J       DEU   2005 |</span>
+<span id="cb16-11"><a href="primus.html#cb16-11"></a>     |----------------------------------------------|</span>
+<span id="cb16-12"><a href="primus.html#cb16-12"></a>  6. | TRN-000327173-ECA-DEU-UBS7M       DEU   2008 |</span>
+<span id="cb16-13"><a href="primus.html#cb16-13"></a>  7. | TRN-000327173-ECA-DEU-41TOU       DEU   2009 |</span>
+<span id="cb16-14"><a href="primus.html#cb16-14"></a>  8. | TRN-000327173-EAP-AUS-KKZ2E       AUS   2004 |</span>
+<span id="cb16-15"><a href="primus.html#cb16-15"></a>     +----------------------------------------------+</span></code></pre></div>
+<p>Notice that the overall status of a transaction is independent from survey ID.
+Thus, it is possible to find several transactions for the same country and year.
+Indonesia 2017, for instance, has three transactions, two of them rejected and
+one of them pending.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="primus.html#cb17-1"></a><span class="kw">qui</span> primus <span class="kw">query</span>, country(IDN) <span class="fu">year</span>(2017)</span>
+<span id="cb17-2"><a href="primus.html#cb17-2"></a><span class="ot">list</span> transaction_id overall_status date_modified <span class="kw">in</span> 1/<span class="ot">`=min(10, _N)&#39;</span></span>
+<span id="cb17-3"><a href="primus.html#cb17-3"></a>     +--------------------------------------------------+</span>
+<span id="cb17-4"><a href="primus.html#cb17-4"></a>     |              transaction_id        date_modified |</span>
+<span id="cb17-5"><a href="primus.html#cb17-5"></a>     |--------------------------------------------------|</span>
+<span id="cb17-6"><a href="primus.html#cb17-6"></a>  1. | TRN-000104674-EAP-IDN-8R9IF   23may2018 15:28:47 |</span>
+<span id="cb17-7"><a href="primus.html#cb17-7"></a>  2. | TRN-000327173-EAP-IDN-TYA1A   23may2018 23:57:27 |</span>
+<span id="cb17-8"><a href="primus.html#cb17-8"></a>  3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |</span>
+<span id="cb17-9"><a href="primus.html#cb17-9"></a>     +--------------------------------------------------+</span></code></pre></div>
+<p>A transaction is <em>rejected</em> when at least one of the three parties rejected the
+database. Finally, a transaction is <em>approved</em> only until all three parties have
+approved it into the system.</p>
+<div class="rmdbox rmdtip">
+<p>We recommend you understand the basic functionality of the <code>primus</code> command by
+reading the help file (type <code>help primus</code> in Stata).</p>
 </div>
-The actual references that you can use in your bibliography are the list of titles in the center of the page. You can add a reference manually clicking on the green icon with a white plus and fill-in the fields manually:
-<div class="figure" style="text-align: center"><span id="fig:newitem"></span>
-<img src="images/newitem.png" alt="New Item" width="974" />
-<p class="caption">
-Figure 8.11: New Item
-</p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:newitem2"></span>
-<img src="images/newitem2.png" alt="Fill-in fields manually" width="960" />
-<p class="caption">
-Figure 8.12: Fill-in fields manually
-</p>
+<div id="checking-the-data-uploaded-to-primus" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Checking the data uploaded to PRIMUS</h2>
+<p>The real first step to check the quality of the recently uploaded data into
+PRIMUS is to download the basic estimates of each data and compare them with our
+own. These estimates are the mean in PPP, poverty headcount, poverty gap,
+severity, and the Watts index. In practice, we only use the mean in PPP values
+and the poverty headcount to confirm that everything is ok.</p>
+<p>The <code>primus</code> command allows us to download the estimates of each transaction,
+but it has to be done one by one. Fortunately, the <code>pcn</code> command downloads all
+the estimates of pending transactions for us and properly stores them in the
+folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code>. You only need to type,</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="primus.html#cb18-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
+<p>In addition, <code>pcn</code> checks the date in which you’re downloading the estimates and
+keep only those transactions that have been uploaded for the next spring or
+annual-meetings release. For instance, assume that today, 2020-11-20, you want
+to see the estimates of pending transactions in RPIMUS. Since annual meetings
+take place around September, <code>pcn</code> assumes you are interested in the estimates
+for the Spring-meetings release, around March next year. Thus, it will filtered
+the results from <code>primus</code>, keeping only those transactions that were uploaded
+from November 2020. Now it is likely that the PRIMUS system has not been opened
+for uploading new data in November, as it usually opens around December and
+MMMM. Thus, it is likely that you will find and error saying
+<code>There is no pending data in PRIMUS for the combination of country/years selected</code>.</p>
+<p>You can load the recently-downloaded estimates by typing,</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="primus.html#cb19-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code></pre></div>
+<p>Now, you have to check whether the new estimated make sense. Once way to that is
+to follow this do-file,
+<code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do</code>.
+This is not necessarily the best way to check that the data is ok, but you could
+get good ideas from it.</p>
 </div>
-Although it is useful to add references manually (e.g. blogposts, websites), the nicest feature of Zotero is its connector with Chrome (and other browsers) that allows you to add references directly from Google Scholar or other websites with referencing information. Once you look for a reference in google scholar, you can right-click on the page and select “Save to Zotero”, select the document you want to add and click OK, you will see that the document has been added to your collection (right-hand side corner)
-<div class="figure" style="text-align: center"><span id="fig:scholar1"></span>
-<img src="images/addscholar.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 8.13: Add reference from Google Scholar
-</p>
+<div id="confirming-and-approving-data-in-primus" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Confirming and approving data in PRIMUS</h2>
+<p>Once you have checked that the estimates of pending transactions make sense, you
+need to approve them. As explained above in <a href="primus.html#approve-primus"><strong>??</strong></a>, the approval
+on PRIMUS requires the consent of three parties. The PovcalNet team had the
+responsibility to approve on behalf or two of them, DECDG and DECRG. This
+process can easily done with the code below, which can be found in this file,
+<code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="primus.html#cb20-1"></a><span class="co">/*==================================================</span></span>
+<span id="cb20-2"><a href="primus.html#cb20-2"></a><span class="co">0: Program set up</span></span>
+<span id="cb20-3"><a href="primus.html#cb20-3"></a><span class="co">==================================================*/</span></span>
+<span id="cb20-4"><a href="primus.html#cb20-4"></a><span class="kw">version</span> 14</span>
+<span id="cb20-5"><a href="primus.html#cb20-5"></a><span class="kw">drop</span> <span class="dt">_all</span></span>
+<span id="cb20-6"><a href="primus.html#cb20-6"></a></span>
+<span id="cb20-7"><a href="primus.html#cb20-7"></a>*---------- Modify <span class="kw">this</span></span>
+<span id="cb20-8"><a href="primus.html#cb20-8"></a><span class="kw">local</span> excl = <span class="st">&quot;BRA SOM SSD&quot;</span> <span class="co">// countries to exclude </span></span>
+<span id="cb20-9"><a href="primus.html#cb20-9"></a><span class="kw">local</span> excl = <span class="st">&quot;&quot;</span> <span class="co">// countries to exclude </span></span>
+<span id="cb20-10"><a href="primus.html#cb20-10"></a></span>
+<span id="cb20-11"><a href="primus.html#cb20-11"></a><span class="co">/*==================================================</span></span>
+<span id="cb20-12"><a href="primus.html#cb20-12"></a><span class="co">Load data</span></span>
+<span id="cb20-13"><a href="primus.html#cb20-13"></a><span class="co">==================================================*/</span></span>
+<span id="cb20-14"><a href="primus.html#cb20-14"></a></span>
+<span id="cb20-15"><a href="primus.html#cb20-15"></a>primus <span class="kw">query</span>, overalls(pending)</span>
+<span id="cb20-16"><a href="primus.html#cb20-16"></a><span class="co">//------------Cut off date</span></span>
+<span id="cb20-17"><a href="primus.html#cb20-17"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2019-12-01&quot;</span> <span class="co">// filter date (december last year)</span></span>
+<span id="cb20-18"><a href="primus.html#cb20-18"></a><span class="kw">local</span> filtdate = <span class="st">&quot;2020-02-18&quot;</span> <span class="co">// filter date (surveys uploaded by Minh)</span></span>
+<span id="cb20-19"><a href="primus.html#cb20-19"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">&quot;`filtdate&#39;&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb20-20"><a href="primus.html#cb20-20"></a></span>
+<span id="cb20-21"><a href="primus.html#cb20-21"></a><span class="co">//------------Select username</span></span>
+<span id="cb20-22"><a href="primus.html#cb20-22"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb424681&quot;</span>) {</span>
+<span id="cb20-23"><a href="primus.html#cb20-23"></a>  <span class="kw">local</span> dep = <span class="st">&quot;povcalnet&quot;</span></span>
+<span id="cb20-24"><a href="primus.html#cb20-24"></a>}</span>
+<span id="cb20-25"><a href="primus.html#cb20-25"></a><span class="kw">else</span> <span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">&quot;`c(username)&#39;&quot;</span>) == <span class="st">&quot;wb384996&quot;</span>) {</span>
+<span id="cb20-26"><a href="primus.html#cb20-26"></a>  <span class="kw">local</span> dep = <span class="st">&quot;decdg&quot;</span></span>
+<span id="cb20-27"><a href="primus.html#cb20-27"></a>}</span>
+<span id="cb20-28"><a href="primus.html#cb20-28"></a><span class="kw">else</span> {</span>
+<span id="cb20-29"><a href="primus.html#cb20-29"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">&quot;you don&#39;t have rights to run this code&quot;</span></span>
+<span id="cb20-30"><a href="primus.html#cb20-30"></a>  <span class="kw">break</span></span>
+<span id="cb20-31"><a href="primus.html#cb20-31"></a>}</span>
+<span id="cb20-32"><a href="primus.html#cb20-32"></a></span>
+<span id="cb20-33"><a href="primus.html#cb20-33"></a><span class="kw">tab</span> <span class="ot">`dep&#39;</span></span>
+<span id="cb20-34"><a href="primus.html#cb20-34"></a><span class="kw">keep</span> <span class="kw">if</span> <span class="ot">`dep&#39;</span> == <span class="st">&quot;PENDING&quot;</span></span>
+<span id="cb20-35"><a href="primus.html#cb20-35"></a></span>
+<span id="cb20-36"><a href="primus.html#cb20-36"></a><span class="kw">if</span> (<span class="st">&quot;`excl&#39;&quot;</span> != <span class="st">&quot;&quot;</span>) {</span>
+<span id="cb20-37"><a href="primus.html#cb20-37"></a>  <span class="kw">local</span> excl: <span class="fu">subinstr</span> <span class="kw">local</span> excl <span class="st">&quot; &quot;</span> <span class="st">&quot;|&quot;</span>, <span class="ot">all</span></span>
+<span id="cb20-38"><a href="primus.html#cb20-38"></a>  <span class="kw">drop</span> <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">&quot;`country&#39;&quot;</span>, <span class="st">&quot;`excl&#39;&quot;</span>) </span>
+<span id="cb20-39"><a href="primus.html#cb20-39"></a>}</span>
+<span id="cb20-40"><a href="primus.html#cb20-40"></a></span>
+<span id="cb20-41"><a href="primus.html#cb20-41"></a><span class="co">/*=================================================</span></span>
+<span id="cb20-42"><a href="primus.html#cb20-42"></a><span class="co">Approve (Do NOT modify)</span></span>
+<span id="cb20-43"><a href="primus.html#cb20-43"></a><span class="co">==================================================*/</span></span>
+<span id="cb20-44"><a href="primus.html#cb20-44"></a></span>
+<span id="cb20-45"><a href="primus.html#cb20-45"></a><span class="kw">local</span> n = _N</span>
+<span id="cb20-46"><a href="primus.html#cb20-46"></a><span class="kw">preserve</span> </span>
+<span id="cb20-47"><a href="primus.html#cb20-47"></a><span class="kw">qui</span> <span class="kw">foreach</span> i <span class="kw">of</span> numlist 1/<span class="ot">`n&#39;</span> {</span>
+<span id="cb20-48"><a href="primus.html#cb20-48"></a>  <span class="kw">restore</span>, <span class="kw">preserve</span></span>
+<span id="cb20-49"><a href="primus.html#cb20-49"></a>  <span class="kw">local</span> country = country[<span class="ot">`i&#39;</span>]</span>
+<span id="cb20-50"><a href="primus.html#cb20-50"></a>  <span class="kw">local</span> <span class="fu">year</span>    = <span class="fu">year</span>[<span class="ot">`i&#39;</span>]</span>
+<span id="cb20-51"><a href="primus.html#cb20-51"></a>  <span class="kw">local</span> id      = transaction_id[<span class="ot">`i&#39;</span>]</span>
+<span id="cb20-52"><a href="primus.html#cb20-52"></a>  </span>
+<span id="cb20-53"><a href="primus.html#cb20-53"></a>  </span>
+<span id="cb20-54"><a href="primus.html#cb20-54"></a>  <span class="kw">noi</span> disp <span class="kw">in</span> <span class="fu">y</span> <span class="st">&quot;primus action, tranxid(`id&#39;) decision(approved)&quot;</span></span>
+<span id="cb20-55"><a href="primus.html#cb20-55"></a>  cap <span class="kw">noi</span> primus action, tranxid(<span class="ot">`id&#39;</span>) decision(approved)</span>
+<span id="cb20-56"><a href="primus.html#cb20-56"></a>  <span class="kw">if</span> (<span class="dt">_rc</span>) <span class="kw">noi</span> disp <span class="st">&quot;problem with `id&#39;&quot;</span></span>
+<span id="cb20-57"><a href="primus.html#cb20-57"></a>}</span></code></pre></div>
+<p>Basically, this is what you need to do with this file.</p>
+<ol style="list-style-type: decimal">
+<li>Modify <code>local excl</code> in case you do <strong>not</strong> want to approve one or several
+countries.</li>
+<li>Modify <code>local filtdate</code> in which you select the date from which you want to
+approve transactions.</li>
+<li>Make sure at least two people approve. One on behalf of “povcalnet” (which
+is the alias used for DECRG) and another one on behalf of “decdg.”</li>
+<li>PRIMUS has a double-confirmation process, so you need to “confirm” and then
+“approve” the transaction. For that, you only need to change the option
+<code>decision()</code> from <code>approved</code> to <code>confirmed</code>.</li>
+</ol>
+<p>For some reason unknown reason, the PRIMUS system did not accept the approval of
+some transactions. If this happens again, you need to talk to <a href="mailto:mnguyen3@worldbank.org">Minh Cong
+Nguyen</a>, so he can do the approval manually.</p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:scholar2"></span>
-<img src="images/addscholar2.png" alt="Add reference from Google Scholar" width="957" />
-<p class="caption">
-Figure 8.14: Add reference from Google Scholar
-</p>
+<div id="update-microdata-repository" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Update microdata repository</h2>
+<p>As you have learned from reading the help file of the <code>primus</code>, you can interact
+with PRIMUS mainly transaction by transaction. This could be a little tedious,
+so we have facilitated and automated the process in <code>pcn</code> via the subcommand
+<code>primus</code>. we highly recommend you read the short help file of <code>pcn primus</code> by
+typing <code>help pcn_primus</code> in Stata or typing <code>help pcn</code> and then click on the
+corresponding hyperlink.</p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:scholar3"></span>
-<img src="images/addscholar3.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 8.15: Add reference from Google Scholar
-</p>
-</div>
-<p>You can save the references also from other pages that have embedded referencing metadata (this is not always well organized, so probably better to use scholar).</p>
-<div class="figure" style="text-align: center"><span id="fig:other1"></span>
-<img src="images/othersite.png" alt="Add reference from other website" width="976" />
-<p class="caption">
-Figure 8.16: Add reference from other website
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:other2"></span>
-<img src="images/othersite1.png" alt="Add reference from other website" width="972" />
-<p class="caption">
-Figure 8.17: Add reference from other website
-</p>
-</div>
-The final step in the basic use of Zotero is to add the saved references in your word document. This are the main steps. Open your Word document and click on add citation from the Zotero menu, and the icon “Add/Edit Citation” on the left-hand side corner:
-<div class="figure" style="text-align: center"><span id="fig:fromword"></span>
-<img src="images/fromword.png" alt="Add/Edit citation from Word" width="958" />
-<p class="caption">
-Figure 8.18: Add/Edit citation from Word
-</p>
-</div>
-You will be asked to choose the citation format:
-<div class="figure" style="text-align: center"><span id="fig:fromword1"></span>
-<img src="images/fromword1.png" alt="Choose citation style" width="966" />
-<p class="caption">
-Figure 8.19: Choose citation style
-</p>
-</div>
-You can now type the document you want to add (search by author name, title or date-all work):
-<div class="figure" style="text-align: center"><span id="fig:fromword2"></span>
-<img src="images/fromword2.png" alt="Select citation" width="956" />
-<p class="caption">
-Figure 8.20: Select citation
-</p>
-</div>
-You will see that the citation has been added to your document. The final step is to add your full bibliography.
-<div class="figure" style="text-align: center"><span id="fig:fromword3"></span>
-<img src="images/fromword3.png" alt="Add bibliography from Word" width="957" />
-<p class="caption">
-Figure 8.21: Add bibliography from Word
-</p>
-</div>
-This is the final result:
-<div class="figure" style="text-align: center"><span id="fig:fromword4"></span>
-<img src="images/fromword4.png" alt="Citation and bibliography added to document" width="956" />
-<p class="caption">
-Figure 8.22: Citation and bibliography added to document
-</p>
-</div>
+<div id="section" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> </h2>
 
 </div>
 </div>
@@ -496,8 +567,8 @@ Figure 8.22: Citation and bibliography added to document
           </div>
         </div>
       </div>
-<a href="DMGroupData.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualization-flourish-studio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prepare.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="DMGroupData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
