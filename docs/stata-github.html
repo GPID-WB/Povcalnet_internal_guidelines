@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="master-file.html"/>
-<link rel="next" href="data-visualization-flourish-studio.html"/>
+<link rel="prev" href="collaboration-in-git.html"/>
+<link rel="next" href="prepare.html"/>
 <script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -326,184 +326,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Thanks.&nbsp;</p>
  </div>
-<div id="referencing-software-zotero" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Referencing software: Zotero</h1>
-<p>This chapter presents how to work with Zotero as a referencing software to be used in documents relevant for the Povcalnet team. The goal of using this software is to be able to collaborate on libraries that can be used in different documents by team members. Zotero is a free source referencing software with many convenient feature and that can be used within Word documents.</p>
-<div id="installation" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Installation</h2>
-<p>The first step is to open your browser and download Zotero <a href="https://www.zotero.org/download/">Here</a>.
-Once you click on download, you will double click on the Zotero.exe file and still wil start the installation. You will be asked to give admin credentials as the installation process starts. Notice that, after you have put in your credentials the pop-up window will give you a red message reading: “This software requires elevation”. However, once you click on Cancel you will see that the installation can continue even without providing admin credentials, you will see this screen:</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero1"></span>
-<img src="images/zotero1.png" alt="Click on Next" width="960" />
-<p class="caption">
-Figure 12.1: Click on Next
-</p>
+<div id="stata-github" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Stata and Github</h1>
+<p>In this chapter you will learn how to install Stata commands from Github and how
+to make sure your Stata session reads packages that you have cloned from a
+github repository. In this chapter, we refer to any general command a <code>ccc</code> but
+that means any Stata command name.</p>
+<div id="stata-ado-path" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Stata ado-path</h2>
+<p>The first thing to understand is how Stata read <em>Stata commands</em> commonly saved
+in .ado file. When you execute a command, Stata begins to search for your
+command in a set of directories stored in the global macro <code>${S_ADO}</code>, which is
+known in Stata documentation as the <strong>ado-path</strong>. An easy way to see your
+<strong>ado-path</strong> is to type, <code>adopath</code> in Stata.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="stata-github.html#cb6-1"></a><span class="kw">adopath</span></span>
+<span id="cb6-2"><a href="stata-github.html#cb6-2"></a>. <span class="kw">adopath</span></span>
+<span id="cb6-3"><a href="stata-github.html#cb6-3"></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">&quot;C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/&quot;</span></span>
+<span id="cb6-4"><a href="stata-github.html#cb6-4"></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">&quot;C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do\site/&quot;</span></span>
+<span id="cb6-5"><a href="stata-github.html#cb6-5"></a>  [3]              <span class="st">&quot;.&quot;</span></span>
+<span id="cb6-6"><a href="stata-github.html#cb6-6"></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do\personal/&quot;</span></span>
+<span id="cb6-7"><a href="stata-github.html#cb6-7"></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do\plus/&quot;</span></span>
+<span id="cb6-8"><a href="stata-github.html#cb6-8"></a>  [6]  (OLDPLACE)  <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do/&quot;</span></span></code></pre></div>
+<p>The folder in which you placed your ado-file is important because Stata searches
+throughout the folders in the order in which they are listed in the
+<strong>ado-path</strong>. So, if you have two ado-files with the same name, one in
+<code>c:\ado\personal</code> and the other one in <code>c:\ado\plus</code>, Stata will compile the one
+in <code>c:\ado\personal</code> because it is listed first. To make sure where Stata is
+reading from your ado-file, you can type <code>which ccc</code>, where <code>ccc</code> stands for the
+name of your command</p>
+<p>The directories above are the basic set with which Stata comes from factory.
+These directories are standard in Stata and you can’t modify them. However, you
+can add more directories to the ado-path so that Stata searched for your
+ado-files in there too. One thing to keep in mind is that the <code>sysdir</code> in Stata
+provides similar information than <code>adopath</code>, but it is not the same. The
+<code>sysdir</code> command only lists the basic directories in which Stata searches for
+commands, but not the ones you have added manually. Also, for some reason, it
+does not list the directories in the order in which Stata search inside of them.
+Notice that when you type <code>sysdir</code> the directories are not numbered, in contrast
+to <code>adopath</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="stata-github.html#cb7-1"></a>. <span class="ot">sysdir</span></span>
+<span id="cb7-2"><a href="stata-github.html#cb7-2"></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata16\</span>
+<span id="cb7-3"><a href="stata-github.html#cb7-3"></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata16\ado\base\</span>
+<span id="cb7-4"><a href="stata-github.html#cb7-4"></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata16\ado\site\</span>
+<span id="cb7-5"><a href="stata-github.html#cb7-5"></a>    <span class="ot">PLUS</span>:  c:\ado\plus\</span>
+<span id="cb7-6"><a href="stata-github.html#cb7-6"></a><span class="ot">PERSONAL</span>:  c:\ado\<span class="kw">personal</span>\</span>
+<span id="cb7-7"><a href="stata-github.html#cb7-7"></a>OLDPLACE:  c:\ado\</span></code></pre></div>
 </div>
-<p>Click on next and follow the instructions for installation. Once the installation is complete you will be asked to Open Zotero. This is how the main screen looks like.</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero2"></span>
-<img src="images/zotero2.png" alt="Zotero" width="960" />
-<p class="caption">
-Figure 12.2: Zotero
-</p>
+<div id="install-github" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Installing commands from Github</h2>
+<p>You have probably install commands in Stata using the directive
+<code>ssc install ccc</code>. Each time you do that, Stata will save the command in the
+<code>c:\ado\plus\?\</code> folder, where <code>?</code> stands for the first letter of the name of
+the command you installed. Now, when you install a command from <code>github</code>, Stata
+will save it in <code>c:\ado\plus\?\</code> as well.</p>
+<p>In order for a command to be installed properly, Stata needs to find, besides
+your ado-file/s and any other installation file, two additional files,
+<code>stata.toc</code> and <code>ccc.pkg</code>. We won’t go into the details of these files, but the
+important thing to keep in mind is that as long as those files are in the folder
+in which your ado-file is, Stata can install it via the command <code>net</code>. We
+provide you with three different methods to install commands from github.</p>
+<div id="recommended-method" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Recommended method</h3>
+<p><a href="https://github.com/haghish">E. F.Haghish</a> created a very nice Stata wrapper of
+the <code>net</code> command to install commands from github. Not surprisingly, the name of
+the command is <code>github</code>. And, as you have probably guessed it, you will install
+it using the <code>net</code> if you don’t have <code>github</code> installed already.</p>
+<p>In order to install the <code>github</code> command, you can type</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata-github.html#cb8-1"></a>net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span></code></pre></div>
+<p>Now, you can install any command in Github typing <code>github install username/ccc</code>
+, where <code>username</code> refers to the Github username and <code>ccc</code> to the name of the
+Github repository, which, ideally, should be the same as the name of your
+command.</p>
+<p>We recommend this method because the github command has many other features that
+allow you to manipulate and manage your Stata commands downloaded from Github.
+You can see some of the features in the <a href="https://haghish.github.io/github/"><code>github</code> command
+page</a>.</p>
+</div>
+<div id="alternative-method" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Alternative method</h3>
+<p>Alternatively you could install the package by typing the following line,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="stata-github.html#cb9-1"></a>net install ccc, from(<span class="st">&quot;https://raw.githubusercontent.com/username/ccc/master/&quot;</span>)</span></code></pre></div>
+<p>This method is reliable but you don’t get the nice features of the <code>github</code>
+command. Please note that the path is a little different from the one you used
+to install the <code>github</code> command. Just notice the where <code>username/ccc</code> part is in
+the link.</p>
+</div>
+<div id="last-resource-method" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Last resource method</h3>
+<p><em>use only this method just in case the methods above do not work due to firewall
+restrictions</em></p>
+<ol style="list-style-type: decimal">
+<li>Click on the green icon “Clone or Download” above.</li>
+<li>Download the package as a zip. It does not really matter where you save this
+zip file.</li>
+<li>Extract the files with extension <code>.ado</code> and <code>.sthlp</code> only, and place them in
+the directory <code>c:/ado/plus/p</code>. You need to place them in this folder only.
+Otherwise, it won’t work.</li>
+<li>type <code>discard</code> in Stata.</li>
+</ol>
 </div>
 </div>
-<div id="extensions-and-add-ons" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Extensions and add-ons</h2>
-<p><em>Chrome Connector</em></p>
-<p>Before we proceed with how to use Zotero, we need to install additional features that can make our life easier.
-One nice feature is that Zotero can save your references directly from your browser and import them to your library. This is how you install the browser connector.</p>
-<p>When you visited the download page, you saw that you can add the Chrome Zotero Connetor <a href="https://www.zotero.org/download/">Here</a>. The Chrome Connector will automatically sense content as you browse the web and allow you to save it to Zotero with a single click. You can also download the connectors for other browsers following the link highlighted in the figure below.
-Click on install Chrome Connector</p>
-<div class="figure" style="text-align: center"><span id="fig:addons1"></span>
-<img src="images/addons1.png" alt="Install Chrome connector" width="960" />
-<p class="caption">
-Figure 12.3: Install Chrome connector
-</p>
-</div>
-<p>You will be sent to this page, where you should click on “Add to Chrome”:</p>
-<div class="figure" style="text-align: center"><span id="fig:addons2"></span>
-<img src="images/addons2.png" alt="Add Chrome extension" width="960" />
-<p class="caption">
-Figure 12.4: Add Chrome extension
-</p>
-</div>
-<p>Once you open a new tab/window in Chrome you will see the Zotero extension as a “Z” in the top right corner of the taskbar:</p>
-<div class="figure" style="text-align: center"><span id="fig:chrome1"></span>
-<img src="images/chrome1.jpg" alt="Zotero extension in Chrome homepage" width="960" />
-<p class="caption">
-Figure 12.5: Zotero extension in Chrome homepage
-</p>
-</div>
-<p><em>Word Add-ons</em>
-Another nice feature is that Zotero can be used within Word documents. This means that you can add your references and bibliography using two easy to install add-ons. Here is how to install them.</p>
-First, you open Zotero on you computer and click on Tools-&gt; Add-ons:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon1"></span>
-<img src="images/wordaddon1.png" alt="Word Add-ons" width="972" />
-<p class="caption">
-Figure 12.6: Word Add-ons
-</p>
-</div>
-In the “Add-ons Manager” window you will see two add-ons: Zotero LibreOffice Integration and Zotero Word for Windows. Both need to be enabled (this might require for you to contact IT to request admin credentials).
-<div class="figure" style="text-align: center"><span id="fig:wordaddon2"></span>
-<img src="images/wordaddon2.png" alt="Add-ons Manager" width="784" />
-<p class="caption">
-Figure 12.7: Add-ons Manager
-</p>
-</div>
-Once the add-ons are installed you will be able to see a Zotero menu in your Word document:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon3"></span>
-<img src="images/wordaddon3.png" alt="Zotero menu in Word" width="960" />
-<p class="caption">
-Figure 12.8: Zotero menu in Word
-</p>
-</div>
-</div>
-<div id="adding-references-to-zotero" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Adding references to Zotero</h2>
-The next step is to see how to organize references in Zotero and add them. First let’s take a look at how Zotero home screen is organized. On the top left-hand side corner you can see how your library is organized. Each Collection is a subset of the library and can be managed based on your preferences, in this case each project has a collection.
-<div class="figure" style="text-align: center"><span id="fig:zoterohome1"></span>
-<img src="images/zoterohome1.png" alt="Zotero Home Page" width="960" />
-<p class="caption">
-Figure 12.9: Zotero Home Page
-</p>
-</div>
-You can add a new collection using the New collection icon:
-<div class="figure" style="text-align: center"><span id="fig:newcoll"></span>
-<img src="images/newcollection.png" alt="New Collection" width="979" />
-<p class="caption">
-Figure 12.10: New Collection
-</p>
-</div>
-The actual references that you can use in your bibliography are the list of titles in the center of the page. You can add a reference manually clicking on the green icon with a white plus and fill-in the fields manually:
-<div class="figure" style="text-align: center"><span id="fig:newitem"></span>
-<img src="images/newitem.png" alt="New Item" width="974" />
-<p class="caption">
-Figure 12.11: New Item
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:newitem2"></span>
-<img src="images/newitem2.png" alt="Fill-in fields manually" width="960" />
-<p class="caption">
-Figure 12.12: Fill-in fields manually
-</p>
-</div>
-Although it is useful to add references manually (e.g. blogposts, websites), the nicest feature of Zotero is its connector with Chrome (and other browsers) that allows you to add references directly from Google Scholar or other websites with referencing information. Once you look for a reference in google scholar, you can right-click on the page and select “Save to Zotero”, select the document you want to add and click OK, you will see that the document has been added to your collection (right-hand side corner)
-<div class="figure" style="text-align: center"><span id="fig:scholar1"></span>
-<img src="images/addscholar.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 12.13: Add reference from Google Scholar
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:scholar2"></span>
-<img src="images/addscholar2.png" alt="Add reference from Google Scholar" width="957" />
-<p class="caption">
-Figure 12.14: Add reference from Google Scholar
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:scholar3"></span>
-<img src="images/addscholar3.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 12.15: Add reference from Google Scholar
-</p>
-</div>
-<p>You can save the references also from other pages that have embedded referencing metadata (this is not always well organized, so probably better to use scholar).</p>
-<div class="figure" style="text-align: center"><span id="fig:other1"></span>
-<img src="images/othersite.png" alt="Add reference from other website" width="976" />
-<p class="caption">
-Figure 12.16: Add reference from other website
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:other2"></span>
-<img src="images/othersite1.png" alt="Add reference from other website" width="972" />
-<p class="caption">
-Figure 12.17: Add reference from other website
-</p>
-</div>
-The final step in the basic use of Zotero is to add the saved references in your word document. This are the main steps. Open your Word document and click on add citation from the Zotero menu, and the icon “Add/Edit Citation” on the left-hand side corner:
-<div class="figure" style="text-align: center"><span id="fig:fromword"></span>
-<img src="images/fromword.png" alt="Add/Edit citation from Word" width="958" />
-<p class="caption">
-Figure 12.18: Add/Edit citation from Word
-</p>
-</div>
-You will be asked to choose the citation format:
-<div class="figure" style="text-align: center"><span id="fig:fromword1"></span>
-<img src="images/fromword1.png" alt="Choose citation style" width="966" />
-<p class="caption">
-Figure 12.19: Choose citation style
-</p>
-</div>
-You can now type the document you want to add (search by author name, title or date-all work):
-<div class="figure" style="text-align: center"><span id="fig:fromword2"></span>
-<img src="images/fromword2.png" alt="Select citation" width="956" />
-<p class="caption">
-Figure 12.20: Select citation
-</p>
-</div>
-You will see that the citation has been added to your document. The final step is to add your full bibliography.
-<div class="figure" style="text-align: center"><span id="fig:fromword3"></span>
-<img src="images/fromword3.png" alt="Add bibliography from Word" width="957" />
-<p class="caption">
-Figure 12.21: Add bibliography from Word
-</p>
-</div>
-This is the final result:
-<div class="figure" style="text-align: center"><span id="fig:fromword4"></span>
-<img src="images/fromword4.png" alt="Citation and bibliography added to document" width="956" />
-<p class="caption">
-Figure 12.22: Citation and bibliography added to document
-</p>
-</div>
+<div id="cloning-the-stata-command-repository" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Cloning the Stata command repository</h2>
+<p>When you install a command from Github of from SSC, you expect the command to
+work properly and you will find no issues with it. Unfortunately, that is not
+always the case. So, you will need to make the modifications by yourself. When
+this happens you should <strong>never modify the version in <code>c:/ado/plus/p</code></strong>. That
+folder is just for installed ado-files, not for editing ado-files. When Stata is
+updated, you will loose all your changes. Also, it <em>not a good practice</em>.</p>
+<p>The solution to this problem is to clone the repository in a <strong>different
+folder</strong>, modify it in there and then push it back, creating a <a href="collaboration-in-git.html#how-to-work-with-pull-requests">pull
+request</a>.</p>
+<p>In order to set up Stata correctly to read ado-files in the cloned folder, make
+sure to follow the instructions in <a href="https://randrescastaneda.rbind.io/post/github-using-stata/">this
+blog</a>.</p>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="master-file.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualization-flourish-studio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="collaboration-in-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prepare.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

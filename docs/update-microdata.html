@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 8 Update microdata in the P drive | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
   <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 8 Update microdata in the P drive | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Referencing software: Zotero | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 8 Update microdata in the P drive | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="master-file.html"/>
-<link rel="next" href="data-visualization-flourish-studio.html"/>
+<link rel="prev" href="primus.html"/>
+<link rel="next" href="create-pcb-files.html"/>
 <script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -326,174 +326,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Thanks.&nbsp;</p>
  </div>
-<div id="referencing-software-zotero" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Referencing software: Zotero</h1>
-<p>This chapter presents how to work with Zotero as a referencing software to be used in documents relevant for the Povcalnet team. The goal of using this software is to be able to collaborate on libraries that can be used in different documents by team members. Zotero is a free source referencing software with many convenient feature and that can be used within Word documents.</p>
-<div id="installation" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Installation</h2>
-<p>The first step is to open your browser and download Zotero <a href="https://www.zotero.org/download/">Here</a>.
-Once you click on download, you will double click on the Zotero.exe file and still wil start the installation. You will be asked to give admin credentials as the installation process starts. Notice that, after you have put in your credentials the pop-up window will give you a red message reading: “This software requires elevation”. However, once you click on Cancel you will see that the installation can continue even without providing admin credentials, you will see this screen:</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero1"></span>
-<img src="images/zotero1.png" alt="Click on Next" width="960" />
-<p class="caption">
-Figure 12.1: Click on Next
-</p>
+<div id="update-microdata" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Update microdata in the P drive</h1>
+<p>Before explaining how to update our P drive, we need to explain first what the P
+drive is. As it is explained in the first part of section <a href="folder-strcutures.html#network-drive">2.1</a>,
+the microdata resides in the folder <code>01.PovcalNet/01.Vintage_control</code>.
+<strong>(…complete this part)</strong></p>
+<p>Once everything has been approved in PRIMUS (see section <a href="primus.html#approve-primus">7.4</a>),
+we can download the most recent data into our system using the directive
+<code>pcn download gpwg</code>. The process of downloading the data can be done in several
+ways, but we suggest two.</p>
+<div id="update-all-the-years-of-selected-countries" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Update all the years of selected countries</h2>
+<p>This method is easy but highly inefficient because it could be the case that
+only one year of a particular country was updated or added, but the code below
+will check if all the years of that country have changed as well. You may think
+that it does not make sense to download the data in this way, and you might be
+write. However, downloading only the data that you need is not as
+straightforward as you may think, and thus the code is a little more complex
+than usual. We recommend this inefficient way because it is easy to implement,
+and <code>pcn</code> is smart enough to verify whether or not the microdata has changed in
+a particular year, so in case it has not changed, <code>pcn</code> won’t update the
+microdata file in the P drive. It is just slow because it need to load the
+microdata from <code>datalibweb</code>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb21-1"><a href="update-microdata.html#cb21-1"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
+<span id="cb21-2"><a href="update-microdata.html#cb21-2"></a></span>
+<span id="cb21-3"><a href="update-microdata.html#cb21-3"></a><span class="kw">local</span> filtdate <span class="st">&quot;2020-04-01&quot;</span>   <span class="co">// change this date YYYY-MM-DD</span></span>
+<span id="cb21-4"><a href="update-microdata.html#cb21-4"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">&quot;`filtdate&#39;&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb21-5"><a href="update-microdata.html#cb21-5"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
+<span id="cb21-6"><a href="update-microdata.html#cb21-6"></a></span>
+<span id="cb21-7"><a href="update-microdata.html#cb21-7"></a>pcn download gpwg, countr(<span class="ot">`countries&#39;</span>) </span></code></pre></div>
+<p>The code above is simple. First, you query all the approved transactions in
+PRIMUS using the <code>primus</code> command and keep only those transactions that were
+created after the date in the local <code>filtdate</code>. Then, save in the local
+<code>countries</code> the code of the countries that changed and parse it into the <code>pcn</code>
+call. From there, <code>pcn</code> will take of the update and will provide you with a file
+summarizing what data was updated, added, skipped, or failed.</p>
 </div>
-<p>Click on next and follow the instructions for installation. Once the installation is complete you will be asked to Open Zotero. This is how the main screen looks like.</p>
-<div class="figure" style="text-align: center"><span id="fig:zotero2"></span>
-<img src="images/zotero2.png" alt="Zotero" width="960" />
-<p class="caption">
-Figure 12.2: Zotero
-</p>
-</div>
-</div>
-<div id="extensions-and-add-ons" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Extensions and add-ons</h2>
-<p><em>Chrome Connector</em></p>
-<p>Before we proceed with how to use Zotero, we need to install additional features that can make our life easier.
-One nice feature is that Zotero can save your references directly from your browser and import them to your library. This is how you install the browser connector.</p>
-<p>When you visited the download page, you saw that you can add the Chrome Zotero Connetor <a href="https://www.zotero.org/download/">Here</a>. The Chrome Connector will automatically sense content as you browse the web and allow you to save it to Zotero with a single click. You can also download the connectors for other browsers following the link highlighted in the figure below.
-Click on install Chrome Connector</p>
-<div class="figure" style="text-align: center"><span id="fig:addons1"></span>
-<img src="images/addons1.png" alt="Install Chrome connector" width="960" />
-<p class="caption">
-Figure 12.3: Install Chrome connector
-</p>
-</div>
-<p>You will be sent to this page, where you should click on “Add to Chrome”:</p>
-<div class="figure" style="text-align: center"><span id="fig:addons2"></span>
-<img src="images/addons2.png" alt="Add Chrome extension" width="960" />
-<p class="caption">
-Figure 12.4: Add Chrome extension
-</p>
-</div>
-<p>Once you open a new tab/window in Chrome you will see the Zotero extension as a “Z” in the top right corner of the taskbar:</p>
-<div class="figure" style="text-align: center"><span id="fig:chrome1"></span>
-<img src="images/chrome1.jpg" alt="Zotero extension in Chrome homepage" width="960" />
-<p class="caption">
-Figure 12.5: Zotero extension in Chrome homepage
-</p>
-</div>
-<p><em>Word Add-ons</em>
-Another nice feature is that Zotero can be used within Word documents. This means that you can add your references and bibliography using two easy to install add-ons. Here is how to install them.</p>
-First, you open Zotero on you computer and click on Tools-&gt; Add-ons:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon1"></span>
-<img src="images/wordaddon1.png" alt="Word Add-ons" width="972" />
-<p class="caption">
-Figure 12.6: Word Add-ons
-</p>
-</div>
-In the “Add-ons Manager” window you will see two add-ons: Zotero LibreOffice Integration and Zotero Word for Windows. Both need to be enabled (this might require for you to contact IT to request admin credentials).
-<div class="figure" style="text-align: center"><span id="fig:wordaddon2"></span>
-<img src="images/wordaddon2.png" alt="Add-ons Manager" width="784" />
-<p class="caption">
-Figure 12.7: Add-ons Manager
-</p>
-</div>
-Once the add-ons are installed you will be able to see a Zotero menu in your Word document:
-<div class="figure" style="text-align: center"><span id="fig:wordaddon3"></span>
-<img src="images/wordaddon3.png" alt="Zotero menu in Word" width="960" />
-<p class="caption">
-Figure 12.8: Zotero menu in Word
-</p>
-</div>
-</div>
-<div id="adding-references-to-zotero" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Adding references to Zotero</h2>
-The next step is to see how to organize references in Zotero and add them. First let’s take a look at how Zotero home screen is organized. On the top left-hand side corner you can see how your library is organized. Each Collection is a subset of the library and can be managed based on your preferences, in this case each project has a collection.
-<div class="figure" style="text-align: center"><span id="fig:zoterohome1"></span>
-<img src="images/zoterohome1.png" alt="Zotero Home Page" width="960" />
-<p class="caption">
-Figure 12.9: Zotero Home Page
-</p>
-</div>
-You can add a new collection using the New collection icon:
-<div class="figure" style="text-align: center"><span id="fig:newcoll"></span>
-<img src="images/newcollection.png" alt="New Collection" width="979" />
-<p class="caption">
-Figure 12.10: New Collection
-</p>
-</div>
-The actual references that you can use in your bibliography are the list of titles in the center of the page. You can add a reference manually clicking on the green icon with a white plus and fill-in the fields manually:
-<div class="figure" style="text-align: center"><span id="fig:newitem"></span>
-<img src="images/newitem.png" alt="New Item" width="974" />
-<p class="caption">
-Figure 12.11: New Item
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:newitem2"></span>
-<img src="images/newitem2.png" alt="Fill-in fields manually" width="960" />
-<p class="caption">
-Figure 12.12: Fill-in fields manually
-</p>
-</div>
-Although it is useful to add references manually (e.g. blogposts, websites), the nicest feature of Zotero is its connector with Chrome (and other browsers) that allows you to add references directly from Google Scholar or other websites with referencing information. Once you look for a reference in google scholar, you can right-click on the page and select “Save to Zotero”, select the document you want to add and click OK, you will see that the document has been added to your collection (right-hand side corner)
-<div class="figure" style="text-align: center"><span id="fig:scholar1"></span>
-<img src="images/addscholar.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 12.13: Add reference from Google Scholar
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:scholar2"></span>
-<img src="images/addscholar2.png" alt="Add reference from Google Scholar" width="957" />
-<p class="caption">
-Figure 12.14: Add reference from Google Scholar
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:scholar3"></span>
-<img src="images/addscholar3.png" alt="Add reference from Google Scholar" width="956" />
-<p class="caption">
-Figure 12.15: Add reference from Google Scholar
-</p>
-</div>
-<p>You can save the references also from other pages that have embedded referencing metadata (this is not always well organized, so probably better to use scholar).</p>
-<div class="figure" style="text-align: center"><span id="fig:other1"></span>
-<img src="images/othersite.png" alt="Add reference from other website" width="976" />
-<p class="caption">
-Figure 12.16: Add reference from other website
-</p>
-</div>
-<div class="figure" style="text-align: center"><span id="fig:other2"></span>
-<img src="images/othersite1.png" alt="Add reference from other website" width="972" />
-<p class="caption">
-Figure 12.17: Add reference from other website
-</p>
-</div>
-The final step in the basic use of Zotero is to add the saved references in your word document. This are the main steps. Open your Word document and click on add citation from the Zotero menu, and the icon “Add/Edit Citation” on the left-hand side corner:
-<div class="figure" style="text-align: center"><span id="fig:fromword"></span>
-<img src="images/fromword.png" alt="Add/Edit citation from Word" width="958" />
-<p class="caption">
-Figure 12.18: Add/Edit citation from Word
-</p>
-</div>
-You will be asked to choose the citation format:
-<div class="figure" style="text-align: center"><span id="fig:fromword1"></span>
-<img src="images/fromword1.png" alt="Choose citation style" width="966" />
-<p class="caption">
-Figure 12.19: Choose citation style
-</p>
-</div>
-You can now type the document you want to add (search by author name, title or date-all work):
-<div class="figure" style="text-align: center"><span id="fig:fromword2"></span>
-<img src="images/fromword2.png" alt="Select citation" width="956" />
-<p class="caption">
-Figure 12.20: Select citation
-</p>
-</div>
-You will see that the citation has been added to your document. The final step is to add your full bibliography.
-<div class="figure" style="text-align: center"><span id="fig:fromword3"></span>
-<img src="images/fromword3.png" alt="Add bibliography from Word" width="957" />
-<p class="caption">
-Figure 12.21: Add bibliography from Word
-</p>
-</div>
-This is the final result:
-<div class="figure" style="text-align: center"><span id="fig:fromword4"></span>
-<img src="images/fromword4.png" alt="Citation and bibliography added to document" width="956" />
-<p class="caption">
-Figure 12.22: Citation and bibliography added to document
-</p>
-</div>
+<div id="update-file-by-file" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Update file by file</h2>
+<p>The code below may seem complex, but it is actually very simple. The MATA
+function only reads the observation <code>i</code> in the <code>wile</code> loop of the
+already-filtered data obtained with <code>primus query</code>. You can see that it is very
+similar to code above but the main difference is that it goes file by file
+instead checking all the files of one single country. Keep in mind the
+following,</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="update-microdata.html#cb22-1"></a><span class="co">//========================================================</span></span>
+<span id="cb22-2"><a href="update-microdata.html#cb22-2"></a><span class="co">// Mata function</span></span>
+<span id="cb22-3"><a href="update-microdata.html#cb22-3"></a><span class="co">//========================================================</span></span>
+<span id="cb22-4"><a href="update-microdata.html#cb22-4"></a>cap <span class="kw">mata</span>: <span class="kw">mata</span> <span class="kw">drop</span> get_ind()</span>
+<span id="cb22-5"><a href="update-microdata.html#cb22-5"></a><span class="kw">mata</span>:</span>
+<span id="cb22-6"><a href="update-microdata.html#cb22-6"></a>    <span class="kw">void</span> get_ind(<span class="fu">string</span> <span class="fu">matrix</span> R) {</span>
+<span id="cb22-7"><a href="update-microdata.html#cb22-7"></a>        i = strtoreal(st_local(<span class="st">&quot;i&quot;</span>))</span>
+<span id="cb22-8"><a href="update-microdata.html#cb22-8"></a>        vars = tokens(st_local(<span class="st">&quot;varlist&quot;</span>))</span>
+<span id="cb22-9"><a href="update-microdata.html#cb22-9"></a>        <span class="kw">for</span> (j =1; j&lt;=<span class="bn">cols</span>(vars); j++) {</span>
+<span id="cb22-10"><a href="update-microdata.html#cb22-10"></a>            st_local(vars[j], R[i,j] )</span>
+<span id="cb22-11"><a href="update-microdata.html#cb22-11"></a>        }</span>
+<span id="cb22-12"><a href="update-microdata.html#cb22-12"></a>    } <span class="co">// end of IDs variables</span></span>
+<span id="cb22-13"><a href="update-microdata.html#cb22-13"></a>    </span>
+<span id="cb22-14"><a href="update-microdata.html#cb22-14"></a><span class="kw">end</span></span>
+<span id="cb22-15"><a href="update-microdata.html#cb22-15"></a></span>
+<span id="cb22-16"><a href="update-microdata.html#cb22-16"></a><span class="co">//========================================================</span></span>
+<span id="cb22-17"><a href="update-microdata.html#cb22-17"></a><span class="co">// PRIMUS query</span></span>
+<span id="cb22-18"><a href="update-microdata.html#cb22-18"></a><span class="co">//========================================================</span></span>
+<span id="cb22-19"><a href="update-microdata.html#cb22-19"></a></span>
+<span id="cb22-20"><a href="update-microdata.html#cb22-20"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
+<span id="cb22-21"><a href="update-microdata.html#cb22-21"></a></span>
+<span id="cb22-22"><a href="update-microdata.html#cb22-22"></a><span class="kw">local</span> filtdate <span class="st">&quot;2020-04-01&quot;</span>   <span class="co">// change this date</span></span>
+<span id="cb22-23"><a href="update-microdata.html#cb22-23"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">&quot;`filtdate&#39;&quot;</span>, <span class="st">&quot;YMD&quot;</span>)</span>
+<span id="cb22-24"><a href="update-microdata.html#cb22-24"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
+<span id="cb22-25"><a href="update-microdata.html#cb22-25"></a><span class="kw">tostring</span> <span class="dt">_all</span>, <span class="kw">replace</span></span>
+<span id="cb22-26"><a href="update-microdata.html#cb22-26"></a></span>
+<span id="cb22-27"><a href="update-microdata.html#cb22-27"></a><span class="kw">local</span> <span class="kw">varlist</span> = <span class="st">&quot;country year&quot;</span></span>
+<span id="cb22-28"><a href="update-microdata.html#cb22-28"></a><span class="kw">mata</span>: R = st_sdata(.,tokens(st_local(<span class="st">&quot;varlist&quot;</span>)))</span>
+<span id="cb22-29"><a href="update-microdata.html#cb22-29"></a><span class="kw">local</span> n = _N</span>
+<span id="cb22-30"><a href="update-microdata.html#cb22-30"></a></span>
+<span id="cb22-31"><a href="update-microdata.html#cb22-31"></a><span class="co">//========================================================</span></span>
+<span id="cb22-32"><a href="update-microdata.html#cb22-32"></a><span class="co">// Loop over surveys</span></span>
+<span id="cb22-33"><a href="update-microdata.html#cb22-33"></a><span class="co">//========================================================</span></span>
+<span id="cb22-34"><a href="update-microdata.html#cb22-34"></a></span>
+<span id="cb22-35"><a href="update-microdata.html#cb22-35"></a><span class="kw">local</span> i = 0</span>
+<span id="cb22-36"><a href="update-microdata.html#cb22-36"></a><span class="kw">while</span> (<span class="ot">`i&#39;</span> &lt; <span class="ot">`n&#39;</span>) {</span>
+<span id="cb22-37"><a href="update-microdata.html#cb22-37"></a>    <span class="kw">local</span> ++i</span>
+<span id="cb22-38"><a href="update-microdata.html#cb22-38"></a>    </span>
+<span id="cb22-39"><a href="update-microdata.html#cb22-39"></a>    <span class="kw">mata</span>: get_ind(R)</span>
+<span id="cb22-40"><a href="update-microdata.html#cb22-40"></a>    disp <span class="st">&quot;`country&#39; - `year&#39;&quot;</span></span>
+<span id="cb22-41"><a href="update-microdata.html#cb22-41"></a>    pcn download gpwg, countr(<span class="ot">`country&#39;</span>)  <span class="fu">year</span>(<span class="ot">`year&#39;</span>)</span>
+<span id="cb22-42"><a href="update-microdata.html#cb22-42"></a>    </span>
+<span id="cb22-43"><a href="update-microdata.html#cb22-43"></a>}</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>This code works fine if you copy it and paste it in your do-file editor and
+then run it directly in Stata. If you save it and then execute it from a
+different file using either <code>do</code> or <code>run</code> it will fail because the <code>end</code>
+command at the end of the MATA code will finish the process.</li>
+<li>This code could implemented in another subcommand of <code>pcn</code> without running
+into the problem above. However, we don’t have time to do this change. The
+MATA function already exists in the <code>pcn</code> repository and it is being used by
+other <code>pcn</code> subroutines like <code>pcn_download_gpwg</code>. If you want to contribute
+to the <code>pcn</code> by adding this feature, you’re more than welcome!
+😉.</li>
+<li>The only problem with this approach is that you won’t get at the end of the
+process a nice file summarizing what happened with each file. This could
+also be fixed if this routine is included as part of <code>pcn</code>.</li>
+</ol>
 
 </div>
 </div>
@@ -502,8 +437,8 @@ Figure 12.22: Citation and bibliography added to document
           </div>
         </div>
       </div>
-<a href="master-file.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualization-flourish-studio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="primus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-pcb-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

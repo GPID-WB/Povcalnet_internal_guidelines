@@ -7,7 +7,7 @@
 #
 # file <- "data_visualization_flourish.Rmd"
 
-file <- "prepare_data_for_update.Rmd"
+file <- "primus.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 

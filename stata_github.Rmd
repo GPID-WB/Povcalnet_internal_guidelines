@@ -1,0 +1,137 @@
+# Stata and Github {#stata-github}
+
+In this chapter you will learn how to install Stata commands from Github and how
+to make sure your Stata session reads packages that you have cloned from a
+github repository. In this chapter, we refer to any general command a `ccc` but
+that means any Stata command name.
+
+## Stata ado-path
+
+The first thing to understand is how Stata read *Stata commands* commonly saved
+in .ado file. When you execute a command, Stata begins to search for your
+command in a set of directories stored in the global macro `${S_ADO}`, which is
+known in Stata documentation as the **ado-path**. An easy way to see your
+**ado-path** is to type, `adopath` in Stata.
+
+```{stata, eval = FALSE}
+adopath
+. adopath
+  [1]  (BASE)      "C:\Program Files\Stata16\ado\base/"
+  [2]  (SITE)      "C:\Program Files\Stata16\ado\site/"
+  [3]              "."
+  [4]  (PERSONAL)  "c:\ado\personal/"
+  [5]  (PLUS)      "c:\ado\plus/"
+  [6]  (OLDPLACE)  "c:\ado/"
+
+```
+
+The folder in which you placed your ado-file is important because Stata searches
+throughout the folders in the order in which they are listed in the
+**ado-path**. So, if you have two ado-files with the same name, one in
+`c:\ado\personal` and the other one in `c:\ado\plus`, Stata will compile the one
+in `c:\ado\personal` because it is listed first. To make sure where Stata is
+reading from your ado-file, you can type `which ccc`, where `ccc` stands for the
+name of your command
+
+The directories above are the basic set with which Stata comes from factory.
+These directories are standard in Stata and you can't modify them. However, you
+can add more directories to the ado-path so that Stata searched for your
+ado-files in there too. One thing to keep in mind is that the `sysdir` in Stata
+provides similar information than `adopath`, but it is not the same. The
+`sysdir` command only lists the basic directories in which Stata searches for
+commands, but not the ones you have added manually. Also, for some reason, it
+does not list the directories in the order in which Stata search inside of them.
+Notice that when you type `sysdir` the directories are not numbered, in contrast
+to `adopath`.
+
+```{stata, eval = FALSE}
+. sysdir
+   STATA:  C:\Program Files\Stata16\
+    BASE:  C:\Program Files\Stata16\ado\base\
+    SITE:  C:\Program Files\Stata16\ado\site\
+    PLUS:  c:\ado\plus\
+PERSONAL:  c:\ado\personal\
+OLDPLACE:  c:\ado\
+
+```
+
+## Installing commands from Github {#install-github}
+
+You have probably install commands in Stata using the directive
+`ssc install ccc`. Each time you do that, Stata will save the command in the
+`c:\ado\plus\?\` folder, where `?` stands for the first letter of the name of
+the command you installed. Now, when you install a command from `github`, Stata
+will save it in `c:\ado\plus\?\` as well.
+
+In order for a command to be installed properly, Stata needs to find, besides
+your ado-file/s and any other installation file, two additional files,
+`stata.toc` and `ccc.pkg`. We won't go into the details of these files, but the
+important thing to keep in mind is that as long as those files are in the folder
+in which your ado-file is, Stata can install it via the command `net`. We
+provide you with three different methods to install commands from github.
+
+### Recommended method
+
+[E. F.Haghish](https://github.com/haghish) created a very nice Stata wrapper of
+the `net` command to install commands from github. Not surprisingly, the name of
+the command is `github`. And, as you have probably guessed it, you will install
+it using the `net` if you don't have `github` installed already.
+
+In order to install the `github` command, you can type
+
+```{stata, eval = FALSE}
+net install github, from("https://haghish.github.io/github/")
+```
+
+Now, you can install any command in Github typing `github install username/ccc`
+, where `username` refers to the Github username and `ccc` to the name of the
+Github repository, which, ideally, should be the same as the name of your
+command.
+
+We recommend this method because the github command has many other features that
+allow you to manipulate and manage your Stata commands downloaded from Github.
+You can see some of the features in the [`github` command
+page](https://haghish.github.io/github/).
+
+### Alternative method
+
+Alternatively you could install the package by typing the following line,
+
+```{stata, eval = FALSE}
+net install ccc, from("https://raw.githubusercontent.com/username/ccc/master/")
+```
+
+This method is reliable but you don't get the nice features of the `github`
+command. Please note that the path is a little different from the one you used
+to install the `github` command. Just notice the where `username/ccc` part is in
+the link.
+
+### Last resource method
+
+*use only this method just in case the methods above do not work due to firewall
+restrictions*
+
+1.  Click on the green icon "Clone or Download" above.
+2.  Download the package as a zip. It does not really matter where you save this
+    zip file.
+3.  Extract the files with extension `.ado` and `.sthlp` only, and place them in
+    the directory `c:/ado/plus/p`. You need to place them in this folder only.
+    Otherwise, it won't work.
+4.  type `discard` in Stata.
+
+## Cloning the Stata command repository
+
+When you install a command from Github of from SSC, you expect the command to
+work properly and you will find no issues with it. Unfortunately, that is not
+always the case. So, you will need to make the modifications by yourself. When
+this happens you should **never modify the version in `c:/ado/plus/p`**. That
+folder is just for installed ado-files, not for editing ado-files. When Stata is
+updated, you will loose all your changes. Also, it *not a good practice*.
+
+The solution to this problem is to clone the repository in a **different
+folder**, modify it in there and then push it back, creating a [pull
+request](#how-to-work-with-pull-requests).
+
+In order to set up Stata correctly to read ado-files in the cloned folder, make
+sure to follow the instructions in [this
+blog](https://randrescastaneda.rbind.io/post/github-using-stata/).

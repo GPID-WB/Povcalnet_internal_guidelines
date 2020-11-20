@@ -26,3 +26,15 @@ load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded pack
 
 if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
 inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+

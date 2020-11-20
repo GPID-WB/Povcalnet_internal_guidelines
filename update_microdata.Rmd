@@ -1,0 +1,111 @@
+# Update microdata in the P drive {#update-microdata}
+
+Before explaining how to update our P drive, we need to explain first what the P
+drive is. As it is explained in the first part of section \@ref(network-drive),
+the microdata resides in the folder `01.PovcalNet/01.Vintage_control`.
+**(...complete this part)**
+
+Once everything has been approved in PRIMUS (see section \@ref(approve-primus)),
+we can download the most recent data into our system using the directive
+`pcn download gpwg`. The process of downloading the data can be done in several
+ways, but we suggest two.
+
+## Update all the years of selected countries
+
+This method is easy but highly inefficient because it could be the case that
+only one year of a particular country was updated or added, but the code below
+will check if all the years of that country have changed as well. You may think
+that it does not make sense to download the data in this way, and you might be
+write. However, downloading only the data that you need is not as
+straightforward as you may think, and thus the code is a little more complex
+than usual. We recommend this inefficient way because it is easy to implement,
+and `pcn` is smart enough to verify whether or not the microdata has changed in
+a particular year, so in case it has not changed, `pcn` won't update the
+microdata file in the P drive. It is just slow because it need to load the
+microdata from `datalibweb`.
+
+```{stata, eval = FALSE}
+primus query, overallstatus(approved)
+
+local filtdate "2020-04-01"   // change this date YYYY-MM-DD
+keep if  date_modified >= clock("`filtdate'", "YMD")
+levelsof country, local(countries) clean  // code of countries that changed
+
+pcn download gpwg, countr(`countries') 
+```
+
+The code above is simple. First, you query all the approved transactions in
+PRIMUS using the `primus` command and keep only those transactions that were
+created after the date in the local `filtdate`. Then, save in the local
+`countries` the code of the countries that changed and parse it into the `pcn`
+call. From there, `pcn` will take of the update and will provide you with a file
+summarizing what data was updated, added, skipped, or failed.
+
+## Update file by file
+
+The code below may seem complex, but it is actually very simple. The MATA
+function only reads the observation `i` in the `wile` loop of the
+already-filtered data obtained with `primus query`. You can see that it is very
+similar to code above but the main difference is that it goes file by file
+instead checking all the files of one single country. Keep in mind the
+following,
+
+```{stata, eval = FALSE}
+//========================================================
+// Mata function
+//========================================================
+cap mata: mata drop get_ind()
+mata:
+	void get_ind(string matrix R) {
+		i = strtoreal(st_local("i"))
+		vars = tokens(st_local("varlist"))
+		for (j =1; j<=cols(vars); j++) {
+			st_local(vars[j], R[i,j] )
+		}
+	} // end of IDs variables
+	
+end
+
+//========================================================
+// PRIMUS query
+//========================================================
+
+primus query, overallstatus(approved)
+
+local filtdate "2020-04-01"   // change this date
+keep if  date_modified >= clock("`filtdate'", "YMD")
+levelsof country, local(countries) clean  // code of countries that changed
+tostring _all, replace
+
+local varlist = "country year"
+mata: R = st_sdata(.,tokens(st_local("varlist")))
+local n = _N
+
+//========================================================
+// Loop over surveys
+//========================================================
+
+local i = 0
+while (`i' < `n') {
+	local ++i
+	
+	mata: get_ind(R)
+	disp "`country' - `year'"
+	pcn download gpwg, countr(`country')  year(`year')
+	
+}
+```
+
+1.  This code works fine if you copy it and paste it in your do-file editor and
+    then run it directly in Stata. If you save it and then execute it from a
+    different file using either `do` or `run` it will fail because the `end`
+    command at the end of the MATA code will finish the process.
+2.  This code could implemented in another subcommand of `pcn` without running
+    into the problem above. However, we don't have time to do this change. The
+    MATA function already exists in the `pcn` repository and it is being used by
+    other `pcn` subroutines like `pcn_download_gpwg`. If you want to contribute
+    to the `pcn` by adding this feature, you're more than welcome!
+    `r emo::ji("wink")`.
+3.  The only problem with this approach is that you won't get at the end of the
+    process a nice file summarizing what happened with each file. This could
+    also be fixed if this routine is included as part of `pcn`.
