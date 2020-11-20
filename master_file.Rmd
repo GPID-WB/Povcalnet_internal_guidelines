@@ -1,0 +1,5 @@
+# Update the Master file {#master-file}
+
+In the previous chapters we have seen how to update different sheets of the
+master file. In this chapter we basically summarize and reference to the
+specific location in which we explain how to update each spreadsheet.

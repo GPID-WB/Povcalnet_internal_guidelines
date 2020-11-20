@@ -72,7 +72,7 @@ you have done that, make sure to send an email with your suggestions for
 improvement to [Ani Rudra Silwal](mailto:asilwal@worldbank.org), copying to the
 D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).
 
-## Understanding PRIMUS
+## Understanding PRIMUS {#understand-primus}
 
 Each time a database is uploaded into PRIMUS, it is assigned to a transaction
 ID. During the uploading process (or right after it has finished), the three
@@ -81,7 +81,7 @@ or corrected data and approve them or reject them in the system. Depending on
 the decision of all the parties, each transaction will take one of three
 possible status, *pending*, *approved,* or *rejected*.
 
-::: {#approve-primus .rmdbox .rmdwarning}
+::: {.rmdbox .rmdwarning}
 As of today (2020-11-20), there is no one who represents DECRG. So, the
 approving process might be different and it will need to be changed in the
 PRIMUS system. Please check.
@@ -147,7 +147,8 @@ and the poverty headcount to confirm that everything is ok.
 The `primus` command allows us to download the estimates of each transaction,
 but it has to be done one by one. Fortunately, the `pcn` command downloads all
 the estimates of pending transactions for us and properly stores them in the
-folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\`. You only need to type,
+folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` `r emo::ji("tada")`
+`r emo::ji("tada")` . You only need to type,
 
 ```{stata, eval = FALSE}
 pcn primus pending, down(estimates)
@@ -174,15 +175,21 @@ pcn primus pending, load(estimates)
 Now, you have to check whether the new estimated make sense. Once way to that is
 to follow this do-file,
 `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do`.
-This is not necessarily the best way to check that the data is ok, but you could
-get good ideas from it.
 
-## Confirming and approving data in PRIMUS
+::: {.rmdbox .rmdimportant}
+You do NOT need to check the estimates with the working data (wrk) as it is
+suggested in the do-file above. The PovcalNet System is now fully integrated
+with the `datalibweb` system, so the CPI, PPP, and microdata will be always the
+same. The best you can do at this stage is to make sure the estimates in PRIMUS
+make sense at the country level.
+:::
+
+## Confirming and approving data in PRIMUS {#approve-primus}
 
 Once you have checked that the estimates of pending transactions make sense, you
-need to approve them. As explained above in \@ref(approve-primus), the approval
-on PRIMUS requires the consent of three parties. The PovcalNet team had the
-responsibility to approve on behalf or two of them, DECDG and DECRG. This
+need to approve them. As explained in section \@ref(understand-primus), the
+approval on PRIMUS requires the consent of three parties. The PovcalNet team had
+the responsibility to approve on behalf or two of them, DECDG and DECRG. This
 process can easily done with the code below, which can be found in this file,
 `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\approve\primus_approve.do`.
 
@@ -258,17 +265,6 @@ Basically, this is what you need to do with this file.
     "approve" the transaction. For that, you only need to change the option
     `decision()` from `approved` to `confirmed`.
 
-For some reason unknown reason, the PRIMUS system did not accept the approval of
-some transactions. If this happens again, you need to talk to [Minh Cong
+For some unknown reason, the PRIMUS system did not accept the approval of some
+transactions. If this happens again, you need to talk to [Minh Cong
 Nguyen](mailto:mnguyen3@worldbank.org), so he can do the approval manually.
-
-## Update microdata repository
-
-As you have learned from reading the help file of the `primus`, you can interact
-with PRIMUS mainly transaction by transaction. This could be a little tedious,
-so we have facilitated and automated the process in `pcn` via the subcommand
-`primus`. we highly recommend you read the short help file of `pcn primus` by
-typing `help pcn_primus` in Stata or typing `help pcn` and then click on the
-corresponding hyperlink.
-
-## 

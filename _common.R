@@ -32,4 +32,9 @@ if (!("Statamarkdown"  %in% installed.packages())) {
 }
 library(Statamarkdown)
 
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
 

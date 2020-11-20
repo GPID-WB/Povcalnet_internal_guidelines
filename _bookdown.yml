@@ -19,8 +19,12 @@ rmd_files: [
   "stata_github.Rmd",
 
   "prepare_data_for_update.Rmd",
+  "lis_data.Rmd",
   "PRIMUS.Rmd",
+  "update_microdata.Rmd",
+  "pcb_files.Rmd",
   "DM_Group_data.Rmd",
+  "master_file.Rmd",
 
   "Referencing_using_Zotero.Rmd",
   "data_visualization_flourish.Rmd",
