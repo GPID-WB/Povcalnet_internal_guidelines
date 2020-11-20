@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols</title>
+  <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
+  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="PovcalNet guidelines and protocols for internal workflow" />
+  <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Stata and Github | PovcalNet Internal Guidelines and Protocols" />
+  
+  <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
+  
+
+<meta name="author" content="PovcalNet team" />
+<meta name="author" content="Development economics" />
+<meta name="author" content="World Bank Group" />
+
+
+<meta name="date" content="2020-11-20" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="collaboration-in-git.html"/>
+<link rel="next" href="prepare.html"/>
+<script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script async defer src="https://hypothes.is/embed.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">PovcalNet Internal Guidelines</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="part"><span><b>I Basics</b></span></li>
+<li class="chapter" data-level="2" data-path="folder-strcutures.html"><a href="folder-strcutures.html"><i class="fa fa-check"></i><b>2</b> Folder Strcutures</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#network-drive"><i class="fa fa-check"></i><b>2.1</b> Network Drive</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#steps"><i class="fa fa-check"></i><b>2.1.1</b> Steps to map drives</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#server"><i class="fa fa-check"></i><b>2.2</b> Remote server connection</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#connect"><i class="fa fa-check"></i><b>2.2.1</b> Steps to connect to the server</a></li>
+<li class="chapter" data-level="2.2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#map-network-drive-in-the-server"><i class="fa fa-check"></i><b>2.2.2</b> Map Network drive in the server</a></li>
+<li class="chapter" data-level="2.2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#folder-strcuture-in-the-server."><i class="fa fa-check"></i><b>2.2.3</b> Folder strcuture in the server.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#onedrive"><i class="fa fa-check"></i><b>2.3</b> OneDrive</a></li>
+<li class="chapter" data-level="2.4" data-path="folder-strcutures.html"><a href="folder-strcutures.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
+<li class="chapter" data-level="2.4.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.1</b> Initial Set up</a></li>
+<li class="chapter" data-level="3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-git"><i class="fa fa-check"></i><b>3.2</b> Getting to know <span>Git</span></a></li>
+<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basics-of-git"><i class="fa fa-check"></i><b>3.3</b> Basics of Git</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-repositories"><i class="fa fa-check"></i><b>3.3.1</b> Working with repositories</a></li>
+<li class="chapter" data-level="3.3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#branching-and-merging"><i class="fa fa-check"></i><b>3.3.2</b> Branching and Merging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-smartgit"><i class="fa fa-check"></i><b>3.4</b> Getting to know <span>SmartGit</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#install-smartgit"><i class="fa fa-check"></i>Installation</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#integration-with-github"><i class="fa fa-check"></i>Integration with GitHub</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-your-toolbar"><i class="fa fa-check"></i>Organize your toolbar</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initialize-repos"><i class="fa fa-check"></i>Initialize Repos</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-repos"><i class="fa fa-check"></i>Clone Repos</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-repos-by-groups"><i class="fa fa-check"></i>Organize Repos by groups</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account"><i class="fa fa-check"></i>How do you link a repository that is your local machine to your GitHub account?</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basic-git-process"><i class="fa fa-check"></i>Basic Git process</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#important-keyboard-shortcut-process"><i class="fa fa-check"></i>Important keyboard shortcut process</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#nice-features-of-smartgit"><i class="fa fa-check"></i>Nice features of SmartGit</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#advanced-git-process"><i class="fa fa-check"></i><b>3.5</b> Advanced Git process</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#git-workflow"><i class="fa fa-check"></i><b>3.5.1</b> Git workflow</a></li>
+<li class="chapter" data-level="3.5.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-commits"><i class="fa fa-check"></i><b>3.5.2</b> How to work with commits</a></li>
+<li class="chapter" data-level="3.5.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#what-to-do-with-changes-you-dont-want-to-commit"><i class="fa fa-check"></i><b>3.5.3</b> What to do with changes you don’t want to commit</a></li>
+<li class="chapter" data-level="3.5.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-undo-stuff-in-the-git"><i class="fa fa-check"></i><b>3.5.4</b> How to undo stuff in the Git</a></li>
+<li class="chapter" data-level="3.5.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-deal-with-merge-conflicts"><i class="fa fa-check"></i><b>3.5.5</b> How to deal with merge conflicts</a></li>
+<li class="chapter" data-level="3.5.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-pull-requests"><i class="fa fa-check"></i><b>3.5.6</b> How to work with pull requests</a></li>
+<li class="chapter" data-level="3.5.7" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#dos-and-donts"><i class="fa fa-check"></i><b>3.5.7</b> DO’s and DONT’s</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.6</b> Getting to know <span>GitKraken</span></a>
+<ul>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i>GItKraken Interface</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#create-a-repository"><i class="fa fa-check"></i>Create a repository</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-a-repository"><i class="fa fa-check"></i>Clone a repository</a></li>
+<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-commits"><i class="fa fa-check"></i>Working with commits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stata-github.html"><a href="stata-github.html"><i class="fa fa-check"></i><b>4</b> Stata and Github</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stata-github.html"><a href="stata-github.html#stata-ado-path"><i class="fa fa-check"></i><b>4.1</b> Stata ado-path</a></li>
+<li class="chapter" data-level="4.2" data-path="stata-github.html"><a href="stata-github.html#install-github"><i class="fa fa-check"></i><b>4.2</b> Installing commands from Github</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="stata-github.html"><a href="stata-github.html#recommended-method"><i class="fa fa-check"></i><b>4.2.1</b> Recommended method</a></li>
+<li class="chapter" data-level="4.2.2" data-path="stata-github.html"><a href="stata-github.html#alternative-method"><i class="fa fa-check"></i><b>4.2.2</b> Alternative method</a></li>
+<li class="chapter" data-level="4.2.3" data-path="stata-github.html"><a href="stata-github.html#last-resource-method"><i class="fa fa-check"></i><b>4.2.3</b> Last resource method</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="stata-github.html"><a href="stata-github.html#cloning-the-stata-command-repository"><i class="fa fa-check"></i><b>4.3</b> Cloning the Stata command repository</a></li>
+</ul></li>
+<li class="part"><span><b>II PovcalNet Update</b></span></li>
+<li class="chapter" data-level="5" data-path="prepare.html"><a href="prepare.html"><i class="fa fa-check"></i><b>5</b> Prepare data for PovcalNet update</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="prepare.html"><a href="prepare.html#population"><i class="fa fa-check"></i><b>5.1</b> Population</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="prepare.html"><a href="prepare.html#raw-data"><i class="fa fa-check"></i><b>5.1.1</b> Raw data</a></li>
+<li class="chapter" data-level="5.1.2" data-path="prepare.html"><a href="prepare.html#update-master-file"><i class="fa fa-check"></i><b>5.1.2</b> update master file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="prepare.html"><a href="prepare.html#gdp-and-consumption-pce"><i class="fa fa-check"></i><b>5.2</b> GDP and Consumption (PCE)</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="prepare.html"><a href="prepare.html#raw-data-1"><i class="fa fa-check"></i><b>5.2.1</b> Raw data</a></li>
+<li class="chapter" data-level="5.2.2" data-path="prepare.html"><a href="prepare.html#update-master-file-1"><i class="fa fa-check"></i><b>5.2.2</b> Update master file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="prepare.html"><a href="prepare.html#cpi-and-ppp"><i class="fa fa-check"></i><b>5.3</b> CPI and PPP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="prepare.html"><a href="prepare.html#cpicaution"><i class="fa fa-check"></i><b>5.3.1</b> Word of Caution</a></li>
+<li class="chapter" data-level="5.3.2" data-path="prepare.html"><a href="prepare.html#different-cpi-datasets"><i class="fa fa-check"></i><b>5.3.2</b> Different CPI datasets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>6</b> PRIMUS</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>6.1</b> Interacting with PRIMUS</a>
+<ul>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
+<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
+<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="primus.html"><a href="primus.html#understanding-primus"><i class="fa fa-check"></i><b>6.2</b> Understanding PRIMUS</a></li>
+<li class="chapter" data-level="6.3" data-path="primus.html"><a href="primus.html#checking-the-data-uploaded-to-primus"><i class="fa fa-check"></i><b>6.3</b> Checking the data uploaded to PRIMUS</a></li>
+<li class="chapter" data-level="6.4" data-path="primus.html"><a href="primus.html#confirming-and-approving-data-in-primus"><i class="fa fa-check"></i><b>6.4</b> Confirming and approving data in PRIMUS</a></li>
+<li class="chapter" data-level="6.5" data-path="primus.html"><a href="primus.html#update-microdata-repository"><i class="fa fa-check"></i><b>6.5</b> Update microdata repository</a></li>
+<li class="chapter" data-level="6.6" data-path="primus.html"><a href="primus.html#section"><i class="fa fa-check"></i><b>6.6</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>7</b> Upload Group Data to the Data Management System</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="DMGroupData.html"><a href="DMGroupData.html#group-data"><i class="fa fa-check"></i><b>7.1</b> Group Data</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>7.1.1</b> Preparing the data</a></li>
+<li class="chapter" data-level="7.1.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>7.1.2</b> Naming convention</a></li>
+<li class="chapter" data-level="7.1.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>7.1.3</b> Upload the data.</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>7.2</b> Master File</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-master-file"><i class="fa fa-check"></i><b>7.2.1</b> Preparing the Master File</a></li>
+<li class="chapter" data-level="7.2.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-master-file"><i class="fa fa-check"></i><b>7.2.2</b> Upload Master file</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>7.3</b> Making sure everything works</a></li>
+</ul></li>
+<li class="part"><span><b>III Miscellaneous</b></span></li>
+<li class="chapter" data-level="8" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>8</b> Referencing software: Zotero</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>8.1</b> Installation</a></li>
+<li class="chapter" data-level="8.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>8.2</b> Extensions and add-ons</a></li>
+<li class="chapter" data-level="8.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>8.3</b> Adding references to Zotero</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>9</b> Data visualization: Flourish studio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>9.1</b> Sign in</a></li>
+<li class="chapter" data-level="9.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>9.2</b> Get started</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>A</b> Kihoon’s Handover</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="kihoons-handover.html"><a href="kihoons-handover.html#gpwg-process"><i class="fa fa-check"></i><b>A.1</b> GPWG process</a>
+<ul>
+<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-gpwg-data-and-generate-pcb-files"><i class="fa fa-check"></i>How to download surveys from the GPWG data and generate pcb files</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lis-data-process"><i class="fa fa-check"></i><b>A.2</b> LIS Data Process</a>
+<ul>
+<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-lis-data-server-and-generate-pcb-file"><i class="fa fa-check"></i>How to download surveys from the LIS data server and generate pcb file</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lac-historical-data"><i class="fa fa-check"></i><b>A.3</b> LAC Historical data</a></li>
+<li class="chapter" data-level="A.4" data-path="kihoons-handover.html"><a href="kihoons-handover.html#eca-historical-data"><i class="fa fa-check"></i><b>A.4</b> ECA Historical data</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/worldbank/Povcalnet_internal_guidelines" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PovcalNet Internal Guidelines and Protocols</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div class="rmdreview">This book is in <strong>Open Review</strong>. Please provide your feedback to make the book better for you and other readers. To add your annotation, do the following,&nbsp;
+<p>1. Create a free account in <a href="https://hypothes.is/signup">hypothes.is</a>&nbsp;&nbsp;</p>
+<p>2. Come back to this book and click on the upper-right-hand corner of the page to log in.&nbsp;</p>
+  <p>3. To make an annotation,&nbsp;<span style="background-color: #3297fd; color: white;">select some text</span> and then click on the pop-up menu.</p>
+ <p>4. To see the annotations of others, click the in the upper right hand corner of the page</p>
+
+<p>Thanks.&nbsp;</p>
+ </div>
+<div id="stata-github" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Stata and Github</h1>
+<p>In this chapter you will learn how to install Stata commands from Github and how
+to make sure your Stata session reads packages that you have cloned from a
+github repository. In this chapter, we refer to any general command a <code>ccc</code> but
+that means any Stata command name.</p>
+<div id="stata-ado-path" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Stata ado-path</h2>
+<p>The first thing to understand is how Stata read <em>Stata commands</em> commonly saved
+in .ado file. When you execute a command, Stata begins to search for your
+command in a set of directories stored in the global macro <code>${S_ADO}</code>, which is
+known in Stata documentation as the <strong>ado-path</strong>. An easy way to see your
+<strong>ado-path</strong> is to type, <code>adopath</code> in Stata.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="stata-github.html#cb6-1"></a><span class="kw">adopath</span></span>
+<span id="cb6-2"><a href="stata-github.html#cb6-2"></a>. <span class="kw">adopath</span></span>
+<span id="cb6-3"><a href="stata-github.html#cb6-3"></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">&quot;C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/&quot;</span></span>
+<span id="cb6-4"><a href="stata-github.html#cb6-4"></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">&quot;C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do\site/&quot;</span></span>
+<span id="cb6-5"><a href="stata-github.html#cb6-5"></a>  [3]              <span class="st">&quot;.&quot;</span></span>
+<span id="cb6-6"><a href="stata-github.html#cb6-6"></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do\personal/&quot;</span></span>
+<span id="cb6-7"><a href="stata-github.html#cb6-7"></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do\plus/&quot;</span></span>
+<span id="cb6-8"><a href="stata-github.html#cb6-8"></a>  [6]  (OLDPLACE)  <span class="st">&quot;c:</span><span class="ch">\a</span><span class="st">do/&quot;</span></span></code></pre></div>
+<p>The folder in which you placed your ado-file is important because Stata searches
+throughout the folders in the order in which they are listed in the
+<strong>ado-path</strong>. So, if you have two ado-files with the same name, one in
+<code>c:\ado\personal</code> and the other one in <code>c:\ado\plus</code>, Stata will compile the one
+in <code>c:\ado\personal</code> because it is listed first. To make sure where Stata is
+reading from your ado-file, you can type <code>which ccc</code>, where <code>ccc</code> stands for the
+name of your command</p>
+<p>The directories above are the basic set with which Stata comes from factory.
+These directories are standard in Stata and you can’t modify them. However, you
+can add more directories to the ado-path so that Stata searched for your
+ado-files in there too. One thing to keep in mind is that the <code>sysdir</code> in Stata
+provides similar information than <code>adopath</code>, but it is not the same. The
+<code>sysdir</code> command only lists the basic directories in which Stata searches for
+commands, but not the ones you have added manually. Also, for some reason, it
+does not list the directories in the order in which Stata search inside of them.
+Notice that when you type <code>sysdir</code> the directories are not numbered, in contrast
+to <code>adopath</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="stata-github.html#cb7-1"></a>. <span class="ot">sysdir</span></span>
+<span id="cb7-2"><a href="stata-github.html#cb7-2"></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata16\</span>
+<span id="cb7-3"><a href="stata-github.html#cb7-3"></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata16\ado\base\</span>
+<span id="cb7-4"><a href="stata-github.html#cb7-4"></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata16\ado\site\</span>
+<span id="cb7-5"><a href="stata-github.html#cb7-5"></a>    <span class="ot">PLUS</span>:  c:\ado\plus\</span>
+<span id="cb7-6"><a href="stata-github.html#cb7-6"></a><span class="ot">PERSONAL</span>:  c:\ado\<span class="kw">personal</span>\</span>
+<span id="cb7-7"><a href="stata-github.html#cb7-7"></a>OLDPLACE:  c:\ado\</span></code></pre></div>
+</div>
+<div id="install-github" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Installing commands from Github</h2>
+<p>You have probably install commands in Stata using the directive
+<code>ssc install ccc</code>. Each time you do that, Stata will save the command in the
+<code>c:\ado\plus\?\</code> folder, where <code>?</code> stands for the first letter of the name of
+the command you installed. Now, when you install a command from <code>github</code>, Stata
+will save it in <code>c:\ado\plus\?\</code> as well.</p>
+<p>In order for a command to be installed properly, Stata needs to find, besides
+your ado-file/s and any other installation file, two additional files,
+<code>stata.toc</code> and <code>ccc.pkg</code>. We won’t go into the details of these files, but the
+important thing to keep in mind is that as long as those files are in the folder
+in which your ado-file is, Stata can install it via the command <code>net</code>. We
+provide you with three different methods to install commands from github.</p>
+<div id="recommended-method" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Recommended method</h3>
+<p><a href="https://github.com/haghish">E. F.Haghish</a> created a very nice Stata wrapper of
+the <code>net</code> command to install commands from github. Not surprisingly, the name of
+the command is <code>github</code>. And, as you have probably guessed it, you will install
+it using the <code>net</code> if you don’t have <code>github</code> installed already.</p>
+<p>In order to install the <code>github</code> command, you can type</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata-github.html#cb8-1"></a>net install github, from(<span class="st">&quot;https://haghish.github.io/github/&quot;</span>)</span></code></pre></div>
+<p>Now, you can install any command in Github typing <code>github install username/ccc</code>
+, where <code>username</code> refers to the Github username and <code>ccc</code> to the name of the
+Github repository, which, ideally, should be the same as the name of your
+command.</p>
+<p>We recommend this method because the github command has many other features that
+allow you to manipulate and manage your Stata commands downloaded from Github.
+You can see some of the features in the <a href="https://haghish.github.io/github/"><code>github</code> command
+page</a>.</p>
+</div>
+<div id="alternative-method" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Alternative method</h3>
+<p>Alternatively you could install the package by typing the following line,</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="stata-github.html#cb9-1"></a>net install ccc, from(<span class="st">&quot;https://raw.githubusercontent.com/username/ccc/master/&quot;</span>)</span></code></pre></div>
+<p>This method is reliable but you don’t get the nice features of the <code>github</code>
+command. Please note that the path is a little different from the one you used
+to install the <code>github</code> command. Just notice the where <code>username/ccc</code> part is in
+the link.</p>
+</div>
+<div id="last-resource-method" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Last resource method</h3>
+<p><em>use only this method just in case the methods above do not work due to firewall
+restrictions</em></p>
+<ol style="list-style-type: decimal">
+<li>Click on the green icon “Clone or Download” above.</li>
+<li>Download the package as a zip. It does not really matter where you save this
+zip file.</li>
+<li>Extract the files with extension <code>.ado</code> and <code>.sthlp</code> only, and place them in
+the directory <code>c:/ado/plus/p</code>. You need to place them in this folder only.
+Otherwise, it won’t work.</li>
+<li>type <code>discard</code> in Stata.</li>
+</ol>
+</div>
+</div>
+<div id="cloning-the-stata-command-repository" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Cloning the Stata command repository</h2>
+<p>When you install a command from Github of from SSC, you expect the command to
+work properly and you will find no issues with it. Unfortunately, that is not
+always the case. So, you will need to make the modifications by yourself. When
+this happens you should <strong>never modify the version in <code>c:/ado/plus/p</code></strong>. That
+folder is just for installed ado-files, not for editing ado-files. When Stata is
+updated, you will loose all your changes. Also, it <em>not a good practice</em>.</p>
+<p>The solution to this problem is to clone the repository in a <strong>different
+folder</strong>, modify it in there and then push it back, creating a <a href="collaboration-in-git.html#how-to-work-with-pull-requests">pull
+request</a>.</p>
+<p>In order to set up Stata correctly to read ado-files in the cloned folder, make
+sure to follow the instructions in <a href="https://randrescastaneda.rbind.io/post/github-using-stata/">this
+blog</a>.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="collaboration-in-git.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prepare.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Povcalnet_internal_guidelines.pdf", "Povcalnet_internal_guidelines.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toolbar": {
+"position": "fixed"
+},
+"search": true,
+"info": true
+});
+});
+</script>
+
+</body>
+
+</html>
