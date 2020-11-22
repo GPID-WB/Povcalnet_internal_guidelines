@@ -6,8 +6,9 @@
 # file <- "Collaboration_in_Git.Rmd"
 #
 # file <- "data_visualization_flourish.Rmd"
+# file <- "primus.Rmd"
 
-file <- "primus.Rmd"
+file <- "pcb_files.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 

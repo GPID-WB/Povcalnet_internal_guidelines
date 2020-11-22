@@ -18,6 +18,7 @@ rmd_files: [
   "Collaboration_in_Git.Rmd",
   "stata_github.Rmd",
 
+  "intro_povcalnet_update.Rmd",
   "prepare_data_for_update.Rmd",
   "lis_data.Rmd",
   "PRIMUS.Rmd",

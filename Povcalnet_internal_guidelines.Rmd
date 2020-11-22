@@ -1,0 +1,670 @@
+---
+title: "PovcalNet Internal Guidelines and Protocols" 
+author: ["PovcalNet team", "Development economics", "World Bank Group"]
+date: "`r Sys.Date()`" 
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site 
+bibliography: [book.bib, packages.bib] 
+biblio-style: apalike 
+link-citations: yes
+links-as-notes: true
+colorlinks: yes
+github-repo: worldbank/Povcalnet_internal_guidelines
+description: "PovcalNet guidelines and protocols for internal workflow" 
+documentclass: book 
+---
+---
+title: "PovcalNet Internal Guidelines and Protocols" 
+author: ["PovcalNet team", "Development economics", "World Bank Group"]
+date: "`r Sys.Date()`" 
+knit: "bookdown::render_book"
+site: bookdown::bookdown_site 
+bibliography: [book.bib, packages.bib] 
+biblio-style: apalike 
+link-citations: yes
+links-as-notes: true
+colorlinks: yes
+github-repo: worldbank/Povcalnet_internal_guidelines
+description: "PovcalNet guidelines and protocols for internal workflow" 
+documentclass: book 
+---
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+
+# Welcome {-}
+
+This book contains the  guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you're required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.
+
+## Team {-}
+
+PovcalNet is a product of the World Bank's Development Economics Division, in particular the Development Data Group and the Development Research Group, and the Poverty and Equity Global Practice. This version of the PovcalNet software was designed by Qinghua Zhao. The global poverty monitoring database is managed by R. Andrés Castañeda, Dean Jolliffe, Christoph Lakner, Espen B. Prydz and Prem Sangraula, with assistance from Tony Fujs and Kihoon Lee. Assembly of these data is undertaken under the auspices of the Global Poverty Working Group which brings together the PovcalNet team and economy- and regional-level counterparts in the World Bank’s Poverty and Equity Global Practice, and which compiles economy level data and assesses these for international comparability. Overall guidance is provided by Francisco H. G. Ferreira, Senior Advisor in the Poverty and Inequality team of the Research Department, Haishan Fu, Director of the Data Group, and Carolina Sánchez-Páramo, Senior Director of the Poverty and Equity Global Practice. The founder of PovcalNet and former Director of Research, Martin Ravallion, provides continued input on the methodology adopted in PovcalNet. A great many colleagues at the World Bank have helped the team in obtaining the necessary data for PovcalNet. An important acknowledgement goes to the staff of over 100 governmental statistics offices that collected the primary household and price survey data. The Development Data Group has provided the 2011 consumption PPPs, population and other National Accounts data used here.
+
+<!--chapter:end:index.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+# Introduction {#intro}
+
+PovcalNet is an interactive computational tool that allows you to replicate the calculations made by the World Bank's researchers in estimating the extent of absolute poverty in the world. PovcalNet also allows you to calculate the poverty measures under different assumptions and to assemble the estimates using alternative economy groupings or for any set of individual economies of the user’s choosing. PovcalNet is self-contained; it has reliable built-in software that quickly does the relevant calculations for you from the built-in database.  
+
+In March 2019, the World Bank released revised estimates of global poverty from 1981 to 2015 based on 2011 PPPs. The new poverty estimates combine Purchasing Power Parity (PPP) exchange rates for household consumption from the 2011 International Comparison Program with data from more than one thousand five hundred household surveys across 164 economies in the world, including 26 high income economies not included in PovcalNet’s geographic regions. Over two million randomly sampled households were interviewed for the 2015 estimate, representing 65 percent of the population of the whole world.
+
+PovcalNet is the source of, and allows users to replicate, the Bank's official global, regional and internationally comparable economy level poverty estimates published in the [World Development Indicators](http://datatopics.worldbank.org/world-development-indicators/) and the [Poverty and Shared Prosperity report](https://openknowledge.worldbank.org/bitstream/handle/10986/25078/9781464809583.pdf). It also provides crucial inputs to the [Poverty and Equity Data Portal](http://povertydata.worldbank.org/poverty/home/). If you would like to duplicate the World Bank's regional poverty estimates please click the first button; or go to the second button to form your own group of economies. PovcalNet uses unit-record data whenever possible. For other cases, grouped distributions are used. New survey data become available to us on a continuous basis and these will be added to PovcalNet in regular updates.
+
+*PovcalNet was developed for the sole purpose of public replication of the World Bank’s poverty measures for its widely used international poverty lines, including $1.90 a day and $3.20 a day in 2011 PPP. The methods built into PovcalNet are considered reliable for that purpose. However, we cannot be confident that the methods work well for other purposes, including tracing out the entire distribution of income. We would especially warn that estimates of the densities near the bottom and top tails of the distribution could be quite unreliable, and no attempt has been made by the Bank’s staff to validate the tool for such purposes.*
+
+<!--chapter:end:intro.Rmd-->
+
+
+# (PART) Basics {-}
+# Folder Strcutures
+
+Placeholder
+
+
+## Network Drive
+### Steps to map drives {#steps}
+## Remote server connection {#server}
+### Steps to connect to the server {#connect}
+### Map Network drive in the server
+### Folder strcuture in the server. 
+## OneDrive
+## Additional topics to discuss {#add}
+### R or Stata or both?
+### GitHub
+
+<!--chapter:end:Folder_structure.Rmd-->
+
+
+# Collaboration in Git 
+
+Placeholder
+
+
+## Initial Set up
+## Getting to know [Git](https://git-scm.com/) 
+## Basics of Git
+### Working with repositories 
+### Branching and Merging 
+## Getting to know [SmartGit](https://www.syntevo.com/smartgit/)
+### Installation {.unnumbered #install-smartgit}
+### Integration with GitHub {-}
+### Organize your toolbar {-}
+### Initialize Repos {-}
+### Clone Repos {-}
+### Organize Repos by groups {-}
+### How do you link a repository that is your local machine to your GitHub account? {-}
+### Basic Git process {-}
+### Important keyboard shortcut process {-}
+### Nice features of SmartGit {-}
+## Advanced Git process
+### Git workflow 
+### How to work with commits 
+### What to do with changes you don't want to commit 
+### How to undo stuff in the Git 
+### How to deal with merge conflicts 
+### How to work with pull requests
+### DO's and DONT's 
+## Getting to know [GitKraken](https://www.gitkraken.com/) 
+### GItKraken Interface {-} 
+### Create a repository {-} 
+### Clone a repository {-} 
+### Working with commits {-}
+
+<!--chapter:end:Collaboration_in_Git.Rmd-->
+
+
+# Stata and Github {#stata-github}
+
+Placeholder
+
+
+## Stata ado-path
+## Installing commands from Github {#install-github}
+### Recommended method
+### Alternative method
+### Last resource method
+## Cloning the Stata command repository
+
+<!--chapter:end:stata_github.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+# (PART) PovcalNet Update {.unnumbered}
+
+# Introduction to PovcalNet Update {#intro-povcal}
+
+Updating the PovcalNet system requires putting together many different pieces
+that interact to each other. This part of the book divided from the perspective
+of independent procedures rather than particular outputs. For instance, the
+**Master file** is a single Excel file with several spreadsheets that are
+updated in a particular ways, or processes. Instead of creating a chapter for
+updating the whole Master file (though it exists as a summary), we think it is
+better to explain separately each of the processes that add up to update the
+whole Master file.
+
+## Overview
+
+**TO-DO**: Include a chart with the workflow.
+
+<!--chapter:end:intro_povcalnet_update.Rmd-->
+
+
+# Prepare data for PovcalNet update {#prepare}
+
+Placeholder
+
+
+## Population
+### Raw data
+### update master file
+## GDP and Consumption (PCE)
+### Raw data
+#### National accounts for "special cases" {#scnac .unnumbered}
+#### Description of series {.unnumbered}
+### Update master file
+## CPI and PPP
+### Word of Caution {#cpicaution}
+### Different CPI datasets
+#### Internal data {.unnumbered}
+#### *CPI* sheet in the Master file {.unnumbered}
+
+<!--chapter:end:prepare_data_for_update.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+# LIS Data {#lis-data}
+
+<!--chapter:end:lis_data.Rmd-->
+
+
+# PRIMUS
+
+Placeholder
+
+
+## Interacting with PRIMUS
+### Website platform {.unnumbered}
+### Stata command {.unnumbered}
+### Corrections to `primus` Stata command {.unnumbered}
+## Understanding PRIMUS {#understand-primus}
+## Checking PRIMUS estimates
+## Confirming and approving data in PRIMUS {#approve-primus}
+
+<!--chapter:end:PRIMUS.Rmd-->
+
+
+# Update microdata in the P drive {#update-microdata}
+
+Placeholder
+
+
+## Update all the years of selected countries
+## Update file by file
+
+<!--chapter:end:update_microdata.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+# Create .PCB files
+
+As explained in the [introduction](#intro-povcal) of this part of the book,
+creating the .PCB files are the last step of the process before uploading
+everything to the PovcalNet system. The .PCB files are... (**TO-DO: Ask Tony to
+provide his inputs for the explanations.**)
+
+## The povcalnet\_update repository
+
+Once you have updated all the sheets in the master file--besides the
+"surveymean" sheet--and have updated the microdata in the P drive, the next step
+is to create the .pcb files and update the "surveymean" sheet. All of this is
+done with the
+[PovcalNet-Team/povcalnet\_update](https://github.com/PovcalNet-Team/povcalnet_update)
+repository. Make sure you clone the repo and open it as a [project in
+Rstudio](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/).
+You will find the project has three .R files only. If everything goes as
+expected, you'll only need to use the file *00.master.R*.
+
+In rare cases, you will need to modify the functions in other two files. The
+*utils.R* file has generic functions such as loading the master file into the
+system, or creating survey IDs. These functions are used all along the process.
+The *process\_functions.R* file contain functions for specific parts of the
+projects are executed usually once along the whole process. Basically, the
+*00.master.R* calls these functions in order in the same way that a master
+do-file call other do-files that do specific things.
+
+In this chapter, we break down the *00.master.R* file, so you understand how to
+run it, the logic behind, and what to do in case it needs to be fixed. Let's
+start by installing the minimum necessary packages. *00.master.R* file assumes
+you already have them installed, so you should run the code below before you
+start.
+
+```{r, eval = FALSE}
+# pkg_load <- knitr::combine_words(pkgs, before = "`")
+pkgs <- c("janitor", "data.table", "tidyverse", "writexl", "readxl", "here")
+no_installed <- pkgs[!(pkgs  %in%  installed.packages())]
+installed.packages(no_installed)
+```
+
+### Directories
+
+The first section includes the directories in which you're going to be working.
+As of today (2020-11-20), the `datadir` directory is for `2020_JUL` as it was
+the last release of PovcalNet. However, make sure you create a new folder with
+the year and month of the "tentative" release.
+
+```{r, echo = FALSE}
+decorate("p-dirs") %>% 
+  flair("2020_JUL", background = "pink") %>%
+  flair("datadir", color = "CornflowerBlue")
+```
+
+```{r p-dirs, include=FALSE}
+#--------- directories ---------
+datadir   <- "p:/01.PovcalNet/02.Production/2020_JUL/"
+cpi_path  <- "p:/01.PovcalNet/01.Vintage_control/_aux/price_framework/price_framework.dta"
+sheet     <- "SurveyMean"
+mdir      <- "p:/01.PovcalNet/00.Master/"
+```
+
+### Surveys that have changed
+
+Now, we have to specify what countries/years have been added or changed to the
+PovcalNet repository. We recommend you do this country by country.
+
+```{r}
+#--------- to modify in each round ---------
+countries <- "CHN"
+years     <- NULL
+```
+
+If you leave the argument `years` equal to `NULL`, the code will update all the
+years for the country select. In this case, `r countries`. However, you could
+specify what years to update for that particular country, like,
+
+```{r}
+countries <- "IND"
+years     <- c(1993, 2004, 2009, 2012)
+```
+
+It is important to note that *unless you want to update all the years available*
+in more than one country, you should not include in the `countries` variable
+more than one country.
+
+### Prepare data
+
+```{r}
+#----------------------------------------------------------
+#   Generate and Fix metadata
+#----------------------------------------------------------
+# Find countries
+tmp       <- pcn_datafind(country = countries)
+pcn_fails <- tmp$fail
+pcn       <- as.data.table(tmp$pcn)
+
+# Fix metadata
+pcn       <- fix_metadata(pcn)
+
+# Get reference year
+pcn       <- get_ref_year(pcn, cpi_path)
+```
+
+<!--chapter:end:pcb_files.Rmd-->
+
+
+# Upload Group Data to the Data Management System {#DMGroupData}
+
+Placeholder
+
+
+## Group Data
+### Preparing the data
+### Naming convention
+### Upload the data.
+## Master File
+### Preparing the Master File
+### Upload Master file
+## Making sure everything works
+
+<!--chapter:end:DM_Group_data.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+# Update the Master file {#master-file}
+
+In the previous chapters we have seen how to update different sheets of the
+master file. In this chapter we basically summarize and reference to the
+specific location in which we explain how to update each spreadsheet.
+
+<!--chapter:end:master_file.Rmd-->
+
+
+# (PART) Miscellaneous {-}
+# Referencing software: Zotero
+
+Placeholder
+
+
+## Installation
+## Extensions and add-ons
+## Adding references to Zotero
+
+<!--chapter:end:Referencing_using_Zotero.Rmd-->
+
+
+# Data visualization: Flourish studio
+
+Placeholder
+
+
+## Sign in
+## Get started
+
+<!--chapter:end:data_visualization_flourish.Rmd-->
+
+
+# (APPENDIX) Appendix {-}
+# Kihoon's Handover
+
+Placeholder
+
+
+## GPWG process
+### Introduction {-}
+### How to download surveys from the GPWG data and generate pcb files {-}
+## LIS Data Process
+### Introduction {-}
+### How to download surveys from the LIS data server and generate pcb file {-}
+## LAC Historical data
+## ECA Historical data
+
+<!--chapter:end:Handover.Rmd-->
+
+```{r include=FALSE, cache=FALSE}
+set.seed(1234)
+options(digits = 3)
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  # comment=NA,
+  warning = FALSE
+  #collapse = TRUE,
+  #cache = TRUE,
+  #out.width = "70%",
+  #fig.align = 'center',
+  #fig.width = 6,
+  #fig.asp = 0.618,  # 1 / phi
+  #fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+
+# install and load packages that have not been installed before
+pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
+          "tidyverse", "data.tree", "flair")
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
+load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
+
+
+if (length(new.pkg)) install.packages(new.pkg)     # Install missing packages
+inst = lapply(load.pkg, library, character.only = TRUE) # load all packages
+
+if (!("Statamarkdown"  %in% installed.packages())) {
+  devtools::install_github("Hemken/Statamarkdown")
+}
+library(Statamarkdown)
+
+if (!("emo"  %in% installed.packages())) {
+  devtools::install_github("hadley/emo")
+}
+
+
+
+```
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:references.Rmd-->
+

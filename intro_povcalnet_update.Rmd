@@ -1,0 +1,16 @@
+# (PART) PovcalNet Update {.unnumbered}
+
+# Introduction to PovcalNet Update {#intro-povcal}
+
+Updating the PovcalNet system requires putting together many different pieces
+that interact to each other. This part of the book divided from the perspective
+of independent procedures rather than particular outputs. For instance, the
+**Master file** is a single Excel file with several spreadsheets that are
+updated in a particular ways, or processes. Instead of creating a chapter for
+updating the whole Master file (though it exists as a summary), we think it is
+better to explain separately each of the processes that add up to update the
+whole Master file.
+
+## Overview
+
+**TO-DO**: Include a chart with the workflow.
