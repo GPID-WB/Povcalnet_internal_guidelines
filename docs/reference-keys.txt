@@ -88,6 +88,8 @@ recommended-method
 alternative-method
 last-resource-method
 cloning-the-stata-command-repository
+intro-povcal
+overview
 prepare
 population
 raw-data
@@ -108,6 +110,14 @@ update-microdata
 update-all-the-years-of-selected-countries
 update-file-by-file
 create-.pcb-files
+the-povcalnet_update-repository
+generate-the-.pcb-files
+directories
+init-params
+prepare-metadata
+generate-.pcb-files
+master-objectives
+update-info-of-the-surveymean-sheet
 DMGroupData
 group-data
 preparing-the-data

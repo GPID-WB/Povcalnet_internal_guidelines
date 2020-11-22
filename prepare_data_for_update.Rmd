@@ -1,5 +1,3 @@
-# (PART) PovcalNet Update {.unnumbered}
-
 # Prepare data for PovcalNet update {#prepare}
 
 In this chapter we briefly describe what needs to be done with each auxiliary

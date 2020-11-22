@@ -19,7 +19,7 @@ options(dplyr.print_min = 6, dplyr.print_max = 6)
 
 # install and load packages that have not been installed before
 pkg <-  c("ggplot2", "png", "grid", "DiagrammeR",
-          "tidyverse", "data.tree")
+          "tidyverse", "data.tree", "flair")
 new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])] # check installed packages
 load.pkg <- pkg[!(pkg %in% loadedNamespaces())]              # check loaded packages
 
