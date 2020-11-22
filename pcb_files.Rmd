@@ -51,8 +51,7 @@ As of today (2020-11-20), the `datadir` directory is for `2020_JUL` as it was
 the last release of PovcalNet. However, make sure you create a new folder with
 the year and month of the "tentative" release.
 
-```{r p-dirs, echo = FALSE, eval = FALSE}
-#--------- directories ---------
+```{r pdirs, echo = FALSE, eval = FALSE}
 datadir   <- "p:/01.PovcalNet/02.Production/2020_JUL/"
 cpi_path  <- "p:/01.PovcalNet/01.Vintage_control/_aux/price_framework/price_framework.dta"
 sheet     <- "SurveyMean"
@@ -60,7 +59,7 @@ mdir      <- "p:/01.PovcalNet/00.Master/"
 ```
 
 ```{r, echo = FALSE}
-  decorate("p-dirs", eval = FALSE) %>% 
+  decorate("pdirs", eval = FALSE) %>% 
   flair("2020_JUL", background = "pink") %>%
   flair("datadir", color = "CornflowerBlue")
 ```
@@ -165,7 +164,7 @@ in between. This is specially important for countries with urban/rural coverage
 like China, India, or Indonesia; for countries with lagging reference years like
 EU-SILC countries, or for tricky countries like ... (Macedonia?).
 
-### Update info of  the "SurveyMean" sheet
+### Update info of the "SurveyMean" sheet
 
 The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,
