@@ -153,11 +153,11 @@ We still need to update the "SurveyMean" sheet of the Master file.
 Updating the Master file is the most challenging part of the whole process
 because we need to make sure that,
 
-1.  whatever is correct in the master file remains correct.
-2.  whatever is wrong is fixed
-3.  whatever is not necessary is removed
-4.  whatever is missing is added
-5.  whatever is duplicated is unified.
+1.  whatever is correct **must remain** correct.
+2.  whatever is wrong should be fixed
+3.  whatever is not necessary should be removed
+4.  whatever is missing should be added
+5.  whatever is duplicated **must be** unified.
 
 Thus, we recommend that you run this sections one by one and check the results
 in between. This is specially important for countries with urban/rural coverage
