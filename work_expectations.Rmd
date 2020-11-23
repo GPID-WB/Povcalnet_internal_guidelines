@@ -1,0 +1,77 @@
+# (APPENDIX) Appendix {-}
+
+# Quality of work expectations {#work-expectations}
+
+The PovcalNet team is characterized by being a collaborative and efficient team. Yet, it comes to the expense of individual-autonomous work. This implies that any task assigned to each member of the team has to be delivered with a high-quality level and meet certain criteria that guarantee the proper dynamics of the team.  This chapter summarizes what is expected from each member of the team to deliver any task properly. 
+
+The working philosophy of the PovcalNet team might be summarized in Elbert Hubbard's 1899 essay, *[A Message to Garcia](https://govleaders.org/message-to-garcia.htm)*. Though harsh in language and maybe politically incorrect for our time, the essay portrays the spirit of the individual work in our team. We expect members of our team to own their task. Each task goes beyond being an assignment; it is an opportunity to learn new things and acquire new skills. 
+
+## Data and Charts
+
+### Proper data formatting
+The core of the PovcalNet work is based on data and as such the data work must be *integral*; complete in its own nature. That is, the data most be clean, clear, legible, understandable, and [tidy](https://vita.had.co.nz/papers/tidy-data.html). Ideally, we would like to start using the data right after receiving it from you. 
+
+So, when you deliver data make sure that
+
+* Each variable is properly named and **labeled**. If you cannot add labels (like in a spreadsheet), make sure in your email you specify what each variable means. 
+* Data must be sorted. 
+* Use colors if necessary to highlight important cases (do this if you're using a Excel spreadsheet).
+* Your data must be replicable. Make sure you have a script that replicates your data. For instance, if you need to sort your data, it must be sorted in your code, not in Excel.
+
+### Graphical representation of the problem
+Besides proper data formatting, it is useful to have a graphical representation of the task at hand. Even if the task assigned does *not* explicitly request for a chart, most of the times it is a good idea to provide a graphical representation. For instance, the task could involve comparing two different series. Even if a chart was not request, it is useful to see in a chart the comparison of the two things. 
+
+Graphical representations are useful specially when the output of the task can be broken down in different parts. For instance, imagine you want to compare the new and old poverty series of every country. We would like to have a chart of each country, but it would imply creating more than 100 charts! This problem is easily solved by using pivot tables or dynamic dashboards. Creating this kind of charts is technically simple, but it requires the data to be properly formatted, like in tidy shape as explained above.  
+
+### Qualitative analysis
+We want you to own the work you do. We don't expect you to merely do the data crunching or the visualization work and send it back to us. We expect that you analyze the output of your work. Thus, always deliver a task with the main findings or takeaways. In order to do so, you need to triangulate your results (i.e., corroborate with other source) and make sure that everything makes sense. Also, you need to have a clear understanding of the objective of your task so that you not only work on achieving such a goal, but also you are able to analyze the results in light of the objective. 
+
+
+### Practical Example
+Imagine we asked you to compare the poverty rates of all countries of the new povcalnet update with the version in production. We would expect from your the following, 
+
+1. To properly tidy the data so that we see one-on-one comparisons. 
+
+2. To make a graphical representation in a pivot table, tableau dashboard, or Shiny app at the country level so that we can see the series of each country at once. 
+
+3. To provide us with your analysis of the results. For instance, you could start by ranking all countries/years according to the size change from one version to another. Also, you could look for outliers or see if the poverty trends in one country change direction in the new update with respect to the version in production. Basically, if you find that there is something that seems weird, we expect from you to take a closer look and **investigate why** that is the case. 
+
+
+## Document code
+When your task is to deliver a piece of code like a Stata ado-file or do-file, or an R script, function, or package, make sure it is properly documented. 
+
+### Basic script
+About half of the data work is done in scripts that run linearly. That is, they run from top to bottom and produce a particular output like a chart, and Excel file, a database, among others. In Stata, this scripts are commonly written in do-files and are executed either by opening the do-file and run it, or by using a "master" file that executes a series of do-files in a specific order. 
+
+When writing this kind of code, make sure of the following, 
+
+1. In the header of the file, provide an explanation of what the file does and what the expected output is. Also, explain if the file is part of a list of files that must be executed together and, in case they must be executed in order, please explain what position this file has in the order of execution. 
+
+2. Try to comment you code as much as possible. Follow these rules,
+
+    2.1. Use section headers to divide your code in different, almost independent, parts.
+
+    2.2. Use subsection headers to explain chunks of code like Loops, or `if`, `ifelse`, and `else` conditions. 
+
+    2.3, Comment as many lines as possible. It is always better to over comment than under comment. 
+  
+3. If your using a master file from which you execute other files, make sure it explains the logic in the order of the execution 
+
+
+### program,  function or package.
+
+#### Stata program {-}
+If you right a Stata program, it is recommended that it lives in its own file and it is docummented as any other do-file. 
+
+#### Stata package {-}
+Any Stata package must be documented in its corresponding help file. If you create a Stata package, you should create along with it a help file in which you explain what each option does and how they interact together. In addition, the help file must have examples and detailed explanation of that the Stata command does. If you contribute to an existing Stata package, make sure to update the help file if the changes implemented affected the general strcuture or added/deleted/modified options. 
+
+#### R functions {-}
+By design, R is a functional programming language. This means that most of what do in R (if not everything), can be done with functions, as functions behave as any other object in R. So, linear programming, like general Stata code, is bad coding practice in R. Thus, it is recommended that each function, even the small ones, is documented properly. Fortunately, this can be easily done by using the [Roxygen2 tagging system](https://roxygen2.r-lib.org/index.html).
+
+#### R Package {-}
+This topic is covered in detail in chapters 7, 9, and 10 of the [R Packages](https://r-pkgs.org/) book by Hadley Wichham and Jennifer Bryan. Just follow the instructions there and you will be fine. 
+
+
+## Good coding practices
+blah blah

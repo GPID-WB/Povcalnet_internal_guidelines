@@ -1,6 +1,6 @@
 # Create .PCB files
 
-```{r, echo = FALSE}
+```{r, include = FALSE}
 library(flair)
 ```
 
