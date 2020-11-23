@@ -30,6 +30,7 @@ rmd_files: [
   "Referencing_using_Zotero.Rmd",
   "data_visualization_flourish.Rmd",
 
+  "work_expectations.Rmd",
   "Handover.Rmd",
   "references.Rmd",
 ]

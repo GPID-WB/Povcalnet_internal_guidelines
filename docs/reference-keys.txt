@@ -138,6 +138,16 @@ adding-references-to-zotero
 data-visualization-flourish-studio
 sign-in
 get-started
+work-expectations
+data-and-charts
+proper-data-formatting
+graphical-representation-of-the-problem
+qualitative-analysis
+practical-example
+document-code
+basic-script
+program-function-or-package.
+good-coding-practices
 kihoons-handover
 gpwg-process
 lis-data-process
