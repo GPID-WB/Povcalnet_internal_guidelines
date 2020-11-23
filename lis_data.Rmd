@@ -99,6 +99,6 @@ files like *LISSY\_2020-02-06**-4**.txt* or *LISSY\_2020-02-06**-test**.txt*.
 
 ## Prepare data for the Poverty GP
 
-[Marthis: ]{.bg-light-green .dark-red}[Could please explain the whole process? Do we have additional do-files
-for this part? If we do, we need to add them to the repository.
-]{.bg-light-green}
+[Marthis:Could please explain the whole process? Do we have additional do-files
+for this part? If we do, we need to add them to the repository.]{.bg-light-green
+.dark-red}
