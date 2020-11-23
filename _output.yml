@@ -1,8 +1,8 @@
 bookdown::gitbook:
   includes:
-    in_header: hypothesis.html
-    before_body: open_review_block.html
-  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", style.css]
+    in_header: files/hypothesis.html
+    before_body: files/open_review_block.html
+  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
   config:
     toc:
       collapse: section
