@@ -2,7 +2,7 @@
 
 -   Server: <http://wbgmsrech001/povcalnet/DB_Management.aspx>
 
--   Given that anyone may have access to the Data Base Management Syste, the
+-   Given that anyone may have access to the Data Base Management System, the
     username and password are not provided in this document.
 
 ## Group Data
@@ -58,37 +58,6 @@ to upload several files at the same time.
 
 ```{r DM-upload-files, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", fig.align = "center"}
 knitr::include_graphics("images/DM_upload_files.png")
-```
-
-## Master File
-
-### Preparing the Master File
-
-The following sheets must be modified in the master file
-(p:/01.PovcalNet/00.Master/Master.xlsm):
-
--   **MasterMean:** Add one row with the corresponding information of each group
-    data file uploaded. Make sure columns `CountryCode` and `SurveyTime` get
-    updated. Finally, make sure to include the mean of each distribution in the
-    `SurveyMean_LCU` column. If the mean is not provided, the PovcalNet system
-    does not work.
-
--   **SurveyInfo:** Add a row for each country/year data point rather than for
-    urban/rural breakdown. The information in this sheet goes directly into the
-    Info page of each country in the PovcalNet server.
-
--   **CPI:** Make sure there is CPI information for the year of the survey.
-
-### Upload Master file
-
-Once the master file has been updated using the *Master file tool*, you may
-proceed to upload the latest version of the master file by selecting the most
-recent file in the folder p:/01.PovcalNet/00.Master/02.vintage. Then, click on
-`Choose file` next to the **Metadata file** legend. Once the file has chosen,
-you may click on `Upload metadata` and then on `Reload metadata`.
-
-```{r DM-metadata, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", out.width = "50%", fig.align = "center"}
-knitr::include_graphics("images/DM_metadata_file.png")
 ```
 
 ## Making sure everything works

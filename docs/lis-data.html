@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-11-22" />
+<meta name="date" content="2020-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -123,6 +123,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -238,7 +239,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.2" data-path="prepare.html"><a href="prepare.html#different-cpi-datasets"><i class="fa fa-check"></i><b>6.3.2</b> Different CPI datasets</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lis-data.html"><a href="lis-data.html"><i class="fa fa-check"></i><b>7</b> LIS Data</a></li>
+<li class="chapter" data-level="7" data-path="lis-data.html"><a href="lis-data.html"><i class="fa fa-check"></i><b>7</b> LIS Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lis-data.html"><a href="lis-data.html#the-lis_data-repository"><i class="fa fa-check"></i><b>7.1</b> The LIS_data repository</a></li>
+<li class="chapter" data-level="7.2" data-path="lis-data.html"><a href="lis-data.html#interacting-with-lissy"><i class="fa fa-check"></i><b>7.2</b> Interacting with LISSY</a></li>
+<li class="chapter" data-level="7.3" data-path="lis-data.html"><a href="lis-data.html#getting-the-400-bins-from-lissy"><i class="fa fa-check"></i><b>7.3</b> Getting the 400 bins from LISSY</a></li>
+<li class="chapter" data-level="7.4" data-path="lis-data.html"><a href="lis-data.html#from-text-file-to-datalibweb-structure"><i class="fa fa-check"></i><b>7.4</b> From Text file to datalibweb structure</a></li>
+<li class="chapter" data-level="7.5" data-path="lis-data.html"><a href="lis-data.html#prepare-data-for-the-poverty-gp"><i class="fa fa-check"></i><b>7.5</b> Prepare data for the Poverty GP</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
@@ -279,14 +287,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>11.1.2</b> Naming convention</a></li>
 <li class="chapter" data-level="11.1.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>11.1.3</b> Upload the data.</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>11.2</b> Master File</a>
+<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.2</b> Making sure everything works</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>12</b> Update the Master file</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-master-file"><i class="fa fa-check"></i><b>11.2.1</b> Preparing the Master File</a></li>
-<li class="chapter" data-level="11.2.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-master-file"><i class="fa fa-check"></i><b>11.2.2</b> Upload Master file</a></li>
+<li class="chapter" data-level="12.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>12.1</b> Upload Master file</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.3</b> Making sure everything works</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>12</b> Update the Master file</a></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
 <li class="chapter" data-level="13" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>13</b> Referencing software: Zotero</a>
 <ul>
@@ -346,7 +352,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  </div>
 <div id="lis-data" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> LIS Data</h1>
+<p>Some of the countries that are not available in DataLibWeb can be found in the
+repository of the <a href="https://www.lisdatacenter.org/">LIS Cross-National Data
+Center</a> (hereafter, LIS). They provide a
+remote-execution system,
+<a href="http://www.lisdatacenter.org/data-access/lissy/">LISSY,</a> that allows us
+interact with their micrdata without having access to the individual records. We
+have developed a set of Stata do-files to interact with the LIS system and
+aggregate the welfare distribution of countries of interest to 400 bins. Then,
+these data is organized locally and shared with the Poverty GP to be included in
+DataLibWeb as a collection independent from GPWG.</p>
+<div id="the-lis_data-repository" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> The LIS_data repository</h2>
+<p>In order to work with the LIS data you need to clone the repository
+<a href="https://github.com/PovcalNet-Team/LIS_data">PovcalNet-Team/LIS/_data.</a> You
+will find in there three folders, <em>00.LIS_output</em>, <em>01.programs</em>, and
+<em>02.data</em>.</p>
+</div>
+<div id="interacting-with-lissy" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Interacting with LISSY</h2>
+<div class="bg-light-green">
+<div class="tl">
+<p><strong>Marthis:</strong></p>
+</div>
+<div class="dark-blue">
+<ul>
+<li>How to open an account in LISSY</li>
+<li>How to log in and work inside LISSY</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="getting-the-400-bins-from-lissy" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Getting the 400 bins from LISSY</h2>
+<div class="bg-light-green">
+<div class="tl">
+<p><strong>Marthis:</strong></p>
+</div>
+<div class="dark-blue">
+<ul>
+<li>What parts of the do-file we should modify</li>
+<li>How and where to save the results (Exaplain the naming so it could be used
+in the <code>02.LIS_organize_output.do</code> file)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="from-text-file-to-datalibweb-structure" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> From Text file to datalibweb structure</h2>
+<p>We now need to convert the the text files generated by the LISSY system to
+actual data suitable for datalibweb. This structure is suggested by the
+<a href="https://ihsn.org/">International Household Survey Network</a> (IHSN). Once the
+data is saved in the corresponding folder (<span class="dark-red">which is…</span>) you need to
+execute the file <strong><code>02.LIS_organize_output.do</code></strong>.</p>
+<div class="bg-light-green">
+<div class="dark-red">
+<p>Marthis:</p>
+</div>
+<p>Explanation of the Excel file with the name of the variables. Not about what it
+has, but about what it does and how it is used.</p>
+</div>
+<p>This do-file works like an ado-file in the sense that the output depends on the
+value of some local macros,</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="lis-data.html#cb1-1"></a><span class="kw">local</span> update_surveynames = 0  <span class="co">// change to 1 to update survey names.</span></span>
+<span id="cb1-2"><a href="lis-data.html#cb1-2"></a><span class="kw">local</span> code_personal_dir  = 1  <span class="co">// change to 1 to use Code personal dir</span></span>
+<span id="cb1-3"><a href="lis-data.html#cb1-3"></a><span class="kw">local</span> data_personal_dir  = 0  <span class="co">// change to 1 to use Data personal dir</span></span>
+<span id="cb1-4"><a href="lis-data.html#cb1-4"></a><span class="kw">local</span> <span class="kw">replace</span>            = 1  <span class="co">// change to 1 to replace data in memory even if it hasnot changed</span></span></code></pre></div>
+<p>If local <code>update_surveynames</code> is set to 1, the code will use the file
+<code>02.data/_aux/LIS datasets.xlsx</code> to name the surveys downloaded. (<span class="bg-light-green dark-red">Marthis, is
+this correct?</span>). If local <code>code_personal_dir</code> is set
+to 1, the code will use the file <code>01.programs/lis_functions.mata</code> of the cloned
+repository. Otherwise, it will use the same file that is available in the P
+drive. We highly recommend you set this local to 1. This option will be
+deprecated in the future. when local <code>data_personal_dir</code> is set to 1, the code
+will use the text files you place in the folder <code>00.LIS_output/</code>, otherwise it
+will use the one in the P drive. So, this highly depends on where you saved the
+data from LIS. Finally, if <code>replace</code> is set to 1, the code will replace any
+output with the same name. Otherwise, it will create a new vintage version <em>if
+the two files are different</em>. If they are not different, the code will do
+nothing.</p>
+<p>Once last part that you must modify is the line that reads,</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="lis-data.html#cb2-1"></a><span class="kw">local</span> files: <span class="ot">dir</span> <span class="st">&quot;00.LIS_output/&quot;</span> files <span class="st">&quot;LISSY_2020-02-06*.txt&quot;</span></span></code></pre></div>
+<p>The string after <code>files</code> tells Stata what the name convention of the files
+you’re going to convert is. In the example above, you’d be telling Stata to load
+all the <strong>.txt</strong> files that start with <strong>LISSY_2020-02-06</strong>. So, it will read
+files like <em>LISSY_2020-02-06<strong>-4</strong>.txt</em> or <em>LISSY_2020-02-06<strong>-test</strong>.txt</em>.</p>
+</div>
+<div id="prepare-data-for-the-poverty-gp" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Prepare data for the Poverty GP</h2>
+<p><span class="bg-light-green dark-red">Marthis:</span><span class="bg-light-green">Could please explain the whole process? Do we have additional do-files
+for this part? If we do, we need to add them to the repository.</span></p>
 
+</div>
 </div>
             </section>
 

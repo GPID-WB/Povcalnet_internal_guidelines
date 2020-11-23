@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-11-22" />
+<meta name="date" content="2020-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -124,6 +124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 </head>
 
 <body>
@@ -238,7 +239,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.2" data-path="prepare.html"><a href="prepare.html#different-cpi-datasets"><i class="fa fa-check"></i><b>6.3.2</b> Different CPI datasets</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="lis-data.html"><a href="lis-data.html"><i class="fa fa-check"></i><b>7</b> LIS Data</a></li>
+<li class="chapter" data-level="7" data-path="lis-data.html"><a href="lis-data.html"><i class="fa fa-check"></i><b>7</b> LIS Data</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="lis-data.html"><a href="lis-data.html#the-lis_data-repository"><i class="fa fa-check"></i><b>7.1</b> The LIS_data repository</a></li>
+<li class="chapter" data-level="7.2" data-path="lis-data.html"><a href="lis-data.html#interacting-with-lissy"><i class="fa fa-check"></i><b>7.2</b> Interacting with LISSY</a></li>
+</ul></li>
 <li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
 <ul>
 <li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
@@ -279,14 +284,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>11.1.2</b> Naming convention</a></li>
 <li class="chapter" data-level="11.1.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>11.1.3</b> Upload the data.</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>11.2</b> Master File</a>
+<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.2</b> Making sure everything works</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>12</b> Update the Master file</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-master-file"><i class="fa fa-check"></i><b>11.2.1</b> Preparing the Master File</a></li>
-<li class="chapter" data-level="11.2.2" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-master-file"><i class="fa fa-check"></i><b>11.2.2</b> Upload Master file</a></li>
+<li class="chapter" data-level="12.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>12.1</b> Upload Master file</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.3</b> Making sure everything works</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="DMGroupData.html"><a href="DMGroupData.html#master-file"><i class="fa fa-check"></i><b>12</b> Update the Master file</a></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
 <li class="chapter" data-level="13" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>13</b> Referencing software: Zotero</a>
 <ul>
@@ -348,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 11</span> Upload Group Data to the Data Management System</h1>
 <ul>
 <li><p>Server: <a href="http://wbgmsrech001/povcalnet/DB_Management.aspx" class="uri">http://wbgmsrech001/povcalnet/DB_Management.aspx</a></p></li>
-<li><p>Given that anyone may have access to the Data Base Management Syste, the
+<li><p>Given that anyone may have access to the Data Base Management System, the
 username and password are not provided in this document.</p></li>
 </ul>
 <div id="group-data" class="section level2" number="11.1">
@@ -405,52 +408,19 @@ Figure 11.1: Upload files
 </div>
 </div>
 </div>
-<div id="master-file" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> Master File</h2>
-<div id="preparing-the-master-file" class="section level3" number="11.2.1">
-<h3><span class="header-section-number">11.2.1</span> Preparing the Master File</h3>
-<p>The following sheets must be modified in the master file
-(p:/01.PovcalNet/00.Master/Master.xlsm):</p>
-<ul>
-<li><p><strong>MasterMean:</strong> Add one row with the corresponding information of each group
-data file uploaded. Make sure columns <code>CountryCode</code> and <code>SurveyTime</code> get
-updated. Finally, make sure to include the mean of each distribution in the
-<code>SurveyMean_LCU</code> column. If the mean is not provided, the PovcalNet system
-does not work.</p></li>
-<li><p><strong>SurveyInfo:</strong> Add a row for each country/year data point rather than for
-urban/rural breakdown. The information in this sheet goes directly into the
-Info page of each country in the PovcalNet server.</p></li>
-<li><p><strong>CPI:</strong> Make sure there is CPI information for the year of the survey.</p></li>
-</ul>
-</div>
-<div id="upload-master-file" class="section level3" number="11.2.2">
-<h3><span class="header-section-number">11.2.2</span> Upload Master file</h3>
-<p>Once the master file has been updated using the <em>Master file tool</em>, you may
-proceed to upload the latest version of the master file by selecting the most
-recent file in the folder p:/01.PovcalNet/00.Master/02.vintage. Then, click on
-<code>Choose file</code> next to the <strong>Metadata file</strong> legend. Once the file has chosen,
-you may click on <code>Upload metadata</code> and then on <code>Reload metadata</code>.</p>
-<div class="figure" style="text-align: center"><span id="fig:DM-metadata"></span>
-<img src="images/DM_metadata_file.png" alt="Upload files" width="50%" />
-<p class="caption">
-Figure 11.2: Upload files
-</p>
-</div>
-</div>
-</div>
-<div id="making-sure-everything-works" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> Making sure everything works</h2>
+<div id="making-sure-everything-works" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Making sure everything works</h2>
 <p>Once the new data and the updated metadata are uploaded, you may proceed to
-click one by one of the buttons shown in Figure <a href="DMGroupData.html#fig:DM-check">11.3</a>. Make sure,</p>
+click one by one of the buttons shown in Figure <a href="DMGroupData.html#fig:DM-check">11.2</a>. Make sure,</p>
 <ol style="list-style-type: decimal">
 <li>The box <code>Re-make all dataset</code> remain should be checked.</li>
 <li>Do <strong>NOT</strong> click on <code>Clean up data files.</code> (Not shown in Figure
-<a href="DMGroupData.html#fig:DM-check">11.3</a>)</li>
+<a href="DMGroupData.html#fig:DM-check">11.2</a>)</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:DM-check"></span>
 <img src="images/DM_check_files.png" alt="Upload files" width="50%" />
 <p class="caption">
-Figure 11.3: Upload files
+Figure 11.2: Upload files
 </p>
 </div>
 <p>Finally, click on <code>Rebuild listed Economy docs</code> (which needs to be done only

@@ -25,8 +25,8 @@ fig:GHclone
 fig:GKclone
 fig:GKwip
 fig:DM-upload-files
-fig:DM-metadata
 fig:DM-check
+fig:DM-metadata
 fig:zotero1
 fig:zotero2
 fig:addons1
@@ -101,6 +101,8 @@ cpi-and-ppp
 cpicaution
 different-cpi-datasets
 lis-data
+the-lis_data-repository
+interacting-with-lissy
 primus
 interacting-with-primus
 understand-primus
@@ -123,10 +125,9 @@ group-data
 preparing-the-data
 naming-convention
 upload-the-data.
-master-file
-preparing-the-master-file
-upload-master-file
 making-sure-everything-works
+master-file
+upload-master-file
 referencing-software-zotero
 installation
 extensions-and-add-ons
@@ -139,3 +140,6 @@ gpwg-process
 lis-data-process
 lac-historical-data
 eca-historical-data
+getting-the-400-bins-from-lissy
+from-text-file-to-datalibweb-structure
+prepare-data-for-the-poverty-gp
