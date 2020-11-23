@@ -1,3 +1,5 @@
+# (APPENDIX) Appendix {-}
+
 # Quality of work expectations {#work-expectations}
 
 The PovcalNet team is characterized by being a collaborative and efficient team. Yet, it comes to the expense of individual-autonomous work. This implies that any task assigned to each member of the team has to be delivered with a high-quality level and meet certain criteria that guarantee the proper dynamics of the team.  This chapter summarizes what is expected from each member of the team to deliver any task properly. 
