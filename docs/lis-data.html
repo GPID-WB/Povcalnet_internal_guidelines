@@ -414,10 +414,10 @@ has, but about what it does and how it is used.</p>
 </div>
 <p>This do-file works like an ado-file in the sense that the output depends on the
 value of some local macros,</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="lis-data.html#cb1-1"></a><span class="kw">local</span> update_surveynames = 0  <span class="co">// change to 1 to update survey names.</span></span>
-<span id="cb1-2"><a href="lis-data.html#cb1-2"></a><span class="kw">local</span> code_personal_dir  = 1  <span class="co">// change to 1 to use Code personal dir</span></span>
-<span id="cb1-3"><a href="lis-data.html#cb1-3"></a><span class="kw">local</span> data_personal_dir  = 0  <span class="co">// change to 1 to use Data personal dir</span></span>
-<span id="cb1-4"><a href="lis-data.html#cb1-4"></a><span class="kw">local</span> <span class="kw">replace</span>            = 1  <span class="co">// change to 1 to replace data in memory even if it hasnot changed</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="lis-data.html#cb14-1"></a><span class="kw">local</span> update_surveynames = 0  <span class="co">// change to 1 to update survey names.</span></span>
+<span id="cb14-2"><a href="lis-data.html#cb14-2"></a><span class="kw">local</span> code_personal_dir  = 1  <span class="co">// change to 1 to use Code personal dir</span></span>
+<span id="cb14-3"><a href="lis-data.html#cb14-3"></a><span class="kw">local</span> data_personal_dir  = 0  <span class="co">// change to 1 to use Data personal dir</span></span>
+<span id="cb14-4"><a href="lis-data.html#cb14-4"></a><span class="kw">local</span> <span class="kw">replace</span>            = 1  <span class="co">// change to 1 to replace data in memory even if it hasnot changed</span></span></code></pre></div>
 <p>If local <code>update_surveynames</code> is set to 1, the code will use the file
 <code>02.data/_aux/LIS datasets.xlsx</code> to name the surveys downloaded. (<span class="bg-light-green dark-red">Marthis, is
 this correct?</span>). If local <code>code_personal_dir</code> is set
@@ -432,7 +432,7 @@ output with the same name. Otherwise, it will create a new vintage version <em>i
 the two files are different</em>. If they are not different, the code will do
 nothing.</p>
 <p>Once last part that you must modify is the line that reads,</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="lis-data.html#cb2-1"></a><span class="kw">local</span> files: <span class="ot">dir</span> <span class="st">&quot;00.LIS_output/&quot;</span> files <span class="st">&quot;LISSY_2020-02-06*.txt&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="lis-data.html#cb15-1"></a><span class="kw">local</span> files: <span class="ot">dir</span> <span class="st">&quot;00.LIS_output/&quot;</span> files <span class="st">&quot;LISSY_2020-02-06*.txt&quot;</span></span></code></pre></div>
 <p>The string after <code>files</code> tells Stata what the name convention of the files
 you’re going to convert is. In the example above, you’d be telling Stata to load
 all the <strong>.txt</strong> files that start with <strong>LISSY_2020-02-06</strong>. So, it will read
@@ -440,7 +440,7 @@ files like <em>LISSY_2020-02-06<strong>-4</strong>.txt</em> or <em>LISSY_2020-02
 </div>
 <div id="prepare-data-for-the-poverty-gp" class="section level2" number="7.5">
 <h2><span class="header-section-number">7.5</span> Prepare data for the Poverty GP</h2>
-<p><span class="bg-light-green dark-red">Marthis:</span><span class="bg-light-green">Could please explain the whole process? Do we have additional do-files
+<p><span class="bg-light-green dark-red">Marthis:Could please explain the whole process? Do we have additional do-files
 for this part? If we do, we need to add them to the repository.</span></p>
 
 </div>

@@ -103,6 +103,9 @@ different-cpi-datasets
 lis-data
 the-lis_data-repository
 interacting-with-lissy
+getting-the-400-bins-from-lissy
+from-text-file-to-datalibweb-structure
+prepare-data-for-the-poverty-gp
 primus
 interacting-with-primus
 understand-primus
@@ -140,6 +143,3 @@ gpwg-process
 lis-data-process
 lac-historical-data
 eca-historical-data
-getting-the-400-bins-from-lissy
-from-text-file-to-datalibweb-structure
-prepare-data-for-the-poverty-gp
