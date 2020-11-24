@@ -6,8 +6,33 @@ library(flair)
 
 As explained in the [introduction](#intro-povcal) of this part of the book,
 creating the .PCB files are the last step of the process before uploading
-everything to the PovcalNet system. The .PCB files are... (**TO-DO: Ask Tony to
-provide his inputs for the explanations.**)
+everything to the PovcalNet system.
+
+## What the heck is a PCB file?!!
+PCB files are only relevant for micro-data. They basically store the micro-data 
+`welfare` and `weight` vectors, as well as pre-computed statistics. They are 
+custom binary files (data is stored as a bunch of 0s and 1s) that were created 
+to support the computations in PovcalNet. They are not standard file format like
+`.csv` or `.dta`.  
+
+They are used because they:  
+
+* Take less space
+* Can be read more efficiently
+
+PCB files contain four pieces of information:  
+
+* Metadata  
+  * The PCB ID number. There are actually two types of .PCB files, an old and a
+  new format. The ID number is a way to differentiate them.  
+  * The number of microdata records  
+  * The number of points on the Lorenz curve  
+* Lorenz Curve  
+* Pre-computed summary stats  
+  Stuff that needs to be computed only once (Not sensitive to the poverty line) 
+* Microdata
+
+![PCB file represention](images/pcb_8202.PNG)
 
 ## The povcalnet\_update repository
 
