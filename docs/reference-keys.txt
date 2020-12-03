@@ -112,8 +112,11 @@ understand-primus
 checking-primus-estimates
 approve-primus
 update-microdata
+get-povcalnet-inventory-up-to-date
 update-all-the-years-of-selected-countries
 update-file-by-file
+create-the-_pcn-files
+china-synthetic-files
 create-.pcb-files
 what-the-heck-is-a-pcb-file
 the-povcalnet_update-repository

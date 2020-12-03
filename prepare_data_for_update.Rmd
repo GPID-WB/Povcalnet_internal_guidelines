@@ -224,3 +224,29 @@ in the master file. Keep in mind that if the CPI vintage control in DLW changes
 as mention [above](#cpicaution), you will need to update the corresponding lines
 in
 [pcn\_master\_update.ado](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L71-L164).
+
+#### How to update special CPI cases {.unnumbered}
+
+The primary source of CPI data for PovcalNet updates is the IMF’s International Financial Statistics (IFS) database (Lakner et al., 2018). When CPI series from surveys are deemed more appropriate, they are used instead of IFS CPI series. Six countries are in this category of ‘special CPI cases’, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.  
+
+The datafiles and dofiles for the special CPI cases are stored in the P-drive [e.g., for the March 2021 PovcalNet update, the files are stored in P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].
+
+You may follow the steps below to update the special CPI cases:
+
+Get CPI input file labeled as “Imputed_CPI_input.xlsx” from the P-drive. This file contains raw CPI series imputed from survey to survey.
+
+Update the CPI input file if necessary. This file is updated when there is a new survey from which a new CPI can be imputed. The new CPIs are provided by poverty economists (PE’s). Daniel Gerszon Mahler <dmahler@worldbank.org> currently liaises with PE’s to get the correct CPI and survey year. You may contact him for guidance and ideas for the whole exercise.
+
+Get yearly annual CPI series from Datalibweb. The yearly annual series are collated and organized by Minh Cong Nguyen <mnguyen3@worldbank.org> from monthly (or, in a few cases, quarterly) IFS data and annual World Economic Outlook (WEO) data. Use the code below to obtain the required data. 
+
+dlw, country(support) year(2005) type(gmdraw) surveyid(Support_2005_CPI_v05_M) filename (Yearly_CPI_Final.dta)
+
+[Note that this code is for the current version of Datalibweb (i.e., Support_2005_CPI_v05). Check with Minh for the latest version and line of code to use.]
+
+Generate a final data set with label “IsmputedCPIs_output_yyyymmdd.dta”. This file contains the final CPI series with the ICP reference year as base year, which is currently 2011. See the latest file for the required format. 
+
+As robustness checks, construct the final CPI series afresh as in sheet(Calculations) in “Compare Imputed CPIs yyyymmdd.xlsx” and compare the Excel results with the Stata output. You may compare the results using the dofile labelled “combine_countries_compare_results.do”.
+
+Send the Stata output to Minh Cong Nguyen <mnguyen3@worldbank.org>. He will integrate the file into his price framework.
+
+Save all datafiles and dofiles in a sub-folder in the P-drive [e.g., P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].
