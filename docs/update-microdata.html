@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-11-24" />
+<meta name="date" content="2020-12-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -261,8 +261,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="update-microdata.html"><a href="update-microdata.html"><i class="fa fa-check"></i><b>9</b> Update microdata in the P drive</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="update-microdata.html"><a href="update-microdata.html#update-all-the-years-of-selected-countries"><i class="fa fa-check"></i><b>9.1</b> Update all the years of selected countries</a></li>
-<li class="chapter" data-level="9.2" data-path="update-microdata.html"><a href="update-microdata.html#update-file-by-file"><i class="fa fa-check"></i><b>9.2</b> Update file by file</a></li>
+<li class="chapter" data-level="9.1" data-path="update-microdata.html"><a href="update-microdata.html#get-povcalnet-inventory-up-to-date"><i class="fa fa-check"></i><b>9.1</b> Get PovcalNet inventory up to date</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="update-microdata.html"><a href="update-microdata.html#update-all-the-years-of-selected-countries"><i class="fa fa-check"></i><b>9.1.1</b> Update all the years of selected countries</a></li>
+<li class="chapter" data-level="9.1.2" data-path="update-microdata.html"><a href="update-microdata.html#update-file-by-file"><i class="fa fa-check"></i><b>9.1.2</b> Update file by file</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="update-microdata.html"><a href="update-microdata.html#create-the-_pcn-files"><i class="fa fa-check"></i><b>9.2</b> Create the _PCN files</a></li>
+<li class="chapter" data-level="9.3" data-path="update-microdata.html"><a href="update-microdata.html#china-synthetic-files"><i class="fa fa-check"></i><b>9.3</b> China synthetic files</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>10</b> Create .PCB files</a>
 <ul>
@@ -373,12 +378,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 drive is. As it is explained in the first part of section <a href="folder-strcutures.html#network-drive">2.1</a>,
 the microdata resides in the folder <code>01.PovcalNet/01.Vintage_control</code>.
 <strong>(…complete this part)</strong></p>
+<div id="get-povcalnet-inventory-up-to-date" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Get PovcalNet inventory up to date</h2>
 <p>Once everything has been approved in PRIMUS (see section <a href="primus.html#approve-primus">8.4</a>),
 we can download the most recent data into our system using the directive
 <code>pcn download gpwg</code>. The process of downloading the data can be done in several
 ways, but we suggest two.</p>
-<div id="update-all-the-years-of-selected-countries" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Update all the years of selected countries</h2>
+<div id="update-all-the-years-of-selected-countries" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Update all the years of selected countries</h3>
 <p>This method is easy but highly inefficient because it could be the case that
 only one year of a particular country was updated or added, but the code below
 will check if all the years of that country have changed as well. You may think
@@ -404,8 +411,8 @@ created after the date in the local <code>filtdate</code>. Then, save in the loc
 call. From there, <code>pcn</code> will take of the update and will provide you with a file
 summarizing what data was updated, added, skipped, or failed.</p>
 </div>
-<div id="update-file-by-file" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Update file by file</h2>
+<div id="update-file-by-file" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Update file by file</h3>
 <p>The code below may seem complex, but it is actually very simple. The MATA
 function only reads the observation <code>i</code> in the <code>wile</code> loop of the
 already-filtered data obtained with <code>primus query</code>. You can see that it is very
@@ -470,6 +477,58 @@ to the <code>pcn</code> by adding this feature, you’re more than welcome!
 process a nice file summarizing what happened with each file. This could
 also be fixed if this routine is included as part of <code>pcn</code>.</li>
 </ol>
+</div>
+</div>
+<div id="create-the-_pcn-files" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Create the _PCN files</h2>
+<p>The final step before to have the microdata ready to be converted to .pcb files
+and ingested by the PovcalNet system is to create the “PCN” files. These files
+are just an adaptation of the GPWG microdata in the P drive. They are called
+“PCN” because that is their suffix in the naming convention. For instance, the
+“_PCN” file of <em>COL_2017_GEIH_V01_M_V01_A_GMD<strong>_GPWG</strong>.dta</em> is
+<em>COL_2017_GEIH_v01_M_v01_A_GMD<span class="red">_PCN</span>.dta.</em> This conversion is done
+through the <code>pcn create</code> directive. In the case above, for instance, you only
+need to execute the directive,</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="update-microdata.html#cb25-1"></a>pcn create, countries(COL) <span class="fu">year</span>(2017) <span class="kw">clear</span></span></code></pre></div>
+<p>Also, you can create the “PCN” files of all surveys, by just typing,</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="update-microdata.html#cb26-1"></a>pcn create, countries(ALL)</span></code></pre></div>
+<p>You may need to use the option <code>replace</code> in the directive above, in case you
+want to replace an existing “PCN” file. Also, if you want to understand what the
+<code>pcn create</code> directive does, you can investigate the file <code>pcn_create.ado</code>, but
+it general it makes sure to load the data in the P drive and standardize the
+output to make it ready for PovcalNet. For instance, it replace zeros and
+missing values of the welfare and weight variables like this,</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="update-microdata.html#cb27-1"></a>* <span class="kw">drop</span> <span class="fu">missing</span> <span class="kw">values</span></span>
+<span id="cb27-2"><a href="update-microdata.html#cb27-2"></a><span class="kw">drop</span> <span class="kw">if</span> welfare &lt; 0 | welfare == .</span>
+<span id="cb27-3"><a href="update-microdata.html#cb27-3"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="kw">weight</span> &lt;= 0 | <span class="kw">weight</span> == .</span></code></pre></div>
+<p>Or make sure the <code>weight</code> variable is exactly the same for all the files,</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="update-microdata.html#cb28-1"></a>cap <span class="kw">confirm</span> <span class="kw">var</span> <span class="kw">weight</span>, exact</span>
+<span id="cb28-2"><a href="update-microdata.html#cb28-2"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb28-3"><a href="update-microdata.html#cb28-3"></a>    cap <span class="kw">confirm</span> <span class="kw">var</span> weight_p, exact</span>
+<span id="cb28-4"><a href="update-microdata.html#cb28-4"></a>    <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_p <span class="kw">weight</span></span>
+<span id="cb28-5"><a href="update-microdata.html#cb28-5"></a>    <span class="kw">else</span> {</span>
+<span id="cb28-6"><a href="update-microdata.html#cb28-6"></a>        cap <span class="kw">confirm</span> <span class="kw">var</span> weight_h, exact</span>
+<span id="cb28-7"><a href="update-microdata.html#cb28-7"></a>        <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_h <span class="kw">weight</span></span>
+<span id="cb28-8"><a href="update-microdata.html#cb28-8"></a>        <span class="kw">else</span> {</span>
+<span id="cb28-9"><a href="update-microdata.html#cb28-9"></a>            <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">&quot;no weight variable found for country(`country&#39;) year(`year&#39;) veralt(`veralt&#39;) &quot;</span></span>
+<span id="cb28-10"><a href="update-microdata.html#cb28-10"></a>            <span class="kw">local</span> status <span class="st">&quot;error. cleaning&quot;</span></span>
+<span id="cb28-11"><a href="update-microdata.html#cb28-11"></a>            <span class="kw">local</span> dlwnote <span class="st">&quot;no weight variable found for country(`country&#39;) year(`year&#39;) &quot;</span></span>
+<span id="cb28-12"><a href="update-microdata.html#cb28-12"></a>            <span class="kw">mata</span>: P = pcn_info(P)</span>
+<span id="cb28-13"><a href="update-microdata.html#cb28-13"></a>            <span class="kw">noi</span> <span class="kw">_dots</span> <span class="ot">`i&#39;</span> 1</span>
+<span id="cb28-14"><a href="update-microdata.html#cb28-14"></a>            <span class="kw">continue</span></span>
+<span id="cb28-15"><a href="update-microdata.html#cb28-15"></a>        }</span>
+<span id="cb28-16"><a href="update-microdata.html#cb28-16"></a>    }</span>
+<span id="cb28-17"><a href="update-microdata.html#cb28-17"></a>}</span></code></pre></div>
+<p>This command also makes sure to do the proper adjustments to the India and
+Indonesia datasets.</p>
+<div class="rmdbox rmdcaution">
+<p>Make sure that for all the new GPWG that you download from <code>datalibweb</code> based on
+the PRIMUS catalog, you create all the corresponding PCN files.</p>
+</div>
+</div>
+<div id="china-synthetic-files" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> China synthetic files</h2>
+<p>To be updated by David.</p>
 
 </div>
 </div>
