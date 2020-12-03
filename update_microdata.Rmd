@@ -5,12 +5,14 @@ drive is. As it is explained in the first part of section \@ref(network-drive),
 the microdata resides in the folder `01.PovcalNet/01.Vintage_control`.
 **(...complete this part)**
 
+## Get PovcalNet inventory up to date
+
 Once everything has been approved in PRIMUS (see section \@ref(approve-primus)),
 we can download the most recent data into our system using the directive
 `pcn download gpwg`. The process of downloading the data can be done in several
 ways, but we suggest two.
 
-## Update all the years of selected countries
+### Update all the years of selected countries
 
 This method is easy but highly inefficient because it could be the case that
 only one year of a particular country was updated or added, but the code below
@@ -41,7 +43,7 @@ created after the date in the local `filtdate`. Then, save in the local
 call. From there, `pcn` will take of the update and will provide you with a file
 summarizing what data was updated, added, skipped, or failed.
 
-## Update file by file
+### Update file by file
 
 The code below may seem complex, but it is actually very simple. The MATA
 function only reads the observation `i` in the `wile` loop of the
@@ -109,3 +111,71 @@ while (`i' < `n') {
 3.  The only problem with this approach is that you won't get at the end of the
     process a nice file summarizing what happened with each file. This could
     also be fixed if this routine is included as part of `pcn`.
+
+## Create the \_PCN files
+
+The final step before to have the microdata ready to be converted to .pcb files
+and ingested by the PovcalNet system is to create the "PCN" files. These files
+are just an adaptation of the GPWG microdata in the P drive. They are called
+"PCN" because that is their suffix in the naming convention. For instance, the
+"\_PCN" file of *COL\_2017\_GEIH\_V01\_M\_V01\_A\_GMD**\_GPWG**.dta* is
+*COL\_2017\_GEIH\_v01\_M\_v01\_A\_GMD[\_PCN]{.red}.dta.* This conversion is done
+through the `pcn create` directive. In the case above, for instance, you only
+need to execute the directive,
+
+```{stata, eval = FALSE}
+pcn create, countries(COL) year(2017) clear
+```
+
+Also, you can create the "PCN" files of all surveys, by just typing,
+
+```{stata, eval = FALSE}
+pcn create, countries(ALL)
+```
+
+You may need to use the option `replace` in the directive above, in case you
+want to replace an existing "PCN" file. Also, if you want to understand what the
+`pcn create` directive does, you can investigate the file `pcn_create.ado`, but
+it general it makes sure to load the data in the P drive and standardize the
+output to make it ready for PovcalNet. For instance, it replace zeros and
+missing values of the welfare and weight variables like this,
+
+```{stata, eval = FALSE}
+* drop missing values
+drop if welfare < 0 | welfare == .
+drop if weight <= 0 | weight == .
+```
+
+Or make sure the `weight` variable is exactly the same for all the files,
+
+```{stata, eval = FALSE}
+cap confirm var weight, exact
+if (_rc) {
+	cap confirm var weight_p, exact
+	if (_rc == 0) rename weight_p weight
+	else {
+		cap confirm var weight_h, exact
+		if (_rc == 0) rename weight_h weight
+		else {
+			noi disp in red "no weight variable found for country(`country') year(`year') veralt(`veralt') "
+			local status "error. cleaning"
+			local dlwnote "no weight variable found for country(`country') year(`year') "
+			mata: P = pcn_info(P)
+			noi _dots `i' 1
+			continue
+		}
+	}
+}
+```
+
+This command also makes sure to do the proper adjustments to the India and
+Indonesia datasets.
+
+::: {.rmdbox .rmdcaution}
+Make sure that for all the new GPWG that you download from `datalibweb` based on
+the PRIMUS catalog, you create all the corresponding PCN files.
+:::
+
+## China synthetic files
+
+To be updated by David.
