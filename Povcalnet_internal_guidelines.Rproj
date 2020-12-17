@@ -16,4 +16,4 @@ AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
 
 BuildType: Website
-WebsitePath: C:/Users/wb384996/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/Povcalnet_internal_guidelines
+WebsitePath: ~/Git/Povcalnet_internal_guidelines
