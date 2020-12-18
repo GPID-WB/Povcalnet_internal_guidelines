@@ -33,12 +33,21 @@ system. To avoid problems on development or production, this assessment was done
 in the testing server, where the data could be removed safely and a special
 version of the master file could be uploaded.
 
-Given that the server is
+### Restricted (AR) server {.unnumbered}
 
--   Server:
+sdfasdfa
 
--   Given that anyone may have access to the Data Base Management System, the
-    username and password are not provided in this document.
+## Master Data
+
+[blah blah]{.red}
+
+## PCB files
+
+::: {.red}
+manually
+
+batch\> Ask Tony to copy them.
+:::
 
 ## Group Data
 
