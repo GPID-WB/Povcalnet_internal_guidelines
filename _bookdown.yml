@@ -24,7 +24,7 @@ rmd_files: [
   "PRIMUS.Rmd",
   "update_microdata.Rmd",
   "pcb_files.Rmd",
-  "DM_Group_data.Rmd",
+  "Data_Management.Rmd",
   "master_file.Rmd",
 
   "Referencing_using_Zotero.Rmd",
