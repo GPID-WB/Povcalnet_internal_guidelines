@@ -35,7 +35,12 @@ version of the master file could be uploaded.
 
 ### Restricted (AR) server {.unnumbered}
 
-sdfasdfa
+This server is used when restricted data are intended to be part of the
+PovcalNet system. In theory, anyone in the WB may access the data in the
+testing, development, or production servers. The restricted server just adds an
+extra layer of authentication in which only selected people can access the data.
+It is seldom used.
+
 
 ## Master Data
 

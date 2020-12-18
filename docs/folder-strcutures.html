@@ -529,7 +529,30 @@ net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
 <p>You are <strong>not</strong> supposed to use the <code>C:/</code> for anything. Some programs like R of Python save their packages or libraries in the <code>C:/</code>, which is fine. But the <code>C:/</code> drive is not for storing data, MS files, or anything personal. If you need to save something on the <code>C:/</code> drive, please let leads of the povcalnet team know.</p>
 <p>The <code>P:/</code> is fully accessible through the server, so any code pointing to the <code>P:/</code> drive in your computer will work effortlessly in the server.</p>
 <p>The <code>P:/</code> drive is a high speed drive to store big data or large ammount of files to execute fast. This is <strong>NOT</strong> and storage drive, since its capacity is limited. All your data should be stored in the <code>P:/</code> and copied to the <code>E:/</code> drive temporally for fast execution. Once you’re done with your analysis, you can copy back any results to the <code>P:/</code> drive and empty the <code>E:/</code> to allow others to use it. Ideally, we would increase the size of the <code>E:/</code> drive but that is not a possibility now.</p>
-<pre><code>#&gt; Error in strsplit(mypath, pathDelimiter, fixed = TRUE)[[1]]: subscript out of bounds</code></pre>
+<pre><code>#&gt;                     levelName
+#&gt; 1  E:                        
+#&gt; 2   ¦--01.personal           
+#&gt; 3   ¦   ¦--02.core_team      
+#&gt; 4   ¦   ¦--wb020687          
+#&gt; 5   ¦   ¦--wb108988          
+#&gt; 6   ¦   ¦--wb372541          
+#&gt; 7   ¦   ¦--wb384996          
+#&gt; 8   ¦   ¦--wb424681          
+#&gt; 9   ¦   ¦--wb499754          
+#&gt; 10  ¦   ¦--wb537472          
+#&gt; 11  ¦   ¦--wb548542          
+#&gt; 12  ¦   ¦--wb561460          
+#&gt; 13  ¦   ¦--wb562318          
+#&gt; 14  ¦   °--wb562350          
+#&gt; 15  ¦--03.pcn_update         
+#&gt; 16  ¦   ¦--00.Master         
+#&gt; 17  ¦   ¦--01.QA             
+#&gt; 18  ¦   ¦--02.Vintage_control
+#&gt; 19  ¦   °--03.Production     
+#&gt; 20  ¦--04.projects           
+#&gt; 21  ¦--05.CPI                
+#&gt; 22  ¦--06.National_accounts  
+#&gt; 23  °--07.ProjectX</code></pre>
 <p>In the subfolder <code>E:/01.personal</code> you may place all the date files you need for highspeed performance. For some particular projects, you will be asked to place the folders in the folder <code>E:/02.core_team</code>.</p>
 </div>
 </div>
