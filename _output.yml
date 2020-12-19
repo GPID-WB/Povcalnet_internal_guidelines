@@ -1,6 +1,12 @@
 bookdown::bs4_book:
   theme:
-    primary: "#637238"
+    primary: "#982a31"
+    fg: "#2b2121"
+    bg: "#ffffff"
+  repo: https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines/
+  css: ["https://unpkg.com/tachyons@4/css/tachyons.min.css", css/style.css]
+
+bookdown::gitbook:
   includes:
     in_header: files/hypothesis.html
     before_body: files/open_review_block.html
@@ -10,24 +16,14 @@ bookdown::bs4_book:
       collapse: section
       scroll_highlight: yes
       before: |
-        <li><a href="./">PovcalNet Internal Guidelines</a></li>
+        <li><strong><a href="./">PovcalNet Internal Guidelines</a></strong></li>
       after: |
-        <li><a href="https://github.com/worldbank/Povcalnet_internal_guidelines" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+        <li><a href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines" target="blank">Published with bookdown</a></li>
     toolbar:
       position: fixed
-    edit : null
+    edit:
+      link: https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines/edit/master/%s
     search: yes
-    fontsettings:
-      theme: white
-      family: sans
-      size: 2
-    sharing:
-      facebook: no
-      github: no
-      twitter: no
-      linkedin: no
-      weibo: no
-      instapaper: no
-      vk: no
+    sharing: no
     info: yes
+

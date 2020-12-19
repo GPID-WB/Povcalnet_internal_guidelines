@@ -3,21 +3,27 @@ title: "PovcalNet Internal Guidelines and Protocols"
 author: ["PovcalNet team", "Development economics", "World Bank Group"]
 date: "`r Sys.Date()`" 
 knit: "bookdown::render_book"
-site: bookdown::bookdown_site 
+description: >
+  This book contains general working guidelines of the internal 
+  workflow of the PovcalNet Team. 
+
+site: bookdown::bookdown_site
+url: "https://povcalnet-team.github.io/Povcalnet_internal_guidelines/"
+github-repo: PovcalNet-Team/Povcalnet_internal_guidelines
+cover-image: images/cover.png
+
+documentclass: book 
 bibliography: [bib/book.bib, bib/packages.bib] 
 biblio-style: apalike 
 link-citations: yes
 links-as-notes: true
 colorlinks: yes
-github-repo: worldbank/Povcalnet_internal_guidelines
-description: "PovcalNet guidelines and protocols for internal workflow" 
-documentclass: book 
 ---
 
 # Welcome {-}
 
-This book contains the  guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you're required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.
+<img src="images/cover.jpg" width="250" height="328" align="right" alt="" class="cover" /> This book contains the  guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you're required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.
 
 ## Team {-}
 
-PovcalNet is a product of the World Bank's Development Economics Division, in particular the Development Data Group and the Development Research Group, and the Poverty and Equity Global Practice. This version of the PovcalNet software was designed by Qinghua Zhao. The global poverty monitoring database is managed by R. Andrés Castañeda, Dean Jolliffe, Christoph Lakner, Espen B. Prydz and Prem Sangraula, with assistance from Tony Fujs and Kihoon Lee. Assembly of these data is undertaken under the auspices of the Global Poverty Working Group which brings together the PovcalNet team and economy- and regional-level counterparts in the World Bank’s Poverty and Equity Global Practice, and which compiles economy level data and assesses these for international comparability. Overall guidance is provided by Francisco H. G. Ferreira, Senior Advisor in the Poverty and Inequality team of the Research Department, Haishan Fu, Director of the Data Group, and Carolina Sánchez-Páramo, Senior Director of the Poverty and Equity Global Practice. The founder of PovcalNet and former Director of Research, Martin Ravallion, provides continued input on the methodology adopted in PovcalNet. A great many colleagues at the World Bank have helped the team in obtaining the necessary data for PovcalNet. An important acknowledgement goes to the staff of over 100 governmental statistics offices that collected the primary household and price survey data. The Development Data Group has provided the 2011 consumption PPPs, population and other National Accounts data used here.
+PovcalNet is a product of the World Bank's Development Economics Division, in particular the Development Data Group and the Development Research Group, and the Poverty and Equity Global Practice. This version of the PovcalNet software was designed by Qinghua Zhao. The global poverty monitoring database is managed by R.Andrés Castañeda, Aleksander Eilertsen, Dean Jolliffe, Tony Fujs, Christoph Lakner, Marta Schoch, Samuel Kofi Tetteh Baah, and Martha Viveros. Assembly of these data is undertaken under the auspices of the Global Poverty Working Group which brings together the PovcalNet team and economy- and regional-level counterparts in the World Bank’s Poverty and Equity Global Practice, and which compiles economy level data and assesses these for international comparability. Overall guidance is provided by Francisco H. G. Ferreira, Senior Advisor in the Poverty and Inequality team of the Research Department, Haishan Fu, Director of the Data Group, and Carolina Sánchez-Páramo, Senior Director of the Poverty and Equity Global Practice. The founder of PovcalNet and former Director of Research, Martin Ravallion, provides continued input on the methodology adopted in PovcalNet. A great many colleagues at the World Bank have helped the team in obtaining the necessary data for PovcalNet. An important acknowledgement goes to the staff of over 100 governmental statistics offices that collected the primary household and price survey data. The Development Data Group has provided the 2011 consumption PPPs, population and other National Accounts data used here.
