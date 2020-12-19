@@ -22,7 +22,7 @@ colorlinks: yes
 
 # Welcome {-}
 
-<img src="images/cover.jpg" width="250" height="328" align="right" alt="" class="cover" /> This book contains the  guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you're required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.
+<a href="https://stocksnap.io/author/stevejohnson"><img src="images/cover.jpg" width="250" height="328" align="right" alt="" class="cover" /></a> This book contains the  guidelines and protocols of the internal workflow of the PovcalNet team. As part of the PovcalNet team, you're required to read and understand the material of this book. The intention of this book is to create institutional memory of the PovcalNet. It is intended for internal audiences but may be used as part of the conversation with other teams inside and outside the World Bank Group.
 
 ## Team {-}
 
