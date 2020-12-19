@@ -1,4 +1,6 @@
-bookdown::gitbook:
+bookdown::bs4_book:
+  theme:
+    primary: "#637238"
   includes:
     in_header: files/hypothesis.html
     before_body: files/open_review_block.html
