@@ -8,12 +8,14 @@
 # file <- "data_visualization_flourish.Rmd"
 # file <- "primus.Rmd"
 
-file <- "update_microdata.Rmd"
+# file <- "update_microdata.Rmd"
+file <- "group_data.Rmd"
 bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 
 # render the whole book
-bookdown::render_book("index.Rmd", "bookdown::gitbook")
+# bookdown::render_book("index.Rmd", "bookdown::gitbook")
+bookdown::render_book("index.Rmd", "bookdown::bs4_book")
 
 #serve the whole book to see modification on the fly
 # dir <- getwd()

@@ -1,7 +1,8 @@
 book_filename: "Povcalnet_internal_guidelines"
-repo: https://github.com/worldbank/Povcalnet_internal_guidelines/
+repo: https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines/
 output_dir: "docs"
 delete_merged_file: true
+
 language:
   label:
     fig: "Figure "

@@ -1,399 +1,80 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols</title>
-  <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols" />
-  
-  <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
-  
-
-<meta name="author" content="PovcalNet team" />
-<meta name="author" content="Development economics" />
-<meta name="author" content="World Bank Group" />
-
-
-<meta name="date" content="2020-12-19" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="folder-strcutures.html"/>
-<link rel="next" href="stata-github.html"/>
-<script src="libs/header-attrs-2.6.3/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script async defer src="https://hypothes.is/embed.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
-<link rel="stylesheet" href="css/style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 3 Collaboration in Git | PovcalNet Internal Guidelines and Protocols</title>
+<meta name="author" content="PovcalNet team">
+<meta name="author" content="Development economics">
+<meta name="author" content="World Bank Group">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">PovcalNet Internal Guidelines</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
-<ul>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#team"><i class="fa fa-check"></i>Team</a></li>
-</ul></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="part"><span><b>I Basics</b></span></li>
-<li class="chapter" data-level="2" data-path="folder-strcutures.html"><a href="folder-strcutures.html"><i class="fa fa-check"></i><b>2</b> Folder Strcutures</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#network-drive"><i class="fa fa-check"></i><b>2.1</b> Network Drive</a>
-<ul>
-<li class="chapter" data-level="2.1.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#steps"><i class="fa fa-check"></i><b>2.1.1</b> Steps to map drives</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#server"><i class="fa fa-check"></i><b>2.2</b> Remote server connection</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#connect"><i class="fa fa-check"></i><b>2.2.1</b> Steps to connect to the server</a></li>
-<li class="chapter" data-level="2.2.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#map-network-drive-in-the-server"><i class="fa fa-check"></i><b>2.2.2</b> Map Network drive in the server</a></li>
-<li class="chapter" data-level="2.2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#folder-strcuture-in-the-server."><i class="fa fa-check"></i><b>2.2.3</b> Folder strcuture in the server.</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="folder-strcutures.html"><a href="folder-strcutures.html#onedrive"><i class="fa fa-check"></i><b>2.3</b> OneDrive</a></li>
-<li class="chapter" data-level="2.4" data-path="folder-strcutures.html"><a href="folder-strcutures.html#add"><i class="fa fa-check"></i><b>2.4</b> Additional topics to discuss</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="folder-strcutures.html"><a href="folder-strcutures.html#r-or-stata-or-both"><i class="fa fa-check"></i><b>2.4.1</b> R or Stata or both?</a></li>
-<li class="chapter" data-level="2.4.2" data-path="folder-strcutures.html"><a href="folder-strcutures.html#github"><i class="fa fa-check"></i><b>2.4.2</b> GitHub</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html"><i class="fa fa-check"></i><b>3</b> Collaboration in Git</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initial-set-up"><i class="fa fa-check"></i><b>3.1</b> Initial Set up</a></li>
-<li class="chapter" data-level="3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-git"><i class="fa fa-check"></i><b>3.2</b> Getting to know <span>Git</span></a></li>
-<li class="chapter" data-level="3.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basics-of-git"><i class="fa fa-check"></i><b>3.3</b> Basics of Git</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-repositories"><i class="fa fa-check"></i><b>3.3.1</b> Working with repositories</a></li>
-<li class="chapter" data-level="3.3.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#branching-and-merging"><i class="fa fa-check"></i><b>3.3.2</b> Branching and Merging</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-smartgit"><i class="fa fa-check"></i><b>3.4</b> Getting to know <span>SmartGit</span></a>
-<ul>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#install-smartgit"><i class="fa fa-check"></i>Installation</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#integration-with-github"><i class="fa fa-check"></i>Integration with GitHub</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-your-toolbar"><i class="fa fa-check"></i>Organize your toolbar</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#initialize-repos"><i class="fa fa-check"></i>Initialize Repos</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-repos"><i class="fa fa-check"></i>Clone Repos</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#organize-repos-by-groups"><i class="fa fa-check"></i>Organize Repos by groups</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account"><i class="fa fa-check"></i>How do you link a repository that is your local machine to your GitHub account?</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#basic-git-process"><i class="fa fa-check"></i>Basic Git process</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#important-keyboard-shortcut-process"><i class="fa fa-check"></i>Important keyboard shortcut process</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#nice-features-of-smartgit"><i class="fa fa-check"></i>Nice features of SmartGit</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#advanced-git-process"><i class="fa fa-check"></i><b>3.5</b> Advanced Git process</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#git-workflow"><i class="fa fa-check"></i><b>3.5.1</b> Git workflow</a></li>
-<li class="chapter" data-level="3.5.2" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-commits"><i class="fa fa-check"></i><b>3.5.2</b> How to work with commits</a></li>
-<li class="chapter" data-level="3.5.3" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#what-to-do-with-changes-you-dont-want-to-commit"><i class="fa fa-check"></i><b>3.5.3</b> What to do with changes you don’t want to commit</a></li>
-<li class="chapter" data-level="3.5.4" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-undo-stuff-in-the-git"><i class="fa fa-check"></i><b>3.5.4</b> How to undo stuff in the Git</a></li>
-<li class="chapter" data-level="3.5.5" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-deal-with-merge-conflicts"><i class="fa fa-check"></i><b>3.5.5</b> How to deal with merge conflicts</a></li>
-<li class="chapter" data-level="3.5.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#how-to-work-with-pull-requests"><i class="fa fa-check"></i><b>3.5.6</b> How to work with pull requests</a></li>
-<li class="chapter" data-level="3.5.7" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#dos-and-donts"><i class="fa fa-check"></i><b>3.5.7</b> DO’s and DONT’s</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#getting-to-know-gitkraken"><i class="fa fa-check"></i><b>3.6</b> Getting to know <span>GitKraken</span></a>
-<ul>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#gitkraken-interface"><i class="fa fa-check"></i>GItKraken Interface</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#create-a-repository"><i class="fa fa-check"></i>Create a repository</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#clone-a-repository"><i class="fa fa-check"></i>Clone a repository</a></li>
-<li class="chapter" data-level="" data-path="collaboration-in-git.html"><a href="collaboration-in-git.html#working-with-commits"><i class="fa fa-check"></i>Working with commits</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="stata-github.html"><a href="stata-github.html"><i class="fa fa-check"></i><b>4</b> Stata and Github</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="stata-github.html"><a href="stata-github.html#stata-ado-path"><i class="fa fa-check"></i><b>4.1</b> Stata ado-path</a></li>
-<li class="chapter" data-level="4.2" data-path="stata-github.html"><a href="stata-github.html#install-github"><i class="fa fa-check"></i><b>4.2</b> Installing commands from Github</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="stata-github.html"><a href="stata-github.html#recommended-method"><i class="fa fa-check"></i><b>4.2.1</b> Recommended method</a></li>
-<li class="chapter" data-level="4.2.2" data-path="stata-github.html"><a href="stata-github.html#alternative-method"><i class="fa fa-check"></i><b>4.2.2</b> Alternative method</a></li>
-<li class="chapter" data-level="4.2.3" data-path="stata-github.html"><a href="stata-github.html#last-resource-method"><i class="fa fa-check"></i><b>4.2.3</b> Last resource method</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="stata-github.html"><a href="stata-github.html#cloning-the-stata-command-repository"><i class="fa fa-check"></i><b>4.3</b> Cloning the Stata command repository</a></li>
-</ul></li>
-<li class="part"><span><b>II PovcalNet Update</b></span></li>
-<li class="chapter" data-level="5" data-path="intro-povcal.html"><a href="intro-povcal.html"><i class="fa fa-check"></i><b>5</b> Introduction to PovcalNet Update</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="intro-povcal.html"><a href="intro-povcal.html#overview"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="prepare.html"><a href="prepare.html"><i class="fa fa-check"></i><b>6</b> Prepare data for PovcalNet update</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="prepare.html"><a href="prepare.html#population"><i class="fa fa-check"></i><b>6.1</b> Population</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="prepare.html"><a href="prepare.html#raw-data"><i class="fa fa-check"></i><b>6.1.1</b> Raw data</a></li>
-<li class="chapter" data-level="6.1.2" data-path="prepare.html"><a href="prepare.html#update-master-file"><i class="fa fa-check"></i><b>6.1.2</b> update master file</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="prepare.html"><a href="prepare.html#gdp-and-consumption-pce"><i class="fa fa-check"></i><b>6.2</b> GDP and Consumption (PCE)</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="prepare.html"><a href="prepare.html#raw-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Raw data</a></li>
-<li class="chapter" data-level="6.2.2" data-path="prepare.html"><a href="prepare.html#update-master-file-1"><i class="fa fa-check"></i><b>6.2.2</b> Update master file</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="prepare.html"><a href="prepare.html#cpi-and-ppp"><i class="fa fa-check"></i><b>6.3</b> CPI and PPP</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="prepare.html"><a href="prepare.html#cpicaution"><i class="fa fa-check"></i><b>6.3.1</b> Word of Caution</a></li>
-<li class="chapter" data-level="6.3.2" data-path="prepare.html"><a href="prepare.html#different-cpi-datasets"><i class="fa fa-check"></i><b>6.3.2</b> Different CPI datasets</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="lis-data.html"><a href="lis-data.html"><i class="fa fa-check"></i><b>7</b> LIS Data</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="lis-data.html"><a href="lis-data.html#the-lis_data-repository"><i class="fa fa-check"></i><b>7.1</b> The LIS_data repository</a></li>
-<li class="chapter" data-level="7.2" data-path="lis-data.html"><a href="lis-data.html#interacting-with-lissy"><i class="fa fa-check"></i><b>7.2</b> Interacting with LISSY</a></li>
-<li class="chapter" data-level="7.3" data-path="lis-data.html"><a href="lis-data.html#getting-the-400-bins-from-lissy"><i class="fa fa-check"></i><b>7.3</b> Getting the 400 bins from LISSY</a></li>
-<li class="chapter" data-level="7.4" data-path="lis-data.html"><a href="lis-data.html#from-text-file-to-datalibweb-structure"><i class="fa fa-check"></i><b>7.4</b> From Text file to datalibweb structure</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="lis-data.html"><a href="lis-data.html#get-rcall-working-in-your-computer"><i class="fa fa-check"></i><b>7.4.1</b> 1. Get <code>rcall</code> working in your computer</a></li>
-<li class="chapter" data-level="" data-path="lis-data.html"><a href="lis-data.html#personal-drive"><i class="fa fa-check"></i>2. Personal Drive</a></li>
-<li class="chapter" data-level="" data-path="lis-data.html"><a href="lis-data.html#directives-of-the-code"><i class="fa fa-check"></i>3. Directives of the code</a></li>
-<li class="chapter" data-level="" data-path="lis-data.html"><a href="lis-data.html#pattern-of-the-text-files"><i class="fa fa-check"></i>4. Pattern of the text files</a></li>
-<li class="chapter" data-level="7.4.2" data-path="lis-data.html"><a href="lis-data.html#output"><i class="fa fa-check"></i><b>7.4.2</b> 5. Output</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="lis-data.html"><a href="lis-data.html#compare-new-lis-data-to-datalibweb-inventory"><i class="fa fa-check"></i><b>7.5</b> Compare new LIS data to Datalibweb inventory</a></li>
-<li class="chapter" data-level="7.6" data-path="lis-data.html"><a href="lis-data.html#the-excel-file-lis-datasets.xlsx"><i class="fa fa-check"></i><b>7.6</b> The Excel file <code>LIS datasets.xlsx</code></a></li>
-<li class="chapter" data-level="7.7" data-path="lis-data.html"><a href="lis-data.html#prepare-data-for-the-poverty-gp"><i class="fa fa-check"></i><b>7.7</b> Prepare data for the Poverty GP</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="primus.html"><a href="primus.html"><i class="fa fa-check"></i><b>8</b> PRIMUS</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="primus.html"><a href="primus.html#interacting-with-primus"><i class="fa fa-check"></i><b>8.1</b> Interacting with PRIMUS</a>
-<ul>
-<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#website-platform"><i class="fa fa-check"></i>Website platform</a></li>
-<li class="chapter" data-level="" data-path="primus.html"><a href="primus.html#stata-command"><i class="fa fa-check"></i>Stata command</a></li>
-<li><a href="primus.html#corrections-to-primus-stata-command">Corrections to <code>primus</code> Stata command</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="primus.html"><a href="primus.html#understand-primus"><i class="fa fa-check"></i><b>8.2</b> Understanding PRIMUS</a></li>
-<li class="chapter" data-level="8.3" data-path="primus.html"><a href="primus.html#checking-primus-estimates"><i class="fa fa-check"></i><b>8.3</b> Checking PRIMUS estimates</a></li>
-<li class="chapter" data-level="8.4" data-path="primus.html"><a href="primus.html#approve-primus"><i class="fa fa-check"></i><b>8.4</b> Confirming and approving data in PRIMUS</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="update-microdata.html"><a href="update-microdata.html"><i class="fa fa-check"></i><b>9</b> Update microdata in the P drive</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="update-microdata.html"><a href="update-microdata.html#get-povcalnet-inventory-up-to-date"><i class="fa fa-check"></i><b>9.1</b> Get PovcalNet inventory up to date</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="update-microdata.html"><a href="update-microdata.html#update-all-the-years-of-selected-countries"><i class="fa fa-check"></i><b>9.1.1</b> Update all the years of selected countries</a></li>
-<li class="chapter" data-level="9.1.2" data-path="update-microdata.html"><a href="update-microdata.html#update-file-by-file"><i class="fa fa-check"></i><b>9.1.2</b> Update file by file</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="update-microdata.html"><a href="update-microdata.html#create-the-_pcn-files"><i class="fa fa-check"></i><b>9.2</b> Create the _PCN files</a></li>
-<li class="chapter" data-level="9.3" data-path="update-microdata.html"><a href="update-microdata.html#china-synthetic-files"><i class="fa fa-check"></i><b>9.3</b> China synthetic files</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="group-data.html"><a href="group-data.html"><i class="fa fa-check"></i><b>10</b> Group Data</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="group-data.html"><a href="group-data.html#preparing-the-data"><i class="fa fa-check"></i><b>10.1</b> Preparing the data</a></li>
-<li class="chapter" data-level="10.2" data-path="group-data.html"><a href="group-data.html#naming-convention"><i class="fa fa-check"></i><b>10.2</b> Naming convention</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>11</b> Create .PCB files</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#what-the-heck-is-a-pcb-file"><i class="fa fa-check"></i><b>11.1</b> What the heck is a PCB file?!!</a></li>
-<li class="chapter" data-level="11.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#the-povcalnet_update-repository"><i class="fa fa-check"></i><b>11.2</b> The povcalnet_update repository</a></li>
-<li class="chapter" data-level="11.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-the-.pcb-files"><i class="fa fa-check"></i><b>11.3</b> Generate the .pcb files</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#directories"><i class="fa fa-check"></i><b>11.3.1</b> Directories</a></li>
-<li class="chapter" data-level="11.3.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#init-params"><i class="fa fa-check"></i><b>11.3.2</b> Surveys that have changed</a></li>
-<li class="chapter" data-level="11.3.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#prepare-metadata"><i class="fa fa-check"></i><b>11.3.3</b> Prepare metadata</a></li>
-<li class="chapter" data-level="11.3.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-.pcb-files"><i class="fa fa-check"></i><b>11.3.4</b> Generate .pcb files</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#master-objectives"><i class="fa fa-check"></i><b>11.4</b> Update the Master file</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#update-info-of-the-surveymean-sheet"><i class="fa fa-check"></i><b>11.4.1</b> Update info of the “SurveyMean” sheet</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>12</b> Upload Group Data to the Data Management System</a>
-<ul>
-<li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#development-internal-server"><i class="fa fa-check"></i>Development (internal) server</a></li>
-<li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#production"><i class="fa fa-check"></i>Production</a></li>
-<li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#testing-server"><i class="fa fa-check"></i>Testing server</a></li>
-<li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#restricted-ar-server"><i class="fa fa-check"></i>Restricted (AR) server</a></li>
-<li class="chapter" data-level="12.1" data-path="DMGroupData.html"><a href="DMGroupData.html#master-data"><i class="fa fa-check"></i><b>12.1</b> Master Data</a></li>
-<li class="chapter" data-level="12.2" data-path="DMGroupData.html"><a href="DMGroupData.html#pcb-files"><i class="fa fa-check"></i><b>12.2</b> PCB files</a></li>
-<li class="chapter" data-level="12.3" data-path="DMGroupData.html"><a href="DMGroupData.html#updating-the-system"><i class="fa fa-check"></i><b>12.3</b> Updating the system</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>13</b> Update the Master file</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>13.1</b> Upload Master file</a></li>
-</ul></li>
-<li class="part"><span><b>III Miscellaneous</b></span></li>
-<li class="chapter" data-level="14" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>14</b> Referencing software: Zotero</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>14.1</b> Installation</a></li>
-<li class="chapter" data-level="14.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>14.2</b> Extensions and add-ons</a></li>
-<li class="chapter" data-level="14.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>14.3</b> Adding references to Zotero</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>15</b> Data visualization: Flourish studio</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>15.1</b> Sign in</a></li>
-<li class="chapter" data-level="15.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>15.2</b> Get started</a></li>
-</ul></li>
-<li class="appendix"><span><b>Appendix</b></span></li>
-<li class="chapter" data-level="A" data-path="work-expectations.html"><a href="work-expectations.html"><i class="fa fa-check"></i><b>A</b> Quality of work expectations</a>
-<ul>
-<li class="chapter" data-level="A.1" data-path="work-expectations.html"><a href="work-expectations.html#data-and-charts"><i class="fa fa-check"></i><b>A.1</b> Data and Charts</a>
-<ul>
-<li class="chapter" data-level="A.1.1" data-path="work-expectations.html"><a href="work-expectations.html#proper-data-formatting"><i class="fa fa-check"></i><b>A.1.1</b> Proper data formatting</a></li>
-<li class="chapter" data-level="A.1.2" data-path="work-expectations.html"><a href="work-expectations.html#graphical-representation-of-the-problem"><i class="fa fa-check"></i><b>A.1.2</b> Graphical representation of the problem</a></li>
-<li class="chapter" data-level="A.1.3" data-path="work-expectations.html"><a href="work-expectations.html#qualitative-analysis"><i class="fa fa-check"></i><b>A.1.3</b> Qualitative analysis</a></li>
-<li class="chapter" data-level="A.1.4" data-path="work-expectations.html"><a href="work-expectations.html#practical-example"><i class="fa fa-check"></i><b>A.1.4</b> Practical Example</a></li>
-</ul></li>
-<li class="chapter" data-level="A.2" data-path="work-expectations.html"><a href="work-expectations.html#document-code"><i class="fa fa-check"></i><b>A.2</b> Document code</a>
-<ul>
-<li class="chapter" data-level="A.2.1" data-path="work-expectations.html"><a href="work-expectations.html#basic-script"><i class="fa fa-check"></i><b>A.2.1</b> Basic script</a></li>
-<li class="chapter" data-level="A.2.2" data-path="work-expectations.html"><a href="work-expectations.html#program-function-or-package."><i class="fa fa-check"></i><b>A.2.2</b> program, function or package.</a></li>
-</ul></li>
-<li class="chapter" data-level="A.3" data-path="work-expectations.html"><a href="work-expectations.html#good-coding-practices"><i class="fa fa-check"></i><b>A.3</b> Good coding practices</a></li>
-</ul></li>
-<li class="chapter" data-level="B" data-path="kihoons-handover.html"><a href="kihoons-handover.html"><i class="fa fa-check"></i><b>B</b> Kihoon’s Handover</a>
-<ul>
-<li class="chapter" data-level="B.1" data-path="kihoons-handover.html"><a href="kihoons-handover.html#gpwg-process"><i class="fa fa-check"></i><b>B.1</b> GPWG process</a>
-<ul>
-<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-gpwg-data-and-generate-pcb-files"><i class="fa fa-check"></i>How to download surveys from the GPWG data and generate pcb files</a></li>
-</ul></li>
-<li class="chapter" data-level="B.2" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lis-data-process"><i class="fa fa-check"></i><b>B.2</b> LIS Data Process</a>
-<ul>
-<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#introduction-1"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="" data-path="kihoons-handover.html"><a href="kihoons-handover.html#how-to-download-surveys-from-the-lis-data-server-and-generate-pcb-file"><i class="fa fa-check"></i>How to download surveys from the LIS data server and generate pcb file</a></li>
-</ul></li>
-<li class="chapter" data-level="B.3" data-path="kihoons-handover.html"><a href="kihoons-handover.html#lac-historical-data"><i class="fa fa-check"></i><b>B.3</b> LAC Historical data</a></li>
-<li class="chapter" data-level="B.4" data-path="kihoons-handover.html"><a href="kihoons-handover.html#eca-historical-data"><i class="fa fa-check"></i><b>B.4</b> ECA Historical data</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/worldbank/Povcalnet_internal_guidelines" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">PovcalNet Internal Guidelines and Protocols</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PovcalNet Internal Guidelines and Protocols</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li class="book-part">Basics</li>
+<li><a class="" href="folder-strcutures.html"><span class="header-section-number">2</span> Folder Strcutures</a></li>
+<li><a class="active" href="collaboration-in-git.html"><span class="header-section-number">3</span> Collaboration in Git</a></li>
+<li><a class="" href="stata-github.html"><span class="header-section-number">4</span> Stata and Github</a></li>
+<li class="book-part">PovcalNet Update</li>
+<li><a class="" href="intro-povcal.html"><span class="header-section-number">5</span> Introduction to PovcalNet Update</a></li>
+<li><a class="" href="prepare.html"><span class="header-section-number">6</span> Prepare data for PovcalNet update</a></li>
+<li><a class="" href="lis-data.html"><span class="header-section-number">7</span> LIS Data</a></li>
+<li><a class="" href="primus.html"><span class="header-section-number">8</span> PRIMUS</a></li>
+<li><a class="" href="update-microdata.html"><span class="header-section-number">9</span> Update microdata in the P drive</a></li>
+<li><a class="" href="group-data.html"><span class="header-section-number">10</span> Group Data</a></li>
+<li><a class="" href="create-pcb-files.html"><span class="header-section-number">11</span> Create .PCB files</a></li>
+<li><a class="" href="DMSystem.html"><span class="header-section-number">12</span> The Data Management System</a></li>
+<li><a class="" href="master-file.html"><span class="header-section-number">13</span> Update the Master file</a></li>
+<li class="book-part">Miscellaneous</li>
+<li><a class="" href="referencing-software-zotero.html"><span class="header-section-number">14</span> Referencing software: Zotero</a></li>
+<li><a class="" href="data-visualization-flourish-studio.html"><span class="header-section-number">15</span> Data visualization: Flourish studio</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="work-expectations.html"><span class="header-section-number">A</span> Quality of work expectations</a></li>
+<li><a class="" href="kihoons-handover.html"><span class="header-section-number">B</span> Kihoon’s Handover</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines/">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div class="rmdreview">This book is in <strong>Open Review</strong>. Please provide your feedback to make the book better for you and other readers. To add your annotation, do the following,&nbsp;
-<p>1. Create a free account in <a href="https://hypothes.is/signup">hypothes.is</a>&nbsp;&nbsp;</p>
-<p>2. Come back to this book and click on the upper-right-hand corner of the page to log in.&nbsp;</p>
-  <p>3. To make an annotation,&nbsp;<span style="background-color: #3297fd; color: white;">select some text</span> and then click on the pop-up menu.</p>
- <p>4. To see the annotations of others, click the in the upper right hand corner of the page</p>
-
-<p>Thanks.&nbsp;</p>
- </div>
-<div id="collaboration-in-git" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Collaboration in Git</h1>
-<hr />
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="collaboration-in-git" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Collaboration in Git<a class="anchor" aria-label="anchor" href="#collaboration-in-git"><i class="fas fa-link"></i></a>
+</h1>
+<hr>
 <p>This chapter presents how to work with <a href="https://git-scm.com/">Git</a>, <a href="https://www.gitkraken.com/">GitKraken</a>, and <a href="https://github.com/">GitHub</a>.</p>
-<p>In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc.) has changed, but it won’t tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.</p>
+<p>In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc.) has changed, but it wonâ€™t tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.</p>
 <div id="initial-set-up" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Initial Set up</h2>
+<h2>
+<span class="header-section-number">3.1</span> Initial Set up<a class="anchor" aria-label="anchor" href="#initial-set-up"><i class="fas fa-link"></i></a>
+</h2>
 <p>Make sure you follow the steps below:</p>
 <ol style="list-style-type: decimal">
 <li><p>Open a GitHub account using your World Bank email account. <a href="https://github.com/join?source=header-home">Here</a> or <a href="https://github.com/">here</a>.</p></li>
@@ -403,208 +84,228 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="getting-to-know-git" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Getting to know <a href="https://git-scm.com/">Git</a></h2>
-<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any client’s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesnât store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don’t know how those files change with respect to the changes applied to other files of the same project.</p>
+<h2>
+<span class="header-section-number">3.2</span> Getting to know <a href="https://git-scm.com/">Git</a><a class="anchor" aria-label="anchor" href="#getting-to-know-git"><i class="fas fa-link"></i></a>
+</h2>
+<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any clientâ€™s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesnÃ¢Â€Â™t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they donâ€™t know how those files change with respect to the changes applied to other files of the same project.</p>
 </div>
 <div id="basics-of-git" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Basics of Git</h2>
+<h2>
+<span class="header-section-number">3.3</span> Basics of Git<a class="anchor" aria-label="anchor" href="#basics-of-git"><i class="fas fa-link"></i></a>
+</h2>
 <div id="working-with-repositories" class="section level3" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Working with repositories</h3>
+<h3>
+<span class="header-section-number">3.3.1</span> Working with repositories<a class="anchor" aria-label="anchor" href="#working-with-repositories"><i class="fas fa-link"></i></a>
+</h3>
 <p>blah</p>
 </div>
 <div id="branching-and-merging" class="section level3" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Branching and Merging</h3>
-<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugâ”no matter how big or how smallâyou spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch."<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<h3>
+<span class="header-section-number">3.3.2</span> Branching and Merging<a class="anchor" aria-label="anchor" href="#branching-and-merging"><i class="fas fa-link"></i></a>
+</h3>
+<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the â€œdefaultâ€ branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. â€œGit branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugÃ¢Â€â€no matter how big or how smallÃ¢Â€Â”you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your futureâ€™s history before merging it into the main branch."<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Branch | Atlassian Git Tutorialâ€ Atlassian, accessed June 3, 2019, &lt;a href="https://www.atlassian.com/git/tutorials/using-branches"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a></p>
 </div>
 </div>
 <div id="getting-to-know-smartgit" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Getting to know <a href="https://www.syntevo.com/smartgit/">SmartGit</a></h2>
+<h2>
+<span class="header-section-number">3.4</span> Getting to know <a href="https://www.syntevo.com/smartgit/">SmartGit</a><a class="anchor" aria-label="anchor" href="#getting-to-know-smartgit"><i class="fas fa-link"></i></a>
+</h2>
 <div id="install-smartgit" class="section level3 unnumbered" number="">
-<h3>Installation</h3>
-<p>Download <a href="https://www.syntevo.com/smartgit/download/">SmartGit</a> and install it. Download the files into the the folder that you’ll use for installation and NOT into the “downloads” folder. If SmartGit automatically downloads the zip file into the “downloads” folder, then extract it into the folder you’ll install it in. You don’t need admin permissions to install it, but download the <em>Portable Bundle</em>. The installation files can be found here: ‘SmartGit &gt; bin &gt; smartgit.exe’.</p>
-<p>Note: (1) During the installation process pick the “non-commercial use” option; (2) Integration with GitHub might be easier if you use the same username and email as that of your GitHub account.</p>
+<h3>Installation<a class="anchor" aria-label="anchor" href="#install-smartgit"><i class="fas fa-link"></i></a>
+</h3>
+<p>Download <a href="https://www.syntevo.com/smartgit/download/">SmartGit</a> and install it. Download the files into the the folder that youâ€™ll use for installation and NOT into the â€œdownloadsâ€ folder. If SmartGit automatically downloads the zip file into the â€œdownloadsâ€ folder, then extract it into the folder youâ€™ll install it in. You donâ€™t need admin permissions to install it, but download the <em>Portable Bundle</em>. The installation files can be found here: â€˜SmartGit &gt; bin &gt; smartgit.exeâ€™.</p>
+<p>Note: (1) During the installation process pick the â€œnon-commercial useâ€ option; (2) Integration with GitHub might be easier if you use the same username and email as that of your GitHub account.</p>
 </div>
 <div id="integration-with-github" class="section level3 unnumbered" number="">
-<h3>Integration with GitHub</h3>
+<h3>Integration with GitHub<a class="anchor" aria-label="anchor" href="#integration-with-github"><i class="fas fa-link"></i></a>
+</h3>
 <p>Once SmartGit is installed, do the following to integrate your GitHub account:</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Go to ‘Edit &gt; Preferences &gt; Hosting Providers’. Click the “Add…” button on the top-right of the window.</p></li>
-<li><p>There are a few ways to integrate. The easiest is to pick the ‘Use OAuth token for repository authentication (instead of password)’ option. This should generate a token in your web browser. Use this token to complete the integration.</p></li>
-<li><p>Once the GitHub account is added, your GitHub account should be listed in ‘Hosting Providers’ window in SmartGit. You can also check your GitHub account to make sure that SmartGit has been authorized. To see this, in your GitHub account, go to ‘settings &gt; applications’. You should see SmartGit listed under ‘Authorized Apps’.</p></li>
+<li><p>Go to â€˜Edit &gt; Preferences &gt; Hosting Providersâ€™. Click the â€œAddâ€¦â€ button on the top-right of the window.</p></li>
+<li><p>There are a few ways to integrate. The easiest is to pick the â€˜Use OAuth token for repository authentication (instead of password)â€™ option. This should generate a token in your web browser. Use this token to complete the integration.</p></li>
+<li><p>Once the GitHub account is added, your GitHub account should be listed in â€˜Hosting Providersâ€™ window in SmartGit. You can also check your GitHub account to make sure that SmartGit has been authorized. To see this, in your GitHub account, go to â€˜settings &gt; applicationsâ€™. You should see SmartGit listed under â€˜Authorized Appsâ€™.</p></li>
 </ol>
 <p>You can find the instructions on integration <a href="http://www.syntevo.com/doc/display/SG/GitHub+integration">here</a>.</p>
 </div>
 <div id="organize-your-toolbar" class="section level3 unnumbered" number="">
-<h3>Organize your toolbar</h3>
+<h3>Organize your toolbar<a class="anchor" aria-label="anchor" href="#organize-your-toolbar"><i class="fas fa-link"></i></a>
+</h3>
 <p>You can add convenient commands to your toolbar from the Edit&gt; Customize &gt; Toolbar menu.</p>
-<div class="figure" style="text-align: center"><span id="fig:toolbar1"></span>
-<img src="images/Toolbar1.png" alt="Toolbar" width="640" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:toolbar1"></span>
+<img src="images/Toolbar1.png" alt="Toolbar" width="640"><p class="caption">
 Figure 3.1: Toolbar
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:toolbar2"></span>
-<img src="images/Toolbar2.png" alt="Customize menu" width="953" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:toolbar2"></span>
+<img src="images/Toolbar2.png" alt="Customize menu" width="953"><p class="caption">
 Figure 3.2: Customize menu
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:toolbar3"></span>
-<img src="images/Toolbar3.png" alt="Add/delete commands" width="953" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:toolbar3"></span>
+<img src="images/Toolbar3.png" alt="Add/delete commands" width="953"><p class="caption">
 Figure 3.3: Add/delete commands
 </p>
 </div>
 </div>
 <div id="initialize-repos" class="section level3 unnumbered" number="">
-<h3>Initialize Repos</h3>
+<h3>Initialize Repos<a class="anchor" aria-label="anchor" href="#initialize-repos"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Go to <strong>Repository</strong> &gt; <strong>Add or Create Repository</strong>.</p></li>
 <li><p>Select a folder that you created and saved in your computer (e.g., new_repo).</p></li>
 </ol>
-<p><img src="images/new_repo.PNG" width="55%" /></p>
+<div class="inline-figure"><img src="images/new_repo.PNG" width="55%"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Select Initialize.</li>
 </ol>
-<p><img src="images/initialize_v1.PNG" width="55%" /></p>
+<div class="inline-figure"><img src="images/initialize_v1.PNG" width="55%"></div>
 </div>
 <div id="clone-repos" class="section level3 unnumbered" number="">
-<h3>Clone Repos</h3>
+<h3>Clone Repos<a class="anchor" aria-label="anchor" href="#clone-repos"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Go to <strong>Repository</strong> &gt; <strong>Clone</strong>.</p></li>
 <li><p>Get and insert URL of Git repository you want to clone (e.g., <a href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git" class="uri">https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines.git</a>).</p></li>
 </ol>
-<p><img src="images/select_repo_to_be_cloned.PNG" width="80%" /></p>
+<div class="inline-figure"><img src="images/select_repo_to_be_cloned.PNG" width="80%"></div>
 <p>You could also select from a list of repositories in your GitHub account. Use these steps:</p>
 <ol style="list-style-type: lower-roman">
 <li>Click on the drop-down arrow and select github.com from the drop-down menu.</li>
 </ol>
-<p><img src="images/select_repo_to_be_cloned_github.PNG" width="100%" /></p>
+<div class="inline-figure"><img src="images/select_repo_to_be_cloned_github.PNG" width="100%"></div>
 <ol start="2" style="list-style-type: lower-roman">
 <li>Select the repository you want to clone from the list of repositories in your GitHub account.</li>
 </ol>
-<p><img src="images/select_repo_to_be_cloned_github_repos.PNG" width="80%" /></p>
+<div class="inline-figure"><img src="images/select_repo_to_be_cloned_github_repos.PNG" width="80%"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Specify the local directory for the new repository.</li>
 </ol>
-<p><img src="images/select_local_directory.PNG" width="80%" /></p>
+<div class="inline-figure"><img src="images/select_local_directory.PNG" width="80%"></div>
 </div>
 <div id="organize-repos-by-groups" class="section level3 unnumbered" number="">
-<h3>Organize Repos by groups</h3>
+<h3>Organize Repos by groups<a class="anchor" aria-label="anchor" href="#organize-repos-by-groups"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Have some repositories that you can put into groups (e.g., GitHub, R, SmartGit, Stata).</li>
 </ol>
-<p><img src="images/repos_to_organize.PNG" width="100%" /></p>
+<div class="inline-figure"><img src="images/repos_to_organize.PNG" width="100%"></div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Go to <strong>Repository</strong> &gt; <strong>Add Group</strong></p></li>
-<li><p>Enter the group name (e.g., ‘Version Control’ for GitHub and SmartGit).</p></li>
+<li><p>Enter the group name (e.g., â€˜Version Controlâ€™ for GitHub and SmartGit).</p></li>
 </ol>
-<p><img src="images/version_control.PNG" width="40%" /></p>
+<div class="inline-figure"><img src="images/version_control.PNG" width="40%"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Drag and drop repositories into the relevant group.</li>
 </ol>
-<p><img src="images/drag_and_drop.PNG" width="100%" /></p>
+<div class="inline-figure"><img src="images/drag_and_drop.PNG" width="100%"></div>
 </div>
 <div id="how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account" class="section level3 unnumbered" number="">
-<h3>How do you link a repository that is your local machine to your GitHub account?</h3>
+<h3>How do you link a repository that is your local machine to your GitHub account?<a class="anchor" aria-label="anchor" href="#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Set up a new repository in GitHub.</li>
 </ol>
-<p><img src="images/new_repo_github.PNG" width="120%" /></p>
+<div class="inline-figure"><img src="images/new_repo_github.PNG" width="120%"></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Enter name of repository, select Public or Private, and do <strong>NOT</strong> select Initialize.</li>
 </ol>
-<p><img src="images/do_not_select_initialize.png" width="100%" /></p>
+<div class="inline-figure"><img src="images/do_not_select_initialize.png" width="100%"></div>
 <p>NB: Steps (1) and (2) should be done in GitHub, and the next steps should be done in SmartGit.</p>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Go to <strong>Repository</strong> &gt; <strong>Add or Create</strong></p></li>
 <li><p>Select a folder saved in your machine (e.g., dofiles_for_github).</p></li>
 </ol>
-<p><img src="images/dofiles_for_github.png" width="55%" /></p>
+<div class="inline-figure"><img src="images/dofiles_for_github.png" width="55%"></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Select Initialize.</li>
 </ol>
-<p><img src="images/initialize_v2.png" width="55%" /></p>
+<div class="inline-figure"><img src="images/initialize_v2.png" width="55%"></div>
 <ol start="6" style="list-style-type: decimal">
 <li><p>Go to <strong>Local</strong> &gt; <strong>Stage</strong>.</p></li>
 <li><p>Select Stage.</p></li>
 </ol>
-<p><img src="images/stage.png" width="65%" /></p>
+<div class="inline-figure"><img src="images/stage.png" width="65%"></div>
 <ol start="8" style="list-style-type: decimal">
 <li>Go to <strong>Local</strong> &gt; <strong>Commit</strong>.</li>
 </ol>
-<p><img src="images/go_to_local_commit.png" width="100%" /></p>
+<div class="inline-figure"><img src="images/go_to_local_commit.png" width="100%"></div>
 <ol start="9" style="list-style-type: decimal">
 <li>Enter a commit message and hit Commit.</li>
 </ol>
-<p><img src="images/enter_commit_message.png" width="80%" /></p>
+<div class="inline-figure"><img src="images/enter_commit_message.png" width="80%"></div>
 <ol start="10" style="list-style-type: decimal">
 <li><p>Go to <strong>Remote</strong> &gt; <strong>Add</strong>.</p></li>
 <li><p>Select the new GitHub repository that you created in Step 1.</p></li>
 </ol>
-<p><img src="images/add_url.png" width="80%" /></p>
-<p><img src="images/github.png" width="55%" /></p>
+<div class="inline-figure"><img src="images/add_url.png" width="80%"></div>
+<div class="inline-figure"><img src="images/github.png" width="55%"></div>
 <ol start="12" style="list-style-type: decimal">
 <li>Add the remote repository.</li>
 </ol>
-<p><img src="images/add_remote_repo.png" width="60%" /></p>
+<div class="inline-figure"><img src="images/add_remote_repo.png" width="60%"></div>
 <ol start="13" style="list-style-type: decimal">
 <li>Select master branch and origin.</li>
 </ol>
-<p><img src="images/select_master_origin.PNG" width="120%" /></p>
+<div class="inline-figure"><img src="images/select_master_origin.PNG" width="120%"></div>
 <ol start="14" style="list-style-type: decimal">
 <li>Right-click repository you want to push to GitHub, and select <strong>Push</strong>.</li>
 </ol>
-<p><img src="images/right_click_repo.png" width="80%" /></p>
+<div class="inline-figure"><img src="images/right_click_repo.png" width="80%"></div>
 <ol start="15" style="list-style-type: decimal">
 <li>Check if you have the repository on GitHub.</li>
 </ol>
-<p><img src="images/check_github.png" width="100%" /></p>
+<div class="inline-figure"><img src="images/check_github.png" width="100%"></div>
 </div>
 <div id="basic-git-process" class="section level3 unnumbered" number="">
-<h3>Basic Git process</h3>
+<h3>Basic Git process<a class="anchor" aria-label="anchor" href="#basic-git-process"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>- Stage</strong></p>
-<p>Use to prepare a commit. This command saves your file’s content from the working tree to the index.</p>
-<div class="figure"><span id="fig:sgstage"></span>
-<img src="images/SG_stage.png" alt="Stage command" width="44" />
-<p class="caption">
+<p>Use to prepare a commit. This command saves your fileâ€™s content from the working tree to the index.</p>
+<div class="figure">
+<span id="fig:sgstage"></span>
+<img src="images/SG_stage.png" alt="Stage command" width="44"><p class="caption">
 Figure 3.4: Stage command
 </p>
 </div>
 <p><strong>- Commit</strong></p>
 This command saves local changes to your local repository. Each commit is accompanied by a commit message. It is good practice to commit your changes often in order to save them in the repository.
-<div class="figure"><span id="fig:sgcommit"></span>
-<img src="images/SG_commit.png" alt="Commit command" width="43" />
-<p class="caption">
+<div class="figure">
+<span id="fig:sgcommit"></span>
+<img src="images/SG_commit.png" alt="Commit command" width="43"><p class="caption">
 Figure 3.5: Commit command
 </p>
 </div>
 <p><strong>- Push</strong></p>
-This command saves local commits to a remote repository hosted in the cloud, e.g. in Github. This is the key step for your work to be always backed-up in the cloud and accessible to other members in the team.
-<div class="figure"><span id="fig:sgpush"></span>
-<img src="images/SG_push.png" alt="Push command" width="39" />
-<p class="caption">
+This command saves local commits to a remote repository hosted in the cloud, e.g.Â in Github. This is the key step for your work to be always backed-up in the cloud and accessible to other members in the team.
+<div class="figure">
+<span id="fig:sgpush"></span>
+<img src="images/SG_push.png" alt="Push command" width="39"><p class="caption">
 Figure 3.6: Push command
 </p>
 </div>
 <p><strong>- How to stage commit and push</strong></p>
 First, let us take a look at the SmartGit interface.
-<div class="figure" style="text-align: center"><span id="fig:interface"></span>
-<img src="images/interface.png" alt="SmartGit Interface" width="640" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:interface"></span>
+<img src="images/interface.png" alt="SmartGit Interface" width="640"><p class="caption">
 Figure 3.7: SmartGit Interface
 </p>
 </div>
 <p>Now, let us see how to stage and commit a .do file.</p>
-<div class="figure" style="text-align: center"><span id="fig:video0"></span>
+<div class="figure" style="text-align: center">
+<span id="fig:video0"></span>
 <iframe src="https://www.youtube.com/embed/wDM5sQX5lEU" width="672" height="400px">
 </iframe>
 <p class="caption">
 Figure 3.8: Stage and commit a .do file
 </p>
 </div>
-<p>We can also stage and commit binary files (e.g. MS office files). However, Git will not track changes. This video also shows how to push your files to the host.</p>
-<div class="figure" style="text-align: center"><span id="fig:video3"></span>
+<p>We can also stage and commit binary files (e.g.Â MS office files). However, Git will not track changes. This video also shows how to push your files to the host.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:video3"></span>
 <iframe src="https://www.youtube.com/embed/dOUheWAKx_U" width="672" height="400px">
 </iframe>
 <p class="caption">
@@ -613,22 +314,22 @@ Figure 3.9: Stage, commit and push a file
 </div>
 <p><strong>- Pull</strong></p>
 <p>This command fetches commits from a remote repository and includes them into your local branch. You can pull from the remote repository clicking on the pull icon and selecting Pull in the window that appears on your screen:</p>
-<div class="figure"><span id="fig:pull1"></span>
-<img src="images/pull1.png" alt="Pull icon" width="953" />
-<p class="caption">
+<div class="figure">
+<span id="fig:pull1"></span>
+<img src="images/pull1.png" alt="Pull icon" width="953"><p class="caption">
 Figure 3.10: Pull icon
 </p>
 </div>
-<div class="figure" style="text-align: center"><span id="fig:pull2"></span>
-<img src="images/pull2.png" alt="Pull or fetch only" width="953" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:pull2"></span>
+<img src="images/pull2.png" alt="Pull or fetch only" width="953"><p class="caption">
 Figure 3.11: Pull or fetch only
 </p>
 </div>
 <p>Once you click on pull you should see a confirmation of a successful pull (unless there is a conflict, more on this later on).</p>
-<div class="figure" style="text-align: center"><span id="fig:pull3"></span>
-<img src="images/pull3.png" alt="Successful (rebase) pull" width="640" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:pull3"></span>
+<img src="images/pull3.png" alt="Successful (rebase) pull" width="640"><p class="caption">
 Figure 3.12: Successful (rebase) pull
 </p>
 </div>
@@ -636,59 +337,67 @@ Figure 3.12: Successful (rebase) pull
 <p>Branching is a crucial step in collaborating with others in Git. You start a new branch to store your work independently from the master tree. Remember that in Smartgit you need to double click on your local branch to check-out: this simply means that you are making the selected branch your local one.
 You can see the steps to create and check-out your new branch below.
 We start from the simplest example. We cloned a repository with only the master branch (see in the Branches window):</p>
-<div class="figure" style="text-align: center"><span id="fig:branch1"></span>
-<img src="images/branch1.png" alt="Master Branch" width="640" />
-<p class="caption">
+<div class="figure" style="text-align: center">
+<span id="fig:branch1"></span>
+<img src="images/branch1.png" alt="Master Branch" width="640"><p class="caption">
 Figure 3.13: Master Branch
 </p>
 </div>
 <p>We now click on the icon:</p>
-<div class="figure"><span id="fig:sgbranchi"></span>
-<img src="images/SG_branch.png" alt="New Branch command" width="40" />
-<p class="caption">
+<div class="figure">
+<span id="fig:sgbranchi"></span>
+<img src="images/SG_branch.png" alt="New Branch command" width="40"><p class="caption">
 Figure 3.14: New Branch command
 </p>
 </div>
-<p>SmartGit will ask you to give a name to your branch, in this case “MartaS” (Notice that it can actually be more efficient to name your branch after the task you are performing, e.g. adding section 3, rather than the name of the author as the same author might be working on more than a task) and click on “Add branch”:</p>
-<div class="figure" style="text-align: center"><span id="fig:branch2"></span>
-<img src="images/branch2.png" alt="Add new branch" width="953" />
-<p class="caption">
+<p>SmartGit will ask you to give a name to your branch, in this case â€œMartaSâ€ (Notice that it can actually be more efficient to name your branch after the task you are performing, e.g.Â adding section 3, rather than the name of the author as the same author might be working on more than a task) and click on â€œAdd branchâ€:</p>
+<div class="figure" style="text-align: center">
+<span id="fig:branch2"></span>
+<img src="images/branch2.png" alt="Add new branch" width="953"><p class="caption">
 Figure 3.15: Add new branch
 </p>
 </div>
-<p>Remember we want to make sure that we are working on the “MartaS” branch (Working on the master branch might cause a lot of disruption especially if many people are starting their own branches from the master. Be careful!). Double click on the “MartaS” branch in the Branches window and this message will appear:</p>
-<div class="figure" style="text-align: center"><span id="fig:branch3"></span>
-<img src="images/branch3.png" alt="Checkout a Branch" width="953" />
-<p class="caption">
+<p>Remember we want to make sure that we are working on the â€œMartaSâ€ branch (Working on the master branch might cause a lot of disruption especially if many people are starting their own branches from the master. Be careful!). Double click on the â€œMartaSâ€ branch in the Branches window and this message will appear:</p>
+<div class="figure" style="text-align: center">
+<span id="fig:branch3"></span>
+<img src="images/branch3.png" alt="Checkout a Branch" width="953"><p class="caption">
 Figure 3.16: Checkout a Branch
 </p>
 </div>
-<p>After you click on checkout the “MartaS” branch will change to bold characters in the Branches window. You are all set and can start working on your task!</p>
-<div class="figure" style="text-align: center"><span id="fig:branch4"></span>
-<img src="images/branch4.png" alt="Local Branch changed from master to MartaS" width="953" />
-<p class="caption">
+<p>After you click on checkout the â€œMartaSâ€ branch will change to bold characters in the Branches window. You are all set and can start working on your task!</p>
+<div class="figure" style="text-align: center">
+<span id="fig:branch4"></span>
+<img src="images/branch4.png" alt="Local Branch changed from master to MartaS" width="953"><p class="caption">
 Figure 3.17: Local Branch changed from master to MartaS
 </p>
 </div>
-<p>All commits will be now saved to the branch “MartaS” and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.</p>
+<p>All commits will be now saved to the branch â€œMartaSâ€ and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.</p>
 </div>
 <div id="important-keyboard-shortcut-process" class="section level3 unnumbered" number="">
-<h3>Important keyboard shortcut process</h3>
+<h3>Important keyboard shortcut process<a class="anchor" aria-label="anchor" href="#important-keyboard-shortcut-process"><i class="fas fa-link"></i></a>
+</h3>
 </div>
 <div id="nice-features-of-smartgit" class="section level3 unnumbered" number="">
-<h3>Nice features of SmartGit</h3>
+<h3>Nice features of SmartGit<a class="anchor" aria-label="anchor" href="#nice-features-of-smartgit"><i class="fas fa-link"></i></a>
+</h3>
 </div>
 </div>
 <div id="advanced-git-process" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Advanced Git process</h2>
+<h2>
+<span class="header-section-number">3.5</span> Advanced Git process<a class="anchor" aria-label="anchor" href="#advanced-git-process"><i class="fas fa-link"></i></a>
+</h2>
 <div id="git-workflow" class="section level3" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Git workflow</h3>
+<h3>
+<span class="header-section-number">3.5.1</span> Git workflow<a class="anchor" aria-label="anchor" href="#git-workflow"><i class="fas fa-link"></i></a>
+</h3>
 <p>When working with Git it is important to be aware of the different steps of the Git workflow. The four different environments you can work with are 1) your <em>workspace</em>, 2) the <em>staging environment</em> (also know as the Git Index), 3) your <em>local repository</em> and 4) your <em>remote repository</em> (typically on the Github).</p>
-<p>An overview of common Git commands and the typical Git workflow can be found in the picture below.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Note that the commands shown here are the actual <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">Git command line commands</a>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same.</p>
-<p><img src="images/git-overview-of-commands.png" width="700" /></p>
+<p>An overview of common Git commands and the typical Git workflow can be found in the picture below.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nikolas Begetis (2018). â€œGit: How to start code changes, commit and push changes when working in a teamâ€, accessed June 16, 2020, &lt;a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a> Note that the commands shown here are the actual <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">Git command line commands</a>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œBasic Git commandsâ€, accessed June 22, 2020, &lt;a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html"&gt;link&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same.</p>
+<div class="inline-figure"><img src="images/git-overview-of-commands.png" width="700"></div>
 </div>
 <div id="how-to-work-with-commits" class="section level3" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> How to work with commits</h3>
+<h3>
+<span class="header-section-number">3.5.2</span> How to work with commits<a class="anchor" aria-label="anchor" href="#how-to-work-with-commits"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>- Commit best practices</strong></p>
 <p>One of the most important habits when working with projects in Git is to commit <em>often</em> and <em>early</em>. The reason for this is at a commit should only contain changes related to a single problem. If you discover a new problem, you should do a separate commit. This is much easier to achieve if you start out by committing changes early on in the project. It is of course also important that the commit solves the problem that it claims to solve, so doing an extra code check before you commit is a good idea.</p>
 <p><strong>- Stage vs Commit</strong></p>
@@ -696,8 +405,9 @@ Figure 3.17: Local Branch changed from master to MartaS
 <p>A commit on the other hand saves changes to your local repository. This <em>does affect</em> your Git history. A commit can be reverted, but it is not as easy as unstaging a file. The general rule is to commit often, but make sure your code works before you commit.</p>
 <p><strong>- Writing commit messages</strong></p>
 <p>A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working on a shared project (but it could also be important for your future self!). Anybody should be able to look at your commit message and get an instant sense of <em>why</em> the commit was implemented.</p>
-<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
-<p>An example of a good commit message’s structure:</p>
+<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Chris Beams (2014). â€œHow to Write a Git Commit Messageâ€, accessed June 16, 2020,
+&lt;a href="https://chris.beams.io/posts/git-commit/"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></p>
+<p>An example of a good commit messageâ€™s structure:</p>
 <blockquote>
 <p>Summarize changes in around 50 characters or less</p>
 <p>More detailed explanatory text, if necessary. Wrap it to about 72
@@ -709,7 +419,7 @@ and <code>rebase</code> can get confused if you run the two together.</p>
 <p>Explain the problem that this commit is solving. Focus on why you
 are making this change as opposed to how (the code explains that).
 Are there side effects or other unintuitive consequences of this
-change? Here’s the place to explain them.</p>
+change? Hereâ€™s the place to explain them.</p>
 <p>Further paragraphs come after blank lines.</p>
 <ul>
 <li><p>Bullet points are okay, too</p></li>
@@ -726,55 +436,64 @@ See also: #456, #789</p>
 <p>You can amend a previous commit if needed, for example if you made a significant typo and want to correct it or if you want to add a more detailed explanation to your commit message. You can also use amend to add more changes to a previous commit, but depending on how large those changes are you could also consider just adding a new commit. <strong>Note: It is important to not amend commits that you have already pushed to a shared repository.</strong></p>
 </div>
 <div id="what-to-do-with-changes-you-dont-want-to-commit" class="section level3" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> What to do with changes you don’t want to commit</h3>
+<h3>
+<span class="header-section-number">3.5.3</span> What to do with changes you donâ€™t want to commit<a class="anchor" aria-label="anchor" href="#what-to-do-with-changes-you-dont-want-to-commit"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>- Discard</strong></p>
-<p>If you don’t need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon.</p>
-<p><img src="images/SG_discard.png" width="50" /></p>
+<p>If you donâ€™t need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon.</p>
+<div class="inline-figure"><img src="images/SG_discard.png" width="50"></div>
 <p><strong>- Stash</strong></p>
-<p>If have some uncommitted changes that you don’t want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are “Save Stash” and “Apply Stash”, shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash).</p>
-<p><img src="images/SG_save_apply_stash.png" width="163" /></p>
+<p>If have some uncommitted changes that you donâ€™t want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are â€œSave Stashâ€ and â€œApply Stashâ€, shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash).</p>
+<div class="inline-figure"><img src="images/SG_save_apply_stash.png" width="163"></div>
 </div>
 <div id="how-to-undo-stuff-in-the-git" class="section level3" number="3.5.4">
-<h3><span class="header-section-number">3.5.4</span> How to undo stuff in the Git</h3>
+<h3>
+<span class="header-section-number">3.5.4</span> How to undo stuff in the Git<a class="anchor" aria-label="anchor" href="#how-to-undo-stuff-in-the-git"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>- Unstage</strong></p>
-<p>This easiest “undo” operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on.</p>
+<p>This easiest â€œundoâ€ operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on.</p>
 <p>Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made.</p>
-<p><img src="images/SG_unstage.png" width="53" /></p>
+<div class="inline-figure"><img src="images/SG_unstage.png" width="53"></div>
 <p><strong>- Reset</strong></p>
-<p><img src="images/git-reset.png" width="142" /></p>
+<div class="inline-figure"><img src="images/git-reset.png" width="142"></div>
 <p>Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is the same as unstage) or resetting commits in your local repository.</p>
-<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p><strong>It is very important to never use Git reset on a commit that has been published to a shared repository</strong>. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the project’s shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git <em>revert</em>, not reset. In general revert can be seen as a safer option (see below).</p>
+<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Reset | Atlassian Git Tutorialâ€ Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></p>
+<p><strong>It is very important to never use Git reset on a commit that has been published to a shared repository</strong>. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the projectâ€™s shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git <em>revert</em>, not reset. In general revert can be seen as a safer option (see below).</p>
 <p><strong>- Revert</strong></p>
-<p><img src="images/git-revert.png" width="136" /></p>
-<p>Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert <em>inverts</em> the changes introduced by a commit and <em>appends a new commit</em> with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the project’s history is kept in place.</p>
+<div class="inline-figure"><img src="images/git-revert.png" width="136"></div>
+<p>Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert <em>inverts</em> the changes introduced by a commit and <em>appends a new commit</em> with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the projectâ€™s history is kept in place.</p>
 <p>This is also why Git revert should always be the preferred option when reverting a commit that has been shared with others. As mentioned above you should never modify or delete published Git history, something which Git revert nicely avoids.</p>
-<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Revert | Atlassian Git Tutorialâ€ Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
 <p>You can use the following button in SmartGit to initialize a revert process.</p>
-<p><img src="images/SG_revert.png" width="46" /></p>
+<div class="inline-figure"><img src="images/SG_revert.png" width="46"></div>
 </div>
 <div id="how-to-deal-with-merge-conflicts" class="section level3" number="3.5.5">
-<h3><span class="header-section-number">3.5.5</span> How to deal with merge conflicts</h3>
+<h3>
+<span class="header-section-number">3.5.5</span> How to deal with merge conflicts<a class="anchor" aria-label="anchor" href="#how-to-deal-with-merge-conflicts"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>- What is a merge conflict</strong></p>
 <p>Conflicts are usual, and you should not worry if you encounter one. Conflicts regularly arise when the same file was changed in the same line, customarily by two different collaborators. Given a conflict git is unsure of which version is the correct one, and is up to the person carrying the merge to select it. Notice that the solution can be a particular version of a file or a combination of the conflicting versions. The collaborator caring out the merge is responsible for solving the conflicts.</p>
 <p><strong>- Solve merge conflicts</strong></p>
-<p>Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and you’ll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.</p>
-<p>The same can be done using Git command lines, although not covered here, If you’re interested you can find more on this <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">here</a>.</p>
+<p>Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and youâ€™ll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.</p>
+<p>The same can be done using Git command lines, although not covered here, If youâ€™re interested you can find more on this <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">here</a>.</p>
 <p><strong>- How to avoid merge conflicts</strong></p>
 <p>Some general workflow advice on how to avoid merge conflicts is to always have <em>a separate branch for each issue</em>, only <em>one author per branch</em> and also to create <em>a pull request with a reviewer</em> before the branch is merged to master.</p>
 </div>
 <div id="how-to-work-with-pull-requests" class="section level3" number="3.5.6">
-<h3><span class="header-section-number">3.5.6</span> How to work with pull requests</h3>
+<h3>
+<span class="header-section-number">3.5.6</span> How to work with pull requests<a class="anchor" aria-label="anchor" href="#how-to-work-with-pull-requests"><i class="fas fa-link"></i></a>
+</h3>
 <p>Working with Git is meant to be a collaborative experience, both dynamic and efficient. Pull requests are a powerful and crucial tool in such aspect.</p>
-<p>Pull request can be thought as embed way to let know others about changes you have pushed in a repository’s branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.</p>
+<p>Pull request can be thought as embed way to let know others about changes you have pushed in a repositoryâ€™s branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.</p>
 <p>This is how a pull request looks in Github:</p>
-<p><img src="images/pullR.png" width="700" /></p>
+<div class="inline-figure"><img src="images/pullR.png" width="700"></div>
 <p>Notice that this contains a title and a message clearly stating the nature of the request/feature. Moreover in this case a reviewer is designated:</p>
-<p><img src="images/pullR1.png" width="430" /></p>
+<div class="inline-figure"><img src="images/pullR1.png" width="430"></div>
 <p>The reviewer evaluates the changes approves them and merge the new features to the master branch, in this case. Also remark that a fluid conversation between reviewer and the collaborator arises.</p>
-<p><img src="images/pullR2.png" width="563" /></p>
+<div class="inline-figure"><img src="images/pullR2.png" width="563"></div>
 <p><strong>- Creating a pull request from SmartGit</strong></p>
-<div class="figure" style="text-align: center"><span id="fig:videoPR"></span>
+<div class="figure" style="text-align: center">
+<span id="fig:videoPR"></span>
 <iframe src="https://youtu.be/ll7-1GpTj38" width="672" height="400px">
 </iframe>
 <p class="caption">
@@ -784,11 +503,13 @@ Figure 3.18: Pull request in SmartGit
 <p><strong>- Issues</strong></p>
 <p>Similar to pull request issues is a powerful collaborative tool of Github. An issue works both as a way to assign people to tasks and a forum where people can discuss them.</p>
 <p>An issue must have a title and description of the topic to tackle, and usually has labels to help to categorize it, at least one assignee in charge of working on it, and a comment section where the team members can interact. An issue looks something like this:</p>
-<p><img src="images/issue.png" width="520" /></p>
+<div class="inline-figure"><img src="images/issue.png" width="520"></div>
 </div>
 <div id="dos-and-donts" class="section level3" number="3.5.7">
-<h3><span class="header-section-number">3.5.7</span> DO’s and DONT’s</h3>
-<p><strong>Do’s:</strong></p>
+<h3>
+<span class="header-section-number">3.5.7</span> DOâ€™s and DONTâ€™s<a class="anchor" aria-label="anchor" href="#dos-and-donts"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Doâ€™s:</strong></p>
 <ul>
 <li>Do commit early and often</li>
 <li>Do check that your code works before you commit</li>
@@ -796,27 +517,30 @@ Figure 3.18: Pull request in SmartGit
 <li>Do create a new branch before you start working on a new issue</li>
 <li>Do create a pull request before merging your branch to master</li>
 <li>Do add a reviewer to your pull request</li>
-<li>Do delete branches when the issue has been solved (i.e. branch has been merged to master)</li>
-<li>Do keep up to date (take note of other changes in the repo, e.g. use pull rebase)</li>
+<li>Do delete branches when the issue has been solved (i.e.Â branch has been merged to master)</li>
+<li>Do keep up to date (take note of other changes in the repo, e.g.Â use pull rebase)</li>
 </ul>
-<p><strong>Don’ts:</strong></p>
+<p><strong>Donâ€™ts:</strong></p>
 <ul>
-<li>Don’t work directly on the master branch</li>
-<li>Don’t create a pull request addressing multiple issues</li>
-<li>Don’t add binary (or other large files) to the repository</li>
-<li>Don’t commit files that contain usernames, passwords or other credentials</li>
-<li>Don’t modify or delete the published Git history</li>
-<li>Don’t do a force push (unless absolutely sure about what you are doing)</li>
-<li>Don’t panic :)</li>
+<li>Donâ€™t work directly on the master branch</li>
+<li>Donâ€™t create a pull request addressing multiple issues</li>
+<li>Donâ€™t add binary (or other large files) to the repository</li>
+<li>Donâ€™t commit files that contain usernames, passwords or other credentials</li>
+<li>Donâ€™t modify or delete the published Git history</li>
+<li>Donâ€™t do a force push (unless absolutely sure about what you are doing)</li>
+<li>Donâ€™t panic :)</li>
 </ul>
 </div>
 </div>
 <div id="getting-to-know-gitkraken" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Getting to know <a href="https://www.gitkraken.com/">GitKraken</a></h2>
-<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that “most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.”<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
-<p>Among the GUIs available, we thinkg GitKraken is the best one to get you started. However, if you’re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
+<h2>
+<span class="header-section-number">3.6</span> Getting to know <a href="https://www.gitkraken.com/">GitKraken</a><a class="anchor" aria-label="anchor" href="#getting-to-know-gitkraken"><i class="fas fa-link"></i></a>
+</h2>
+<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that â€œmost of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.â€<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Scott Chacon and Ben Straub, Pro Git, 2nd ed.Â edition (New York, NY: Apress, 2014). &lt;a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line"&gt;sect. 1.4&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a></p>
+<p>Among the GUIs available, we thinkg GitKraken is the best one to get you started. However, if youâ€™re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
 <p>The best place to learn everything about GitKraken is the <a href="https://support.gitkraken.com/">GitKraken Support</a> webpage. However, bellow you will find the most basic things that you need to know about it and, when considered necessary, you will find either reference links for more detailed information or embedded videos. For instance, the video bellow shows the basics of GitKraken.</p>
-<div class="figure" style="text-align: center"><span id="fig:video1"></span>
+<div class="figure" style="text-align: center">
+<span id="fig:video1"></span>
 <iframe src="https://www.youtube.com/embed/ub9GfRziCtU" width="672" height="400px">
 </iframe>
 <p class="caption">
@@ -824,37 +548,40 @@ Figure 3.19: Introduction to GitKraken
 </p>
 </div>
 <div id="gitkraken-interface" class="section level3 unnumbered" number="">
-<h3>GItKraken Interface</h3>
-<div class="figure"><span id="fig:GKinterface"></span>
-<img src="images/gitKraken_ide.PNG" alt="GitKraken Interface" width="466" />
-<p class="caption">
+<h3>GItKraken Interface<a class="anchor" aria-label="anchor" href="#gitkraken-interface"><i class="fas fa-link"></i></a>
+</h3>
+<div class="figure">
+<span id="fig:GKinterface"></span>
+<img src="images/gitKraken_ide.PNG" alt="GitKraken Interface" width="466"><p class="caption">
 Figure 3.20: GitKraken Interface
 </p>
 </div>
 <p>Figure <a href="collaboration-in-git.html#fig:GKinterface">3.20</a> presents the GItKraken interface, which has four main components.</p>
 <ol style="list-style-type: decimal">
 <li><p>The <strong>Toolbar</strong> shows the most common actions in repositories. In our case, we will focus on <em>pull</em>, <em>push</em>, and <em>branch</em>.</p></li>
-<li><p>The <strong>Left reference panel</strong> shows properties of your repository. In this panel you can see what branches are stored in your local computer and which in the cloud (i.e., remote repository). You may use it also to know whether you’re ahead or behind any specific branch.</p></li>
+<li><p>The <strong>Left reference panel</strong> shows properties of your repository. In this panel you can see what branches are stored in your local computer and which in the cloud (i.e., remote repository). You may use it also to know whether youâ€™re ahead or behind any specific branch.</p></li>
 <li><p>The <strong>Commit panel</strong> at your right is where files and changes from your working directory are being watched (i.e., tracked). In this panel you may can see whether a particular file has been modified (orange), deleted (red), created (green) or renamed (blue) with respect to the previous commit. Also, you can see the state of your files with in your current commit. That is, you may know whether each file is staged or untagged.</p></li>
 </ol>
-<div class="figure"><span id="fig:GKcolors"></span>
-<img src="images/GK_colorsGuide.PNG" alt="color guide for file symbols" width="286" />
-<p class="caption">
+<div class="figure">
+<span id="fig:GKcolors"></span>
+<img src="images/GK_colorsGuide.PNG" alt="color guide for file symbols" width="286"><p class="caption">
 Figure 3.21: color guide for file symbols
 </p>
 </div>
 <ol start="4" style="list-style-type: decimal">
-<li>The <strong>commit graph</strong> is the core of your repository’s development and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>“[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.”</em></li>
+<li>The <strong>commit graph</strong> is the core of your repositoryâ€™s development and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>â€œ[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.â€</em>
+</li>
 </ol>
-<div class="figure"><span id="fig:GKnodes"></span>
-<img src="images/GK_nodes.PNG" alt="Nodes meaning" width="272" />
-<p class="caption">
+<div class="figure">
+<span id="fig:GKnodes"></span>
+<img src="images/GK_nodes.PNG" alt="Nodes meaning" width="272"><p class="caption">
 Figure 3.22: Nodes meaning
 </p>
 </div>
 </div>
 <div id="create-a-repository" class="section level3 unnumbered" number="">
-<h3>Create a repository</h3>
+<h3>Create a repository<a class="anchor" aria-label="anchor" href="#create-a-repository"><i class="fas fa-link"></i></a>
+</h3>
 <p>In Git, a repository refers to a folder with all the files and sub-folders of a project. In other words, it refers to the folder of a project. It is possible to create a git repository in an existing project folder, but it is recommended to initialize a Git repository before you start working on your project.</p>
 <ol style="list-style-type: decimal">
 <li><p>Open GitKraken and click on the folder icon at the upper-left side of the screen and then click <code>Init</code>. Alternatively, you could go to <code>file -&gt; Init repo</code>, or use the shortcut <code>Ctrl + I</code>.</p></li>
@@ -865,7 +592,7 @@ Figure 3.22: Nodes meaning
 <li><p>Select Public or Private repository. Keep in mind that if you have a free GitHub account:</p></li>
 </ol>
 <ul>
-<li>You can have unlimited public repositories with unlimited collaborators.<br />
+<li>You can have unlimited public repositories with unlimited collaborators.<br>
 </li>
 <li>You can have unlimited <em>private</em> repositories with no more than <strong>three collaborators</strong>. This is very inconvinient for large teams like PovcalNet.</li>
 </ul>
@@ -875,29 +602,32 @@ Figure 3.22: Nodes meaning
 <li><p>Do not do anything on the field <code>Full Path</code>. It is just for your information.</p></li>
 <li><p>Do not select anything on <code>.gitignore</code> yet. We will cover that below.</p></li>
 <li><p>If you are creating a package or a document that must be cited if used, select <code>MIT license</code></p></li>
-<li><p>leave unchecked the box <code>initialize with LFS</code>
+<li>
+<p>leave unchecked the box <code>initialize with LFS</code>
 Your screen should look something like this:</p>
-<div class="figure"><span id="fig:initrepo"></span>
-<img src="images/init_repo.PNG" alt="Initialize repo" width="494" />
-<p class="caption">
+<div class="figure">
+<span id="fig:initrepo"></span>
+<img src="images/init_repo.PNG" alt="Initialize repo" width="494"><p class="caption">
 Figure 3.23: Initialize repo
 </p>
-</div></li>
+</div>
+</li>
 <li><p>Once you have create your repository, make sure to open it and initialize it.</p></li>
 </ol>
 </div>
 <div id="clone-a-repository" class="section level3 unnumbered" number="">
-<h3>Clone a repository</h3>
-<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you’re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if you are an external user of the repository, you can’t push your work into the original repository but you can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
+<h3>Clone a repository<a class="anchor" aria-label="anchor" href="#clone-a-repository"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If youâ€™re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if you are an external user of the repository, you canâ€™t push your work into the original repository but you can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
 <p>In order to contribute into any of the PovcalNet repositories you must be an existing collaborator. Thus, in this section you will learn how to clone a repository.</p>
 <ol style="list-style-type: decimal">
-<li>Go the to the repository you want clone in GitHub.<br />
+<li>Go the to the repository you want clone in GitHub.<br>
 </li>
-<li>Clik on the green button “Clone or download” and copy the whole url.</li>
+<li>Clik on the green button â€œClone or downloadâ€ and copy the whole url.</li>
 </ol>
-<div class="figure"><span id="fig:GHclone"></span>
-<img src="images/GH_clone_download.PNG" alt="GitHub link to clone repo" width="620" />
-<p class="caption">
+<div class="figure">
+<span id="fig:GHclone"></span>
+<img src="images/GH_clone_download.PNG" alt="GitHub link to clone repo" width="620"><p class="caption">
 Figure 3.24: GitHub link to clone repo
 </p>
 </div>
@@ -907,108 +637,110 @@ Figure 3.24: GitHub link to clone repo
 <li><p>Select the folder where the repository is going to be cloned</p></li>
 <li><p>Select the repository from the menu.</p></li>
 </ol>
-<div class="figure"><span id="fig:GKclone"></span>
-<img src="images/GK_clone.png" alt="Clone repo in GitKraken" width="498" />
-<p class="caption">
+<div class="figure">
+<span id="fig:GKclone"></span>
+<img src="images/GK_clone.png" alt="Clone repo in GitKraken" width="498"><p class="caption">
 Figure 3.25: Clone repo in GitKraken
 </p>
 </div>
 </div>
 <div id="working-with-commits" class="section level3 unnumbered" number="">
-<h3>Working with commits</h3>
-<p>A commit is a snapshot of your project but, as you work on it, you’re able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows:</p>
+<h3>Working with commits<a class="anchor" aria-label="anchor" href="#working-with-commits"><i class="fas fa-link"></i></a>
+</h3>
+<p>A commit is a snapshot of your project but, as you work on it, youâ€™re able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Once your files have been modified (Fig. <a href="collaboration-in-git.html#fig:GKnodes">3.22</a>) and saved, GitKraken identifies them as work in progress (//WIP) and shows you the details in the <strong>Unstaged file</strong> box.</li>
 </ol>
-<div class="figure"><span id="fig:GKwip"></span>
-<img src="images/GK_wip.PNG" alt="GitKraken Work In Progress" width="816" />
-<p class="caption">
+<div class="figure">
+<span id="fig:GKwip"></span>
+<img src="images/GK_wip.PNG" alt="GitKraken Work In Progress" width="816"><p class="caption">
 Figure 3.26: GitKraken Work In Progress
 </p>
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>By clinking in the name of any file in the commit panel (Fig. (fig:GKinterface)), the commit graph will be replace by the <a href="https://support.gitkraken.com/working-with-commits/diff/"><em>GitKraken diffs</em></a> interface which shows what was added or removed from a file. Red is for lines where content was removed whereas green is for new lines added.</p></li>
-<li><p>You can select [1] all the files, [2] some of the files, or [3] even some hunks within each file to be <em>stage</em>. Your select will compose the next commit. If you decide you don’t want make a staged file part of your next commit, you can unstage it.</p></li>
+<li><p>You can select [1] all the files, [2] some of the files, or [3] even some hunks within each file to be <em>stage</em>. Your select will compose the next commit. If you decide you donâ€™t want make a staged file part of your next commit, you can unstage it.</p></li>
 <li><p>Record your commit message for the staged files to the repository. In <strong>Summary</strong> you include a brief but meaningful message supporting your commit. This text will appear in the graph and is mandatory. In <strong>Description</strong> you may add extended message to provide more details behind the changes.</p></li>
 <li><p>Click <strong>Commit changes</strong></p></li>
-<li><p>You may repeat this process as many times you want. When you’re ready, you may push your work to the remote repository into your own branch.</p></li>
-</ol>
-
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, <a href="https://www.atlassian.com/git/tutorials/using-branches">link</a>.<a href="collaboration-in-git.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Nikolas Begetis (2018). “Git: How to start code changes, commit and push changes when working in a team”, accessed June 16, 2020, <a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c">link</a>.<a href="collaboration-in-git.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>Atlassian, “Basic Git commands”, accessed June 22, 2020, <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">link</a><a href="collaboration-in-git.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Chris Beams (2014). “How to Write a Git Commit Message”, accessed June 16, 2020,
-<a href="https://chris.beams.io/posts/git-commit/">link</a>.<a href="collaboration-in-git.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>Atlassian, “Git Reset | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">link</a>.<a href="collaboration-in-git.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>Atlassian, “Git Revert | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert">link</a>.<a href="collaboration-in-git.html#fnref6" class="footnote-back">↩︎</a></p></li>
-<li id="fn7"><p>Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). <a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line">sect. 1.4</a><a href="collaboration-in-git.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li><p>You may repeat this process as many times you want. When youâ€™re ready, you may push your work to the remote repository into your own branch.</p></li>
 </ol>
 </div>
-            </section>
+</div>
+</div>
 
-          </div>
-        </div>
-      </div>
-<a href="folder-strcutures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stata-github.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+  <div class="chapter-nav">
+<div class="prev"><a href="folder-strcutures.html"><span class="header-section-number">2</span> Folder Strcutures</a></div>
+<div class="next"><a href="stata-github.html"><span class="header-section-number">4</span> Stata and Github</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#collaboration-in-git"><span class="header-section-number">3</span> Collaboration in Git</a></li>
+<li><a class="nav-link" href="#initial-set-up"><span class="header-section-number">3.1</span> Initial Set up</a></li>
+<li><a class="nav-link" href="#getting-to-know-git"><span class="header-section-number">3.2</span> Getting to know Git</a></li>
+<li>
+<a class="nav-link" href="#basics-of-git"><span class="header-section-number">3.3</span> Basics of Git</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#working-with-repositories"><span class="header-section-number">3.3.1</span> Working with repositories</a></li>
+<li><a class="nav-link" href="#branching-and-merging"><span class="header-section-number">3.3.2</span> Branching and Merging</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#getting-to-know-smartgit"><span class="header-section-number">3.4</span> Getting to know SmartGit</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#install-smartgit">Installation</a></li>
+<li><a class="nav-link" href="#integration-with-github">Integration with GitHub</a></li>
+<li><a class="nav-link" href="#organize-your-toolbar">Organize your toolbar</a></li>
+<li><a class="nav-link" href="#initialize-repos">Initialize Repos</a></li>
+<li><a class="nav-link" href="#clone-repos">Clone Repos</a></li>
+<li><a class="nav-link" href="#organize-repos-by-groups">Organize Repos by groups</a></li>
+<li><a class="nav-link" href="#how-do-you-link-a-repository-that-is-your-local-machine-to-your-github-account">How do you link a repository that is your local machine to your GitHub account?</a></li>
+<li><a class="nav-link" href="#basic-git-process">Basic Git process</a></li>
+<li><a class="nav-link" href="#important-keyboard-shortcut-process">Important keyboard shortcut process</a></li>
+<li><a class="nav-link" href="#nice-features-of-smartgit">Nice features of SmartGit</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#advanced-git-process"><span class="header-section-number">3.5</span> Advanced Git process</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#git-workflow"><span class="header-section-number">3.5.1</span> Git workflow</a></li>
+<li><a class="nav-link" href="#how-to-work-with-commits"><span class="header-section-number">3.5.2</span> How to work with commits</a></li>
+<li><a class="nav-link" href="#what-to-do-with-changes-you-dont-want-to-commit"><span class="header-section-number">3.5.3</span> What to do with changes you don’t want to commit</a></li>
+<li><a class="nav-link" href="#how-to-undo-stuff-in-the-git"><span class="header-section-number">3.5.4</span> How to undo stuff in the Git</a></li>
+<li><a class="nav-link" href="#how-to-deal-with-merge-conflicts"><span class="header-section-number">3.5.5</span> How to deal with merge conflicts</a></li>
+<li><a class="nav-link" href="#how-to-work-with-pull-requests"><span class="header-section-number">3.5.6</span> How to work with pull requests</a></li>
+<li><a class="nav-link" href="#dos-and-donts"><span class="header-section-number">3.5.7</span> DO’s and DONT’s</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#getting-to-know-gitkraken"><span class="header-section-number">3.6</span> Getting to know GitKraken</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#gitkraken-interface">GItKraken Interface</a></li>
+<li><a class="nav-link" href="#create-a-repository">Create a repository</a></li>
+<li><a class="nav-link" href="#clone-a-repository">Clone a repository</a></li>
+<li><a class="nav-link" href="#working-with-commits">Working with commits</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines//blob/master/Collaboration_in_Git.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/PovcalNet-Team/Povcalnet_internal_guidelines//edit/master/Collaboration_in_Git.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": null,
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Povcalnet_internal_guidelines.pdf", "Povcalnet_internal_guidelines.epub"],
-"toc": {
-"collapse": "section",
-"scroll_highlight": true
-},
-"toolbar": {
-"position": "fixed"
-},
-"search": true,
-"info": true
-});
-});
-</script>
 
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
 </body>
-
 </html>
