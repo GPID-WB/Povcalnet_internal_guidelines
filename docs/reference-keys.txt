@@ -132,7 +132,7 @@ prepare-metadata
 generate-.pcb-files
 master-objectives
 update-info-of-the-surveymean-sheet
-DMGroupData
+DMSystem
 master-data
 pcb-files
 updating-the-system
@@ -160,4 +160,3 @@ gpwg-process
 lis-data-process
 lac-historical-data
 eca-historical-data
-DMSystem

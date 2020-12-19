@@ -14,7 +14,8 @@ bookdown::render_book(file, "bookdown::gitbook",
                       preview = TRUE)
 
 # render the whole book
-bookdown::render_book("index.Rmd", "bookdown::gitbook")
+# bookdown::render_book("index.Rmd", "bookdown::gitbook")
+bookdown::render_book("index.Rmd", "bookdown::bs4_book")
 
 #serve the whole book to see modification on the fly
 # dir <- getwd()
