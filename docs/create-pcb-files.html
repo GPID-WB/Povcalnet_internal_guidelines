@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Create .PCB files | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 11 Create .PCB files | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Create .PCB files | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 11 Create .PCB files | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Create .PCB files | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 11 Create .PCB files | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -26,16 +26,16 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-12-18" />
+<meta name="date" content="2020-12-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="update-microdata.html"/>
+<link rel="prev" href="group-data.html"/>
 <link rel="next" href="DMGroupData.html"/>
-<script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -122,6 +122,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -278,53 +279,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="update-microdata.html"><a href="update-microdata.html#create-the-_pcn-files"><i class="fa fa-check"></i><b>9.2</b> Create the _PCN files</a></li>
 <li class="chapter" data-level="9.3" data-path="update-microdata.html"><a href="update-microdata.html#china-synthetic-files"><i class="fa fa-check"></i><b>9.3</b> China synthetic files</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>10</b> Create .PCB files</a>
+<li class="chapter" data-level="10" data-path="group-data.html"><a href="group-data.html"><i class="fa fa-check"></i><b>10</b> Group Data</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#what-the-heck-is-a-pcb-file"><i class="fa fa-check"></i><b>10.1</b> What the heck is a PCB file?!!</a></li>
-<li class="chapter" data-level="10.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#the-povcalnet_update-repository"><i class="fa fa-check"></i><b>10.2</b> The povcalnet_update repository</a></li>
-<li class="chapter" data-level="10.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-the-.pcb-files"><i class="fa fa-check"></i><b>10.3</b> Generate the .pcb files</a>
+<li class="chapter" data-level="10.1" data-path="group-data.html"><a href="group-data.html#preparing-the-data"><i class="fa fa-check"></i><b>10.1</b> Preparing the data</a></li>
+<li class="chapter" data-level="10.2" data-path="group-data.html"><a href="group-data.html#naming-convention"><i class="fa fa-check"></i><b>10.2</b> Naming convention</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>11</b> Create .PCB files</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#directories"><i class="fa fa-check"></i><b>10.3.1</b> Directories</a></li>
-<li class="chapter" data-level="10.3.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#init-params"><i class="fa fa-check"></i><b>10.3.2</b> Surveys that have changed</a></li>
-<li class="chapter" data-level="10.3.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#prepare-metadata"><i class="fa fa-check"></i><b>10.3.3</b> Prepare metadata</a></li>
-<li class="chapter" data-level="10.3.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-.pcb-files"><i class="fa fa-check"></i><b>10.3.4</b> Generate .pcb files</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#master-objectives"><i class="fa fa-check"></i><b>10.4</b> Update the Master file</a>
+<li class="chapter" data-level="11.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#what-the-heck-is-a-pcb-file"><i class="fa fa-check"></i><b>11.1</b> What the heck is a PCB file?!!</a></li>
+<li class="chapter" data-level="11.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#the-povcalnet_update-repository"><i class="fa fa-check"></i><b>11.2</b> The povcalnet_update repository</a></li>
+<li class="chapter" data-level="11.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-the-.pcb-files"><i class="fa fa-check"></i><b>11.3</b> Generate the .pcb files</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#update-info-of-the-surveymean-sheet"><i class="fa fa-check"></i><b>10.4.1</b> Update info of the “SurveyMean” sheet</a></li>
+<li class="chapter" data-level="11.3.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#directories"><i class="fa fa-check"></i><b>11.3.1</b> Directories</a></li>
+<li class="chapter" data-level="11.3.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#init-params"><i class="fa fa-check"></i><b>11.3.2</b> Surveys that have changed</a></li>
+<li class="chapter" data-level="11.3.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#prepare-metadata"><i class="fa fa-check"></i><b>11.3.3</b> Prepare metadata</a></li>
+<li class="chapter" data-level="11.3.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-.pcb-files"><i class="fa fa-check"></i><b>11.3.4</b> Generate .pcb files</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#master-objectives"><i class="fa fa-check"></i><b>11.4</b> Update the Master file</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#update-info-of-the-surveymean-sheet"><i class="fa fa-check"></i><b>11.4.1</b> Update info of the “SurveyMean” sheet</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>11</b> Upload Group Data to the Data Management System</a>
+<li class="chapter" data-level="12" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>12</b> Upload Group Data to the Data Management System</a>
 <ul>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#development-internal-server"><i class="fa fa-check"></i>Development (internal) server</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#production"><i class="fa fa-check"></i>Production</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#testing-server"><i class="fa fa-check"></i>Testing server</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#restricted-ar-server"><i class="fa fa-check"></i>Restricted (AR) server</a></li>
-<li class="chapter" data-level="11.1" data-path="DMGroupData.html"><a href="DMGroupData.html#master-data"><i class="fa fa-check"></i><b>11.1</b> Master Data</a></li>
-<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#pcb-files"><i class="fa fa-check"></i><b>11.2</b> PCB files</a></li>
-<li class="chapter" data-level="11.3" data-path="DMGroupData.html"><a href="DMGroupData.html#group-data"><i class="fa fa-check"></i><b>11.3</b> Group Data</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>11.3.1</b> Preparing the data</a></li>
-<li class="chapter" data-level="11.3.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>11.3.2</b> Naming convention</a></li>
-<li class="chapter" data-level="11.3.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>11.3.3</b> Upload the data.</a></li>
+<li class="chapter" data-level="12.1" data-path="DMGroupData.html"><a href="DMGroupData.html#master-data"><i class="fa fa-check"></i><b>12.1</b> Master Data</a></li>
+<li class="chapter" data-level="12.2" data-path="DMGroupData.html"><a href="DMGroupData.html#pcb-files"><i class="fa fa-check"></i><b>12.2</b> PCB files</a></li>
+<li class="chapter" data-level="12.3" data-path="DMGroupData.html"><a href="DMGroupData.html#updating-the-system"><i class="fa fa-check"></i><b>12.3</b> Updating the system</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.4</b> Making sure everything works</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>12</b> Update the Master file</a>
+<li class="chapter" data-level="13" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>13</b> Update the Master file</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>12.1</b> Upload Master file</a></li>
+<li class="chapter" data-level="13.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>13.1</b> Upload Master file</a></li>
 </ul></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
-<li class="chapter" data-level="13" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>13</b> Referencing software: Zotero</a>
+<li class="chapter" data-level="14" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>14</b> Referencing software: Zotero</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>13.1</b> Installation</a></li>
-<li class="chapter" data-level="13.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>13.2</b> Extensions and add-ons</a></li>
-<li class="chapter" data-level="13.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>13.3</b> Adding references to Zotero</a></li>
+<li class="chapter" data-level="14.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>14.1</b> Installation</a></li>
+<li class="chapter" data-level="14.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>14.2</b> Extensions and add-ons</a></li>
+<li class="chapter" data-level="14.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>14.3</b> Adding references to Zotero</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>14</b> Data visualization: Flourish studio</a>
+<li class="chapter" data-level="15" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>15</b> Data visualization: Flourish studio</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>14.1</b> Sign in</a></li>
-<li class="chapter" data-level="14.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>14.2</b> Get started</a></li>
+<li class="chapter" data-level="15.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>15.1</b> Sign in</a></li>
+<li class="chapter" data-level="15.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>15.2</b> Get started</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="work-expectations.html"><a href="work-expectations.html"><i class="fa fa-check"></i><b>A</b> Quality of work expectations</a>
@@ -387,13 +387,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Thanks.&nbsp;</p>
  </div>
-<div id="create-.pcb-files" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Create .PCB files</h1>
+<div id="create-pcb-files" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Create .PCB files</h1>
 <p>As explained in the <a href="intro-povcal.html#intro-povcal">introduction</a> of this part of the book,
 creating the .PCB files are the last step of the process before uploading
 everything to the PovcalNet system.</p>
-<div id="what-the-heck-is-a-pcb-file" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> What the heck is a PCB file?!!</h2>
+<div id="what-the-heck-is-a-pcb-file" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> What the heck is a PCB file?!!</h2>
 <p>PCB files are only relevant for micro-data. They basically store the micro-data
 <code>welfare</code> and <code>weight</code> vectors, as well as pre-computed statistics. They are
 custom binary files (data is stored as a bunch of 0s and 1s) that were created
@@ -409,15 +409,11 @@ to support the computations in PovcalNet. They are not standard file format like
 <li><p>Metadata</p>
 <ul>
 <li>The PCB ID number. There are actually two types of .PCB files, an old
-and a new format. The ID number is a way to differentiate them.<br />
-</li>
-<li>The number of microdata records<br />
-</li>
-<li>The number of points on the Lorenz curve<br />
-</li>
+and a new format. The ID number is a way to differentiate them.</li>
+<li>The number of microdata records</li>
+<li>The number of points on the Lorenz curve</li>
 </ul></li>
-<li><p>Lorenz Curve<br />
-</p></li>
+<li><p>Lorenz Curve</p></li>
 <li><p>Pre-computed summary stats<br />
 Stuff that needs to be computed only once (Not sensitive to the poverty
 line)</p></li>
@@ -428,8 +424,8 @@ line)</p></li>
 <p class="caption">PCB file represention</p>
 </div>
 </div>
-<div id="the-povcalnet_update-repository" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> The povcalnet_update repository</h2>
+<div id="the-povcalnet_update-repository" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> The povcalnet_update repository</h2>
 <p>Once you have updated all the sheets in the master file–besides the
 “SurveyMean” sheet–and have updated the microdata in the P drive, the next step
 is to create the .pcb files and update the “SurveyMean” sheet. All of this is
@@ -456,48 +452,52 @@ start.</p>
 <span id="cb31-3"><a href="create-pcb-files.html#cb31-3"></a>no_installed &lt;-<span class="st"> </span>pkgs[<span class="op">!</span>(pkgs  <span class="op">%in%</span><span class="st">  </span><span class="kw">installed.packages</span>())]</span>
 <span id="cb31-4"><a href="create-pcb-files.html#cb31-4"></a><span class="kw">installed.packages</span>(no_installed)</span></code></pre></div>
 </div>
-<div id="generate-the-.pcb-files" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> Generate the .pcb files</h2>
-<div id="directories" class="section level3" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> Directories</h3>
+<div id="generate-the-.pcb-files" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Generate the .pcb files</h2>
+<div id="directories" class="section level3" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Directories</h3>
 <p>The first section includes the directories in which you’re going to be working.
 As of today (2020-11-20), the <code>datadir</code> directory is for <code>2020_JUL</code> as it was
 the last release of PovcalNet. However, make sure you create a new folder with
 the year and month of the “tentative” release.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="create-pcb-files.html#cb32-1"></a>datadir   &lt;-<span class="st"> &quot;p:/01.PovcalNet/02.Production/2020_JUL/&quot;</span></span>
+<span id="cb32-2"><a href="create-pcb-files.html#cb32-2"></a>cpi_path  &lt;-<span class="st"> &quot;p:/01.PovcalNet/01.Vintage_control/_aux/price_framework/price_framework.dta&quot;</span></span>
+<span id="cb32-3"><a href="create-pcb-files.html#cb32-3"></a>sheet     &lt;-<span class="st"> &quot;SurveyMean&quot;</span></span>
+<span id="cb32-4"><a href="create-pcb-files.html#cb32-4"></a>mdir      &lt;-<span class="st"> &quot;p:/01.PovcalNet/00.Master/&quot;</span></span></code></pre></div>
 </div>
-<div id="init-params" class="section level3" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> Surveys that have changed</h3>
+<div id="init-params" class="section level3" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Surveys that have changed</h3>
 <p>Now, we have to specify what countries/years have been added or changed to the
 PovcalNet repository. We recommend you do this country by country.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="create-pcb-files.html#cb32-1"></a><span class="co">#--------- to modify in each round ---------</span></span>
-<span id="cb32-2"><a href="create-pcb-files.html#cb32-2"></a>countries &lt;-<span class="st"> &quot;CHN&quot;</span></span>
-<span id="cb32-3"><a href="create-pcb-files.html#cb32-3"></a>years     &lt;-<span class="st"> </span><span class="ot">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="create-pcb-files.html#cb33-1"></a><span class="co">#--------- to modify in each round ---------</span></span>
+<span id="cb33-2"><a href="create-pcb-files.html#cb33-2"></a>countries &lt;-<span class="st"> &quot;CHN&quot;</span></span>
+<span id="cb33-3"><a href="create-pcb-files.html#cb33-3"></a>years     &lt;-<span class="st"> </span><span class="ot">NULL</span></span></code></pre></div>
 <p>If you leave the argument <code>years</code> equal to <code>NULL</code>, the code will update all the
 years for the country select. In this case, CHN. However, you could
 specify what years to update for that particular country, like,</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="create-pcb-files.html#cb33-1"></a>countries &lt;-<span class="st"> &quot;IND&quot;</span></span>
-<span id="cb33-2"><a href="create-pcb-files.html#cb33-2"></a>years     &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1993</span>, <span class="dv">2004</span>, <span class="dv">2009</span>, <span class="dv">2012</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="create-pcb-files.html#cb34-1"></a>countries &lt;-<span class="st"> &quot;IND&quot;</span></span>
+<span id="cb34-2"><a href="create-pcb-files.html#cb34-2"></a>years     &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1993</span>, <span class="dv">2004</span>, <span class="dv">2009</span>, <span class="dv">2012</span>)</span></code></pre></div>
 <p>It is important to note that <em>unless you want to update all the years available</em>
 in more than one country, you should not include in the <code>countries</code> variable
 more than one country.</p>
 </div>
-<div id="prepare-metadata" class="section level3" number="10.3.3">
-<h3><span class="header-section-number">10.3.3</span> Prepare metadata</h3>
+<div id="prepare-metadata" class="section level3" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Prepare metadata</h3>
 <p>In the next part we prepare the data. Function <code>pcn_datafind</code> finds the
 directory path and filenames of the corresponding countries in variable
 <code>countries</code>. It returns a list with two objects, <code>fail</code> and <code>pcn</code>. Object <code>fail</code>
 lets you know if there is any particular data that could not be loaded. Object
 <code>pcn</code> contains a data frame with the information above.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="create-pcb-files.html#cb34-1"></a><span class="co"># Find countries</span></span>
-<span id="cb34-2"><a href="create-pcb-files.html#cb34-2"></a>tmp       &lt;-<span class="st"> </span><span class="kw">pcn_datafind</span>(<span class="dt">country =</span> countries)</span>
-<span id="cb34-3"><a href="create-pcb-files.html#cb34-3"></a>pcn_fails &lt;-<span class="st"> </span>tmp<span class="op">$</span>fail</span>
-<span id="cb34-4"><a href="create-pcb-files.html#cb34-4"></a>pcn       &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(tmp<span class="op">$</span>pcn)</span>
-<span id="cb34-5"><a href="create-pcb-files.html#cb34-5"></a></span>
-<span id="cb34-6"><a href="create-pcb-files.html#cb34-6"></a><span class="co"># Fix metadata</span></span>
-<span id="cb34-7"><a href="create-pcb-files.html#cb34-7"></a>pcn       &lt;-<span class="st"> </span><span class="kw">fix_metadata</span>(pcn)</span>
-<span id="cb34-8"><a href="create-pcb-files.html#cb34-8"></a></span>
-<span id="cb34-9"><a href="create-pcb-files.html#cb34-9"></a><span class="co"># Get reference year</span></span>
-<span id="cb34-10"><a href="create-pcb-files.html#cb34-10"></a>pcn       &lt;-<span class="st"> </span><span class="kw">get_ref_year</span>(pcn, cpi_path)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="create-pcb-files.html#cb35-1"></a><span class="co"># Find countries</span></span>
+<span id="cb35-2"><a href="create-pcb-files.html#cb35-2"></a>tmp       &lt;-<span class="st"> </span><span class="kw">pcn_datafind</span>(<span class="dt">country =</span> countries)</span>
+<span id="cb35-3"><a href="create-pcb-files.html#cb35-3"></a>pcn_fails &lt;-<span class="st"> </span>tmp<span class="op">$</span>fail</span>
+<span id="cb35-4"><a href="create-pcb-files.html#cb35-4"></a>pcn       &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(tmp<span class="op">$</span>pcn)</span>
+<span id="cb35-5"><a href="create-pcb-files.html#cb35-5"></a></span>
+<span id="cb35-6"><a href="create-pcb-files.html#cb35-6"></a><span class="co"># Fix metadata</span></span>
+<span id="cb35-7"><a href="create-pcb-files.html#cb35-7"></a>pcn       &lt;-<span class="st"> </span><span class="kw">fix_metadata</span>(pcn)</span>
+<span id="cb35-8"><a href="create-pcb-files.html#cb35-8"></a></span>
+<span id="cb35-9"><a href="create-pcb-files.html#cb35-9"></a><span class="co"># Get reference year</span></span>
+<span id="cb35-10"><a href="create-pcb-files.html#cb35-10"></a>pcn       &lt;-<span class="st"> </span><span class="kw">get_ref_year</span>(pcn, cpi_path)</span></code></pre></div>
 <p>Then <code>pcn</code> object is then passed to the <code>fix_metadata</code> function in which some
 columns like welfare type of survey coverage are added. Finally, function
 <code>get_ref_year</code> merges the price framework data from <code>datalibweb</code> to assign the
@@ -505,17 +505,17 @@ right reference year to each survey. Keep in mind that <code>get_ref_year</code>
 <em>hard-coded</em> adjustments. Check those in case the resulting reference year is
 incorrect.</p>
 </div>
-<div id="generate-.pcb-files" class="section level3" number="10.3.4">
-<h3><span class="header-section-number">10.3.4</span> Generate .pcb files</h3>
+<div id="generate-.pcb-files" class="section level3" number="11.3.4">
+<h3><span class="header-section-number">11.3.4</span> Generate .pcb files</h3>
 <p>Now that the metadata is ready, we can create the .pcb file. This is done with
 this code,</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="create-pcb-files.html#cb35-1"></a><span class="co"># -------------------- Create PCB --------------------</span></span>
-<span id="cb35-2"><a href="create-pcb-files.html#cb35-2"></a>replace_file &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb35-3"><a href="create-pcb-files.html#cb35-3"></a>pcb_status &lt;-<span class="st"> </span><span class="kw">generate_pcb_files</span>(<span class="dt">df           =</span> pcn, </span>
-<span id="cb35-4"><a href="create-pcb-files.html#cb35-4"></a>                                 <span class="dt">countries    =</span> countries,</span>
-<span id="cb35-5"><a href="create-pcb-files.html#cb35-5"></a>                                 <span class="dt">years        =</span> years, </span>
-<span id="cb35-6"><a href="create-pcb-files.html#cb35-6"></a>                                 <span class="dt">replace_file =</span> replace_file,</span>
-<span id="cb35-7"><a href="create-pcb-files.html#cb35-7"></a>                                 <span class="dt">datadir      =</span> datadir</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="create-pcb-files.html#cb36-1"></a><span class="co"># -------------------- Create PCB --------------------</span></span>
+<span id="cb36-2"><a href="create-pcb-files.html#cb36-2"></a>replace_file &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
+<span id="cb36-3"><a href="create-pcb-files.html#cb36-3"></a>pcb_status &lt;-<span class="st"> </span><span class="kw">generate_pcb_files</span>(<span class="dt">df           =</span> pcn, </span>
+<span id="cb36-4"><a href="create-pcb-files.html#cb36-4"></a>                                 <span class="dt">countries    =</span> countries,</span>
+<span id="cb36-5"><a href="create-pcb-files.html#cb36-5"></a>                                 <span class="dt">years        =</span> years, </span>
+<span id="cb36-6"><a href="create-pcb-files.html#cb36-6"></a>                                 <span class="dt">replace_file =</span> replace_file,</span>
+<span id="cb36-7"><a href="create-pcb-files.html#cb36-7"></a>                                 <span class="dt">datadir      =</span> datadir</span></code></pre></div>
 <p>The function <code>generate_pcb_files</code> takes the directory paths of the microdata in
 the <code>pcn</code> object, loads the microdata, and, inside the <code>datadir</code> directory,
 creates the .pcb file into the <code>/01.pcb/</code> subdirectory and and .rds file (R
@@ -532,8 +532,8 @@ PovcalNet system requires two types of inputs, welfare data and the master file.
 We still need to update the “SurveyMean” sheet of the Master file.</p>
 </div>
 </div>
-<div id="master-objectives" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> Update the Master file</h2>
+<div id="master-objectives" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Update the Master file</h2>
 <p>Updating the Master file is the most challenging part of the whole process
 because we need to make sure that,</p>
 <ol style="list-style-type: decimal">
@@ -547,30 +547,30 @@ because we need to make sure that,</p>
 in between. This is specially important for countries with urban/rural coverage
 like China, India, or Indonesia; for countries with lagging reference years like
 EU-SILC countries, or for tricky countries like … (Macedonia?).</p>
-<div id="update-info-of-the-surveymean-sheet" class="section level3" number="10.4.1">
-<h3><span class="header-section-number">10.4.1</span> Update info of the “SurveyMean” sheet</h3>
+<div id="update-info-of-the-surveymean-sheet" class="section level3" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Update info of the “SurveyMean” sheet</h3>
 <p>The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="create-pcb-files.html#cb36-1"></a>lf &lt;-<span class="st"> </span><span class="kw">update_master_info</span>(<span class="dt">df        =</span> pcn, </span>
-<span id="cb36-2"><a href="create-pcb-files.html#cb36-2"></a>                         <span class="dt">countries =</span> countries,</span>
-<span id="cb36-3"><a href="create-pcb-files.html#cb36-3"></a>                         <span class="dt">years     =</span> years)</span>
-<span id="cb36-4"><a href="create-pcb-files.html#cb36-4"></a>st  &lt;-<span class="st"> </span>lf<span class="op">$</span>s</span>
-<span id="cb36-5"><a href="create-pcb-files.html#cb36-5"></a>df &lt;-<span class="st"> </span>lf<span class="op">$</span>df</span>
-<span id="cb36-6"><a href="create-pcb-files.html#cb36-6"></a></span>
-<span id="cb36-7"><a href="create-pcb-files.html#cb36-7"></a><span class="kw">table</span>(st<span class="op">$</span>status)</span>
-<span id="cb36-8"><a href="create-pcb-files.html#cb36-8"></a><span class="kw">filter</span>(st, status <span class="op">!=</span><span class="st"> &quot;OK&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="create-pcb-files.html#cb37-1"></a>lf &lt;-<span class="st"> </span><span class="kw">update_master_info</span>(<span class="dt">df        =</span> pcn, </span>
+<span id="cb37-2"><a href="create-pcb-files.html#cb37-2"></a>                         <span class="dt">countries =</span> countries,</span>
+<span id="cb37-3"><a href="create-pcb-files.html#cb37-3"></a>                         <span class="dt">years     =</span> years)</span>
+<span id="cb37-4"><a href="create-pcb-files.html#cb37-4"></a>st  &lt;-<span class="st"> </span>lf<span class="op">$</span>s</span>
+<span id="cb37-5"><a href="create-pcb-files.html#cb37-5"></a>df &lt;-<span class="st"> </span>lf<span class="op">$</span>df</span>
+<span id="cb37-6"><a href="create-pcb-files.html#cb37-6"></a></span>
+<span id="cb37-7"><a href="create-pcb-files.html#cb37-7"></a><span class="kw">table</span>(st<span class="op">$</span>status)</span>
+<span id="cb37-8"><a href="create-pcb-files.html#cb37-8"></a><span class="kw">filter</span>(st, status <span class="op">!=</span><span class="st"> &quot;OK&quot;</span>)</span></code></pre></div>
 <p>The object <code>lf</code> is a list with two objects, <code>st</code> and <code>df</code>. Object <code>st</code> is merely
 the status of each survey in the <code>update_master_info</code> process, whereas <code>df</code> is
 the actual metadata of the <em>new data</em>. Now, the following code loads the data in
 the most recent version of the Master file,</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="create-pcb-files.html#cb37-1"></a>lmf     &lt;-<span class="st"> </span><span class="kw">load_masterfile</span>()</span>
-<span id="cb37-2"><a href="create-pcb-files.html#cb37-2"></a>mf      &lt;-<span class="st"> </span>lmf<span class="op">$</span>data<span class="op">$</span>SurveyMean</span>
-<span id="cb37-3"><a href="create-pcb-files.html#cb37-3"></a>reg_ctry &lt;-<span class="st"> </span>lmf<span class="op">$</span>data<span class="op">$</span>CountryList <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb37-4"><a href="create-pcb-files.html#cb37-4"></a><span class="st">  </span><span class="kw">select</span>(</span>
-<span id="cb37-5"><a href="create-pcb-files.html#cb37-5"></a>    <span class="dt">Region      =</span> WBRegionCode, </span>
-<span id="cb37-6"><a href="create-pcb-files.html#cb37-6"></a>    <span class="dt">CountryCode =</span> CountryCode, </span>
-<span id="cb37-7"><a href="create-pcb-files.html#cb37-7"></a>    <span class="dt">countryName =</span> CountryName</span>
-<span id="cb37-8"><a href="create-pcb-files.html#cb37-8"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="create-pcb-files.html#cb38-1"></a>lmf     &lt;-<span class="st"> </span><span class="kw">load_masterfile</span>()</span>
+<span id="cb38-2"><a href="create-pcb-files.html#cb38-2"></a>mf      &lt;-<span class="st"> </span>lmf<span class="op">$</span>data<span class="op">$</span>SurveyMean</span>
+<span id="cb38-3"><a href="create-pcb-files.html#cb38-3"></a>reg_ctry &lt;-<span class="st"> </span>lmf<span class="op">$</span>data<span class="op">$</span>CountryList <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb38-4"><a href="create-pcb-files.html#cb38-4"></a><span class="st">  </span><span class="kw">select</span>(</span>
+<span id="cb38-5"><a href="create-pcb-files.html#cb38-5"></a>    <span class="dt">Region      =</span> WBRegionCode, </span>
+<span id="cb38-6"><a href="create-pcb-files.html#cb38-6"></a>    <span class="dt">CountryCode =</span> CountryCode, </span>
+<span id="cb38-7"><a href="create-pcb-files.html#cb38-7"></a>    <span class="dt">countryName =</span> CountryName</span>
+<span id="cb38-8"><a href="create-pcb-files.html#cb38-8"></a>  )</span></code></pre></div>
 <p>The function <code>load_masterfile</code> returns a list that is then bound to the name
 <code>lmf</code> (this function takes a while to run especially if you’re working
 remotely). The main object of <code>lmf</code> is another list, <code>data</code>, that contains the a
@@ -590,22 +590,22 @@ are some cases that need to be removed manually. This is why we have the object
 there is need to manage any especial case, this object should be set to an empty
 string, <code>condition &lt;- ""</code>. Let’s see some examples of real cases in which we had
 to use the object <code>condition</code>.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="create-pcb-files.html#cb38-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;IND&quot; &amp; year == 2012)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="create-pcb-files.html#cb39-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;IND&quot; &amp; year == 2012)&#39;</span></span></code></pre></div>
 <p>In this case, we needed to remove the observation for India 2012, because even
 though the <code>CPI_Time</code> variable in the master file is 2012, the <code>SurveyTime</code>
 variable is 2011.5.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="create-pcb-files.html#cb39-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;CHN&quot; &amp; grepl(&quot;A$&quot;, module))&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="create-pcb-files.html#cb40-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;CHN&quot; &amp; grepl(&quot;A$&quot;, module))&#39;</span></span></code></pre></div>
 <p>Here we needed to remove all the observations of China for which the module
 finished in a letter A.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="create-pcb-files.html#cb40-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;CHN&quot; &amp; year &gt;= 1990 &amp; welfaretype3 == &quot;y&quot;)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="create-pcb-files.html#cb41-1"></a>condition &lt;-<span class="st"> &#39;!(countrycode == &quot;CHN&quot; &amp; year &gt;= 1990 &amp; welfaretype3 == &quot;y&quot;)&#39;</span></span></code></pre></div>
 <p>Here, there was a problem in the metadata and we needed to remove all the
 observations for China after 1990 for which the welfare type was coded as
 income, when in reality it was consumption.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="create-pcb-files.html#cb41-1"></a>condition &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;!(countrycode  %in% &#39;</span>, </span>
-<span id="cb41-2"><a href="create-pcb-files.html#cb41-2"></a>                    <span class="kw">deparse</span>(countries),</span>
-<span id="cb41-3"><a href="create-pcb-files.html#cb41-3"></a>                    <span class="st">&#39; &amp; year  %in%  &#39;</span>, </span>
-<span id="cb41-4"><a href="create-pcb-files.html#cb41-4"></a>                    <span class="kw">deparse</span>(years),<span class="st">&#39;)&#39;</span></span>
-<span id="cb41-5"><a href="create-pcb-files.html#cb41-5"></a>                    )</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="create-pcb-files.html#cb42-1"></a>condition &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;!(countrycode  %in% &#39;</span>, </span>
+<span id="cb42-2"><a href="create-pcb-files.html#cb42-2"></a>                    <span class="kw">deparse</span>(countries),</span>
+<span id="cb42-3"><a href="create-pcb-files.html#cb42-3"></a>                    <span class="st">&#39; &amp; year  %in%  &#39;</span>, </span>
+<span id="cb42-4"><a href="create-pcb-files.html#cb42-4"></a>                    <span class="kw">deparse</span>(years),<span class="st">&#39;)&#39;</span></span>
+<span id="cb42-5"><a href="create-pcb-files.html#cb42-5"></a>                    )</span></code></pre></div>
 <p>This final example is a general form in which we remove old observations for all
 the countries and years for which there is new data. This is very useful if we
 want to do start a country from scratch.</p>
@@ -628,7 +628,7 @@ intermediate outputs.</p>
           </div>
         </div>
       </div>
-<a href="update-microdata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="group-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="DMGroupData.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

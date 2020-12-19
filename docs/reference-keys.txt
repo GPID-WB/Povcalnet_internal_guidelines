@@ -24,8 +24,6 @@ fig:initrepo
 fig:GHclone
 fig:GKclone
 fig:GKwip
-fig:DM-upload-files
-fig:DM-check
 fig:DM-metadata
 fig:zotero1
 fig:zotero2
@@ -121,7 +119,10 @@ update-all-the-years-of-selected-countries
 update-file-by-file
 create-the-_pcn-files
 china-synthetic-files
-create-.pcb-files
+group-data
+preparing-the-data
+naming-convention
+create-pcb-files
 what-the-heck-is-a-pcb-file
 the-povcalnet_update-repository
 generate-the-.pcb-files
@@ -134,11 +135,7 @@ update-info-of-the-surveymean-sheet
 DMGroupData
 master-data
 pcb-files
-group-data
-preparing-the-data
-naming-convention
-upload-the-data.
-making-sure-everything-works
+updating-the-system
 master-file
 upload-master-file
 referencing-software-zotero

@@ -1,9 +1,9 @@
 # Upload Group Data to the Data Management System {#DMGroupData}
 
-The Data Management system is managed directly within your Internet Browser.
-Since it is available to anyone in the World Bank, you need to request to the
-TTLs of the PovcalNet team the correct url. For now, it is worth mentioning that
-there are *four* different servers in the PovcalNet system.
+The Data Management (DM) system is managed directly within your Internet
+Browser. Since it is available to anyone in the World Bank, you need to request
+to the TTLs of the PovcalNet team the correct url. For now, it is worth
+mentioning that there are *four* different servers in the PovcalNet system.
 
 ### Development (internal) server {.unnumbered}
 
@@ -41,87 +41,55 @@ testing, development, or production servers. The restricted server just adds an
 extra layer of authentication in which only selected people can access the data.
 It is seldom used.
 
-
 ## Master Data
 
-[blah blah]{.red}
+When the master file is updated locally, the most recent version will be always
+available in the folder `p:\01.PovcalNet\00.Master\02.vintage\`. There you can
+find all the different versions of the master file since September, 27th, 2018.
+The suffix number of each file indicates the date and time in which the file was
+created. It has the form **YYYYMMDDhhmmss**, for year, month, day, hour, minute,
+and second. [Always make sure you upload the most recent version]{.red}.
+
+To select the Master file in the DM system, click "Choose file" next to the
+label **Metadata file**, and then click on "Upload metadata", otherwise it won't
+be uploaded. Finally, you can click on "Check Survey means" to see the if the DM
+system loaded correctly the Master file.
+
+![](images/Metadata_file.jpg)
 
 ## PCB files
 
-::: {.red}
-manually
+Once you have created the pcb files following the instructions in chapter
+\@ref(create-pcb-files), you can upload them into the DM system either one by
+one or in batch mode. Batch mode is restricted to one person only, which is
+[Tony Fujs](mailto:tfujs@worldbank.org) as of today (2020-12-18). If you need to
+upload more than, say, five .pcb files, we recommend you let Tony know where the
+files are and ask him to upload them to the development server. If the number of
+.pcb files to upload is small, you can upload them one-by-one. The reason why
+you can't upload many files at the same time is that the server has a very
+limited size capacity for uploading files. If the overall upload is larger than
+4MB, the process will fail.
 
-batch\> Ask Tony to copy them.
-:::
+To upload a .pcb or group data file manually, you need to click on "choose
+Files" next to the label **Data files(s) (**[make sure you don't confuse it with
+the one next to **Metadata**]{.red}**)**. Then, you need to click on "Upload
+data file(s)."![](images/Metadata_file3.jpg)
 
-## Group Data
+## Updating the system
 
-### Preparing the data
+Once the master file and the new .pcb and group data files have been uploaded
+into the system, you need to make sure everything is updated properly. The
+easiest and safest way to do that is by clicking one-by-one of the buttons below
+with the exception of "Clean up data files." Also, make sure sure to check the
+two boxes in the middle. Clicking all these buttons may take several minutes of
+your time, you we recommend that for small updates you only click on "Check
+survey means" and "Make Survey and Reference+GDF", and leave the box "Re-make
+all dataset" **unchecked**. In most of the cases, this is enough to update the
+whole system, but if something is failing, it is better to execute all the steps
+as explained above.
 
-Once the Group Data is received from the regional focal point of the Poverty GP,
-It has to be copied and pasted into a text file. Two columns of data must be
-pasted into the text file; one for weight and one for welfare, which may come in
-three different varieties and are clearly explain the [Povcalnet
-Website](http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx). For the
-case of China 2016, which is the database used as example in this text, data
-comes in type 5 format,[^data_management-1] which means that the weight variable
-is the share of the population in a given quantile and the welfare variable is
-the mean of welfare therein. If the data comes broken down by urban and rural
-population, it is necessary to create one text file for each distribution.
+![](images/Metadata_file2.jpg)
 
-[^data_management-1]: Even though there are only three types of grouped data,
-    they are labeled type 1, type 2, and type5
-
-### Naming convention
-
-Text files must be saved with the following naming convention,
-
-> `CCCgXX.T0F`
-
-where the only literal piece of the naming convention is `T0`. All the other are
-as follows:
-
--   `CCC` refers to the country code. However, the name of the country has been
-    used in the past.
--   `g` refers to the geographic area: `r` for rural, `u` for urban, and `n` for
-    national
--   `XX` stands for the last two digits of the corresponding year of the survey.
-    For example, if the year is 2016, then `XX` would be 16.
--   `F` refers to the type formatting of the data. In the case of China 2016 it
-    would be 5.
-
-Make sure the text does not have the extension `txt`. In software used to save
-the text file includes the extension `txt` by default, make sure to remove it
-manually.
-
-So, the final name for rural China 2016 would be `CHNr16.T05`
-
-### Upload the data.
-
-After logging into the server, the new group data must be uploaded by clicking
-on `choose Files`, next to the *Data file(s)* legend, and choosing the
-corresponding file from the files explorer. Finally, you have to click on
-`Upload data file(s)` at the very right of the page. This process has to be done
-file by file. Apparently, before the last update of the system, it was possible
-to upload several files at the same time.
-
-```{r DM-upload-files, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", fig.align = "center"}
-knitr::include_graphics("images/DM_upload_files.png")
-```
-
-## Making sure everything works
-
-Once the new data and the updated metadata are uploaded, you may proceed to
-click one by one of the buttons shown in Figure \@ref(fig:DM-check). Make sure,
-
-1.  The box `Re-make all dataset` remain should be checked.
-2.  Do **NOT** click on `Clean up data files.` (Not shown in Figure
-    \@ref(fig:DM-check))
-
-```{r DM-check, echo=FALSE, fig.cap = "Upload files", fig.show = "hold", out.width = "50%", fig.align = "center"}
-knitr::include_graphics("images/DM_check_files.png")
-```
-
-Finally, click on `Rebuild listed Economy docs` (which needs to be done only
-once, in case of uploading several times the master file) and then click on
-`Restart PovcalNet`.
+Finally, once it is ready to be deployed in Production, click on "Rebuild listed
+Economy docs" (which needs to be done only once, in case of uploading several
+times the master file) and then click on "Restart PovcalNet".

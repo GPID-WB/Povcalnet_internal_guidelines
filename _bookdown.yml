@@ -23,6 +23,7 @@ rmd_files: [
   "lis_data.Rmd",
   "PRIMUS.Rmd",
   "update_microdata.Rmd",
+  "group_data.Rmd",
   "pcb_files.Rmd",
   "Data_Management.Rmd",
   "master_file.Rmd",

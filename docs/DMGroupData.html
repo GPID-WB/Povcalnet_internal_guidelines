@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 11 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols</title>
+  <title>Chapter 12 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols</title>
   <meta name="description" content="PovcalNet guidelines and protocols for internal workflow" />
-  <meta name="generator" content="bookdown 0.21.4 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21.6 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 11 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
+  <meta property="og:title" content="Chapter 12 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="worldbank/Povcalnet_internal_guidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 11 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
+  <meta name="twitter:title" content="Chapter 12 Upload Group Data to the Data Management System | PovcalNet Internal Guidelines and Protocols" />
   
   <meta name="twitter:description" content="PovcalNet guidelines and protocols for internal workflow" />
   
@@ -26,7 +26,7 @@
 <meta name="author" content="World Bank Group" />
 
 
-<meta name="date" content="2020-12-18" />
+<meta name="date" content="2020-12-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -35,7 +35,7 @@
   
 <link rel="prev" href="create-pcb-files.html"/>
 <link rel="next" href="master-file.html"/>
-<script src="libs/header-attrs-2.5.3/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -122,6 +122,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" type="text/css" />
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -278,53 +279,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="update-microdata.html"><a href="update-microdata.html#create-the-_pcn-files"><i class="fa fa-check"></i><b>9.2</b> Create the _PCN files</a></li>
 <li class="chapter" data-level="9.3" data-path="update-microdata.html"><a href="update-microdata.html#china-synthetic-files"><i class="fa fa-check"></i><b>9.3</b> China synthetic files</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>10</b> Create .PCB files</a>
+<li class="chapter" data-level="10" data-path="group-data.html"><a href="group-data.html"><i class="fa fa-check"></i><b>10</b> Group Data</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#what-the-heck-is-a-pcb-file"><i class="fa fa-check"></i><b>10.1</b> What the heck is a PCB file?!!</a></li>
-<li class="chapter" data-level="10.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#the-povcalnet_update-repository"><i class="fa fa-check"></i><b>10.2</b> The povcalnet_update repository</a></li>
-<li class="chapter" data-level="10.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-the-.pcb-files"><i class="fa fa-check"></i><b>10.3</b> Generate the .pcb files</a>
+<li class="chapter" data-level="10.1" data-path="group-data.html"><a href="group-data.html#preparing-the-data"><i class="fa fa-check"></i><b>10.1</b> Preparing the data</a></li>
+<li class="chapter" data-level="10.2" data-path="group-data.html"><a href="group-data.html#naming-convention"><i class="fa fa-check"></i><b>10.2</b> Naming convention</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="create-pcb-files.html"><a href="create-pcb-files.html"><i class="fa fa-check"></i><b>11</b> Create .PCB files</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#directories"><i class="fa fa-check"></i><b>10.3.1</b> Directories</a></li>
-<li class="chapter" data-level="10.3.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#init-params"><i class="fa fa-check"></i><b>10.3.2</b> Surveys that have changed</a></li>
-<li class="chapter" data-level="10.3.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#prepare-metadata"><i class="fa fa-check"></i><b>10.3.3</b> Prepare metadata</a></li>
-<li class="chapter" data-level="10.3.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-.pcb-files"><i class="fa fa-check"></i><b>10.3.4</b> Generate .pcb files</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#master-objectives"><i class="fa fa-check"></i><b>10.4</b> Update the Master file</a>
+<li class="chapter" data-level="11.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#what-the-heck-is-a-pcb-file"><i class="fa fa-check"></i><b>11.1</b> What the heck is a PCB file?!!</a></li>
+<li class="chapter" data-level="11.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#the-povcalnet_update-repository"><i class="fa fa-check"></i><b>11.2</b> The povcalnet_update repository</a></li>
+<li class="chapter" data-level="11.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-the-.pcb-files"><i class="fa fa-check"></i><b>11.3</b> Generate the .pcb files</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#update-info-of-the-surveymean-sheet"><i class="fa fa-check"></i><b>10.4.1</b> Update info of the “SurveyMean” sheet</a></li>
+<li class="chapter" data-level="11.3.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#directories"><i class="fa fa-check"></i><b>11.3.1</b> Directories</a></li>
+<li class="chapter" data-level="11.3.2" data-path="create-pcb-files.html"><a href="create-pcb-files.html#init-params"><i class="fa fa-check"></i><b>11.3.2</b> Surveys that have changed</a></li>
+<li class="chapter" data-level="11.3.3" data-path="create-pcb-files.html"><a href="create-pcb-files.html#prepare-metadata"><i class="fa fa-check"></i><b>11.3.3</b> Prepare metadata</a></li>
+<li class="chapter" data-level="11.3.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#generate-.pcb-files"><i class="fa fa-check"></i><b>11.3.4</b> Generate .pcb files</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="create-pcb-files.html"><a href="create-pcb-files.html#master-objectives"><i class="fa fa-check"></i><b>11.4</b> Update the Master file</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="create-pcb-files.html"><a href="create-pcb-files.html#update-info-of-the-surveymean-sheet"><i class="fa fa-check"></i><b>11.4.1</b> Update info of the “SurveyMean” sheet</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>11</b> Upload Group Data to the Data Management System</a>
+<li class="chapter" data-level="12" data-path="DMGroupData.html"><a href="DMGroupData.html"><i class="fa fa-check"></i><b>12</b> Upload Group Data to the Data Management System</a>
 <ul>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#development-internal-server"><i class="fa fa-check"></i>Development (internal) server</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#production"><i class="fa fa-check"></i>Production</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#testing-server"><i class="fa fa-check"></i>Testing server</a></li>
 <li class="chapter" data-level="" data-path="DMGroupData.html"><a href="DMGroupData.html#restricted-ar-server"><i class="fa fa-check"></i>Restricted (AR) server</a></li>
-<li class="chapter" data-level="11.1" data-path="DMGroupData.html"><a href="DMGroupData.html#master-data"><i class="fa fa-check"></i><b>11.1</b> Master Data</a></li>
-<li class="chapter" data-level="11.2" data-path="DMGroupData.html"><a href="DMGroupData.html#pcb-files"><i class="fa fa-check"></i><b>11.2</b> PCB files</a></li>
-<li class="chapter" data-level="11.3" data-path="DMGroupData.html"><a href="DMGroupData.html#group-data"><i class="fa fa-check"></i><b>11.3</b> Group Data</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="DMGroupData.html"><a href="DMGroupData.html#preparing-the-data"><i class="fa fa-check"></i><b>11.3.1</b> Preparing the data</a></li>
-<li class="chapter" data-level="11.3.2" data-path="DMGroupData.html"><a href="DMGroupData.html#naming-convention"><i class="fa fa-check"></i><b>11.3.2</b> Naming convention</a></li>
-<li class="chapter" data-level="11.3.3" data-path="DMGroupData.html"><a href="DMGroupData.html#upload-the-data."><i class="fa fa-check"></i><b>11.3.3</b> Upload the data.</a></li>
+<li class="chapter" data-level="12.1" data-path="DMGroupData.html"><a href="DMGroupData.html#master-data"><i class="fa fa-check"></i><b>12.1</b> Master Data</a></li>
+<li class="chapter" data-level="12.2" data-path="DMGroupData.html"><a href="DMGroupData.html#pcb-files"><i class="fa fa-check"></i><b>12.2</b> PCB files</a></li>
+<li class="chapter" data-level="12.3" data-path="DMGroupData.html"><a href="DMGroupData.html#updating-the-system"><i class="fa fa-check"></i><b>12.3</b> Updating the system</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="DMGroupData.html"><a href="DMGroupData.html#making-sure-everything-works"><i class="fa fa-check"></i><b>11.4</b> Making sure everything works</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>12</b> Update the Master file</a>
+<li class="chapter" data-level="13" data-path="master-file.html"><a href="master-file.html"><i class="fa fa-check"></i><b>13</b> Update the Master file</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>12.1</b> Upload Master file</a></li>
+<li class="chapter" data-level="13.1" data-path="master-file.html"><a href="master-file.html#upload-master-file"><i class="fa fa-check"></i><b>13.1</b> Upload Master file</a></li>
 </ul></li>
 <li class="part"><span><b>III Miscellaneous</b></span></li>
-<li class="chapter" data-level="13" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>13</b> Referencing software: Zotero</a>
+<li class="chapter" data-level="14" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html"><i class="fa fa-check"></i><b>14</b> Referencing software: Zotero</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>13.1</b> Installation</a></li>
-<li class="chapter" data-level="13.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>13.2</b> Extensions and add-ons</a></li>
-<li class="chapter" data-level="13.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>13.3</b> Adding references to Zotero</a></li>
+<li class="chapter" data-level="14.1" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#installation"><i class="fa fa-check"></i><b>14.1</b> Installation</a></li>
+<li class="chapter" data-level="14.2" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#extensions-and-add-ons"><i class="fa fa-check"></i><b>14.2</b> Extensions and add-ons</a></li>
+<li class="chapter" data-level="14.3" data-path="referencing-software-zotero.html"><a href="referencing-software-zotero.html#adding-references-to-zotero"><i class="fa fa-check"></i><b>14.3</b> Adding references to Zotero</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>14</b> Data visualization: Flourish studio</a>
+<li class="chapter" data-level="15" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html"><i class="fa fa-check"></i><b>15</b> Data visualization: Flourish studio</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>14.1</b> Sign in</a></li>
-<li class="chapter" data-level="14.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>14.2</b> Get started</a></li>
+<li class="chapter" data-level="15.1" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#sign-in"><i class="fa fa-check"></i><b>15.1</b> Sign in</a></li>
+<li class="chapter" data-level="15.2" data-path="data-visualization-flourish-studio.html"><a href="data-visualization-flourish-studio.html#get-started"><i class="fa fa-check"></i><b>15.2</b> Get started</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="work-expectations.html"><a href="work-expectations.html"><i class="fa fa-check"></i><b>A</b> Quality of work expectations</a>
@@ -387,12 +387,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <p>Thanks.&nbsp;</p>
  </div>
-<div id="DMGroupData" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Upload Group Data to the Data Management System</h1>
-<p>The Data Management system is managed directly within your Internet Browser.
-Since it is available to anyone in the World Bank, you need to request to the
-TTLs of the PovcalNet team the correct url. For now, it is worth mentioning that
-there are <em>four</em> different servers in the PovcalNet system.</p>
+<div id="DMGroupData" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Upload Group Data to the Data Management System</h1>
+<p>The Data Management (DM) system is managed directly within your Internet
+Browser. Since it is available to anyone in the World Bank, you need to request
+to the TTLs of the PovcalNet team the correct url. For now, it is worth
+mentioning that there are <em>four</em> different servers in the PovcalNet system.</p>
 <div id="development-internal-server" class="section level3 unnumbered" number="">
 <h3>Development (internal) server</h3>
 <p>The Development (or Internal) server is mainly for quality assurance (QA) work.
@@ -429,98 +429,55 @@ testing, development, or production servers. The restricted server just adds an
 extra layer of authentication in which only selected people can access the data.
 It is seldom used.</p>
 </div>
-<div id="master-data" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Master Data</h2>
-<p><span class="red">blah blah</span></p>
+<div id="master-data" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Master Data</h2>
+<p>When the master file is updated locally, the most recent version will be always
+available in the folder <code>p:\01.PovcalNet\00.Master\02.vintage\</code>. There you can
+find all the different versions of the master file since September, 27th, 2018.
+The suffix number of each file indicates the date and time in which the file was
+created. It has the form <strong>YYYYMMDDhhmmss</strong>, for year, month, day, hour, minute,
+and second. <span class="red">Always make sure you upload the most recent version</span>.</p>
+<p>To select the Master file in the DM system, click “Choose file” next to the
+label <strong>Metadata file</strong>, and then click on “Upload metadata”, otherwise it won’t
+be uploaded. Finally, you can click on “Check Survey means” to see the if the DM
+system loaded correctly the Master file.</p>
+<p><img src="images/Metadata_file.jpg" /></p>
 </div>
-<div id="pcb-files" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> PCB files</h2>
-<div class="red">
-<p>manually</p>
-<p>batch&gt; Ask Tony to copy them.</p>
+<div id="pcb-files" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> PCB files</h2>
+<p>Once you have created the pcb files following the instructions in chapter
+<a href="create-pcb-files.html#create-pcb-files">11</a>, you can upload them into the DM system either one by
+one or in batch mode. Batch mode is restricted to one person only, which is
+<a href="mailto:tfujs@worldbank.org">Tony Fujs</a> as of today (2020-12-18). If you need to
+upload more than, say, five .pcb files, we recommend you let Tony know where the
+files are and ask him to upload them to the development server. If the number of
+.pcb files to upload is small, you can upload them one-by-one. The reason why
+you can’t upload many files at the same time is that the server has a very
+limited size capacity for uploading files. If the overall upload is larger than
+4MB, the process will fail.</p>
+<p>To upload a .pcb or group data file manually, you need to click on “choose
+Files” next to the label <strong>Data files(s) (</strong><span class="red">make sure you don’t confuse it with
+the one next to <strong>Metadata</strong></span><strong>)</strong>. Then, you need to click on “Upload
+data file(s).”<img src="images/Metadata_file3.jpg" /></p>
 </div>
-</div>
-<div id="group-data" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> Group Data</h2>
-<div id="preparing-the-data" class="section level3" number="11.3.1">
-<h3><span class="header-section-number">11.3.1</span> Preparing the data</h3>
-<p>Once the Group Data is received from the regional focal point of the Poverty GP,
-It has to be copied and pasted into a text file. Two columns of data must be
-pasted into the text file; one for weight and one for welfare, which may come in
-three different varieties and are clearly explain the <a href="http://iresearch.worldbank.org/PovcalNet/povcalculator.aspx">Povcalnet
-Website</a>. For the
-case of China 2016, which is the database used as example in this text, data
-comes in type 5 format,<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a> which means that the weight variable
-is the share of the population in a given quantile and the welfare variable is
-the mean of welfare therein. If the data comes broken down by urban and rural
-population, it is necessary to create one text file for each distribution.</p>
-</div>
-<div id="naming-convention" class="section level3" number="11.3.2">
-<h3><span class="header-section-number">11.3.2</span> Naming convention</h3>
-<p>Text files must be saved with the following naming convention,</p>
-<blockquote>
-<p><code>CCCgXX.T0F</code></p>
-</blockquote>
-<p>where the only literal piece of the naming convention is <code>T0</code>. All the other are
-as follows:</p>
-<ul>
-<li><code>CCC</code> refers to the country code. However, the name of the country has been
-used in the past.</li>
-<li><code>g</code> refers to the geographic area: <code>r</code> for rural, <code>u</code> for urban, and <code>n</code> for
-national</li>
-<li><code>XX</code> stands for the last two digits of the corresponding year of the survey.
-For example, if the year is 2016, then <code>XX</code> would be 16.</li>
-<li><code>F</code> refers to the type formatting of the data. In the case of China 2016 it
-would be 5.</li>
-</ul>
-<p>Make sure the text does not have the extension <code>txt</code>. In software used to save
-the text file includes the extension <code>txt</code> by default, make sure to remove it
-manually.</p>
-<p>So, the final name for rural China 2016 would be <code>CHNr16.T05</code></p>
-</div>
-<div id="upload-the-data." class="section level3" number="11.3.3">
-<h3><span class="header-section-number">11.3.3</span> Upload the data.</h3>
-<p>After logging into the server, the new group data must be uploaded by clicking
-on <code>choose Files</code>, next to the <em>Data file(s)</em> legend, and choosing the
-corresponding file from the files explorer. Finally, you have to click on
-<code>Upload data file(s)</code> at the very right of the page. This process has to be done
-file by file. Apparently, before the last update of the system, it was possible
-to upload several files at the same time.</p>
-<div class="figure" style="text-align: center"><span id="fig:DM-upload-files"></span>
-<img src="images/DM_upload_files.png" alt="Upload files" width="484" />
-<p class="caption">
-Figure 11.1: Upload files
-</p>
-</div>
-</div>
-</div>
-<div id="making-sure-everything-works" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> Making sure everything works</h2>
-<p>Once the new data and the updated metadata are uploaded, you may proceed to
-click one by one of the buttons shown in Figure <a href="DMGroupData.html#fig:DM-check">11.2</a>. Make sure,</p>
-<ol style="list-style-type: decimal">
-<li>The box <code>Re-make all dataset</code> remain should be checked.</li>
-<li>Do <strong>NOT</strong> click on <code>Clean up data files.</code> (Not shown in Figure
-<a href="DMGroupData.html#fig:DM-check">11.2</a>)</li>
-</ol>
-<div class="figure" style="text-align: center"><span id="fig:DM-check"></span>
-<img src="images/DM_check_files.png" alt="Upload files" width="50%" />
-<p class="caption">
-Figure 11.2: Upload files
-</p>
-</div>
-<p>Finally, click on <code>Rebuild listed Economy docs</code> (which needs to be done only
-once, in case of uploading several times the master file) and then click on
-<code>Restart PovcalNet</code>.</p>
+<div id="updating-the-system" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Updating the system</h2>
+<p>Once the master file and the new .pcb and group data files have been uploaded
+into the system, you need to make sure everything is updated properly. The
+easiest and safest way to do that is by clicking one-by-one of the buttons below
+with the exception of “Clean up data files.” Also, make sure sure to check the
+two boxes in the middle. Clicking all these buttons may take several minutes of
+your time, you we recommend that for small updates you only click on “Check
+survey means” and “Make Survey and Reference+GDF”, and leave the box “Re-make
+all dataset” <strong>unchecked</strong>. In most of the cases, this is enough to update the
+whole system, but if something is failing, it is better to execute all the steps
+as explained above.</p>
+<p><img src="images/Metadata_file2.jpg" /></p>
+<p>Finally, once it is ready to be deployed in Production, click on “Rebuild listed
+Economy docs” (which needs to be done only once, in case of uploading several
+times the master file) and then click on “Restart PovcalNet”.</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="8">
-<li id="fn8"><p>Even though there are only three types of grouped data,
-they are labeled type 1, type 2, and type5<a href="DMGroupData.html#fnref8" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 

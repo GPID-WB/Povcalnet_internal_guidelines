@@ -1,4 +1,4 @@
-# Create .PCB files
+# Create .PCB files {#create-pcb-files}
 
 ```{r, include = FALSE}
 library(flair)
@@ -26,11 +26,11 @@ PCB files contain four pieces of information:
 -   Metadata
 
     -   The PCB ID number. There are actually two types of .PCB files, an old
-        and a new format. The ID number is a way to differentiate them.\
-    -   The number of microdata records\
-    -   The number of points on the Lorenz curve\
+        and a new format. The ID number is a way to differentiate them.
+    -   The number of microdata records
+    -   The number of points on the Lorenz curve
 
--   Lorenz Curve\
+-   Lorenz Curve
 
 -   Pre-computed summary stats\
     Stuff that needs to be computed only once (Not sensitive to the poverty
@@ -82,17 +82,11 @@ As of today (2020-11-20), the `datadir` directory is for `2020_JUL` as it was
 the last release of PovcalNet. However, make sure you create a new folder with
 the year and month of the "tentative" release.
 
-```{r pdirs, echo = FALSE, eval = FALSE}
+```{r pdirs, eval = FALSE}
 datadir   <- "p:/01.PovcalNet/02.Production/2020_JUL/"
 cpi_path  <- "p:/01.PovcalNet/01.Vintage_control/_aux/price_framework/price_framework.dta"
 sheet     <- "SurveyMean"
 mdir      <- "p:/01.PovcalNet/00.Master/"
-```
-
-```{r, echo = FALSE}
-  decorate("pdirs", eval = FALSE) %>% 
-  flair("2020_JUL", background = "pink") %>%
-  flair("datadir", color = "CornflowerBlue")
 ```
 
 ### Surveys that have changed {#init-params}
