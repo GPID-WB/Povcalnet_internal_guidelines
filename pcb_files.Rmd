@@ -5,7 +5,7 @@ library(flair)
 ```
 
 As explained in the [introduction](#intro-povcal) of this part of the book,
-creating the .PCB files are the last step of the process before uploading
+creating the .PCB files is the last step of the process before uploading
 everything to the PovcalNet system.
 
 ## What the heck is a PCB file?!!
@@ -13,7 +13,7 @@ everything to the PovcalNet system.
 PCB files are only relevant for micro-data. They basically store the micro-data
 `welfare` and `weight` vectors, as well as pre-computed statistics. They are
 custom binary files (data is stored as a bunch of 0s and 1s) that were created
-to support the computations in PovcalNet. They are not standard file format like
+to support the computations in PovcalNet. It is not a standard file format like
 `.csv` or `.dta`.
 
 They are used because they:
@@ -32,8 +32,8 @@ PCB files contain four pieces of information:
 
 -   Lorenz Curve\
 
--   Pre-computed summary stats\
-    Stuff that needs to be computed only once (Not sensitive to the poverty
+-   Pre-computed statistics\
+    Statistics that need to be computed only once (i.e. not on-the-fly, since they are not sensitive to the poverty
     line)
 
 -   Microdata
@@ -52,17 +52,17 @@ Rstudio](https://martinctc.github.io/blog/rstudio-projects-and-working-directori
 You will find the project has three .R files only. If everything goes as
 expected, you'll only need to use the file *00.master.R*.
 
-In rare cases, you will need to modify the functions in other two files. The
+In rare cases, you will need to modify the functions in the other two files. The
 *utils.R* file has generic functions such as loading the master file into the
 system, or creating survey IDs. These functions are used all along the process.
-The *process\_functions.R* file contain functions for specific parts of the
-projects are executed usually once along the whole process. Basically, the
+The *process\_functions.R* file contains functions for specific parts of the
+projects which are executed usually once along the whole process. Basically, the
 *00.master.R* calls these functions in order in the same way that a master
-do-file call other do-files that do specific things.
+do-file calls other do-files that do specific things.
 
 In this chapter, we break down the *00.master.R* file, so you understand how to
 run it, the logic behind, and what to do in case it needs to be fixed. Let's
-start by installing the minimum necessary packages. *00.master.R* file assumes
+start by installing the minimum necessary packages. The *00.master.R* file assumes
 you already have them installed, so you should run the code below before you
 start.
 
@@ -141,7 +141,7 @@ pcn       <- get_ref_year(pcn, cpi_path)
 ```
 
 Then `pcn` object is then passed to the `fix_metadata` function in which some
-columns like welfare type of survey coverage are added. Finally, function
+columns like welfare type and survey coverage are added. Finally, function
 `get_ref_year` merges the price framework data from `datalibweb` to assign the
 right reference year to each survey. Keep in mind that `get_ref_year` makes some
 *hard-coded* adjustments. Check those in case the resulting reference year is
@@ -167,12 +167,11 @@ the `pcn` object, loads the microdata, and, inside the `datadir` directory,
 creates the .pcb file into the `/01.pcb/` subdirectory and and .rds file (R
 readable) into the `/02.rds/` sub-directory. The creation of the .rds is for
 convenience. It allows you to check the data in the .pcb in an easy way. The
-.pcb file, in contrast, is harder to read directly in R.
+.pcb file, in contrast, is harder to read directly in R. Except for the file format, two files are identical. 
 
-One feature of the `generate_pcb_files` functions is that you can add additional
-filters by country and year in case you need it. By default, notice that it is
-only until this point that the `years` objects defined [above](#init-params) is
-being used. In fact, you could create another object, say `countries2`, and
+One feature of the `generate_pcb_files` function is that you can add additional
+filters by country and year. By default, only the `years` objects defined [above](#init-params) is
+being used until this point. In fact, you could create another object, say `countries2`, and
 parse it into the argument `countries` of the `generate_pcb_files` function.
 
 Up to this point, the generation of the .pcb files is concluded, but the
@@ -195,7 +194,7 @@ in between. This is specially important for countries with urban/rural coverage
 like China, India, or Indonesia; for countries with lagging reference years like
 EU-SILC countries, or for tricky countries like ... (Macedonia?).
 
-### Update info of the "SurveyMean" sheet
+### Updatint the "SurveyMean" sheet
 
 The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,
@@ -229,22 +228,21 @@ reg_ctry <- lmf$data$CountryList %>%
 
 The function `load_masterfile` returns a list that is then bound to the name
 `lmf` (this function takes a while to run especially if you're working
-remotely). The main object of `lmf` is another list, `data`, that contains the a
+remotely). The main object of `lmf` is another list, `data`, that contains a
 data frame per sheet. So, in the code above, you're creating object `mf` with
-the "SurveyMean" and `red_ctry`, with the "CountryList" sheet. The reason way we
+the "SurveyMean" and `red_ctry`, with the "CountryList" sheet. The reason why we
 load the whole master file is that, when we create a new version we want that
 version to include all the sheets, even those that were not modified. Function
 `writexl::write_xls`, which is the function that saves the new version of the
 master file, uses a list with all the sheets to save the file.
 
-Now, we need to prepare organize the new information into the "SurveyMean"
+Now, we need to organize the new information into the "SurveyMean"
 format. This is done with function `survey_mean_info`. However, and this one of
 the tricky parts, we need to make sure that the [five objectives
 above](#master-objectives) are met when we include the information of the new
 data. The `survey_mean_info` function handles all the generic cases, but there
 are some cases that need to be removed manually. This is why we have the object
-`condition` that goes directly as one of the arguments of `survey_mean_info`. If
-there is need to manage any especial case, this object should be set to an empty
+`condition` that goes directly as one of the arguments of `survey_mean_info`. If it is necessary to manage any special cases, this object should be set to an empty
 string, `condition <- ""`. Let's see some examples of real cases in which we had
 to use the object `condition`.
 
@@ -281,12 +279,12 @@ condition <- paste0('!(countrycode  %in% ',
 
 This final example is a general form in which we remove old observations for all
 the countries and years for which there is new data. This is very useful if we
-want to do start a country from scratch.
+want to start a country from scratch.
 
-Now, we just need to identify unchanged data in the "SurveyMean" sheet using the
+Now, we just need to identify the data that remains unchanged in the "SurveyMean" sheet using the
 function `unchanged_data()` and then append together the new data, `dfn,` and
-the `unchaged` data. Finally, we update the Master file using the function
-`update_master_file`, which receives for arguments, `lmf`, the current version
+the `unchanged` data. Finally, we update the Master file using the function
+`update_master_file`, which receives four arguments, `lmf`, the current version
 of the master file with all its sheets; `vintage`, the vintage control sheet
 which is loaded separately and it is useful only for institutional-memory
 purposes; `new_mf`, which is the new "SurveyMean" sheet with unchanged and new
