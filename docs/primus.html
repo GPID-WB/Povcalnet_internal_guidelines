@@ -72,7 +72,7 @@
 <a href="https://github.com/worldbank/primus">worldbank/primus</a>,</p>
 <blockquote>
 <p>The <strong>PRIMUS</strong> system is designed to facilitate this process of generating
-internal estimates of the World Bankâ€™s poverty indicators and reduce the time
+internal estimates of the World Bank’s poverty indicators and reduce the time
 needed for resolving discrepancies. It is a workflow management platform for
 the submission, review and approval of poverty estimates and a tracking
 facility to capture the inputs and results of the estimation process for
@@ -91,7 +91,7 @@ to begin by clarifying terms.</p>
 </h3>
 <p>PRIMUS can be accessed by typing in
 <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a>
-your browser. As long as youâ€™re connected to the intranet it should work fine.
+your browser. As long as you’re connected to the intranet it should work fine.
 However, if you have any issues connecting to the platform, please send an email
 to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting for access.</p>
 <p>Each database uploaded into PRIMUS got a unique transaction ID. This ID is
@@ -140,7 +140,7 @@ D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).</p>
 </h2>
 <p>Each time a database is uploaded into PRIMUS, it is assigned to a transaction
 ID. During the uploading process (or right after it has finished), the three
-three partiesâ€“DECDG, DECRG, or the Poverty GPâ€“evaluate the quality of the new
+three parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new
 or corrected data and approve them or reject them in the system. Depending on
 the decision of all the parties, each transaction will take one of three
 possible status, <em>pending</em>, <em>approved,</em> or <em>rejected</em>.</p>
@@ -201,10 +201,10 @@ and the poverty headcount to confirm that everything is ok.</p>
 <p>The <code>primus</code> command allows us to download the estimates of each transaction,
 but it has to be done one by one. Fortunately, the <code>pcn</code> command downloads all
 the estimates of pending transactions for us and properly stores them in the
-folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> ðŸŽ‰
-ðŸŽ‰ . You only need to type,</p>
+folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> 🎉
+🎉 . You only need to type,</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="primus.html#cb22-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
-<p>In addition, <code>pcn</code> checks the date in which youâ€™re downloading the estimates and
+<p>In addition, <code>pcn</code> checks the date in which you’re downloading the estimates and
 keep only those transactions that have been uploaded for the next spring or
 annual-meetings release. For instance, assume that today, 2020-11-20, you want
 to see the estimates of pending transactions in RPIMUS. Since annual meetings
@@ -300,10 +300,10 @@ process can easily done with the code below, which can be found in this file,
 countries.</li>
 <li>Modify <code>local filtdate</code> in which you select the date from which you want to
 approve transactions.</li>
-<li>Make sure at least two people approve. One on behalf of â€œpovcalnetâ€ (which
-is the alias used for DECRG) and another one on behalf of â€œdecdg.â€</li>
-<li>PRIMUS has a double-confirmation process, so you need to â€œconfirmâ€ and then
-â€œapproveâ€ the transaction. For that, you only need to change the option
+<li>Make sure at least two people approve. One on behalf of “povcalnet” (which
+is the alias used for DECRG) and another one on behalf of “decdg.”</li>
+<li>PRIMUS has a double-confirmation process, so you need to “confirm” and then
+“approve” the transaction. For that, you only need to change the option
 <code>decision()</code> from <code>approved</code> to <code>confirmed</code>.</li>
 </ol>
 <p>For some unknown reason, the PRIMUS system did not accept the approval of some
@@ -346,7 +346,7 @@ Nguyen</a>, so he can do the approval manually.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

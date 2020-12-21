@@ -97,7 +97,7 @@ in <code>c:\ado\personal</code> because it is listed first. To make sure where S
 reading from your ado-file, you can type <code>which ccc</code>, where <code>ccc</code> stands for the
 name of your command</p>
 <p>The directories above are the basic set with which Stata comes from factory.
-These directories are standard in Stata and you canâ€™t modify them. However, you
+These directories are standard in Stata and you can’t modify them. However, you
 can add more directories to the ado-path so that Stata searched for your
 ado-files in there too. One thing to keep in mind is that the <code>sysdir</code> in Stata
 provides similar information than <code>adopath</code>, but it is not the same. The
@@ -125,7 +125,7 @@ the command you installed. Now, when you install a command from <code>github</co
 will save it in <code>c:\ado\plus\?\</code> as well.</p>
 <p>In order for a command to be installed properly, Stata needs to find, besides
 your ado-file/s and any other installation file, two additional files,
-<code>stata.toc</code> and <code>ccc.pkg</code>. We wonâ€™t go into the details of these files, but the
+<code>stata.toc</code> and <code>ccc.pkg</code>. We won’t go into the details of these files, but the
 important thing to keep in mind is that as long as those files are in the folder
 in which your ado-file is, Stata can install it via the command <code>net</code>. We
 provide you with three different methods to install commands from github.</p>
@@ -136,7 +136,7 @@ provide you with three different methods to install commands from github.</p>
 <p><a href="https://github.com/haghish">E. F.Haghish</a> created a very nice Stata wrapper of
 the <code>net</code> command to install commands from github. Not surprisingly, the name of
 the command is <code>github</code>. And, as you have probably guessed it, you will install
-it using the <code>net</code> if you donâ€™t have <code>github</code> installed already.</p>
+it using the <code>net</code> if you don’t have <code>github</code> installed already.</p>
 <p>In order to install the <code>github</code> command, you can type</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata-github.html#cb8-1"></a>net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span></code></pre></div>
 <p>Now, you can install any command in Github typing <code>github install username/ccc</code>
@@ -154,7 +154,7 @@ page</a>.</p>
 </h3>
 <p>Alternatively you could install the package by typing the following line,</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="stata-github.html#cb9-1"></a>net install ccc, from(<span class="st">"https://raw.githubusercontent.com/username/ccc/master/"</span>)</span></code></pre></div>
-<p>This method is reliable but you donâ€™t get the nice features of the <code>github</code>
+<p>This method is reliable but you don’t get the nice features of the <code>github</code>
 command. Please note that the path is a little different from the one you used
 to install the <code>github</code> command. Just notice the where <code>username/ccc</code> part is in
 the link.</p>
@@ -166,12 +166,12 @@ the link.</p>
 <p><em>use only this method just in case the methods above do not work due to firewall
 restrictions</em></p>
 <ol style="list-style-type: decimal">
-<li>Click on the green icon â€œClone or Downloadâ€ above.</li>
+<li>Click on the green icon “Clone or Download” above.</li>
 <li>Download the package as a zip. It does not really matter where you save this
 zip file.</li>
 <li>Extract the files with extension <code>.ado</code> and <code>.sthlp</code> only, and place them in
 the directory <code>c:/ado/plus/p</code>. You need to place them in this folder only.
-Otherwise, it wonâ€™t work.</li>
+Otherwise, it won’t work.</li>
 <li>type <code>discard</code> in Stata.</li>
 </ol>
 </div>
@@ -231,7 +231,7 @@ blog</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -70,7 +70,7 @@
 </h1>
 <hr>
 <p>This chapter presents how to work with <a href="https://git-scm.com/">Git</a>, <a href="https://www.gitkraken.com/">GitKraken</a>, and <a href="https://github.com/">GitHub</a>.</p>
-<p>In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc.) has changed, but it wonâ€™t tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.</p>
+<p>In general, Git is a version control system to track changes in text file (e.g., do-files, R scripts, csv, etc) and to share those changes with other people. Git is capable of letting you know whether a binary files (e.g., Word, Excel, PDF, DTA, etc.) has changed, but it won’t tell how it changed. To get the most out of Git, programmers combine it with GitHub, which is a website that to share code with anybody (including people outside the World Bank), solicit improvements via pull requests, and track issues.</p>
 <div id="initial-set-up" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Initial Set up<a class="anchor" aria-label="anchor" href="#initial-set-up"><i class="fas fa-link"></i></a>
@@ -87,7 +87,7 @@
 <h2>
 <span class="header-section-number">3.2</span> Getting to know <a href="https://git-scm.com/">Git</a><a class="anchor" aria-label="anchor" href="#getting-to-know-git"><i class="fas fa-link"></i></a>
 </h2>
-<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any clientâ€™s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesnÃ¢Â€Â™t store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they donâ€™t know how those files change with respect to the changes applied to other files of the same project.</p>
+<p>Git is a <a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">Distributed Version Control System</a>. This means that Git is a system to fully clones the project and in its history into any client’s repository or local computer. Every time you save the state of your project (i.e., commit), Git basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesnât store the file again, just a link to the previous identical file it has already stored. Git thinks about its data more like a stream of snapshots of the whole project. This ability of taking snapshots of the projects is what makes Git to any other version control system. Other systems, like Microsoft Word or any other MS software, changes are tracked at the file level rather than at the project level. People is able to know how files have changes individually, but they don’t know how those files change with respect to the changes applied to other files of the same project.</p>
 </div>
 <div id="basics-of-git" class="section level2" number="3.3">
 <h2>
@@ -103,7 +103,7 @@
 <h3>
 <span class="header-section-number">3.3.2</span> Branching and Merging<a class="anchor" aria-label="anchor" href="#branching-and-merging"><i class="fas fa-link"></i></a>
 </h3>
-<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the â€œdefaultâ€ branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. â€œGit branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugÃ¢Â€â€no matter how big or how smallÃ¢Â€Â”you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your futureâ€™s history before merging it into the main branch."<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Branch | Atlassian Git Tutorialâ€ Atlassian, accessed June 3, 2019, &lt;a href="https://www.atlassian.com/git/tutorials/using-branches"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a></p>
+<p>Branching and merging are the core of collaborating with multiple people. Branches are used to develop features isolated from each other. The master branch is the “default” branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion. “Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bugâ”no matter how big or how smallâyou spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future’s history before merging it into the main branch."<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, “Git Branch | Atlassian Git Tutorial” Atlassian, accessed June 3, 2019, &lt;a href="https://www.atlassian.com/git/tutorials/using-branches"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>1</sup></a></p>
 </div>
 </div>
 <div id="getting-to-know-smartgit" class="section level2" number="3.4">
@@ -113,17 +113,17 @@
 <div id="install-smartgit" class="section level3 unnumbered" number="">
 <h3>Installation<a class="anchor" aria-label="anchor" href="#install-smartgit"><i class="fas fa-link"></i></a>
 </h3>
-<p>Download <a href="https://www.syntevo.com/smartgit/download/">SmartGit</a> and install it. Download the files into the the folder that youâ€™ll use for installation and NOT into the â€œdownloadsâ€ folder. If SmartGit automatically downloads the zip file into the â€œdownloadsâ€ folder, then extract it into the folder youâ€™ll install it in. You donâ€™t need admin permissions to install it, but download the <em>Portable Bundle</em>. The installation files can be found here: â€˜SmartGit &gt; bin &gt; smartgit.exeâ€™.</p>
-<p>Note: (1) During the installation process pick the â€œnon-commercial useâ€ option; (2) Integration with GitHub might be easier if you use the same username and email as that of your GitHub account.</p>
+<p>Download <a href="https://www.syntevo.com/smartgit/download/">SmartGit</a> and install it. Download the files into the the folder that you’ll use for installation and NOT into the “downloads” folder. If SmartGit automatically downloads the zip file into the “downloads” folder, then extract it into the folder you’ll install it in. You don’t need admin permissions to install it, but download the <em>Portable Bundle</em>. The installation files can be found here: ‘SmartGit &gt; bin &gt; smartgit.exe’.</p>
+<p>Note: (1) During the installation process pick the “non-commercial use” option; (2) Integration with GitHub might be easier if you use the same username and email as that of your GitHub account.</p>
 </div>
 <div id="integration-with-github" class="section level3 unnumbered" number="">
 <h3>Integration with GitHub<a class="anchor" aria-label="anchor" href="#integration-with-github"><i class="fas fa-link"></i></a>
 </h3>
 <p>Once SmartGit is installed, do the following to integrate your GitHub account:</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Go to â€˜Edit &gt; Preferences &gt; Hosting Providersâ€™. Click the â€œAddâ€¦â€ button on the top-right of the window.</p></li>
-<li><p>There are a few ways to integrate. The easiest is to pick the â€˜Use OAuth token for repository authentication (instead of password)â€™ option. This should generate a token in your web browser. Use this token to complete the integration.</p></li>
-<li><p>Once the GitHub account is added, your GitHub account should be listed in â€˜Hosting Providersâ€™ window in SmartGit. You can also check your GitHub account to make sure that SmartGit has been authorized. To see this, in your GitHub account, go to â€˜settings &gt; applicationsâ€™. You should see SmartGit listed under â€˜Authorized Appsâ€™.</p></li>
+<li><p>Go to ‘Edit &gt; Preferences &gt; Hosting Providers’. Click the “Add…” button on the top-right of the window.</p></li>
+<li><p>There are a few ways to integrate. The easiest is to pick the ‘Use OAuth token for repository authentication (instead of password)’ option. This should generate a token in your web browser. Use this token to complete the integration.</p></li>
+<li><p>Once the GitHub account is added, your GitHub account should be listed in ‘Hosting Providers’ window in SmartGit. You can also check your GitHub account to make sure that SmartGit has been authorized. To see this, in your GitHub account, go to ‘settings &gt; applications’. You should see SmartGit listed under ‘Authorized Apps’.</p></li>
 </ol>
 <p>You can find the instructions on integration <a href="http://www.syntevo.com/doc/display/SG/GitHub+integration">here</a>.</p>
 </div>
@@ -194,7 +194,7 @@ Figure 3.3: Add/delete commands
 <div class="inline-figure"><img src="images/repos_to_organize.PNG" width="100%"></div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Go to <strong>Repository</strong> &gt; <strong>Add Group</strong></p></li>
-<li><p>Enter the group name (e.g., â€˜Version Controlâ€™ for GitHub and SmartGit).</p></li>
+<li><p>Enter the group name (e.g., ‘Version Control’ for GitHub and SmartGit).</p></li>
 </ol>
 <div class="inline-figure"><img src="images/version_control.PNG" width="40%"></div>
 <ol start="3" style="list-style-type: decimal">
@@ -263,7 +263,7 @@ Figure 3.3: Add/delete commands
 <h3>Basic Git process<a class="anchor" aria-label="anchor" href="#basic-git-process"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>- Stage</strong></p>
-<p>Use to prepare a commit. This command saves your fileâ€™s content from the working tree to the index.</p>
+<p>Use to prepare a commit. This command saves your file’s content from the working tree to the index.</p>
 <div class="figure">
 <span id="fig:sgstage"></span>
 <img src="images/SG_stage.png" alt="Stage command" width="44"><p class="caption">
@@ -279,7 +279,7 @@ Figure 3.5: Commit command
 </p>
 </div>
 <p><strong>- Push</strong></p>
-This command saves local commits to a remote repository hosted in the cloud, e.g.Â in Github. This is the key step for your work to be always backed-up in the cloud and accessible to other members in the team.
+This command saves local commits to a remote repository hosted in the cloud, e.g. in Github. This is the key step for your work to be always backed-up in the cloud and accessible to other members in the team.
 <div class="figure">
 <span id="fig:sgpush"></span>
 <img src="images/SG_push.png" alt="Push command" width="39"><p class="caption">
@@ -303,7 +303,7 @@ Figure 3.7: SmartGit Interface
 Figure 3.8: Stage and commit a .do file
 </p>
 </div>
-<p>We can also stage and commit binary files (e.g.Â MS office files). However, Git will not track changes. This video also shows how to push your files to the host.</p>
+<p>We can also stage and commit binary files (e.g. MS office files). However, Git will not track changes. This video also shows how to push your files to the host.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:video3"></span>
 <iframe src="https://www.youtube.com/embed/dOUheWAKx_U" width="672" height="400px">
@@ -350,28 +350,28 @@ Figure 3.13: Master Branch
 Figure 3.14: New Branch command
 </p>
 </div>
-<p>SmartGit will ask you to give a name to your branch, in this case â€œMartaSâ€ (Notice that it can actually be more efficient to name your branch after the task you are performing, e.g.Â adding section 3, rather than the name of the author as the same author might be working on more than a task) and click on â€œAdd branchâ€:</p>
+<p>SmartGit will ask you to give a name to your branch, in this case “MartaS” (Notice that it can actually be more efficient to name your branch after the task you are performing, e.g. adding section 3, rather than the name of the author as the same author might be working on more than a task) and click on “Add branch”:</p>
 <div class="figure" style="text-align: center">
 <span id="fig:branch2"></span>
 <img src="images/branch2.png" alt="Add new branch" width="953"><p class="caption">
 Figure 3.15: Add new branch
 </p>
 </div>
-<p>Remember we want to make sure that we are working on the â€œMartaSâ€ branch (Working on the master branch might cause a lot of disruption especially if many people are starting their own branches from the master. Be careful!). Double click on the â€œMartaSâ€ branch in the Branches window and this message will appear:</p>
+<p>Remember we want to make sure that we are working on the “MartaS” branch (Working on the master branch might cause a lot of disruption especially if many people are starting their own branches from the master. Be careful!). Double click on the “MartaS” branch in the Branches window and this message will appear:</p>
 <div class="figure" style="text-align: center">
 <span id="fig:branch3"></span>
 <img src="images/branch3.png" alt="Checkout a Branch" width="953"><p class="caption">
 Figure 3.16: Checkout a Branch
 </p>
 </div>
-<p>After you click on checkout the â€œMartaSâ€ branch will change to bold characters in the Branches window. You are all set and can start working on your task!</p>
+<p>After you click on checkout the “MartaS” branch will change to bold characters in the Branches window. You are all set and can start working on your task!</p>
 <div class="figure" style="text-align: center">
 <span id="fig:branch4"></span>
 <img src="images/branch4.png" alt="Local Branch changed from master to MartaS" width="953"><p class="caption">
 Figure 3.17: Local Branch changed from master to MartaS
 </p>
 </div>
-<p>All commits will be now saved to the branch â€œMartaSâ€ and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.</p>
+<p>All commits will be now saved to the branch “MartaS” and can be incorporated in the master branch after the person in charge of the repository resolves possible conflicts and decides to merge. More on this below.</p>
 </div>
 <div id="important-keyboard-shortcut-process" class="section level3 unnumbered" number="">
 <h3>Important keyboard shortcut process<a class="anchor" aria-label="anchor" href="#important-keyboard-shortcut-process"><i class="fas fa-link"></i></a>
@@ -391,7 +391,7 @@ Figure 3.17: Local Branch changed from master to MartaS
 <span class="header-section-number">3.5.1</span> Git workflow<a class="anchor" aria-label="anchor" href="#git-workflow"><i class="fas fa-link"></i></a>
 </h3>
 <p>When working with Git it is important to be aware of the different steps of the Git workflow. The four different environments you can work with are 1) your <em>workspace</em>, 2) the <em>staging environment</em> (also know as the Git Index), 3) your <em>local repository</em> and 4) your <em>remote repository</em> (typically on the Github).</p>
-<p>An overview of common Git commands and the typical Git workflow can be found in the picture below.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nikolas Begetis (2018). â€œGit: How to start code changes, commit and push changes when working in a teamâ€, accessed June 16, 2020, &lt;a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a> Note that the commands shown here are the actual <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">Git command line commands</a>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œBasic Git commandsâ€, accessed June 22, 2020, &lt;a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html"&gt;link&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same.</p>
+<p>An overview of common Git commands and the typical Git workflow can be found in the picture below.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Nikolas Begetis (2018). “Git: How to start code changes, commit and push changes when working in a team”, accessed June 16, 2020, &lt;a href="https://medium.com/@nmpegetis/git-how-to-start-code-changes-commit-and-push-changes-when-working-in-a-team-dbc6da3cd34c"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a> Note that the commands shown here are the actual <a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html">Git command line commands</a>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, “Basic Git commands”, accessed June 22, 2020, &lt;a href="https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html"&gt;link&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> The name of some these commands will be slightly different when you are using them in a GUI, like RStudio, GitKraken or SmartGit. But the workflow and process will be the same.</p>
 <div class="inline-figure"><img src="images/git-overview-of-commands.png" width="700"></div>
 </div>
 <div id="how-to-work-with-commits" class="section level3" number="3.5.2">
@@ -405,9 +405,9 @@ Figure 3.17: Local Branch changed from master to MartaS
 <p>A commit on the other hand saves changes to your local repository. This <em>does affect</em> your Git history. A commit can be reverted, but it is not as easy as unstaging a file. The general rule is to commit often, but make sure your code works before you commit.</p>
 <p><strong>- Writing commit messages</strong></p>
 <p>A good commit message should be concise, but also add the details necessary for people to understand what the commit does. This is particularly important when working on a shared project (but it could also be important for your future self!). Anybody should be able to look at your commit message and get an instant sense of <em>why</em> the commit was implemented.</p>
-<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Chris Beams (2014). â€œHow to Write a Git Commit Messageâ€, accessed June 16, 2020,
+<p>It is important to start your commit message with a short one line summary of maximum 50 characters. This should preferably be written in the imperative. An example on how to structure a good commit message is given below (taken from this <a href="https://chris.beams.io/posts/git-commit/#seven-rules">blog post</a>).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Chris Beams (2014). “How to Write a Git Commit Message”, accessed June 16, 2020,
 &lt;a href="https://chris.beams.io/posts/git-commit/"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></p>
-<p>An example of a good commit messageâ€™s structure:</p>
+<p>An example of a good commit message’s structure:</p>
 <blockquote>
 <p>Summarize changes in around 50 characters or less</p>
 <p>More detailed explanatory text, if necessary. Wrap it to about 72
@@ -419,7 +419,7 @@ and <code>rebase</code> can get confused if you run the two together.</p>
 <p>Explain the problem that this commit is solving. Focus on why you
 are making this change as opposed to how (the code explains that).
 Are there side effects or other unintuitive consequences of this
-change? Hereâ€™s the place to explain them.</p>
+change? Here’s the place to explain them.</p>
 <p>Further paragraphs come after blank lines.</p>
 <ul>
 <li><p>Bullet points are okay, too</p></li>
@@ -437,13 +437,13 @@ See also: #456, #789</p>
 </div>
 <div id="what-to-do-with-changes-you-dont-want-to-commit" class="section level3" number="3.5.3">
 <h3>
-<span class="header-section-number">3.5.3</span> What to do with changes you donâ€™t want to commit<a class="anchor" aria-label="anchor" href="#what-to-do-with-changes-you-dont-want-to-commit"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.3</span> What to do with changes you don’t want to commit<a class="anchor" aria-label="anchor" href="#what-to-do-with-changes-you-dont-want-to-commit"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>- Discard</strong></p>
-<p>If you donâ€™t need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon.</p>
+<p>If you don’t need your uncommitted changes and want to throw them away you can use Discard to do this. In SmartGit this can be done by clicking the below icon.</p>
 <div class="inline-figure"><img src="images/SG_discard.png" width="50"></div>
 <p><strong>- Stash</strong></p>
-<p>If have some uncommitted changes that you donâ€™t want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are â€œSave Stashâ€ and â€œApply Stashâ€, shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash).</p>
+<p>If have some uncommitted changes that you don’t want to commit, but still want to save them for later use you can use the Stash option. The two commands for this in SmartGit are “Save Stash” and “Apply Stash”, shown with the icons below. You can think of this as putting your changes in a box (with Save Stash) and then opening this box later if you need to (with Apply Stash).</p>
 <div class="inline-figure"><img src="images/SG_save_apply_stash.png" width="163"></div>
 </div>
 <div id="how-to-undo-stuff-in-the-git" class="section level3" number="3.5.4">
@@ -451,19 +451,19 @@ See also: #456, #789</p>
 <span class="header-section-number">3.5.4</span> How to undo stuff in the Git<a class="anchor" aria-label="anchor" href="#how-to-undo-stuff-in-the-git"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>- Unstage</strong></p>
-<p>This easiest â€œundoâ€ operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on.</p>
+<p>This easiest “undo” operation in Git is to unstage a file you have previously staged (prepared for commit). This is useful if you realize that the file needs some more work before solving the problem or adding the feature you are working on.</p>
 <p>Remember that it is always a good idea to check that your code is working before committing to your local branch. If you find an error at this step of the workflow just unstage the file. In SmartGit this can be done by clicking the below icon. Note however that unstaging will not help you if the commit has already been made.</p>
 <div class="inline-figure"><img src="images/SG_unstage.png" width="53"></div>
 <p><strong>- Reset</strong></p>
 <div class="inline-figure"><img src="images/git-reset.png" width="142"></div>
 <p>Reset is one of the options available if you want to undo changes in Git. It can be used to either reset files in your staging index (this is the same as unstage) or resetting commits in your local repository.</p>
-<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Reset | Atlassian Git Tutorialâ€ Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></p>
-<p><strong>It is very important to never use Git reset on a commit that has been published to a shared repository</strong>. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the projectâ€™s shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git <em>revert</em>, not reset. In general revert can be seen as a safer option (see below).</p>
+<p>Reset can however be a complex tool to use. There are important differences between doing a <em>soft</em>, <em>mixed</em> or <em>hard</em> reset. Particularly a hard reset can be dangerous since it involves resetting your staging environment and working directory to specific commit (a point in time on your Git history tree). This implies that any pending work in your index and working directory will be lost. It therefore important to be careful when using Git reset on your commit history, and to <a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">read up on the different options</a> before doing so.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, “Git Reset | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></p>
+<p><strong>It is very important to never use Git reset on a commit that has been published to a shared repository</strong>. When a commit has been pushed to a shared repository you should always assume that your colleagues relies upon this change. If a commit is removed from the project’s shared history this can create serious and unexpected problems when syncing different branches. Therefore; If you find yourself in a situation where you want to undo a commit that has been pushed to a shared repository you should always use Git <em>revert</em>, not reset. In general revert can be seen as a safer option (see below).</p>
 <p><strong>- Revert</strong></p>
 <div class="inline-figure"><img src="images/git-revert.png" width="136"></div>
-<p>Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert <em>inverts</em> the changes introduced by a commit and <em>appends a new commit</em> with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the projectâ€™s history is kept in place.</p>
+<p>Revert is another option for undoing changes in Git, although it is not a traditional undo operation. A Git revert <em>inverts</em> the changes introduced by a commit and <em>appends a new commit</em> with the resulting inverse content, as illustrated by the figure above. This is what makes the revert operation safer than a Git reset. By adding a new commit revert ensures that all the project’s history is kept in place.</p>
 <p>This is also why Git revert should always be the preferred option when reverting a commit that has been shared with others. As mentioned above you should never modify or delete published Git history, something which Git revert nicely avoids.</p>
-<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, â€œGit Revert | Atlassian Git Tutorialâ€ Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
+<p>An other important difference between revert and reset is that revert is able to target an individual commit at an arbitrary point in the history, whereas reset can only work backward from the current commit.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Atlassian, “Git Revert | Atlassian Git Tutorial” Atlassian, accessed June 16, 2020, &lt;a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-revert"&gt;link&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
 <p>You can use the following button in SmartGit to initialize a revert process.</p>
 <div class="inline-figure"><img src="images/SG_revert.png" width="46"></div>
 </div>
@@ -474,8 +474,8 @@ See also: #456, #789</p>
 <p><strong>- What is a merge conflict</strong></p>
 <p>Conflicts are usual, and you should not worry if you encounter one. Conflicts regularly arise when the same file was changed in the same line, customarily by two different collaborators. Given a conflict git is unsure of which version is the correct one, and is up to the person carrying the merge to select it. Notice that the solution can be a particular version of a file or a combination of the conflicting versions. The collaborator caring out the merge is responsible for solving the conflicts.</p>
 <p><strong>- Solve merge conflicts</strong></p>
-<p>Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and youâ€™ll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.</p>
-<p>The same can be done using Git command lines, although not covered here, If youâ€™re interested you can find more on this <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">here</a>.</p>
+<p>Thanks to git UIs as SmartGit or GitKraken solving merge conflicts is easy. When caring a merge using one of this UIs, if a conflict appears the process will be paused and you’ll get notified that the file has a conflict. These UIs have a conflict solver, that will show you both versions of the file allowing you to either select the one to keep or to select line by line what to keep of each one, solving the conflict. In case you need so you may also stop the whole process.</p>
+<p>The same can be done using Git command lines, although not covered here, If you’re interested you can find more on this <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts">here</a>.</p>
 <p><strong>- How to avoid merge conflicts</strong></p>
 <p>Some general workflow advice on how to avoid merge conflicts is to always have <em>a separate branch for each issue</em>, only <em>one author per branch</em> and also to create <em>a pull request with a reviewer</em> before the branch is merged to master.</p>
 </div>
@@ -484,7 +484,7 @@ See also: #456, #789</p>
 <span class="header-section-number">3.5.6</span> How to work with pull requests<a class="anchor" aria-label="anchor" href="#how-to-work-with-pull-requests"><i class="fas fa-link"></i></a>
 </h3>
 <p>Working with Git is meant to be a collaborative experience, both dynamic and efficient. Pull requests are a powerful and crucial tool in such aspect.</p>
-<p>Pull request can be thought as embed way to let know others about changes you have pushed in a repositoryâ€™s branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.</p>
+<p>Pull request can be thought as embed way to let know others about changes you have pushed in a repository’s branch. Once a pull request is opened, the chance to engage a discussion about the changes pushed takes place; where collaborators are welcome to share thoughts, concerns and ideas before the changes are merged. In the case you expect input from a particular collaborator you may add a designated reviewer; in many occasions, the reviewer is also the person in charge of the destination branch and will be the person that will ultimately carry the merge.</p>
 <p>This is how a pull request looks in Github:</p>
 <div class="inline-figure"><img src="images/pullR.png" width="700"></div>
 <p>Notice that this contains a title and a message clearly stating the nature of the request/feature. Moreover in this case a reviewer is designated:</p>
@@ -507,9 +507,9 @@ Figure 3.18: Pull request in SmartGit
 </div>
 <div id="dos-and-donts" class="section level3" number="3.5.7">
 <h3>
-<span class="header-section-number">3.5.7</span> DOâ€™s and DONTâ€™s<a class="anchor" aria-label="anchor" href="#dos-and-donts"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5.7</span> DO’s and DONT’s<a class="anchor" aria-label="anchor" href="#dos-and-donts"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>Doâ€™s:</strong></p>
+<p><strong>Do’s:</strong></p>
 <ul>
 <li>Do commit early and often</li>
 <li>Do check that your code works before you commit</li>
@@ -517,18 +517,18 @@ Figure 3.18: Pull request in SmartGit
 <li>Do create a new branch before you start working on a new issue</li>
 <li>Do create a pull request before merging your branch to master</li>
 <li>Do add a reviewer to your pull request</li>
-<li>Do delete branches when the issue has been solved (i.e.Â branch has been merged to master)</li>
-<li>Do keep up to date (take note of other changes in the repo, e.g.Â use pull rebase)</li>
+<li>Do delete branches when the issue has been solved (i.e. branch has been merged to master)</li>
+<li>Do keep up to date (take note of other changes in the repo, e.g. use pull rebase)</li>
 </ul>
-<p><strong>Donâ€™ts:</strong></p>
+<p><strong>Don’ts:</strong></p>
 <ul>
-<li>Donâ€™t work directly on the master branch</li>
-<li>Donâ€™t create a pull request addressing multiple issues</li>
-<li>Donâ€™t add binary (or other large files) to the repository</li>
-<li>Donâ€™t commit files that contain usernames, passwords or other credentials</li>
-<li>Donâ€™t modify or delete the published Git history</li>
-<li>Donâ€™t do a force push (unless absolutely sure about what you are doing)</li>
-<li>Donâ€™t panic :)</li>
+<li>Don’t work directly on the master branch</li>
+<li>Don’t create a pull request addressing multiple issues</li>
+<li>Don’t add binary (or other large files) to the repository</li>
+<li>Don’t commit files that contain usernames, passwords or other credentials</li>
+<li>Don’t modify or delete the published Git history</li>
+<li>Don’t do a force push (unless absolutely sure about what you are doing)</li>
+<li>Don’t panic :)</li>
 </ul>
 </div>
 </div>
@@ -536,8 +536,8 @@ Figure 3.18: Pull request in SmartGit
 <h2>
 <span class="header-section-number">3.6</span> Getting to know <a href="https://www.gitkraken.com/">GitKraken</a><a class="anchor" aria-label="anchor" href="#getting-to-know-gitkraken"><i class="fas fa-link"></i></a>
 </h2>
-<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that â€œmost of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.â€<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Scott Chacon and Ben Straub, Pro Git, 2nd ed.Â edition (New York, NY: Apress, 2014). &lt;a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line"&gt;sect. 1.4&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a></p>
-<p>Among the GUIs available, we thinkg GitKraken is the best one to get you started. However, if youâ€™re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
+<p>Even though Git was originally thought to be executed at the command line, there are several GUIs that ease your interaction with Git and get you excited about it. Yet, keep in mind that “most of the GUIs implement only a partial subset of Git functionality for simplicity. If you know how to run the command-line version, you can probably also figure out how to run the GUI version, while the opposite is not necessarily true. Also, while your choice of graphical client is a matter of personal taste, all users will have the command-line tools installed and available.”<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Scott Chacon and Ben Straub, Pro Git, 2nd ed. edition (New York, NY: Apress, 2014). &lt;a href="https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line"&gt;sect. 1.4&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a></p>
+<p>Among the GUIs available, we thinkg GitKraken is the best one to get you started. However, if you’re interested on learning Git at the command line, we recommend the book <em>Pro Git</em> by Scott Chacon and Ben Straub, which is available <a href="https://git-scm.com/book/en/v2">online for free</a>.</p>
 <p>The best place to learn everything about GitKraken is the <a href="https://support.gitkraken.com/">GitKraken Support</a> webpage. However, bellow you will find the most basic things that you need to know about it and, when considered necessary, you will find either reference links for more detailed information or embedded videos. For instance, the video bellow shows the basics of GitKraken.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:video1"></span>
@@ -559,7 +559,7 @@ Figure 3.20: GitKraken Interface
 <p>Figure <a href="collaboration-in-git.html#fig:GKinterface">3.20</a> presents the GItKraken interface, which has four main components.</p>
 <ol style="list-style-type: decimal">
 <li><p>The <strong>Toolbar</strong> shows the most common actions in repositories. In our case, we will focus on <em>pull</em>, <em>push</em>, and <em>branch</em>.</p></li>
-<li><p>The <strong>Left reference panel</strong> shows properties of your repository. In this panel you can see what branches are stored in your local computer and which in the cloud (i.e., remote repository). You may use it also to know whether youâ€™re ahead or behind any specific branch.</p></li>
+<li><p>The <strong>Left reference panel</strong> shows properties of your repository. In this panel you can see what branches are stored in your local computer and which in the cloud (i.e., remote repository). You may use it also to know whether you’re ahead or behind any specific branch.</p></li>
 <li><p>The <strong>Commit panel</strong> at your right is where files and changes from your working directory are being watched (i.e., tracked). In this panel you may can see whether a particular file has been modified (orange), deleted (red), created (green) or renamed (blue) with respect to the previous commit. Also, you can see the state of your files with in your current commit. That is, you may know whether each file is staged or untagged.</p></li>
 </ol>
 <div class="figure">
@@ -569,7 +569,7 @@ Figure 3.21: color guide for file symbols
 </p>
 </div>
 <ol start="4" style="list-style-type: decimal">
-<li>The <strong>commit graph</strong> is the core of your repositoryâ€™s development and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>â€œ[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.â€</em>
+<li>The <strong>commit graph</strong> is the core of your repository’s development and a representation of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graph</a>. As explained in the GitKraken documentation, <em>“[e]ach row of the graph represents one commit, and the top is always for the latest changes. An interactive //WIP (Work-In-Progress) node will show if the working directory has changed since the last commit. Branches and tag labels on the left side of the graph are pointers to specific commits, and each vertical column represents a branch currently available on the repository. Columns can intersect through merge commits as shown in the graph legend. As also shown, multiple branches can be at the same place of a single commit and can be both local and remote.”</em>
 </li>
 </ol>
 <div class="figure">
@@ -618,12 +618,12 @@ Figure 3.23: Initialize repo
 <div id="clone-a-repository" class="section level3 unnumbered" number="">
 <h3>Clone a repository<a class="anchor" aria-label="anchor" href="#clone-a-repository"><i class="fas fa-link"></i></a>
 </h3>
-<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If youâ€™re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if you are an external user of the repository, you canâ€™t push your work into the original repository but you can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
+<p>If you want to contribute in an existing repository, you can do it as an existing collaborator or as an external user. If you’re an existing collaborator, you can create branches, commit and push your work into the main repository. If the repository is hosted in a free Github account, you are even able to merge your branch into the master branch. However, if the repository is paid (PRO) license in GitHub, the owner of the account may set restrictions to collaborators and branches. In the second case, if you are an external user of the repository, you can’t push your work into the original repository but you can fork it (which is making a copy of the repository into your account), modify it as you consider necessary and make a <a href="https://support.gitkraken.com/working-with-repositories/pull-requests/">pull request</a>.</p>
 <p>In order to contribute into any of the PovcalNet repositories you must be an existing collaborator. Thus, in this section you will learn how to clone a repository.</p>
 <ol style="list-style-type: decimal">
 <li>Go the to the repository you want clone in GitHub.<br>
 </li>
-<li>Clik on the green button â€œClone or downloadâ€ and copy the whole url.</li>
+<li>Clik on the green button “Clone or download” and copy the whole url.</li>
 </ol>
 <div class="figure">
 <span id="fig:GHclone"></span>
@@ -647,7 +647,7 @@ Figure 3.25: Clone repo in GitKraken
 <div id="working-with-commits" class="section level3 unnumbered" number="">
 <h3>Working with commits<a class="anchor" aria-label="anchor" href="#working-with-commits"><i class="fas fa-link"></i></a>
 </h3>
-<p>A commit is a snapshot of your project but, as you work on it, youâ€™re able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows:</p>
+<p>A commit is a snapshot of your project but, as you work on it, you’re able to decide how the snapshot would look like. You can select what parts or files of your progress will be committed (or snapshotted) and even select what file are not going to be tracked in your progress. All of this is done as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Once your files have been modified (Fig. <a href="collaboration-in-git.html#fig:GKnodes">3.22</a>) and saved, GitKraken identifies them as work in progress (//WIP) and shows you the details in the <strong>Unstaged file</strong> box.</li>
 </ol>
@@ -659,10 +659,10 @@ Figure 3.26: GitKraken Work In Progress
 </div>
 <ol start="2" style="list-style-type: decimal">
 <li><p>By clinking in the name of any file in the commit panel (Fig. (fig:GKinterface)), the commit graph will be replace by the <a href="https://support.gitkraken.com/working-with-commits/diff/"><em>GitKraken diffs</em></a> interface which shows what was added or removed from a file. Red is for lines where content was removed whereas green is for new lines added.</p></li>
-<li><p>You can select [1] all the files, [2] some of the files, or [3] even some hunks within each file to be <em>stage</em>. Your select will compose the next commit. If you decide you donâ€™t want make a staged file part of your next commit, you can unstage it.</p></li>
+<li><p>You can select [1] all the files, [2] some of the files, or [3] even some hunks within each file to be <em>stage</em>. Your select will compose the next commit. If you decide you don’t want make a staged file part of your next commit, you can unstage it.</p></li>
 <li><p>Record your commit message for the staged files to the repository. In <strong>Summary</strong> you include a brief but meaningful message supporting your commit. This text will appear in the graph and is mandatory. In <strong>Description</strong> you may add extended message to provide more details behind the changes.</p></li>
 <li><p>Click <strong>Commit changes</strong></p></li>
-<li><p>You may repeat this process as many times you want. When youâ€™re ready, you may push your work to the remote repository into your own branch.</p></li>
+<li><p>You may repeat this process as many times you want. When you’re ready, you may push your work to the remote repository into your own branch.</p></li>
 </ol>
 </div>
 </div>
@@ -733,7 +733,7 @@ Figure 3.26: GitKraken Work In Progress
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

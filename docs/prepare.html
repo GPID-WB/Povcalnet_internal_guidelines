@@ -126,7 +126,7 @@ following code,</p>
 <p>Keep in mind that option <code><a href="https://rdrr.io/r/base/Version.html">version(-1)</a></code> refers to one version before the current
 one. If it were <code><a href="https://rdrr.io/r/base/Version.html">version(-2)</a></code>, it would be two versions before the current one.
 Keep in mind that the negative integer in this function refers to the version of
-the master file and not to the version of the sheet youâ€™re loading. Currently,
+the master file and not to the version of the sheet you’re loading. Currently,
 there is no way to track the versions of each sheet in the Master file.</p>
 </div>
 </div>
@@ -148,7 +148,7 @@ You can see <a href="prepare.html#scnac">below</a> a deeper explanation and proc
 the auxiliary files of these <em>special cases</em>.</p>
 <p><strong>TODO:</strong> Talk about the Maddisson data.</p>
 <div id="scnac" class="section level4 unnumbered" number="">
-<h4>National accounts for â€œspecial casesâ€<a class="anchor" aria-label="anchor" href="#scnac"><i class="fas fa-link"></i></a>
+<h4>National accounts for “special cases”<a class="anchor" aria-label="anchor" href="#scnac"><i class="fas fa-link"></i></a>
 </h4>
 <p>The <em>Special Cases</em> can be found in the folder
 <code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</code>. This folder contains all the
@@ -172,7 +172,7 @@ the series.</li>
 there is no observation where both PCE and GDP are missing</em>.</li>
 <li>In the Excel file for the national accounts, you will find the source of
 data and clues on how best to update each observation. Unless otherwise
-instructed by R.AndrÃ©s CastaÃ±eda or Christoph Lakner, use the source in the
+instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the
 latest version of the national accounts to update the relevant observations.</li>
 <li>For India, update the latest Excel file with pass-through calculations,
 which can be found at <code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux</code>.
@@ -267,7 +267,7 @@ DLW.</p>
 using the <code>pcn load cpi, clear</code> directive and updated by using the directive
 <code>pcn update cpi</code>. This dataset is intended to be used for general purposes that
 require deflation such as reports, papers, or even internal tests. However, it
-canâ€™t be used to update the <em>CPI</em> sheet in the master file. Though the data is
+can’t be used to update the <em>CPI</em> sheet in the master file. Though the data is
 the same, the format and labels are very different between the two. If you need
 to update the format of this dataset, you need to modify the file
 <a href="https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado">pcn_update_cpi.ado</a></p>
@@ -296,20 +296,20 @@ in
 <div id="how-to-update-special-cpi-cases" class="section level4 unnumbered" number="">
 <h4>How to update special CPI cases<a class="anchor" aria-label="anchor" href="#how-to-update-special-cpi-cases"><i class="fas fa-link"></i></a>
 </h4>
-<p>The primary source of CPI data for PovcalNet updates is the IMFâ€™s International Financial Statistics (IFS) database (<a href="http://documents1.worldbank.org/curated/en/215371537208860890/pdf/129964-WP-REVISED-PUBLIC-Disclosed-3-21-2019.pdf">Lakner et al., 2018</a>). When CPI series from surveys are deemed more appropriate, they are used instead of IFS CPI series. Six countries are in this category of â€˜special CPI casesâ€™, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
+<p>The primary source of CPI data for PovcalNet updates is the IMF’s International Financial Statistics (IFS) database (<a href="http://documents1.worldbank.org/curated/en/215371537208860890/pdf/129964-WP-REVISED-PUBLIC-Disclosed-3-21-2019.pdf">Lakner et al., 2018</a>). When CPI series from surveys are deemed more appropriate, they are used instead of IFS CPI series. Six countries are in this category of ‘special CPI cases’, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
 <p>The datafiles and dofiles for the special CPI cases are stored in the P-drive [e.g., for the March 2021 PovcalNet update, the files are stored in P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].</p>
 <p>You may follow the steps below to update the special CPI cases:</p>
 <ol style="list-style-type: decimal">
-<li><p>Get CPI input file labeled as â€œImputed_CPI_input.xlsxâ€ from the P-drive. This file contains raw CPI series imputed from survey to survey.</p></li>
-<li><p>Update the CPI input file if necessary. This file is updated when there is a new survey from which a new CPI can be imputed. The new CPIs are provided by poverty economists (PEâ€™s). Daniel Gerszon Mahler [<a href="mailto:dmahler@worldbank.org" class="email">dmahler@worldbank.org</a>] currently liaises with PEâ€™s to get the correct CPI and survey year. You may contact him for guidance and ideas for the whole exercise.</p></li>
+<li><p>Get CPI input file labeled as “Imputed_CPI_input.xlsx” from the P-drive. This file contains raw CPI series imputed from survey to survey.</p></li>
+<li><p>Update the CPI input file if necessary. This file is updated when there is a new survey from which a new CPI can be imputed. The new CPIs are provided by poverty economists (PE’s). Daniel Gerszon Mahler [<a href="mailto:dmahler@worldbank.org" class="email">dmahler@worldbank.org</a>] currently liaises with PE’s to get the correct CPI and survey year. You may contact him for guidance and ideas for the whole exercise.</p></li>
 <li><p>Get yearly annual CPI series from Datalibweb. The yearly annual series are collated and organized by Minh Cong Nguyen [<a href="mailto:mnguyen3@worldbank.org" class="email">mnguyen3@worldbank.org</a>] from monthly (or, in a few cases, quarterly) IFS data and annual World Economic Outlook (WEO) data. Use the code below to obtain the required data.</p></li>
 </ol>
 <div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="prepare.html#cb14-1"></a></span>
 <span id="cb14-2"><a href="prepare.html#cb14-2"></a>dlw, country(support) <span class="fu">year</span>(2005) <span class="dv">type</span>(gmdraw) surveyid(Support_2005_CPI_v05_M) filename(Yearly_CPI_Final.dta)</span></code></pre></div>
 <p>[Note that this code is for the current version of Datalibweb (i.e., Support_2005_CPI_v05). Check with Minh Cong Nguyen [<a href="mailto:mnguyen3@worldbank.org" class="email">mnguyen3@worldbank.org</a>] for the latest version and line of code to use.]</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Generate a final data set with label â€œImputedCPIs_output_yyyymmdd.dtaâ€. This file contains the final CPI series with the ICP reference year as base year, which is currently 2011. See the latest file for the required format.</p></li>
-<li><p>As robustness checks, construct the final CPI series afresh as in sheet(Calculations) in â€œCompare Imputed CPIs yyyymmdd.xlsxâ€ and compare the Excel results with the Stata output. You may compare the results using the dofile labelled â€œcombine_countries_compare_results.doâ€.</p></li>
+<li><p>Generate a final data set with label “ImputedCPIs_output_yyyymmdd.dta”. This file contains the final CPI series with the ICP reference year as base year, which is currently 2011. See the latest file for the required format.</p></li>
+<li><p>As robustness checks, construct the final CPI series afresh as in sheet(Calculations) in “Compare Imputed CPIs yyyymmdd.xlsx” and compare the Excel results with the Stata output. You may compare the results using the dofile labelled “combine_countries_compare_results.do”.</p></li>
 <li><p>Send the Stata output to Minh Cong Nguyen [<a href="mailto:mnguyen3@worldbank.org" class="email">mnguyen3@worldbank.org</a>]. He will integrate the file into his price framework.</p></li>
 <li><p>Save all datafiles and dofiles in a sub-folder in the P-drive [e.g., P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].</p></li>
 </ol>
@@ -359,7 +359,7 @@ in
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

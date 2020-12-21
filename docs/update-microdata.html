@@ -71,7 +71,7 @@
 <p>Before explaining how to update our P drive, we need to explain first what the P
 drive is. As it is explained in the first part of section <a href="folder-strcutures.html#network-drive">2.1</a>,
 the microdata resides in the folder <code>01.PovcalNet/01.Vintage_control</code>.
-<strong>(â€¦complete this part)</strong></p>
+<strong>(…complete this part)</strong></p>
 <div id="get-povcalnet-inventory-up-to-date" class="section level2" number="9.1">
 <h2>
 <span class="header-section-number">9.1</span> Get PovcalNet inventory up to date<a class="anchor" aria-label="anchor" href="#get-povcalnet-inventory-up-to-date"><i class="fas fa-link"></i></a>
@@ -92,7 +92,7 @@ write. However, downloading only the data that you need is not as
 straightforward as you may think, and thus the code is a little more complex
 than usual. We recommend this inefficient way because it is easy to implement,
 and <code>pcn</code> is smart enough to verify whether or not the microdata has changed in
-a particular year, so in case it has not changed, <code>pcn</code> wonâ€™t update the
+a particular year, so in case it has not changed, <code>pcn</code> won’t update the
 microdata file in the P drive. It is just slow because it need to load the
 microdata from <code>datalibweb</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="update-microdata.html#cb25-1"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
@@ -168,12 +168,12 @@ then run it directly in Stata. If you save it and then execute it from a
 different file using either <code>do</code> or <code>run</code> it will fail because the <code>end</code>
 command at the end of the MATA code will finish the process.</li>
 <li>This code could implemented in another subcommand of <code>pcn</code> without running
-into the problem above. However, we donâ€™t have time to do this change. The
+into the problem above. However, we don’t have time to do this change. The
 MATA function already exists in the <code>pcn</code> repository and it is being used by
 other <code>pcn</code> subroutines like <code>pcn_download_gpwg</code>. If you want to contribute
-to the <code>pcn</code> by adding this feature, youâ€™re more than welcome!
-ðŸ˜‰.</li>
-<li>The only problem with this approach is that you wonâ€™t get at the end of the
+to the <code>pcn</code> by adding this feature, you’re more than welcome!
+😉.</li>
+<li>The only problem with this approach is that you won’t get at the end of the
 process a nice file summarizing what happened with each file. This could
 also be fixed if this routine is included as part of <code>pcn</code>.</li>
 </ol>
@@ -184,18 +184,18 @@ also be fixed if this routine is included as part of <code>pcn</code>.</li>
 <span class="header-section-number">9.2</span> Create the _PCN files<a class="anchor" aria-label="anchor" href="#create-the-_pcn-files"><i class="fas fa-link"></i></a>
 </h2>
 <p>The final step before to have the microdata ready to be converted to .pcb files
-and ingested by the PovcalNet system is to create the â€œPCNâ€ files. These files
+and ingested by the PovcalNet system is to create the “PCN” files. These files
 are just an adaptation of the GPWG microdata in the P drive. They are called
-â€œPCNâ€ because that is their suffix in the naming convention. For instance, the
-â€œ_PCNâ€ file of <em>COL_2017_GEIH_V01_M_V01_A_GMD<strong>_GPWG</strong>.dta</em> is
+“PCN” because that is their suffix in the naming convention. For instance, the
+“_PCN” file of <em>COL_2017_GEIH_V01_M_V01_A_GMD<strong>_GPWG</strong>.dta</em> is
 <em>COL_2017_GEIH_v01_M_v01_A_GMD<span class="red">_PCN</span>.dta.</em> This conversion is done
 through the <code>pcn create</code> directive. In the case above, for instance, you only
 need to execute the directive,</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="update-microdata.html#cb27-1"></a>pcn create, countries(COL) <span class="fu">year</span>(2017) <span class="kw">clear</span></span></code></pre></div>
-<p>Also, you can create the â€œPCNâ€ files of all surveys, by just typing,</p>
+<p>Also, you can create the “PCN” files of all surveys, by just typing,</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="update-microdata.html#cb28-1"></a>pcn create, countries(ALL)</span></code></pre></div>
 <p>You may need to use the option <code>replace</code> in the directive above, in case you
-want to replace an existing â€œPCNâ€ file. Also, if you want to understand what the
+want to replace an existing “PCN” file. Also, if you want to understand what the
 <code>pcn create</code> directive does, you can investigate the file <code>pcn_create.ado</code>, but
 it general it makes sure to load the data in the P drive and standardize the
 output to make it ready for PovcalNet. For instance, it replace zeros and
@@ -268,7 +268,7 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-19.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
