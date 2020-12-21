@@ -52,7 +52,7 @@ fig:flourish2
 fig:flourish3
 fig:flourish4
 intro
-folder-strcutures
+folder-structures
 network-drive
 steps
 server
