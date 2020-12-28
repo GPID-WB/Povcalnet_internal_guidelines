@@ -1,6 +1,6 @@
 ---
 title: "PovcalNet Internal Guidelines and Protocols" 
-author: ["PovcalNet team", "Development economics", "World Bank Group"]
+author: ["PovcalNet team", "Development Data Group", "World Bank Group"]
 date: "`r Sys.Date()`" 
 knit: "bookdown::render_book"
 description: >

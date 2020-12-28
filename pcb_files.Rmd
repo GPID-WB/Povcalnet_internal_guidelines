@@ -119,7 +119,8 @@ In the next part we prepare the data. Function `pcn_datafind` finds the
 directory path and filenames of the corresponding countries in variable
 `countries`. It returns a list with two objects, `fail` and `pcn`. Object `fail`
 lets you know if there is any particular data that could not be loaded. Object
-`pcn` contains a data frame with the information above.
+`pcn` contains a data frame with the metadata of the countries and years
+selected above.
 
 ```{r, eval=FALSE}
 # Find countries
@@ -137,9 +138,12 @@ pcn       <- get_ref_year(pcn, cpi_path)
 Then `pcn` object is then passed to the `fix_metadata` function in which some
 columns like welfare type and survey coverage are added. Finally, function
 `get_ref_year` merges the price framework data from `datalibweb` to assign the
-right reference year to each survey. Keep in mind that `get_ref_year` makes some
-*hard-coded* adjustments. Check those in case the resulting reference year is
-incorrect.
+right reference year to each survey. Keep in mind that the `get_ref_year()`
+function makes some *hard-coded* adjustments that could not be identified
+programmatically. That is, they follow ad-hoc rules to be included into (or
+excluded from) the final Povcalnet inventory. One of the most problematic rules
+is the correct assignment of the reference year to the survey-ID year. Check
+those those cases if the resulting reference year is incorrect.
 
 ### Generate .pcb files
 

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 9 Update microdata in the P drive | PovcalNet Internal Guidelines and Protocols</title>
 <meta name="author" content="PovcalNet team">
-<meta name="author" content="Development economics">
+<meta name="author" content="Development Data Group">
 <meta name="author" content="World Bank Group">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -88,7 +88,8 @@ ways, but we suggest two.</p>
 <p>This method is easy but highly inefficient because it could be the case that
 only one year of a particular country was updated or added, but the code below
 will check if all the years of that country have changed as well. You may think
-that it does not make sense to download the data in this way, and you might be right. However, downloading only the data that you need is not as
+that it does not make sense to download the data in this way, and you might be
+right. However, downloading only the data that you need is not as
 straightforward as you may think, and thus the code is a little more complex
 than usual. We recommend this inefficient way because it is easy to implement,
 and <code>pcn</code> is smart enough to verify whether or not the microdata has changed in
@@ -106,8 +107,8 @@ microdata from <code>datalibweb</code>.</p>
 PRIMUS using the <code>primus</code> command and keep only those transactions that were
 created after the date in the local <code>filtdate</code>. Then, save in the local
 <code>countries</code> the code of the countries that changed and parse it into the <code>pcn</code>
-call. From there, <code>pcn</code> will take care of the update and will provide you with a file
-summarizing what data was updated, added, skipped, or failed.</p>
+call. From there, <code>pcn</code> will take care of the update and will provide you with a
+file summarizing what data was updated, added, skipped, or failed.</p>
 </div>
 <div id="update-file-by-file" class="section level3" number="9.1.2">
 <h3>
@@ -117,8 +118,7 @@ summarizing what data was updated, added, skipped, or failed.</p>
 function only reads the observation <code>i</code> in the <code>while</code> loop of the
 already-filtered data obtained with <code>primus query</code>. You can see that it is very
 similar to the code above but the main difference is that it goes file by file
-instead of checking all the files of one country. Keep in mind the
-following,</p>
+instead of checking all the files of one country.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="update-microdata.html#cb26-1"></a><span class="co">//========================================================</span></span>
 <span id="cb26-2"><a href="update-microdata.html#cb26-2"></a><span class="co">// Mata function</span></span>
 <span id="cb26-3"><a href="update-microdata.html#cb26-3"></a><span class="co">//========================================================</span></span>
@@ -162,16 +162,17 @@ following,</p>
 <span id="cb26-41"><a href="update-microdata.html#cb26-41"></a>    pcn download gpwg, countr(<span class="ot">`country'</span>)  <span class="fu">year</span>(<span class="ot">`year'</span>)</span>
 <span id="cb26-42"><a href="update-microdata.html#cb26-42"></a>    </span>
 <span id="cb26-43"><a href="update-microdata.html#cb26-43"></a>}</span></code></pre></div>
+<p>Keep in mind the following,</p>
 <ol style="list-style-type: decimal">
 <li>This code works fine if you copy it and paste it in your do-file editor and
 then run it directly in Stata. If you save it and then execute it from a
 different file using either <code>do</code> or <code>run</code> it will fail because the <code>end</code>
 command at the end of the MATA code will finish the process.</li>
-<li>This code could be implemented in another subcommand of <code>pcn</code> without running
-into the problem above. However, we don’t have time to do this change. The
-MATA function already exists in the <code>pcn</code> repository and it is being used by
-other <code>pcn</code> subroutines like <code>pcn_download_gpwg</code>. If you want to contribute
-to the <code>pcn</code> by adding this feature, you’re more than welcome!
+<li>This code could be implemented in another subcommand of <code>pcn</code> without
+running into the problem above. However, we don’t have time to do this
+change. The MATA function already exists in the <code>pcn</code> repository and it is
+being used by other <code>pcn</code> subroutines like <code>pcn_download_gpwg</code>. If you want
+to contribute to the <code>pcn</code> by adding this feature, you’re more than welcome!
 😉.</li>
 <li>The only problem with this approach is that you won’t get at the end of the
 process a nice file summarizing what happened with each file. This could
@@ -195,11 +196,14 @@ need to execute the directive,</p>
 <p>Also, you can create the “PCN” files of all surveys, by just typing,</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="update-microdata.html#cb28-1"></a>pcn create, countries(ALL)</span></code></pre></div>
 <p>You may need to use the option <code>replace</code> in the directive above, in case you
-want to replace an existing “PCN” file. Also, if you want to understand what the
-<code>pcn create</code> directive does, you can look at the file <code>pcn_create.ado</code>, but
-it general it makes sure to load the data in the P drive and standardize the
-output to make it ready for PovcalNet. For instance, it replace zeros and
-missing values of the welfare and weight variables like this,</p>
+want to replace an existing “PCN” file. In similar fashion as
+<code>pcn download gpwg</code>, <code>pcn create</code> compares current data in the P drive and does
+not replace anything unless you make this option explicit.</p>
+<p>Also, if you want to understand what the <code>pcn create</code> directive does, you can
+look at the file <code>pcn_create.ado</code>, but it general it makes sure to load the data
+in the P drive and standardize the output to make it ready for PovcalNet. For
+instance, it replace zeros and missing values of the welfare and weight
+variables like this,</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="update-microdata.html#cb29-1"></a>* <span class="kw">drop</span> <span class="fu">missing</span> <span class="kw">values</span></span>
 <span id="cb29-2"><a href="update-microdata.html#cb29-2"></a><span class="kw">drop</span> <span class="kw">if</span> welfare &lt; 0 | welfare == .</span>
 <span id="cb29-3"><a href="update-microdata.html#cb29-3"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="kw">weight</span> &lt;= 0 | <span class="kw">weight</span> == .</span></code></pre></div>
@@ -223,6 +227,8 @@ missing values of the welfare and weight variables like this,</p>
 <span id="cb30-17"><a href="update-microdata.html#cb30-17"></a>}</span></code></pre></div>
 <p>This command also makes sure to do the proper adjustments to the India and
 Indonesia datasets.</p>
+<p><span class="red bg-light-blue">Daniel, could you please provide a short explanation of the IND and IDN
+adjustment?</span></p>
 <div class="rmdbox rmdcaution">
 <p>Make sure that for all the new GPWG that you download from <code>datalibweb</code> based on
 the PRIMUS catalog, you create all the corresponding PCN files.</p>
@@ -232,7 +238,8 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <h2>
 <span class="header-section-number">9.3</span> China synthetic files<a class="anchor" aria-label="anchor" href="#china-synthetic-files"><i class="fas fa-link"></i></a>
 </h2>
-<p>To be updated by David.</p>
+<p><span style=".red .bg-light-blue">To be updated by David.</span></p>
+<p>blah blah</p>
 
 </div>
 </div>
@@ -268,7 +275,7 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

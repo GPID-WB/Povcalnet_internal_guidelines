@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 8 PRIMUS | PovcalNet Internal Guidelines and Protocols</title>
 <meta name="author" content="PovcalNet team">
-<meta name="author" content="Development economics">
+<meta name="author" content="Development Data Group">
 <meta name="author" content="World Bank Group">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -91,17 +91,17 @@ to begin by clarifying terms.</p>
 <h3>Website platform<a class="anchor" aria-label="anchor" href="#website-platform"><i class="fas fa-link"></i></a>
 </h3>
 <p>PRIMUS can be accessed by typing
-<a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a>
-in your browser. As long as you’re connected to the intranet it should work fine.
+<a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a> in
+your browser. As long as you’re connected to the intranet it should work fine.
 However, if you have any issues connecting to the platform, please send an email
 to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting access.</p>
 <p>Each database uploaded into PRIMUS gets a unique transaction ID. This ID is
-important because it is not unique to a dataset but unique to the transaction (or vintage of the data).
-That is, if one particular dataset is uploaded more than once, it will get two
-different transaction IDs. When talking to the Poverty GP, you better refer to
-the transaction ID rather than the survey (or at least both) because,
-though you may be talking about the same country/year, you are actually talking
-about two different transactions. See for instance <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&amp;country=BRA&amp;year=2013">Brazil
+important because it is not unique to a dataset but unique to the transaction
+(or vintage of the data). That is, if one particular dataset is uploaded more
+than once, it will get two different transaction IDs. When talking to the
+Poverty GP, you better refer to the transaction ID rather than the survey (or at
+least both) because, though you may be talking about the same country/year, you
+are actually talking about two different transactions. See for instance <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&amp;country=BRA&amp;year=2013">Brazil
 2013</a>.</p>
 </div>
 <div id="stata-command" class="section level3 unnumbered" number="">
@@ -110,7 +110,8 @@ about two different transactions. See for instance <a href="http://spqsapps.worl
 <p>The Poverty GP maintains the Stata repository
 <a href="https://github.com/worldbank/primus">worldbank/primus</a> from which you can
 download the command <code>primus</code>. Right now, this is the official place from which
-you can access this command. From now on, each time we refer to the command, we use <code>primus</code>, whereas when we refer to the website, we use PRIMUS.</p>
+you can access this command. From now on, each time we refer to the command, we
+use <code>primus</code>, whereas when we refer to the website, we use PRIMUS.</p>
 <p>Please, make sure you have it properly installed in your computer, by following
 the instruction section <a href="stata-github.html#stata-github">4</a>. Basically, you need to install
 first the <a href="https://github.com/haghish/github">github</a> Stata command by <a href="https://github.com/haghish">E. F.
@@ -138,12 +139,12 @@ D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).</p>
 <h2>
 <span class="header-section-number">8.2</span> Understanding PRIMUS<a class="anchor" aria-label="anchor" href="#understand-primus"><i class="fas fa-link"></i></a>
 </h2>
-<p>Each time a database is uploaded into PRIMUS, it is assigned a transaction
-ID. During the uploading process (or right after it has finished), the
-three parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new
-or corrected data and approve them or reject them in the system. Depending on
-the decision of all the parties, each transaction will take one of three
-possible status, <em>pending</em>, <em>approved,</em> or <em>rejected</em>.</p>
+<p>Each time a database is uploaded into PRIMUS, it is assigned a transaction ID.
+During the uploading process (or right after it has finished), the three
+parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new or
+corrected data and approve them or reject them in the system. Depending on the
+decision of all the parties, each transaction will take one of three possible
+status, <em>pending</em>, <em>approved,</em> or <em>rejected</em>.</p>
 <div class="rmdbox rmdwarning">
 <p>As of today (2020-11-20), there is no one who represents DECRG. So, the
 approving process might be different and it will need to be changed in the
@@ -195,17 +196,16 @@ reading the help file (type <code>help primus</code> in Stata).</p>
 </h2>
 <p>The real first step to check the quality of the recently uploaded data into
 PRIMUS is to download the basic estimates of each data and compare them with our
-own. These estimates are the mean in PPP, poverty headcount, poverty gap,
-severity, and the Watts index. In practice, we only use the mean in PPP values
-and the poverty headcount to confirm that everything is ok.</p>
+own. There is no need to calculate and compare all the estimates available in
+PRIMUS but the mean in PPP, the poverty headcount, and the Gini index.</p>
 <p>The <code>primus</code> command allows us to download the estimates of each transaction,
 but it has to be done one by one. Fortunately, the <code>pcn</code> command downloads all
 the estimates of pending transactions for us and properly stores them in the
 folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> 🎉
 🎉 . You only need to type,</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="primus.html#cb22-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
-<p>In addition, <code>pcn</code> checks the date for which you’re downloading the estimates and
-keeps only those transactions that have been uploaded for the next spring or
+<p>In addition, <code>pcn</code> checks the date for which you’re downloading the estimates
+and keeps only those transactions that have been uploaded for the next spring or
 annual-meetings release. For instance, assume that today, 2020-11-20, you want
 to see the estimates of pending transactions in PRIMUS. Since annual meetings
 take place around September, <code>pcn</code> assumes you are interested in the estimates
@@ -213,7 +213,7 @@ for the Spring-meetings release, around March next year. Thus, it will filter
 the results from <code>primus</code>, keeping only those transactions that were uploaded
 from November 2020. Now it is likely that the PRIMUS system has not been opened
 for uploading new data in November, as it usually opens around December and
-MMMM. Thus, it is likely that you will find and error saying
+July. Thus, it is likely that you will find and error saying
 <code>There is no pending data in PRIMUS for the combination of country/years selected</code>.</p>
 <p>You can load the recently-downloaded estimates by typing,</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="primus.html#cb23-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code></pre></div>
@@ -346,7 +346,7 @@ Nguyen</a>, so he can do the approval manually.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

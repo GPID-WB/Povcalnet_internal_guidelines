@@ -135,11 +135,15 @@ pcn create, countries(ALL)
 ```
 
 You may need to use the option `replace` in the directive above, in case you
-want to replace an existing "PCN" file. Also, if you want to understand what the
-`pcn create` directive does, you can look at the file `pcn_create.ado`, but it
-general it makes sure to load the data in the P drive and standardize the output
-to make it ready for PovcalNet. For instance, it replace zeros and missing
-values of the welfare and weight variables like this,
+want to replace an existing "PCN" file. In similar fashion as
+`pcn download gpwg`, `pcn create` compares current data in the P drive and does
+not replace anything unless you make this option explicit.
+
+Also, if you want to understand what the `pcn create` directive does, you can
+look at the file `pcn_create.ado`, but it general it makes sure to load the data
+in the P drive and standardize the output to make it ready for PovcalNet. For
+instance, it replace zeros and missing values of the welfare and weight
+variables like this,
 
 ```{stata, eval = FALSE}
 * drop missing values
@@ -172,6 +176,9 @@ if (_rc) {
 This command also makes sure to do the proper adjustments to the India and
 Indonesia datasets.
 
+[Daniel, could you please provide a short explanation of the IND and IDN
+adjustment?]{.red .bg-light-blue}
+
 ::: {.rmdbox .rmdcaution}
 Make sure that for all the new GPWG that you download from `datalibweb` based on
 the PRIMUS catalog, you create all the corresponding PCN files.
@@ -179,4 +186,6 @@ the PRIMUS catalog, you create all the corresponding PCN files.
 
 ## China synthetic files
 
-To be updated by David.
+[To be updated by David.]{style=".red .bg-light-blue"}
+
+blah blah
