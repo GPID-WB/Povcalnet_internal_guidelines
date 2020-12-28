@@ -3,14 +3,80 @@
 # Introduction to PovcalNet Update {#intro-povcal}
 
 Updating the PovcalNet system requires putting together many different pieces
-that interact with each other. This part of the book is divided from the perspective
-of independent procedures rather than particular outputs. For instance, the
-**Master file** is a single Excel file with several spreadsheets that is
-updated in several processes. Instead of creating a chapter for
-updating the whole Master file (though it exists as a summary), we think it is
-better to explain separately each of the processes that add up to update the
-whole Master file.
+that interact with each other. This part of the book is divided from the
+perspective of independent procedures rather than particular outputs. For
+instance, the **Master file** is a single Excel file with several spreadsheets
+that is updated in several processes. Instead of creating a chapter for updating
+the whole Master file (though it exists as a summary), we think it is better to
+explain separately each of the processes that add up to update the whole Master
+file.
 
-## Overview
+## Overview {#update-overview .unnumbered}
 
-**TO-DO**: Include a chart with the workflow.
+The chart below summarizes the PovcalNet update process. As you can see, the
+different components of the process interact with each other in such a way that
+updating one of them will most like require to update some of the others. For
+instance, the master file is updated when either one of the auxiliary data is
+updated or the .PCB-files process is executed. In addition, it is necessary to
+upload master data into the Data Management System to make sure everything is up
+to date. Also, keep in mind that the visualization below is just a
+simplification of the whole process, in which each of the nodes of the chart is
+a process in itself.
+
+You can click on each of the nodes of the charts to easily identify which nodes
+are affected by modifying the selected node. Hovering over the nodes produces a
+similar effect.
+
+```{r nodes-overview, echo=FALSE}
+library(tidyverse)
+library(visNetwork)
+nodes <- tibble(
+  label = c(
+    "Datalibweb",
+    "WDI",
+    "Other Sources",
+    "Auxiliary data", 
+    "LIS Data", 
+    "Group Data",
+    "Microdata",
+    "Master file",
+    "PCN files process",
+    ".PCP files",
+    "Upload to DM", 
+    "txt from LIS"
+  ), 
+  level = c(1, 1, 1, 2, 2, 2, 2, 3, 4, 5, 6, -1)
+  # , 
+  # shape = c(
+  #   rep("square", 3),
+  #   rep("circle", 4)
+  # ),
+  # group c(
+  #   ""
+  # )
+)
+
+nodes <- nodes %>% 
+  mutate(id =  row_number())
+
+edges <- tibble(from   = c(1, 1, 1, 2, 3, 4, 4, 5, 6 , 7,  8,  9, 10, 10, 12), 
+                to     = c(4, 7, 5, 4, 4, 8, 9, 9, 10, 9, 11, 10, 8,  11, 1))
+```
+
+```{r vis-overview, echo=FALSE}
+visNetwork(nodes, edges, height = "500px", width = "100%") %>% 
+  visNodes(color = list(background = "lightblue", 
+                        border = "darkblue",
+                        highlight = "yellow"),
+           shadow = list(enabled = TRUE, size = 10)) %>%
+  visEdges(arrows =list(to = list(enabled = TRUE, 
+                                  scaleFactor = 1))) %>% 
+  visOptions(highlightNearest =  list(enabled = T, 
+                                      # degree = 2, 
+                                      hover = T),
+             nodesIdSelection = TRUE
+             ) %>%
+  visHierarchicalLayout(direction = "LR", 
+                        levelSeparation = 100)
+  
+```
