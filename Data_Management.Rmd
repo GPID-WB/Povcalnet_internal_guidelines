@@ -41,7 +41,7 @@ testing, development, or production servers. The restricted server just adds an
 extra layer of authentication in which only selected people can access the data.
 It is seldom used.
 
-## Master Data
+## Upload the Master File
 
 When the master file is updated locally, the most recent version will be always
 available in the folder `p:\01.PovcalNet\00.Master\02.vintage\`. There you can

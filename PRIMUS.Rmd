@@ -20,19 +20,19 @@ to begin by clarifying terms.
 
 ### Website platform {.unnumbered}
 
-PRIMUS can be accessed by typing in
-[primus/](http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx)
+PRIMUS can be accessed by typing
+[primus/](http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx) in
 your browser. As long as you're connected to the intranet it should work fine.
 However, if you have any issues connecting to the platform, please send an email
-to [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org), requesting for access.
+to [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org), requesting access.
 
-Each database uploaded into PRIMUS got a unique transaction ID. This ID is
-important because it is not unique to a dataset but unique to the transaction.
-That is, if one particular dataset is uploaded more than once, it will get two
-different transaction IDs. When talking to the Poverty GP, you better refer to
-the transaction ID rather than the survey (or not only the survey) because,
-though may be talking about the same country/year, you are actually talking
-about two different transactions. See for instance [Brazil
+Each database uploaded into PRIMUS gets a unique transaction ID. This ID is
+important because it is not unique to a dataset but unique to the transaction
+(or vintage of the data). That is, if one particular dataset is uploaded more
+than once, it will get two different transaction IDs. When talking to the
+Poverty GP, you better refer to the transaction ID rather than the survey (or at
+least both) because, though you may be talking about the same country/year, you
+are actually talking about two different transactions. See for instance [Brazil
 2013](http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&country=BRA&year=2013).
 
 ### Stata command {.unnumbered}
@@ -40,11 +40,11 @@ about two different transactions. See for instance [Brazil
 The Poverty GP maintains the Stata repository
 [worldbank/primus](https://github.com/worldbank/primus) from which you can
 download the command `primus`. Right now, this is the official place from which
-you can access this command. From now on, each time we refer to the command, it
-would `primus`, whereas when we refer to the website, it would be PRIMUS.
+you can access this command. From now on, each time we refer to the command, we
+use `primus`, whereas when we refer to the website, we use PRIMUS.
 
 Please, make sure you have it properly installed in your computer, by following
-the instruction section \@ref(stata-github). Basically, You need to install
+the instruction section \@ref(stata-github). Basically, you need to install
 first the [github](https://github.com/haghish/github) Stata command by [E. F.
 Haghish](https://github.com/haghish)
 
@@ -65,7 +65,7 @@ for alternative methods.
 
 The `primus` command is maintained by the Poverty GP, so we have no control over
 modifications or improvements. The best you can do in case you need to fix or
-modify something in this command is to fork the repository, cloned the forked
+modify something in this command is to fork the repository, clone the forked
 repo into your computer, check out a new branch, make any modification, and
 generate a pull request to the master branch of the original repository. Once
 you have done that, make sure to send an email with your suggestions for
@@ -74,12 +74,12 @@ D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).
 
 ## Understanding PRIMUS {#understand-primus}
 
-Each time a database is uploaded into PRIMUS, it is assigned to a transaction
-ID. During the uploading process (or right after it has finished), the three
-three parties--DECDG, DECRG, or the Poverty GP--evaluate the quality of the new
-or corrected data and approve them or reject them in the system. Depending on
-the decision of all the parties, each transaction will take one of three
-possible status, *pending*, *approved,* or *rejected*.
+Each time a database is uploaded into PRIMUS, it is assigned a transaction ID.
+During the uploading process (or right after it has finished), the three
+parties--DECDG, DECRG, or the Poverty GP--evaluate the quality of the new or
+corrected data and approve them or reject them in the system. Depending on the
+decision of all the parties, each transaction will take one of three possible
+status, *pending*, *approved,* or *rejected*.
 
 ::: {.rmdbox .rmdwarning}
 As of today (2020-11-20), there is no one who represents DECRG. So, the
@@ -128,7 +128,7 @@ list transaction_id overall_status date_modified in 1/`=min(10, _N)'
 ```
 
 A transaction is *rejected* when at least one of the three parties rejected the
-database. Finally, a transaction is *approved* only until all three parties have
+database. Finally, a transaction is *approved* only when all three parties have
 approved it into the system.
 
 ::: {.rmdbox .rmdtip}
@@ -140,9 +140,8 @@ reading the help file (type `help primus` in Stata).
 
 The real first step to check the quality of the recently uploaded data into
 PRIMUS is to download the basic estimates of each data and compare them with our
-own. These estimates are the mean in PPP, poverty headcount, poverty gap,
-severity, and the Watts index. In practice, we only use the mean in PPP values
-and the poverty headcount to confirm that everything is ok.
+own. There is no need to calculate and compare all the estimates available in
+PRIMUS but the mean in PPP, the poverty headcount, and the Gini index.
 
 The `primus` command allows us to download the estimates of each transaction,
 but it has to be done one by one. Fortunately, the `pcn` command downloads all
@@ -154,16 +153,16 @@ folder `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\` `r emo::ji("tada")`
 pcn primus pending, down(estimates)
 ```
 
-In addition, `pcn` checks the date in which you're downloading the estimates and
-keep only those transactions that have been uploaded for the next spring or
+In addition, `pcn` checks the date for which you're downloading the estimates
+and keeps only those transactions that have been uploaded for the next spring or
 annual-meetings release. For instance, assume that today, 2020-11-20, you want
-to see the estimates of pending transactions in RPIMUS. Since annual meetings
+to see the estimates of pending transactions in PRIMUS. Since annual meetings
 take place around September, `pcn` assumes you are interested in the estimates
-for the Spring-meetings release, around March next year. Thus, it will filtered
+for the Spring-meetings release, around March next year. Thus, it will filter
 the results from `primus`, keeping only those transactions that were uploaded
 from November 2020. Now it is likely that the PRIMUS system has not been opened
 for uploading new data in November, as it usually opens around December and
-MMMM. Thus, it is likely that you will find and error saying
+July. Thus, it is likely that you will find and error saying
 `There is no pending data in PRIMUS for the combination of country/years selected`.
 
 You can load the recently-downloaded estimates by typing,
@@ -172,7 +171,7 @@ You can load the recently-downloaded estimates by typing,
 pcn primus pending, load(estimates)
 ```
 
-Now, you have to check whether the new estimated make sense. Once way to that is
+Now, you have to check whether the new estimates make sense. Once way to that is
 to follow this do-file,
 `p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do`.
 
@@ -260,7 +259,7 @@ Basically, this is what you need to do with this file.
 2.  Modify `local filtdate` in which you select the date from which you want to
     approve transactions.
 3.  Make sure at least two people approve. One on behalf of "povcalnet" (which
-    is the alias used for DECRG) and another one on behalf of "decdg."
+    is the alias used for DECRG) and another on behalf of "decdg."
 4.  PRIMUS has a double-confirmation process, so you need to "confirm" and then
     "approve" the transaction. For that, you only need to change the option
     `decision()` from `approved` to `confirmed`.

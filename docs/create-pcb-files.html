@@ -6,12 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 11 Create .PCB files | PovcalNet Internal Guidelines and Protocols</title>
 <meta name="author" content="PovcalNet team">
-<meta name="author" content="Development economics">
+<meta name="author" content="Development Data Group">
 <meta name="author" content="World Bank Group">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -69,7 +70,7 @@
 <span class="header-section-number">11</span> Create .PCB files<a class="anchor" aria-label="anchor" href="#create-pcb-files"><i class="fas fa-link"></i></a>
 </h1>
 <p>As explained in the <a href="intro-povcal.html#intro-povcal">introduction</a> of this part of the book,
-creating the .PCB files are the last step of the process before uploading
+creating the .PCB files is the last step of the process before uploading
 everything to the PovcalNet system.</p>
 <div id="what-the-heck-is-a-pcb-file" class="section level2" number="11.1">
 <h2>
@@ -78,7 +79,7 @@ everything to the PovcalNet system.</p>
 <p>PCB files are only relevant for micro-data. They basically store the micro-data
 <code>welfare</code> and <code>weight</code> vectors, as well as pre-computed statistics. They are
 custom binary files (data is stored as a bunch of 0s and 1s) that were created
-to support the computations in PovcalNet. They are not standard file format like
+to support the computations in PovcalNet. It is not a standard file format like
 <code>.csv</code> or <code>.dta</code>.</p>
 <p>They are used because they:</p>
 <ul>
@@ -97,9 +98,9 @@ and a new format. The ID number is a way to differentiate them.</li>
 </ul>
 </li>
 <li><p>Lorenz Curve</p></li>
-<li><p>Pre-computed summary stats<br>
-Stuff that needs to be computed only once (Not sensitive to the poverty
-line)</p></li>
+<li><p>Pre-computed statistics<br>
+Statistics that need to be computed only once (i.e. not on-the-fly, since
+they are not sensitive to the poverty line)</p></li>
 <li><p>Microdata</p></li>
 </ul>
 <div class="figure">
@@ -119,18 +120,18 @@ repository. Make sure you clone the repo and open it as a <a href="https://marti
 Rstudio</a>.
 You will find the project has three .R files only. If everything goes as
 expected, you’ll only need to use the file <em>00.master.R</em>.</p>
-<p>In rare cases, you will need to modify the functions in other two files. The
+<p>In rare cases, you will need to modify the functions in the other two files. The
 <em>utils.R</em> file has generic functions such as loading the master file into the
 system, or creating survey IDs. These functions are used all along the process.
-The <em>process_functions.R</em> file contain functions for specific parts of the
-projects are executed usually once along the whole process. Basically, the
+The <em>process_functions.R</em> file contains functions for specific parts of the
+projects which are executed usually once along the whole process. Basically, the
 <em>00.master.R</em> calls these functions in order in the same way that a master
-do-file call other do-files that do specific things.</p>
+do-file calls other do-files that do specific things.</p>
 <p>In this chapter, we break down the <em>00.master.R</em> file, so you understand how to
 run it, the logic behind, and what to do in case it needs to be fixed. Let’s
-start by installing the minimum necessary packages. <em>00.master.R</em> file assumes
-you already have them installed, so you should run the code below before you
-start.</p>
+start by installing the minimum necessary packages. The <em>00.master.R</em> file
+assumes you already have them installed, so you should run the code below before
+you start.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># pkg_load &lt;- knitr::combine_words(pkgs, before = "`")</span>
 <span class="va">pkgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"janitor"</span>, <span class="st">"data.table"</span>, <span class="st">"tidyverse"</span>, <span class="st">"writexl"</span>, <span class="st">"readxl"</span>, <span class="st">"here"</span>, <span class="st">"devtools"</span><span class="op">)</span>
@@ -183,7 +184,8 @@ more than one country.</p>
 directory path and filenames of the corresponding countries in variable
 <code>countries</code>. It returns a list with two objects, <code>fail</code> and <code>pcn</code>. Object <code>fail</code>
 lets you know if there is any particular data that could not be loaded. Object
-<code>pcn</code> contains a data frame with the information above.</p>
+<code>pcn</code> contains a data frame with the metadata of the countries and years
+selected above.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Find countries</span>
 <span class="va">tmp</span>       <span class="op">&lt;-</span> <span class="fu">pcn_datafind</span><span class="op">(</span>country <span class="op">=</span> <span class="va">countries</span><span class="op">)</span>
@@ -196,11 +198,14 @@ lets you know if there is any particular data that could not be loaded. Object
 <span class="co"># Get reference year</span>
 <span class="va">pcn</span>       <span class="op">&lt;-</span> <span class="fu">get_ref_year</span><span class="op">(</span><span class="va">pcn</span>, <span class="va">cpi_path</span><span class="op">)</span></code></pre></div>
 <p>Then <code>pcn</code> object is then passed to the <code>fix_metadata</code> function in which some
-columns like welfare type of survey coverage are added. Finally, function
+columns like welfare type and survey coverage are added. Finally, function
 <code>get_ref_year</code> merges the price framework data from <code>datalibweb</code> to assign the
-right reference year to each survey. Keep in mind that <code>get_ref_year</code> makes some
-<em>hard-coded</em> adjustments. Check those in case the resulting reference year is
-incorrect.</p>
+right reference year to each survey. Keep in mind that the <code>get_ref_year()</code>
+function makes some <em>hard-coded</em> adjustments that could not be identified
+programmatically. That is, they follow ad-hoc rules to be included into (or
+excluded from) the final Povcalnet inventory. One of the most problematic rules
+is the correct assignment of the reference year to the survey-ID year. Check
+those those cases if the resulting reference year is incorrect.</p>
 </div>
 <div id="generate-.pcb-files" class="section level3" number="11.3.4">
 <h3>
@@ -210,22 +215,24 @@ incorrect.</p>
 this code,</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="create-pcb-files.html#cb36-1"></a><span class="co"># -------------------- Create PCB --------------------</span></span>
 <span id="cb36-2"><a href="create-pcb-files.html#cb36-2"></a>replace_file &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb36-3"><a href="create-pcb-files.html#cb36-3"></a>pcb_status &lt;-<span class="st"> </span><span class="kw">generate_pcb_files</span>(<span class="dt">df           =</span> pcn, </span>
-<span id="cb36-4"><a href="create-pcb-files.html#cb36-4"></a>                                 <span class="dt">countries    =</span> countries,</span>
-<span id="cb36-5"><a href="create-pcb-files.html#cb36-5"></a>                                 <span class="dt">years        =</span> years, </span>
-<span id="cb36-6"><a href="create-pcb-files.html#cb36-6"></a>                                 <span class="dt">replace_file =</span> replace_file,</span>
-<span id="cb36-7"><a href="create-pcb-files.html#cb36-7"></a>                                 <span class="dt">datadir      =</span> datadir</span></code></pre></div>
+<span id="cb36-3"><a href="create-pcb-files.html#cb36-3"></a>pcb_status &lt;-<span class="st"> </span></span>
+<span id="cb36-4"><a href="create-pcb-files.html#cb36-4"></a><span class="st">  </span><span class="kw">generate_pcb_files</span>(<span class="dt">df          =</span> pcn, </span>
+<span id="cb36-5"><a href="create-pcb-files.html#cb36-5"></a>                    <span class="dt">countries    =</span> countries,</span>
+<span id="cb36-6"><a href="create-pcb-files.html#cb36-6"></a>                    <span class="dt">years        =</span> years, </span>
+<span id="cb36-7"><a href="create-pcb-files.html#cb36-7"></a>                    <span class="dt">replace_file =</span> replace_file,</span>
+<span id="cb36-8"><a href="create-pcb-files.html#cb36-8"></a>                    <span class="dt">datadir      =</span> datadir</span></code></pre></div>
 <p>The function <code>generate_pcb_files</code> takes the directory paths of the microdata in
 the <code>pcn</code> object, loads the microdata, and, inside the <code>datadir</code> directory,
 creates the .pcb file into the <code>/01.pcb/</code> subdirectory and and .rds file (R
 readable) into the <code>/02.rds/</code> sub-directory. The creation of the .rds is for
 convenience. It allows you to check the data in the .pcb in an easy way. The
-.pcb file, in contrast, is harder to read directly in R.</p>
-<p>One feature of the <code>generate_pcb_files</code> functions is that you can add additional
-filters by country and year in case you need it. By default, notice that it is
-only until this point that the <code>years</code> objects defined <a href="create-pcb-files.html#init-params">above</a> is
-being used. In fact, you could create another object, say <code>countries2</code>, and
-parse it into the argument <code>countries</code> of the <code>generate_pcb_files</code> function.</p>
+.pcb file, in contrast, is harder to read directly in R. Except for the file
+format, two files are identical.</p>
+<p>One feature of the <code>generate_pcb_files</code> function is that you can add additional
+filters by country and year. By default, only the <code>years</code> objects defined
+<a href="create-pcb-files.html#init-params">above</a> is being used until this point. In fact, you could create
+another object, say <code>countries2</code>, and parse it into the argument <code>countries</code> of
+the <code>generate_pcb_files</code> function.</p>
 <p>Up to this point, the generation of the .pcb files is concluded, but the
 PovcalNet system requires two types of inputs, welfare data and the master file.
 We still need to update the “SurveyMean” sheet of the Master file.</p>
@@ -248,17 +255,18 @@ because we need to make sure that,</p>
 in between. This is specially important for countries with urban/rural coverage
 like China, India, or Indonesia; for countries with lagging reference years like
 EU-SILC countries, or for tricky countries like … (Macedonia?).</p>
-<div id="update-info-of-the-surveymean-sheet" class="section level3" number="11.4.1">
+<div id="updatint-the-surveymean-sheet" class="section level3" number="11.4.1">
 <h3>
-<span class="header-section-number">11.4.1</span> Update info of the “SurveyMean” sheet<a class="anchor" aria-label="anchor" href="#update-info-of-the-surveymean-sheet"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.4.1</span> Updatint the “SurveyMean” sheet<a class="anchor" aria-label="anchor" href="#updatint-the-surveymean-sheet"><i class="fas fa-link"></i></a>
 </h3>
 <p>The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lf</span> <span class="op">&lt;-</span> <span class="fu">update_master_info</span><span class="op">(</span>df        <span class="op">=</span> <span class="va">pcn</span>, 
-                         countries <span class="op">=</span> <span class="va">countries</span>,
-                         years     <span class="op">=</span> <span class="va">years</span><span class="op">)</span>
-<span class="va">st</span>  <span class="op">&lt;-</span> <span class="va">lf</span><span class="op">$</span><span class="va">s</span>
+<code class="sourceCode R"><span class="va">lf</span> <span class="op">&lt;-</span> 
+  <span class="fu">update_master_info</span><span class="op">(</span>df       <span class="op">=</span> <span class="va">pcn</span>, 
+                    countries <span class="op">=</span> <span class="va">countries</span>,
+                    years     <span class="op">=</span> <span class="va">years</span><span class="op">)</span>
+<span class="va">st</span> <span class="op">&lt;-</span> <span class="va">lf</span><span class="op">$</span><span class="va">s</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">lf</span><span class="op">$</span><span class="va">df</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">st</span><span class="op">$</span><span class="va">status</span><span class="op">)</span>
@@ -270,6 +278,7 @@ the most recent version of the Master file,</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lmf</span>     <span class="op">&lt;-</span> <span class="fu">load_masterfile</span><span class="op">(</span><span class="op">)</span>
 <span class="va">mf</span>      <span class="op">&lt;-</span> <span class="va">lmf</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">SurveyMean</span>
+
 <span class="va">reg_ctry</span> <span class="op">&lt;-</span> <span class="va">lmf</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">CountryList</span> <span class="op">%&gt;%</span> 
   <span class="fu">select</span><span class="op">(</span>
     Region      <span class="op">=</span> <span class="va">WBRegionCode</span>, 
@@ -278,23 +287,23 @@ the most recent version of the Master file,</p>
   <span class="op">)</span></code></pre></div>
 <p>The function <code>load_masterfile</code> returns a list that is then bound to the name
 <code>lmf</code> (this function takes a while to run especially if you’re working
-remotely). The main object of <code>lmf</code> is another list, <code>data</code>, that contains the a
+remotely). The main object of <code>lmf</code> is another list, <code>data</code>, that contains a
 data frame per sheet. So, in the code above, you’re creating object <code>mf</code> with
-the “SurveyMean” and <code>red_ctry</code>, with the “CountryList” sheet. The reason way we
+the “SurveyMean” and <code>red_ctry</code>, with the “CountryList” sheet. The reason why we
 load the whole master file is that, when we create a new version we want that
 version to include all the sheets, even those that were not modified. Function
 <code>writexl::write_xls</code>, which is the function that saves the new version of the
 master file, uses a list with all the sheets to save the file.</p>
-<p>Now, we need to prepare organize the new information into the “SurveyMean”
-format. This is done with function <code>survey_mean_info</code>. However, and this one of
-the tricky parts, we need to make sure that the <a href="create-pcb-files.html#master-objectives">five objectives
-above</a> are met when we include the information of the new
-data. The <code>survey_mean_info</code> function handles all the generic cases, but there
-are some cases that need to be removed manually. This is why we have the object
-<code>condition</code> that goes directly as one of the arguments of <code>survey_mean_info</code>. If
-there is need to manage any especial case, this object should be set to an empty
-string, <code>condition &lt;- ""</code>. Let’s see some examples of real cases in which we had
-to use the object <code>condition</code>.</p>
+<p>Now, we need to organize the new information into the “SurveyMean” format. This
+is done with function <code>survey_mean_info</code>. However, and this one of the tricky
+parts, we need to make sure that the <a href="create-pcb-files.html#master-objectives">five objectives above</a>
+are met when we include the information of the new data. The <code>survey_mean_info</code>
+function handles all the generic cases, but there are some cases that need to be
+removed manually. This is why we have the object <code>condition</code> that goes directly
+as one of the arguments of <code>survey_mean_info</code>. If it is necessary to manage any
+special cases, this object should be set to an empty string, <code>condition &lt;- ""</code>.
+Let’s see some examples of real cases in which we had to use the object
+<code>condition</code>.</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">condition</span> <span class="op">&lt;-</span> <span class="st">'!(countrycode == "IND" &amp; year == 2012)'</span></code></pre></div>
 <p>In this case, we needed to remove the observation for India 2012, because even
@@ -317,15 +326,16 @@ income, when in reality it was consumption.</p>
                     <span class="op">)</span></code></pre></div>
 <p>This final example is a general form in which we remove old observations for all
 the countries and years for which there is new data. This is very useful if we
-want to do start a country from scratch.</p>
-<p>Now, we just need to identify unchanged data in the “SurveyMean” sheet using the
-function <code>unchanged_data()</code> and then append together the new data, <code>dfn,</code> and
-the <code>unchaged</code> data. Finally, we update the Master file using the function
-<code>update_master_file</code>, which receives for arguments, <code>lmf</code>, the current version
-of the master file with all its sheets; <code>vintage</code>, the vintage control sheet
-which is loaded separately and it is useful only for institutional-memory
-purposes; <code>new_mf</code>, which is the new “SurveyMean” sheet with unchanged and new
-data; and <code>mdir</code>, which is the directory of the master file.</p>
+want to start a country from scratch.</p>
+<p>Now, we just need to identify the data that remains unchanged in the
+“SurveyMean” sheet using the function <code>unchanged_data()</code> and then append
+together the new data, <code>dfn,</code> and the <code>unchanged</code> data. Finally, we update the
+Master file using the function <code>update_master_file</code>, which receives four
+arguments, <code>lmf</code>, the current version of the master file with all its sheets;
+<code>vintage</code>, the vintage control sheet which is loaded separately and it is useful
+only for institutional-memory purposes; <code>new_mf</code>, which is the new “SurveyMean”
+sheet with unchanged and new data; and <code>mdir</code>, which is the directory of the
+master file.</p>
 <p>You should be fine if you execute all these steps one by one, while checking the
 intermediate outputs.</p>
 
@@ -350,7 +360,7 @@ intermediate outputs.</p>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#master-objectives"><span class="header-section-number">11.4</span> Update the Master file</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#update-info-of-the-surveymean-sheet"><span class="header-section-number">11.4.1</span> Update info of the “SurveyMean” sheet</a></li></ul>
+<a class="nav-link" href="#master-objectives"><span class="header-section-number">11.4</span> Update the Master file</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#updatint-the-surveymean-sheet"><span class="header-section-number">11.4.1</span> Updatint the “SurveyMean” sheet</a></li></ul>
 </li>
 </ul>
 
@@ -369,7 +379,7 @@ intermediate outputs.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -377,6 +387,18 @@ intermediate outputs.</p>
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 </html>
