@@ -24,7 +24,6 @@ fig:initrepo
 fig:GHclone
 fig:GKclone
 fig:GKwip
-fig:DM-metadata
 fig:zotero1
 fig:zotero2
 fig:addons1
@@ -87,7 +86,6 @@ alternative-method
 last-resource-method
 cloning-the-stata-command-repository
 intro-povcal
-overview
 prepare
 population
 raw-data
@@ -104,7 +102,6 @@ interacting-with-lissy
 getting-the-400-bins-from-lissy
 from-text-file-to-datalibweb-structure
 get-rcall-working-in-your-computer
-output
 compare-new-lis-data-to-datalibweb-inventory
 the-excel-file-lis-datasets.xlsx
 prepare-data-for-the-poverty-gp
@@ -131,13 +128,12 @@ init-params
 prepare-metadata
 generate-.pcb-files
 master-objectives
-update-info-of-the-surveymean-sheet
+updatint-the-surveymean-sheet
 DMSystem
-master-data
+upload-the-master-file
 pcb-files
 updating-the-system
 master-file
-upload-master-file
 referencing-software-zotero
 installation
 extensions-and-add-ons

@@ -11,7 +11,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -69,10 +70,10 @@
 <span class="header-section-number">6</span> Prepare data for PovcalNet update<a class="anchor" aria-label="anchor" href="#prepare"><i class="fas fa-link"></i></a>
 </h1>
 <p>In this chapter we briefly describe what needs to be done with each auxiliary
-measure used to update PovcalNet. Each of th next section describes one measure
+dataset used to update PovcalNet. Each of the next sections describes one dataset
 and, in general, they are divided in <strong>Raw Data</strong> and <strong>Update Master File</strong>
 subsection.</p>
-<p>Most of the heavy load on updating the master file is carried by the
+<p>Most of the updating of the master file is carried by the
 <code>pcn master, udpate(sheet)</code> command in Stata, where <code>sheet</code> refers to name of
 the sheet in the master file. If you need to make any modification, please make
 sure to create a new branch from the most recent of the master branch in the
@@ -87,9 +88,9 @@ sure to create a new branch from the most recent of the master branch in the
 </h3>
 <p>Everything related population data should be placed in the folder
 <code>p:/01.PovcalNet/03.QA/03.Population</code>, hereafter (<code>./</code>).</p>
-<p>Population data is saved in the folder <code>./data</code>. The data is may come from two
+<p>Population data is saved in the folder <code>./data</code>. The data may come from two
 different sources, WDI or from an internal source in DECDG. Right now, the data
-is build and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in an Excel file.</p>
+is built and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in an Excel file.</p>
 <p>The file shared by Emi should be placed without modification in the folder
 <code>./data/original</code>. Then, the file is copied again into the folder <code>./data</code> with
 the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the
@@ -100,7 +101,7 @@ official release date of the population data.</p>
 <span class="header-section-number">6.1.2</span> update master file<a class="anchor" aria-label="anchor" href="#update-master-file"><i class="fas fa-link"></i></a>
 </h3>
 <p>Once the new raw population data is in the folder <code>./data</code> it is necessary to
-update the <code>population</code> sheet in the master file. This can be done by just type,</p>
+update the <code>population</code> sheet in the master file. This can be done by just typing,</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="prepare.html#cb10-1"></a>pcn master, update(population)</span></code></pre></div>
 <p>Finally, you can check the differences between the two versions by using the
 following code,</p>
@@ -135,14 +136,13 @@ there is no way to track the versions of each sheet in the Master file.</p>
 <span class="header-section-number">6.2</span> GDP and Consumption (PCE)<a class="anchor" aria-label="anchor" href="#gdp-and-consumption-pce"><i class="fas fa-link"></i></a>
 </h2>
 <p>GDP and consumption data are used to measure economic growth for the
-interpolation and extrapolation calculations.</p>
+interpolation and extrapolation calculations. PCE refers to “per capita expenditure”, more conventionally known as household final consumption expenditure (HFCE).</p>
 <div id="raw-data-1" class="section level3" number="6.2.1">
 <h3>
 <span class="header-section-number">6.2.1</span> Raw data<a class="anchor" aria-label="anchor" href="#raw-data-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>The raw data of GDP and PCE data comes from WDI through the Stata command
-<code>wbopendata</code>. For GDP the ticket is <code>NY.GDP.PCAP.KD</code> and for PCE the ticket used
-is <code>NE.CON.PRVT.PC.KD</code>. For some countries, however, the economic growth data is
+<code>wbopendata</code>. For GDP the indicator is <code>NY.GDP.PCAP.KD</code> (GDP per capita (constant 2010 US<span class="math inline">\()) and for PCE the indicator used is `NE.CON.PRVT.PC.KD` (Households Final Consumption Expenditure per capita (constant 2010 US\)</span>)). For some countries, however, the economic growth data is
 not available in WDI, so it has to be gathered from other sources besides WDI.
 You can see <a href="prepare.html#scnac">below</a> a deeper explanation and process on how to update
 the auxiliary files of these <em>special cases</em>.</p>
@@ -153,8 +153,8 @@ the auxiliary files of these <em>special cases</em>.</p>
 <p>The <em>Special Cases</em> can be found in the folder
 <code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</code>. This folder contains all the
 different versions previously used in <strong>PovcalNet</strong> with national accounts info
-of special cases. Each file is called <code>NAS special_YYYY-mm-dd.xlsx</code>, where
-<code>YYYY</code> refers to year, <code>mm</code>to month, and <code>dd</code>to day. When you update the
+on special cases. Each file is called <code>NAS special_YYYY-mm-dd.xlsx</code>, where
+<code>YYYY</code> refers to year, <code>mm</code>to month, and <code>dd</code>to day (identifying the vintage of the file). When you update the
 information of these files make sure you,</p>
 <ol style="list-style-type: decimal">
 <li>open the most recent version,</li>
@@ -167,13 +167,13 @@ information of these files make sure you,</p>
 Outlook</a>
 (WEO). The WEO series for GDP is <strong>NGDPRPC</strong>. If <strong>NGDPRPC</strong> is not
 available, use the growth rate provided in <strong>NGDPRPPPPCPCH</strong> to splice on
-the series.</li>
+the series. Consumption data are not available in (the public version of) WEO.</li>
 <li>Update the non-missing observations in the PCE and GDP series. <em>Make sure
-there is no observation where both PCE and GDP are missing</em>.</li>
+there is no observation where both PCE and GDP are missing</em>. Venezuela is an exception to this rule: In this case, we simply use the series available in WDI, which is missing in recent years.</li>
 <li>In the Excel file for the national accounts, you will find the source of
 data and clues on how best to update each observation. Unless otherwise
 instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the
-latest version of the national accounts to update the relevant observations.</li>
+latest version of the national accounts to update the relevant observations. IMPORTANT: You should check whether the country-year is still a special case; e.g. the standard WDI source may have been extended to cover additional years. Similarly, there could be new special cases (i.e. WDI observations were available in a previous vintage, but no longer are).</li>
 <li>For India, update the latest Excel file with pass-through calculations,
 which can be found at <code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux</code>.
 Follow instructions in the Excel file and Daniel Mahler to update rural and
@@ -208,14 +208,14 @@ by using the following command lines,</p>
 <span id="cb12-2"><a href="prepare.html#cb12-2"></a>pcn master, update(pce)</span></code></pre></div>
 <p>The <code>pcn</code> command integrates all the WDI, Maddisson, and Special Cases files in
 the correct format of the master file. You can run these lines even if only one
-of the sources gets updated. If you want to understand the how these two sheets
+of the sources gets updated. If you want to understand how these two sheets
 get updated, you can see the procedure in the file
 <a href="https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado"><em>pcn_master_update.ado</em></a><em>.</em>
 In particular, you can see <a href="https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L170-L354">these
 lines</a>
-for the GDP and <a href="https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L360-L508">these
+for GDP and <a href="https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L360-L508">these
 lines</a>
-for the PCE.</p>
+for PCE.</p>
 </div>
 </div>
 <div id="cpi-and-ppp" class="section level2" number="6.3">
@@ -246,7 +246,7 @@ directly from DLW, you use the following lines of code,</p>
 <span class="header-section-number">6.3.1</span> Word of Caution<a class="anchor" aria-label="anchor" href="#cpicaution"><i class="fas fa-link"></i></a>
 </h3>
 <p>Be aware that as of today (2020-11-17) the <code>datalibweb</code> system is being updating
-and it is likely that the convention used to vintage control the CPI changes in
+and it is likely that the convention used to vintage control the CPI data will change in
 the following month. That is, Dec 2020. If that is the case, the code above
 would be obsolete and it will need to be updated in the
 <a href="https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado">pcn_update_cpi.ado</a>
@@ -263,7 +263,7 @@ DLW.</p>
 <div id="internal-data" class="section level4 unnumbered" number="">
 <h4>Internal data<a class="anchor" aria-label="anchor" href="#internal-data"><i class="fas fa-link"></i></a>
 </h4>
-<p>This dataset is used only by <em>PovcalNet</em> team and could be loaded in Stata by
+<p>This dataset is used only by the <em>PovcalNet</em> team and can be loaded in Stata by
 using the <code>pcn load cpi, clear</code> directive and updated by using the directive
 <code>pcn update cpi</code>. This dataset is intended to be used for general purposes that
 require deflation such as reports, papers, or even internal tests. However, it
@@ -276,11 +276,10 @@ to update the format of this dataset, you need to modify the file
 <h4>
 <em>CPI</em> sheet in the Master file<a class="anchor" aria-label="anchor" href="#cpi-sheet-in-the-master-file"><i class="fas fa-link"></i></a>
 </h4>
-<p>This dataset could be loaded though the directive, <code>pcn master, load(cpi)</code>. By
+<p>This dataset can be loaded though the directive, <code>pcn master, load(cpi)</code>. By
 default the data will be loaded in Stata in wide form, which is the original
-form in master file. You can load it in Stata basically for testing and checking
-purposes but it is highly discouraged to use this data for any data work
-related. It comes in very unfriendly format that is only useful for the
+format in the master file. You can load it in Stata basically for testing and checking
+purposes but it is highly discouraged to use this data for any data work. It comes in a very unfriendly format that is only useful for the
 PovcalNet system. <code>pcn</code>, however, provides the option
 <code>pcn master, load(cpi) shape(long)</code> that attempts to reshape the data in long
 format for ease of use, but it is still not as nice and friendly as the data
@@ -296,12 +295,12 @@ in
 <div id="how-to-update-special-cpi-cases" class="section level4 unnumbered" number="">
 <h4>How to update special CPI cases<a class="anchor" aria-label="anchor" href="#how-to-update-special-cpi-cases"><i class="fas fa-link"></i></a>
 </h4>
-<p>The primary source of CPI data for PovcalNet updates is the IMF’s International Financial Statistics (IFS) database (<a href="http://documents1.worldbank.org/curated/en/215371537208860890/pdf/129964-WP-REVISED-PUBLIC-Disclosed-3-21-2019.pdf">Lakner et al., 2018</a>). When CPI series from surveys are deemed more appropriate, they are used instead of IFS CPI series. Six countries are in this category of ‘special CPI cases’, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
+<p>The primary source of CPI data for PovcalNet updates is the IMF’s International Financial Statistics (IFS) database (<a href="http://documents1.worldbank.org/curated/en/215371537208860890/pdf/129964-WP-REVISED-PUBLIC-Disclosed-3-21-2019.pdf">Lakner et al., 2018</a>). When CPI series from surveys are deemed more appropriate, they are used instead of IFS CPI series. Currently, six countries are in this category of ‘special CPI cases’, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
 <p>The datafiles and dofiles for the special CPI cases are stored in the P-drive [e.g., for the March 2021 PovcalNet update, the files are stored in P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].</p>
-<p>You may follow the steps below to update the special CPI cases:</p>
+<p>You should follow the steps below to update the special CPI cases:</p>
 <ol style="list-style-type: decimal">
 <li><p>Get CPI input file labeled as “Imputed_CPI_input.xlsx” from the P-drive. This file contains raw CPI series imputed from survey to survey.</p></li>
-<li><p>Update the CPI input file if necessary. This file is updated when there is a new survey from which a new CPI can be imputed. The new CPIs are provided by poverty economists (PE’s). Daniel Gerszon Mahler [<a href="mailto:dmahler@worldbank.org" class="email">dmahler@worldbank.org</a>] currently liaises with PE’s to get the correct CPI and survey year. You may contact him for guidance and ideas for the whole exercise.</p></li>
+<li><p>Update the CPI input file if necessary. This file is updated when there is a new survey from which a new CPI can be imputed. (A country is not always a special case: A new survey may use the IFS CPI; the imputed CPIs are only used in exceptional cases.) The new CPIs are provided by poverty economists (PE’s). Daniel Gerszon Mahler [<a href="mailto:dmahler@worldbank.org" class="email">dmahler@worldbank.org</a>] currently liaises with PE’s to get the correct CPI and survey year. You may contact him for guidance and ideas for the whole exercise.</p></li>
 <li><p>Get yearly annual CPI series from Datalibweb. The yearly annual series are collated and organized by Minh Cong Nguyen [<a href="mailto:mnguyen3@worldbank.org" class="email">mnguyen3@worldbank.org</a>] from monthly (or, in a few cases, quarterly) IFS data and annual World Economic Outlook (WEO) data. Use the code below to obtain the required data.</p></li>
 </ol>
 <div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="prepare.html#cb14-1"></a></span>
@@ -359,7 +358,7 @@ in
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -367,6 +366,18 @@ in
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 </html>

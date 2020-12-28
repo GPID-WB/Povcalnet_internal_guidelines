@@ -11,7 +11,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -71,23 +72,28 @@
 <p>In the previous chapters we have seen how to update different sheets of the
 master file. In this chapter we basically summarize and reference to the
 specific location in which we explain how to update each spreadsheet.</p>
-<div id="upload-master-file" class="section level2" number="13.1">
-<h2>
-<span class="header-section-number">13.1</span> Upload Master file<a class="anchor" aria-label="anchor" href="#upload-master-file"><i class="fas fa-link"></i></a>
-</h2>
-<p>Once the master file has been updated using the <em>Master file tool</em>, you may
-proceed to upload the latest version of the master file by selecting the most
-recent file in the folder p:/01.PovcalNet/00.Master/02.vintage. Then, click on
-<code>Choose file</code> next to the <strong>Metadata file</strong> legend. Once the file has chosen,
-you may click on <code>Upload metadata</code> and then on <code>Reload metadata</code>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:DM-metadata"></span>
-<img src="images/DM_metadata_file.png" alt="Upload files" width="50%"><p class="caption">
-Figure 13.1: Upload files
-</p>
-</div>
+<ul>
+<li><p><em><strong>Population</strong>.</em> Section <a href="prepare.html#population">6.1</a>.</p></li>
+<li><p><em><strong>RegionLookup</strong>.</em> Updated manually</p></li>
+<li><p><em><strong>CountryList</strong>.</em> Updated manually. Right now, it is the source of the
+country_list auxiliary file in PIP. <span class="red">Is there a way to update this
+automatically? Is this information somewhere else?</span></p></li>
+<li><p><em><strong>CountyLooskUp</strong>.</em> Updated manually.</p></li>
+<li><p><em><strong>CurrencyConversion</strong>.</em> Updated Manually. The reason for this is that in
+the <em>Surveymean</em> sheet there is an additional columns for taking currency
+conversion into <em>account.</em> This double-source availability of currency
+conversion is avoided in PIP, where the information is automatically updated
+from the information available in DLW.</p></li>
+<li><p><strong><em>CPI</em></strong>. Section <a href="prepare.html#cpi-and-ppp">6.3</a>.</p></li>
+<li><p><em><strong>PPP</strong>.</em> Section <a href="prepare.html#cpi-and-ppp">6.3</a>.</p></li>
+<li><p><em><strong>GDP</strong>.</em> Section <a href="prepare.html#gdp-and-consumption-pce">6.2</a>.</p></li>
+<li><p><em><strong>PCE</strong>.</em> Section <a href="prepare.html#gdp-and-consumption-pce">6.2</a>.</p></li>
+<li><p><em><strong>SurveyInfo</strong>.</em> Updated manually.</p></li>
+<li><p><em><strong>SurveyMean</strong>.</em> Section <a href="create-pcb-files.html#master-objectives">11.4</a>.</p></li>
+</ul>
+<p>Just make sure you have updated the master file following the instructions in
+each of the sections above.</p>
 
-</div>
 </div>
 
 
@@ -97,10 +103,7 @@ Figure 13.1: Upload files
 <div class="next"><a href="referencing-software-zotero.html"><span class="header-section-number">14</span> Referencing software: Zotero</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#master-file"><span class="header-section-number">13</span> Update the Master file</a></li>
-<li><a class="nav-link" href="#upload-master-file"><span class="header-section-number">13.1</span> Upload Master file</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#master-file"><span class="header-section-number">13</span> Update the Master file</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -117,7 +120,7 @@ Figure 13.1: Upload files
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -125,6 +128,18 @@ Figure 13.1: Upload files
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 </html>

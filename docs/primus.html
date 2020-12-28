@@ -11,7 +11,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -89,17 +90,17 @@ to begin by clarifying terms.</p>
 <div id="website-platform" class="section level3 unnumbered" number="">
 <h3>Website platform<a class="anchor" aria-label="anchor" href="#website-platform"><i class="fas fa-link"></i></a>
 </h3>
-<p>PRIMUS can be accessed by typing in
+<p>PRIMUS can be accessed by typing
 <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx">primus/</a>
-your browser. As long as you’re connected to the intranet it should work fine.
+in your browser. As long as you’re connected to the intranet it should work fine.
 However, if you have any issues connecting to the platform, please send an email
-to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting for access.</p>
-<p>Each database uploaded into PRIMUS got a unique transaction ID. This ID is
-important because it is not unique to a dataset but unique to the transaction.
+to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>, requesting access.</p>
+<p>Each database uploaded into PRIMUS gets a unique transaction ID. This ID is
+important because it is not unique to a dataset but unique to the transaction (or vintage of the data).
 That is, if one particular dataset is uploaded more than once, it will get two
 different transaction IDs. When talking to the Poverty GP, you better refer to
-the transaction ID rather than the survey (or not only the survey) because,
-though may be talking about the same country/year, you are actually talking
+the transaction ID rather than the survey (or at least both) because,
+though you may be talking about the same country/year, you are actually talking
 about two different transactions. See for instance <a href="http://spqsapps.worldbank.org/qs/primus/Pages/PRIMUShome_new.aspx#tab=tab3&amp;country=BRA&amp;year=2013">Brazil
 2013</a>.</p>
 </div>
@@ -109,10 +110,9 @@ about two different transactions. See for instance <a href="http://spqsapps.worl
 <p>The Poverty GP maintains the Stata repository
 <a href="https://github.com/worldbank/primus">worldbank/primus</a> from which you can
 download the command <code>primus</code>. Right now, this is the official place from which
-you can access this command. From now on, each time we refer to the command, it
-would <code>primus</code>, whereas when we refer to the website, it would be PRIMUS.</p>
+you can access this command. From now on, each time we refer to the command, we use <code>primus</code>, whereas when we refer to the website, we use PRIMUS.</p>
 <p>Please, make sure you have it properly installed in your computer, by following
-the instruction section <a href="stata-github.html#stata-github">4</a>. Basically, You need to install
+the instruction section <a href="stata-github.html#stata-github">4</a>. Basically, you need to install
 first the <a href="https://github.com/haghish/github">github</a> Stata command by <a href="https://github.com/haghish">E. F.
 Haghish</a></p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="primus.html#cb18-1"></a>net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span></code></pre></div>
@@ -126,7 +126,7 @@ for alternative methods.</p>
 </h3>
 <p>The <code>primus</code> command is maintained by the Poverty GP, so we have no control over
 modifications or improvements. The best you can do in case you need to fix or
-modify something in this command is to fork the repository, cloned the forked
+modify something in this command is to fork the repository, clone the forked
 repo into your computer, check out a new branch, make any modification, and
 generate a pull request to the master branch of the original repository. Once
 you have done that, make sure to send an email with your suggestions for
@@ -138,8 +138,8 @@ D4G Central Team (Nobuo Yoshida and Minh Cong Nguyen).</p>
 <h2>
 <span class="header-section-number">8.2</span> Understanding PRIMUS<a class="anchor" aria-label="anchor" href="#understand-primus"><i class="fas fa-link"></i></a>
 </h2>
-<p>Each time a database is uploaded into PRIMUS, it is assigned to a transaction
-ID. During the uploading process (or right after it has finished), the three
+<p>Each time a database is uploaded into PRIMUS, it is assigned a transaction
+ID. During the uploading process (or right after it has finished), the
 three parties–DECDG, DECRG, or the Poverty GP–evaluate the quality of the new
 or corrected data and approve them or reject them in the system. Depending on
 the decision of all the parties, each transaction will take one of three
@@ -182,7 +182,7 @@ one of them pending.</p>
 <span id="cb21-8"><a href="primus.html#cb21-8"></a>  3. | TRN-000327173-EAP-IDN-QR48Q   24may2018 00:27:33 |</span>
 <span id="cb21-9"><a href="primus.html#cb21-9"></a>     +--------------------------------------------------+</span></code></pre></div>
 <p>A transaction is <em>rejected</em> when at least one of the three parties rejected the
-database. Finally, a transaction is <em>approved</em> only until all three parties have
+database. Finally, a transaction is <em>approved</em> only when all three parties have
 approved it into the system.</p>
 <div class="rmdbox rmdtip">
 <p>We recommend you understand the basic functionality of the <code>primus</code> command by
@@ -204,12 +204,12 @@ the estimates of pending transactions for us and properly stores them in the
 folder <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\</code> 🎉
 🎉 . You only need to type,</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="primus.html#cb22-1"></a>pcn primus pending, down(<span class="kw">estimates</span>)</span></code></pre></div>
-<p>In addition, <code>pcn</code> checks the date in which you’re downloading the estimates and
-keep only those transactions that have been uploaded for the next spring or
+<p>In addition, <code>pcn</code> checks the date for which you’re downloading the estimates and
+keeps only those transactions that have been uploaded for the next spring or
 annual-meetings release. For instance, assume that today, 2020-11-20, you want
-to see the estimates of pending transactions in RPIMUS. Since annual meetings
+to see the estimates of pending transactions in PRIMUS. Since annual meetings
 take place around September, <code>pcn</code> assumes you are interested in the estimates
-for the Spring-meetings release, around March next year. Thus, it will filtered
+for the Spring-meetings release, around March next year. Thus, it will filter
 the results from <code>primus</code>, keeping only those transactions that were uploaded
 from November 2020. Now it is likely that the PRIMUS system has not been opened
 for uploading new data in November, as it usually opens around December and
@@ -217,7 +217,7 @@ MMMM. Thus, it is likely that you will find and error saying
 <code>There is no pending data in PRIMUS for the combination of country/years selected</code>.</p>
 <p>You can load the recently-downloaded estimates by typing,</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="primus.html#cb23-1"></a>pcn primus pending, <span class="kw">load</span>(<span class="kw">estimates</span>)</span></code></pre></div>
-<p>Now, you have to check whether the new estimated make sense. Once way to that is
+<p>Now, you have to check whether the new estimates make sense. Once way to that is
 to follow this do-file,
 <code>p:\01.PovcalNet\03.QA\02.PRIMUS\pending\2020_SM\estimates\checks\comparisons_wrk_data.do</code>.</p>
 <div class="rmdbox rmdimportant">
@@ -301,7 +301,7 @@ countries.</li>
 <li>Modify <code>local filtdate</code> in which you select the date from which you want to
 approve transactions.</li>
 <li>Make sure at least two people approve. One on behalf of “povcalnet” (which
-is the alias used for DECRG) and another one on behalf of “decdg.”</li>
+is the alias used for DECRG) and another on behalf of “decdg.”</li>
 <li>PRIMUS has a double-confirmation process, so you need to “confirm” and then
 “approve” the transaction. For that, you only need to change the option
 <code>decision()</code> from <code>approved</code> to <code>confirmed</code>.</li>
@@ -346,7 +346,7 @@ Nguyen</a>, so he can do the approval manually.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -354,6 +354,18 @@ Nguyen</a>, so he can do the approval manually.</p>
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 </html>

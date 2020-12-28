@@ -11,7 +11,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
@@ -87,13 +88,12 @@ ways, but we suggest two.</p>
 <p>This method is easy but highly inefficient because it could be the case that
 only one year of a particular country was updated or added, but the code below
 will check if all the years of that country have changed as well. You may think
-that it does not make sense to download the data in this way, and you might be
-write. However, downloading only the data that you need is not as
+that it does not make sense to download the data in this way, and you might be right. However, downloading only the data that you need is not as
 straightforward as you may think, and thus the code is a little more complex
 than usual. We recommend this inefficient way because it is easy to implement,
 and <code>pcn</code> is smart enough to verify whether or not the microdata has changed in
 a particular year, so in case it has not changed, <code>pcn</code> won’t update the
-microdata file in the P drive. It is just slow because it need to load the
+microdata file in the P drive. It is just slow because it needs to load the
 microdata from <code>datalibweb</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="update-microdata.html#cb25-1"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
 <span id="cb25-2"><a href="update-microdata.html#cb25-2"></a></span>
@@ -106,7 +106,7 @@ microdata from <code>datalibweb</code>.</p>
 PRIMUS using the <code>primus</code> command and keep only those transactions that were
 created after the date in the local <code>filtdate</code>. Then, save in the local
 <code>countries</code> the code of the countries that changed and parse it into the <code>pcn</code>
-call. From there, <code>pcn</code> will take of the update and will provide you with a file
+call. From there, <code>pcn</code> will take care of the update and will provide you with a file
 summarizing what data was updated, added, skipped, or failed.</p>
 </div>
 <div id="update-file-by-file" class="section level3" number="9.1.2">
@@ -114,10 +114,10 @@ summarizing what data was updated, added, skipped, or failed.</p>
 <span class="header-section-number">9.1.2</span> Update file by file<a class="anchor" aria-label="anchor" href="#update-file-by-file"><i class="fas fa-link"></i></a>
 </h3>
 <p>The code below may seem complex, but it is actually very simple. The MATA
-function only reads the observation <code>i</code> in the <code>wile</code> loop of the
+function only reads the observation <code>i</code> in the <code>while</code> loop of the
 already-filtered data obtained with <code>primus query</code>. You can see that it is very
-similar to code above but the main difference is that it goes file by file
-instead checking all the files of one single country. Keep in mind the
+similar to the code above but the main difference is that it goes file by file
+instead of checking all the files of one country. Keep in mind the
 following,</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a href="update-microdata.html#cb26-1"></a><span class="co">//========================================================</span></span>
 <span id="cb26-2"><a href="update-microdata.html#cb26-2"></a><span class="co">// Mata function</span></span>
@@ -167,7 +167,7 @@ following,</p>
 then run it directly in Stata. If you save it and then execute it from a
 different file using either <code>do</code> or <code>run</code> it will fail because the <code>end</code>
 command at the end of the MATA code will finish the process.</li>
-<li>This code could implemented in another subcommand of <code>pcn</code> without running
+<li>This code could be implemented in another subcommand of <code>pcn</code> without running
 into the problem above. However, we don’t have time to do this change. The
 MATA function already exists in the <code>pcn</code> repository and it is being used by
 other <code>pcn</code> subroutines like <code>pcn_download_gpwg</code>. If you want to contribute
@@ -183,7 +183,7 @@ also be fixed if this routine is included as part of <code>pcn</code>.</li>
 <h2>
 <span class="header-section-number">9.2</span> Create the _PCN files<a class="anchor" aria-label="anchor" href="#create-the-_pcn-files"><i class="fas fa-link"></i></a>
 </h2>
-<p>The final step before to have the microdata ready to be converted to .pcb files
+<p>The final step before having the microdata ready to be converted to .pcb files
 and ingested by the PovcalNet system is to create the “PCN” files. These files
 are just an adaptation of the GPWG microdata in the P drive. They are called
 “PCN” because that is their suffix in the naming convention. For instance, the
@@ -196,7 +196,7 @@ need to execute the directive,</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="update-microdata.html#cb28-1"></a>pcn create, countries(ALL)</span></code></pre></div>
 <p>You may need to use the option <code>replace</code> in the directive above, in case you
 want to replace an existing “PCN” file. Also, if you want to understand what the
-<code>pcn create</code> directive does, you can investigate the file <code>pcn_create.ado</code>, but
+<code>pcn create</code> directive does, you can look at the file <code>pcn_create.ado</code>, but
 it general it makes sure to load the data in the P drive and standardize the
 output to make it ready for PovcalNet. For instance, it replace zeros and
 missing values of the welfare and weight variables like this,</p>
@@ -268,7 +268,7 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-21.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development economics, World Bank Group. It was last built on 2020-12-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -276,6 +276,18 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
   </div>
 
 </div></div>
-</footer>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 </html>

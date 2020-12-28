@@ -33,8 +33,8 @@ PCB files contain four pieces of information:
 -   Lorenz Curve
 
 -   Pre-computed statistics\
-    Statistics that need to be computed only once (i.e. not on-the-fly, since they are not sensitive to the poverty
-    line)
+    Statistics that need to be computed only once (i.e. not on-the-fly, since
+    they are not sensitive to the poverty line)
 
 -   Microdata
 
@@ -62,9 +62,9 @@ do-file calls other do-files that do specific things.
 
 In this chapter, we break down the *00.master.R* file, so you understand how to
 run it, the logic behind, and what to do in case it needs to be fixed. Let's
-start by installing the minimum necessary packages. The *00.master.R* file assumes
-you already have them installed, so you should run the code below before you
-start.
+start by installing the minimum necessary packages. The *00.master.R* file
+assumes you already have them installed, so you should run the code below before
+you start.
 
 ```{r, eval = FALSE}
 # pkg_load <- knitr::combine_words(pkgs, before = "`")
@@ -149,11 +149,12 @@ this code,
 ```{r, eval = FALSE}
 # -------------------- Create PCB --------------------
 replace_file <- TRUE
-pcb_status <- generate_pcb_files(df           = pcn, 
-                                 countries    = countries,
-                                 years        = years, 
-                                 replace_file = replace_file,
-                                 datadir      = datadir
+pcb_status <- 
+  generate_pcb_files(df          = pcn, 
+                    countries    = countries,
+                    years        = years, 
+                    replace_file = replace_file,
+                    datadir      = datadir
 ```
 
 The function `generate_pcb_files` takes the directory paths of the microdata in
@@ -161,12 +162,14 @@ the `pcn` object, loads the microdata, and, inside the `datadir` directory,
 creates the .pcb file into the `/01.pcb/` subdirectory and and .rds file (R
 readable) into the `/02.rds/` sub-directory. The creation of the .rds is for
 convenience. It allows you to check the data in the .pcb in an easy way. The
-.pcb file, in contrast, is harder to read directly in R. Except for the file format, two files are identical. 
+.pcb file, in contrast, is harder to read directly in R. Except for the file
+format, two files are identical.
 
 One feature of the `generate_pcb_files` function is that you can add additional
-filters by country and year. By default, only the `years` objects defined [above](#init-params) is
-being used until this point. In fact, you could create another object, say `countries2`, and
-parse it into the argument `countries` of the `generate_pcb_files` function.
+filters by country and year. By default, only the `years` objects defined
+[above](#init-params) is being used until this point. In fact, you could create
+another object, say `countries2`, and parse it into the argument `countries` of
+the `generate_pcb_files` function.
 
 Up to this point, the generation of the .pcb files is concluded, but the
 PovcalNet system requires two types of inputs, welfare data and the master file.
@@ -194,10 +197,11 @@ The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,
 
 ```{r, eval = FALSE}
-lf <- update_master_info(df        = pcn, 
-                         countries = countries,
-                         years     = years)
-st  <- lf$s
+lf <- 
+  update_master_info(df       = pcn, 
+                    countries = countries,
+                    years     = years)
+st <- lf$s
 df <- lf$df
 
 table(st$status)
@@ -212,6 +216,7 @@ the most recent version of the Master file,
 ```{r, eval = FALSE}
 lmf     <- load_masterfile()
 mf      <- lmf$data$SurveyMean
+
 reg_ctry <- lmf$data$CountryList %>% 
   select(
     Region      = WBRegionCode, 
@@ -230,15 +235,16 @@ version to include all the sheets, even those that were not modified. Function
 `writexl::write_xls`, which is the function that saves the new version of the
 master file, uses a list with all the sheets to save the file.
 
-Now, we need to organize the new information into the "SurveyMean"
-format. This is done with function `survey_mean_info`. However, and this one of
-the tricky parts, we need to make sure that the [five objectives
-above](#master-objectives) are met when we include the information of the new
-data. The `survey_mean_info` function handles all the generic cases, but there
-are some cases that need to be removed manually. This is why we have the object
-`condition` that goes directly as one of the arguments of `survey_mean_info`. If it is necessary to manage any special cases, this object should be set to an empty
-string, `condition <- ""`. Let's see some examples of real cases in which we had
-to use the object `condition`.
+Now, we need to organize the new information into the "SurveyMean" format. This
+is done with function `survey_mean_info`. However, and this one of the tricky
+parts, we need to make sure that the [five objectives above](#master-objectives)
+are met when we include the information of the new data. The `survey_mean_info`
+function handles all the generic cases, but there are some cases that need to be
+removed manually. This is why we have the object `condition` that goes directly
+as one of the arguments of `survey_mean_info`. If it is necessary to manage any
+special cases, this object should be set to an empty string, `condition <- ""`.
+Let's see some examples of real cases in which we had to use the object
+`condition`.
 
 ```{r, eval = FALSE}
 condition <- '!(countrycode == "IND" & year == 2012)'
@@ -275,14 +281,15 @@ This final example is a general form in which we remove old observations for all
 the countries and years for which there is new data. This is very useful if we
 want to start a country from scratch.
 
-Now, we just need to identify the data that remains unchanged in the "SurveyMean" sheet using the
-function `unchanged_data()` and then append together the new data, `dfn,` and
-the `unchanged` data. Finally, we update the Master file using the function
-`update_master_file`, which receives four arguments, `lmf`, the current version
-of the master file with all its sheets; `vintage`, the vintage control sheet
-which is loaded separately and it is useful only for institutional-memory
-purposes; `new_mf`, which is the new "SurveyMean" sheet with unchanged and new
-data; and `mdir`, which is the directory of the master file.
+Now, we just need to identify the data that remains unchanged in the
+"SurveyMean" sheet using the function `unchanged_data()` and then append
+together the new data, `dfn,` and the `unchanged` data. Finally, we update the
+Master file using the function `update_master_file`, which receives four
+arguments, `lmf`, the current version of the master file with all its sheets;
+`vintage`, the vintage control sheet which is loaded separately and it is useful
+only for institutional-memory purposes; `new_mf`, which is the new "SurveyMean"
+sheet with unchanged and new data; and `mdir`, which is the directory of the
+master file.
 
 You should be fine if you execute all these steps one by one, while checking the
 intermediate outputs.
