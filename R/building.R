@@ -9,12 +9,14 @@
 # file <- "primus.Rmd"
 
 # file <- "update_microdata.Rmd"
+# bookdown::render_book(file, "bookdown::gitbook",
+#                       preview = TRUE)
 file <- "group_data.Rmd"
-bookdown::render_book(file, "bookdown::gitbook",
-                      preview = TRUE)
+bookdown::render_book(file, "bookdown::bs4_book")
 
 # render the whole book
 # bookdown::render_book("index.Rmd", "bookdown::gitbook")
+
 bookdown::render_book("index.Rmd", "bookdown::bs4_book")
 
 #serve the whole book to see modification on the fly

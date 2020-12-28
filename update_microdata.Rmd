@@ -1,9 +1,40 @@
 # Update microdata in the P drive {#update-microdata}
 
-Before explaining how to update our P drive, we need to explain first what the P
-drive is. As it is explained in the first part of section \@ref(network-drive),
-the microdata resides in the folder `01.PovcalNet/01.Vintage_control`.
-**(...complete this part)**
+Before explaining how to update our P drive, you need to make sure you
+understand what the P drive is as it is explained in section
+\@ref(network-drive).
+
+The welfare data, most of it microdata but also bin and group data, reside in
+the folder `P:/01.PovcalNet/01.Vintage_control`. Inside, there are two kinds of
+folders, [1] country folders and [2] auxiliary folder. The former are identified
+by the tree-letter ISO3 code of each country, whereas the latter start with
+underscore "*".* You must be careful of never creating a folder inside
+"01.vintage\_control" unless it starts with an underscore. Otherwise, you might
+be breaking the functionality of many scripts that relies in this structure.
+
+The internal structure of the country folders is the same and it follows the
+[International Household Survey
+Network](%5Bhttp://ihsn.org/)](<http://ihsn.org/>)) standards. It looks
+something like this,
+
+```{r}
+fs::dir_tree("p:/01.PovcalNet/01.Vintage_control/COL/", 
+             regexp = "COL/COL_2015_GEIH")
+```
+
+Within the Colombian surveys (COL), there are as many folders as surveys
+available in this country. Each folder has three components, `CCC_YYYY_SSSS`,
+where `CCC` stands for the country code, `yyyy` for the year, and `SSSS` for the
+survey acronym. In this case, it is `COL_2015_GEIH`. Inside this folder we have
+the different version available. This is represented by the convention
+`CCC_YYYY_SSSS_Vmm_M_Vaa_A_TTT`, where `mm` stands for the version of the master
+data (i.e., the one released by the Government of the country), and `aa` stands
+for the version of the adaptation of the survey. Finally, `TTT` refers to the
+collection of the adaptation. In PovcalNet we only have the `GMD` collection.
+Finally, inside each of the vintage control folder, you will find the `data`
+folder and within you will find the different modules of the survey. This module
+is represented by the last acronym of the name of the file, say `GPWG` or `PCN`.
+This two modules are explained further below.
 
 ## Get PovcalNet inventory up to date
 

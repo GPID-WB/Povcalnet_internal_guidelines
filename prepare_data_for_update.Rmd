@@ -46,16 +46,13 @@ rename population pop2
 tempfile pop2
 save `pop2'
 
-// the version to compare with must change depending on the vintage available
-
+// 'the version to compare with must change depending on the vintage available
 pcn master, load(Population) version(-1) 
 rename population pop1
-merge 1:1 countrycode coveragetype year using `pop2'
+merge 1:1 countrycode coveragetype year using `pop2', gen(checkpop)  // '
 
-tab year if _merge == 2
-
-tab countryname if _merge == 2 & year < 2019
-
+tab year if (checkpop == 2)
+tab countryname if (checkpop == 2 & year < 2019)
 gen diffpop = pop1 - pop2
 sum diffpop
 br if abs(diffpop) > `r(mean)'*2*`r(sd)' & diffpop != .
@@ -76,13 +73,15 @@ interpolation and extrapolation calculations. PCE refers to "per capita expendit
 ### Raw data
 
 The raw data of GDP and PCE data comes from WDI through the Stata command
-`wbopendata`. For GDP the indicator is `NY.GDP.PCAP.KD` (GDP per capita (constant 2010 US$)) and for PCE the indicator used
-is `NE.CON.PRVT.PC.KD` (Households Final Consumption Expenditure per capita (constant 2010 US$)). For some countries, however, the economic growth data is
+`wbopendata`. For GDP the indicator is `NY.GDP.PCAP.KD` 
+(GDP per capita--constant 2010 US\$) and for PCE the indicator used
+is `NE.CON.PRVT.PC.KD` (Households Final Consumption Expenditure per 
+capita--constant 2010 US\$). For some countries, however, the economic growth data is
 not available in WDI, so it has to be gathered from other sources besides WDI.
 You can see [below](#scnac) a deeper explanation and process on how to update
 the auxiliary files of these *special cases*.
 
-**TODO:** Talk about the Maddisson data.
+[**TODO:** Talk about the Maddisson data]{.red}.
 
 #### National accounts for "special cases" {#scnac .unnumbered}
 

@@ -111,19 +111,16 @@ following code,</p>
 <span id="cb11-4"><a href="prepare.html#cb11-4"></a><span class="kw">tempfile</span> pop2</span>
 <span id="cb11-5"><a href="prepare.html#cb11-5"></a><span class="kw">save</span> <span class="ot">`pop2'</span></span>
 <span id="cb11-6"><a href="prepare.html#cb11-6"></a></span>
-<span id="cb11-7"><a href="prepare.html#cb11-7"></a><span class="co">// the version to compare with must change depending on the vintage available</span></span>
-<span id="cb11-8"><a href="prepare.html#cb11-8"></a></span>
-<span id="cb11-9"><a href="prepare.html#cb11-9"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(-1) </span>
-<span id="cb11-10"><a href="prepare.html#cb11-10"></a><span class="kw">rename</span> population pop1</span>
-<span id="cb11-11"><a href="prepare.html#cb11-11"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2'</span></span>
-<span id="cb11-12"><a href="prepare.html#cb11-12"></a></span>
-<span id="cb11-13"><a href="prepare.html#cb11-13"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> <span class="dt">_merge</span> == 2</span>
-<span id="cb11-14"><a href="prepare.html#cb11-14"></a></span>
-<span id="cb11-15"><a href="prepare.html#cb11-15"></a><span class="kw">tab</span> countryname <span class="kw">if</span> <span class="dt">_merge</span> == 2 &amp; <span class="fu">year</span> &lt; 2019</span>
-<span id="cb11-16"><a href="prepare.html#cb11-16"></a></span>
-<span id="cb11-17"><a href="prepare.html#cb11-17"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
-<span id="cb11-18"><a href="prepare.html#cb11-18"></a><span class="kw">sum</span> diffpop</span>
-<span id="cb11-19"><a href="prepare.html#cb11-19"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)'</span>*2*<span class="ot">`r(sd)'</span> &amp; diffpop != .</span></code></pre></div>
+<span id="cb11-7"><a href="prepare.html#cb11-7"></a><span class="co">// 'the version to compare with must change depending on the vintage available</span></span>
+<span id="cb11-8"><a href="prepare.html#cb11-8"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(-1) </span>
+<span id="cb11-9"><a href="prepare.html#cb11-9"></a><span class="kw">rename</span> population pop1</span>
+<span id="cb11-10"><a href="prepare.html#cb11-10"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2'</span>, <span class="kw">gen</span>(checkpop)  <span class="co">// '</span></span>
+<span id="cb11-11"><a href="prepare.html#cb11-11"></a></span>
+<span id="cb11-12"><a href="prepare.html#cb11-12"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> (checkpop == 2)</span>
+<span id="cb11-13"><a href="prepare.html#cb11-13"></a><span class="kw">tab</span> countryname <span class="kw">if</span> (checkpop == 2 &amp; <span class="fu">year</span> &lt; 2019)</span>
+<span id="cb11-14"><a href="prepare.html#cb11-14"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
+<span id="cb11-15"><a href="prepare.html#cb11-15"></a><span class="kw">sum</span> diffpop</span>
+<span id="cb11-16"><a href="prepare.html#cb11-16"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)'</span>*2*<span class="ot">`r(sd)'</span> &amp; diffpop != .</span></code></pre></div>
 <p>Keep in mind that option <code><a href="https://rdrr.io/r/base/Version.html">version(-1)</a></code> refers to one version before the current
 one. If it were <code><a href="https://rdrr.io/r/base/Version.html">version(-2)</a></code>, it would be two versions before the current one.
 Keep in mind that the negative integer in this function refers to the version of
@@ -142,11 +139,14 @@ interpolation and extrapolation calculations. PCE refers to “per capita expend
 <span class="header-section-number">6.2.1</span> Raw data<a class="anchor" aria-label="anchor" href="#raw-data-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>The raw data of GDP and PCE data comes from WDI through the Stata command
-<code>wbopendata</code>. For GDP the indicator is <code>NY.GDP.PCAP.KD</code> (GDP per capita (constant 2010 US<span class="math inline">\()) and for PCE the indicator used is `NE.CON.PRVT.PC.KD` (Households Final Consumption Expenditure per capita (constant 2010 US\)</span>)). For some countries, however, the economic growth data is
+<code>wbopendata</code>. For GDP the indicator is <code>NY.GDP.PCAP.KD</code>
+(GDP per capita–constant 2010 US$) and for PCE the indicator used
+is <code>NE.CON.PRVT.PC.KD</code> (Households Final Consumption Expenditure per
+capita–constant 2010 US$). For some countries, however, the economic growth data is
 not available in WDI, so it has to be gathered from other sources besides WDI.
 You can see <a href="prepare.html#scnac">below</a> a deeper explanation and process on how to update
 the auxiliary files of these <em>special cases</em>.</p>
-<p><strong>TODO:</strong> Talk about the Maddisson data.</p>
+<p><span class="red"><strong>TODO:</strong> Talk about the Maddisson data</span>.</p>
 <div id="scnac" class="section level4 unnumbered" number="">
 <h4>National accounts for “special cases”<a class="anchor" aria-label="anchor" href="#scnac"><i class="fas fa-link"></i></a>
 </h4>
@@ -366,18 +366,6 @@ in
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+</footer>
 </body>
 </html>
