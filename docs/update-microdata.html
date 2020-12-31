@@ -82,7 +82,7 @@ be breaking the functionality of many scripts that relies in this structure.</p>
 <a href="%5Bhttp://ihsn.org/">International Household Survey
 Network</a>](<a href="http://ihsn.org/" class="uri">http://ihsn.org/</a>)) standards. It looks
 something like this,</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"p:/01.PovcalNet/01.Vintage_control/COL/"</span>, 
              regexp <span class="op">=</span> <span class="st">"COL/COL_2015_GEIH"</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; p:/01.PovcalNet/01.Vintage_control/COL/
@@ -137,13 +137,13 @@ and <code>pcn</code> is smart enough to verify whether or not the microdata has 
 a particular year, so in case it has not changed, <code>pcn</code> won’t update the
 microdata file in the P drive. It is just slow because it needs to load the
 microdata from <code>datalibweb</code>.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="update-microdata.html#cb27-1"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
-<span id="cb27-2"><a href="update-microdata.html#cb27-2"></a></span>
-<span id="cb27-3"><a href="update-microdata.html#cb27-3"></a><span class="kw">local</span> filtdate <span class="st">"2020-04-01"</span>   <span class="co">// change this date YYYY-MM-DD</span></span>
-<span id="cb27-4"><a href="update-microdata.html#cb27-4"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">"`filtdate'"</span>, <span class="st">"YMD"</span>)</span>
-<span id="cb27-5"><a href="update-microdata.html#cb27-5"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
-<span id="cb27-6"><a href="update-microdata.html#cb27-6"></a></span>
-<span id="cb27-7"><a href="update-microdata.html#cb27-7"></a>pcn download gpwg, countr(<span class="ot">`countries'</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="update-microdata.html#cb29-1"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
+<span id="cb29-2"><a href="update-microdata.html#cb29-2"></a></span>
+<span id="cb29-3"><a href="update-microdata.html#cb29-3"></a><span class="kw">local</span> filtdate <span class="st">"2020-04-01"</span>   <span class="co">// change this date YYYY-MM-DD</span></span>
+<span id="cb29-4"><a href="update-microdata.html#cb29-4"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">"`filtdate'"</span>, <span class="st">"YMD"</span>)</span>
+<span id="cb29-5"><a href="update-microdata.html#cb29-5"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
+<span id="cb29-6"><a href="update-microdata.html#cb29-6"></a></span>
+<span id="cb29-7"><a href="update-microdata.html#cb29-7"></a>pcn download gpwg, countr(<span class="ot">`countries'</span>) </span></code></pre></div>
 <p>The code above is simple. First, you query all the approved transactions in
 PRIMUS using the <code>primus</code> command and keep only those transactions that were
 created after the date in the local <code>filtdate</code>. Then, save in the local
@@ -160,49 +160,49 @@ function only reads the observation <code>i</code> in the <code>while</code> loo
 already-filtered data obtained with <code>primus query</code>. You can see that it is very
 similar to the code above but the main difference is that it goes file by file
 instead of checking all the files of one country.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb28-1"><a href="update-microdata.html#cb28-1"></a><span class="co">//========================================================</span></span>
-<span id="cb28-2"><a href="update-microdata.html#cb28-2"></a><span class="co">// Mata function</span></span>
-<span id="cb28-3"><a href="update-microdata.html#cb28-3"></a><span class="co">//========================================================</span></span>
-<span id="cb28-4"><a href="update-microdata.html#cb28-4"></a>cap <span class="kw">mata</span>: <span class="kw">mata</span> <span class="kw">drop</span> get_ind()</span>
-<span id="cb28-5"><a href="update-microdata.html#cb28-5"></a><span class="kw">mata</span>:</span>
-<span id="cb28-6"><a href="update-microdata.html#cb28-6"></a>    <span class="kw">void</span> get_ind(<span class="fu">string</span> <span class="fu">matrix</span> R) {</span>
-<span id="cb28-7"><a href="update-microdata.html#cb28-7"></a>        i = strtoreal(st_local(<span class="st">"i"</span>))</span>
-<span id="cb28-8"><a href="update-microdata.html#cb28-8"></a>        vars = tokens(st_local(<span class="st">"varlist"</span>))</span>
-<span id="cb28-9"><a href="update-microdata.html#cb28-9"></a>        <span class="kw">for</span> (j =1; j&lt;=<span class="bn">cols</span>(vars); j++) {</span>
-<span id="cb28-10"><a href="update-microdata.html#cb28-10"></a>            st_local(vars[j], R[i,j] )</span>
-<span id="cb28-11"><a href="update-microdata.html#cb28-11"></a>        }</span>
-<span id="cb28-12"><a href="update-microdata.html#cb28-12"></a>    } <span class="co">// end of IDs variables</span></span>
-<span id="cb28-13"><a href="update-microdata.html#cb28-13"></a>    </span>
-<span id="cb28-14"><a href="update-microdata.html#cb28-14"></a><span class="kw">end</span></span>
-<span id="cb28-15"><a href="update-microdata.html#cb28-15"></a></span>
-<span id="cb28-16"><a href="update-microdata.html#cb28-16"></a><span class="co">//========================================================</span></span>
-<span id="cb28-17"><a href="update-microdata.html#cb28-17"></a><span class="co">// PRIMUS query</span></span>
-<span id="cb28-18"><a href="update-microdata.html#cb28-18"></a><span class="co">//========================================================</span></span>
-<span id="cb28-19"><a href="update-microdata.html#cb28-19"></a></span>
-<span id="cb28-20"><a href="update-microdata.html#cb28-20"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
-<span id="cb28-21"><a href="update-microdata.html#cb28-21"></a></span>
-<span id="cb28-22"><a href="update-microdata.html#cb28-22"></a><span class="kw">local</span> filtdate <span class="st">"2020-04-01"</span>   <span class="co">// change this date</span></span>
-<span id="cb28-23"><a href="update-microdata.html#cb28-23"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">"`filtdate'"</span>, <span class="st">"YMD"</span>)</span>
-<span id="cb28-24"><a href="update-microdata.html#cb28-24"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
-<span id="cb28-25"><a href="update-microdata.html#cb28-25"></a><span class="kw">tostring</span> <span class="dt">_all</span>, <span class="kw">replace</span></span>
-<span id="cb28-26"><a href="update-microdata.html#cb28-26"></a></span>
-<span id="cb28-27"><a href="update-microdata.html#cb28-27"></a><span class="kw">local</span> <span class="kw">varlist</span> = <span class="st">"country year"</span></span>
-<span id="cb28-28"><a href="update-microdata.html#cb28-28"></a><span class="kw">mata</span>: R = st_sdata(.,tokens(st_local(<span class="st">"varlist"</span>)))</span>
-<span id="cb28-29"><a href="update-microdata.html#cb28-29"></a><span class="kw">local</span> n = _N</span>
-<span id="cb28-30"><a href="update-microdata.html#cb28-30"></a></span>
-<span id="cb28-31"><a href="update-microdata.html#cb28-31"></a><span class="co">//========================================================</span></span>
-<span id="cb28-32"><a href="update-microdata.html#cb28-32"></a><span class="co">// Loop over surveys</span></span>
-<span id="cb28-33"><a href="update-microdata.html#cb28-33"></a><span class="co">//========================================================</span></span>
-<span id="cb28-34"><a href="update-microdata.html#cb28-34"></a></span>
-<span id="cb28-35"><a href="update-microdata.html#cb28-35"></a><span class="kw">local</span> i = 0</span>
-<span id="cb28-36"><a href="update-microdata.html#cb28-36"></a><span class="kw">while</span> (<span class="ot">`i'</span> &lt; <span class="ot">`n'</span>) {</span>
-<span id="cb28-37"><a href="update-microdata.html#cb28-37"></a>    <span class="kw">local</span> ++i</span>
-<span id="cb28-38"><a href="update-microdata.html#cb28-38"></a>    </span>
-<span id="cb28-39"><a href="update-microdata.html#cb28-39"></a>    <span class="kw">mata</span>: get_ind(R)</span>
-<span id="cb28-40"><a href="update-microdata.html#cb28-40"></a>    disp <span class="st">"`country' - `year'"</span></span>
-<span id="cb28-41"><a href="update-microdata.html#cb28-41"></a>    pcn download gpwg, countr(<span class="ot">`country'</span>)  <span class="fu">year</span>(<span class="ot">`year'</span>)</span>
-<span id="cb28-42"><a href="update-microdata.html#cb28-42"></a>    </span>
-<span id="cb28-43"><a href="update-microdata.html#cb28-43"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="update-microdata.html#cb30-1"></a><span class="co">//========================================================</span></span>
+<span id="cb30-2"><a href="update-microdata.html#cb30-2"></a><span class="co">// Mata function</span></span>
+<span id="cb30-3"><a href="update-microdata.html#cb30-3"></a><span class="co">//========================================================</span></span>
+<span id="cb30-4"><a href="update-microdata.html#cb30-4"></a>cap <span class="kw">mata</span>: <span class="kw">mata</span> <span class="kw">drop</span> get_ind()</span>
+<span id="cb30-5"><a href="update-microdata.html#cb30-5"></a><span class="kw">mata</span>:</span>
+<span id="cb30-6"><a href="update-microdata.html#cb30-6"></a>    <span class="kw">void</span> get_ind(<span class="fu">string</span> <span class="fu">matrix</span> R) {</span>
+<span id="cb30-7"><a href="update-microdata.html#cb30-7"></a>        i = strtoreal(st_local(<span class="st">"i"</span>))</span>
+<span id="cb30-8"><a href="update-microdata.html#cb30-8"></a>        vars = tokens(st_local(<span class="st">"varlist"</span>))</span>
+<span id="cb30-9"><a href="update-microdata.html#cb30-9"></a>        <span class="kw">for</span> (j =1; j&lt;=<span class="bn">cols</span>(vars); j++) {</span>
+<span id="cb30-10"><a href="update-microdata.html#cb30-10"></a>            st_local(vars[j], R[i,j] )</span>
+<span id="cb30-11"><a href="update-microdata.html#cb30-11"></a>        }</span>
+<span id="cb30-12"><a href="update-microdata.html#cb30-12"></a>    } <span class="co">// end of IDs variables</span></span>
+<span id="cb30-13"><a href="update-microdata.html#cb30-13"></a>    </span>
+<span id="cb30-14"><a href="update-microdata.html#cb30-14"></a><span class="kw">end</span></span>
+<span id="cb30-15"><a href="update-microdata.html#cb30-15"></a></span>
+<span id="cb30-16"><a href="update-microdata.html#cb30-16"></a><span class="co">//========================================================</span></span>
+<span id="cb30-17"><a href="update-microdata.html#cb30-17"></a><span class="co">// PRIMUS query</span></span>
+<span id="cb30-18"><a href="update-microdata.html#cb30-18"></a><span class="co">//========================================================</span></span>
+<span id="cb30-19"><a href="update-microdata.html#cb30-19"></a></span>
+<span id="cb30-20"><a href="update-microdata.html#cb30-20"></a>primus <span class="kw">query</span>, overallstatus(approved)</span>
+<span id="cb30-21"><a href="update-microdata.html#cb30-21"></a></span>
+<span id="cb30-22"><a href="update-microdata.html#cb30-22"></a><span class="kw">local</span> filtdate <span class="st">"2020-04-01"</span>   <span class="co">// change this date</span></span>
+<span id="cb30-23"><a href="update-microdata.html#cb30-23"></a><span class="kw">keep</span> <span class="kw">if</span>  date_modified &gt;= clock(<span class="st">"`filtdate'"</span>, <span class="st">"YMD"</span>)</span>
+<span id="cb30-24"><a href="update-microdata.html#cb30-24"></a><span class="kw">levelsof</span> country, <span class="kw">local</span>(countries) <span class="kw">clean</span>  <span class="co">// code of countries that changed</span></span>
+<span id="cb30-25"><a href="update-microdata.html#cb30-25"></a><span class="kw">tostring</span> <span class="dt">_all</span>, <span class="kw">replace</span></span>
+<span id="cb30-26"><a href="update-microdata.html#cb30-26"></a></span>
+<span id="cb30-27"><a href="update-microdata.html#cb30-27"></a><span class="kw">local</span> <span class="kw">varlist</span> = <span class="st">"country year"</span></span>
+<span id="cb30-28"><a href="update-microdata.html#cb30-28"></a><span class="kw">mata</span>: R = st_sdata(.,tokens(st_local(<span class="st">"varlist"</span>)))</span>
+<span id="cb30-29"><a href="update-microdata.html#cb30-29"></a><span class="kw">local</span> n = _N</span>
+<span id="cb30-30"><a href="update-microdata.html#cb30-30"></a></span>
+<span id="cb30-31"><a href="update-microdata.html#cb30-31"></a><span class="co">//========================================================</span></span>
+<span id="cb30-32"><a href="update-microdata.html#cb30-32"></a><span class="co">// Loop over surveys</span></span>
+<span id="cb30-33"><a href="update-microdata.html#cb30-33"></a><span class="co">//========================================================</span></span>
+<span id="cb30-34"><a href="update-microdata.html#cb30-34"></a></span>
+<span id="cb30-35"><a href="update-microdata.html#cb30-35"></a><span class="kw">local</span> i = 0</span>
+<span id="cb30-36"><a href="update-microdata.html#cb30-36"></a><span class="kw">while</span> (<span class="ot">`i'</span> &lt; <span class="ot">`n'</span>) {</span>
+<span id="cb30-37"><a href="update-microdata.html#cb30-37"></a>    <span class="kw">local</span> ++i</span>
+<span id="cb30-38"><a href="update-microdata.html#cb30-38"></a>    </span>
+<span id="cb30-39"><a href="update-microdata.html#cb30-39"></a>    <span class="kw">mata</span>: get_ind(R)</span>
+<span id="cb30-40"><a href="update-microdata.html#cb30-40"></a>    disp <span class="st">"`country' - `year'"</span></span>
+<span id="cb30-41"><a href="update-microdata.html#cb30-41"></a>    pcn download gpwg, countr(<span class="ot">`country'</span>)  <span class="fu">year</span>(<span class="ot">`year'</span>)</span>
+<span id="cb30-42"><a href="update-microdata.html#cb30-42"></a>    </span>
+<span id="cb30-43"><a href="update-microdata.html#cb30-43"></a>}</span></code></pre></div>
 <p>Keep in mind the following,</p>
 <ol style="list-style-type: decimal">
 <li>This code works fine if you copy it and paste it in your do-file editor and
@@ -233,9 +233,9 @@ are just an adaptation of the GPWG microdata in the P drive. They are called
 <em>COL_2017_GEIH_v01_M_v01_A_GMD<span class="red">_PCN</span>.dta.</em> This conversion is done
 through the <code>pcn create</code> directive. In the case above, for instance, you only
 need to execute the directive,</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="update-microdata.html#cb29-1"></a>pcn create, countries(COL) <span class="fu">year</span>(2017) <span class="kw">clear</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="update-microdata.html#cb31-1"></a>pcn create, countries(COL) <span class="fu">year</span>(2017) <span class="kw">clear</span></span></code></pre></div>
 <p>Also, you can create the “PCN” files of all surveys, by just typing,</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb30-1"><a href="update-microdata.html#cb30-1"></a>pcn create, countries(ALL)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb32-1"><a href="update-microdata.html#cb32-1"></a>pcn create, countries(ALL)</span></code></pre></div>
 <p>You may need to use the option <code>replace</code> in the directive above, in case you
 want to replace an existing “PCN” file. In similar fashion as
 <code>pcn download gpwg</code>, <code>pcn create</code> compares current data in the P drive and does
@@ -245,27 +245,27 @@ look at the file <code>pcn_create.ado</code>, but it general it makes sure to lo
 in the P drive and standardize the output to make it ready for PovcalNet. For
 instance, it replace zeros and missing values of the welfare and weight
 variables like this,</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="update-microdata.html#cb31-1"></a>* <span class="kw">drop</span> <span class="fu">missing</span> <span class="kw">values</span></span>
-<span id="cb31-2"><a href="update-microdata.html#cb31-2"></a><span class="kw">drop</span> <span class="kw">if</span> welfare &lt; 0 | welfare == .</span>
-<span id="cb31-3"><a href="update-microdata.html#cb31-3"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="kw">weight</span> &lt;= 0 | <span class="kw">weight</span> == .</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="update-microdata.html#cb33-1"></a>* <span class="kw">drop</span> <span class="fu">missing</span> <span class="kw">values</span></span>
+<span id="cb33-2"><a href="update-microdata.html#cb33-2"></a><span class="kw">drop</span> <span class="kw">if</span> welfare &lt; 0 | welfare == .</span>
+<span id="cb33-3"><a href="update-microdata.html#cb33-3"></a><span class="kw">drop</span> <span class="kw">if</span> <span class="kw">weight</span> &lt;= 0 | <span class="kw">weight</span> == .</span></code></pre></div>
 <p>Or make sure the <code>weight</code> variable is exactly the same for all the files,</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb32-1"><a href="update-microdata.html#cb32-1"></a>cap <span class="kw">confirm</span> <span class="kw">var</span> <span class="kw">weight</span>, exact</span>
-<span id="cb32-2"><a href="update-microdata.html#cb32-2"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
-<span id="cb32-3"><a href="update-microdata.html#cb32-3"></a>    cap <span class="kw">confirm</span> <span class="kw">var</span> weight_p, exact</span>
-<span id="cb32-4"><a href="update-microdata.html#cb32-4"></a>    <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_p <span class="kw">weight</span></span>
-<span id="cb32-5"><a href="update-microdata.html#cb32-5"></a>    <span class="kw">else</span> {</span>
-<span id="cb32-6"><a href="update-microdata.html#cb32-6"></a>        cap <span class="kw">confirm</span> <span class="kw">var</span> weight_h, exact</span>
-<span id="cb32-7"><a href="update-microdata.html#cb32-7"></a>        <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_h <span class="kw">weight</span></span>
-<span id="cb32-8"><a href="update-microdata.html#cb32-8"></a>        <span class="kw">else</span> {</span>
-<span id="cb32-9"><a href="update-microdata.html#cb32-9"></a>            <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">"no weight variable found for country(`country') year(`year') veralt(`veralt') "</span></span>
-<span id="cb32-10"><a href="update-microdata.html#cb32-10"></a>            <span class="kw">local</span> status <span class="st">"error. cleaning"</span></span>
-<span id="cb32-11"><a href="update-microdata.html#cb32-11"></a>            <span class="kw">local</span> dlwnote <span class="st">"no weight variable found for country(`country') year(`year') "</span></span>
-<span id="cb32-12"><a href="update-microdata.html#cb32-12"></a>            <span class="kw">mata</span>: P = pcn_info(P)</span>
-<span id="cb32-13"><a href="update-microdata.html#cb32-13"></a>            <span class="kw">noi</span> <span class="kw">_dots</span> <span class="ot">`i'</span> 1</span>
-<span id="cb32-14"><a href="update-microdata.html#cb32-14"></a>            <span class="kw">continue</span></span>
-<span id="cb32-15"><a href="update-microdata.html#cb32-15"></a>        }</span>
-<span id="cb32-16"><a href="update-microdata.html#cb32-16"></a>    }</span>
-<span id="cb32-17"><a href="update-microdata.html#cb32-17"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb34-1"><a href="update-microdata.html#cb34-1"></a>cap <span class="kw">confirm</span> <span class="kw">var</span> <span class="kw">weight</span>, exact</span>
+<span id="cb34-2"><a href="update-microdata.html#cb34-2"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb34-3"><a href="update-microdata.html#cb34-3"></a>    cap <span class="kw">confirm</span> <span class="kw">var</span> weight_p, exact</span>
+<span id="cb34-4"><a href="update-microdata.html#cb34-4"></a>    <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_p <span class="kw">weight</span></span>
+<span id="cb34-5"><a href="update-microdata.html#cb34-5"></a>    <span class="kw">else</span> {</span>
+<span id="cb34-6"><a href="update-microdata.html#cb34-6"></a>        cap <span class="kw">confirm</span> <span class="kw">var</span> weight_h, exact</span>
+<span id="cb34-7"><a href="update-microdata.html#cb34-7"></a>        <span class="kw">if</span> (<span class="dt">_rc</span> == 0) <span class="kw">rename</span> weight_h <span class="kw">weight</span></span>
+<span id="cb34-8"><a href="update-microdata.html#cb34-8"></a>        <span class="kw">else</span> {</span>
+<span id="cb34-9"><a href="update-microdata.html#cb34-9"></a>            <span class="kw">noi</span> disp <span class="kw">in</span> <span class="kw">red</span> <span class="st">"no weight variable found for country(`country') year(`year') veralt(`veralt') "</span></span>
+<span id="cb34-10"><a href="update-microdata.html#cb34-10"></a>            <span class="kw">local</span> status <span class="st">"error. cleaning"</span></span>
+<span id="cb34-11"><a href="update-microdata.html#cb34-11"></a>            <span class="kw">local</span> dlwnote <span class="st">"no weight variable found for country(`country') year(`year') "</span></span>
+<span id="cb34-12"><a href="update-microdata.html#cb34-12"></a>            <span class="kw">mata</span>: P = pcn_info(P)</span>
+<span id="cb34-13"><a href="update-microdata.html#cb34-13"></a>            <span class="kw">noi</span> <span class="kw">_dots</span> <span class="ot">`i'</span> 1</span>
+<span id="cb34-14"><a href="update-microdata.html#cb34-14"></a>            <span class="kw">continue</span></span>
+<span id="cb34-15"><a href="update-microdata.html#cb34-15"></a>        }</span>
+<span id="cb34-16"><a href="update-microdata.html#cb34-16"></a>    }</span>
+<span id="cb34-17"><a href="update-microdata.html#cb34-17"></a>}</span></code></pre></div>
 <p>This command also makes sure to do the proper adjustments to the India and
 Indonesia datasets.</p>
 <p><span class="red bg-light-blue">Daniel, could you please provide a short explanation of the IND and IDN
@@ -316,7 +316,7 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-28.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
