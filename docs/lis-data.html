@@ -145,32 +145,32 @@ Stata command <code>rcall</code>. The do-file <code>02.LIS_organize_output.do</c
 have it installed and will install it for you in case it is not. However, you
 can run the lines below to make sure everything is working fine. Also, you can
 take a look at the help file of <code>rcall</code> to get familiar with it.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="lis-data.html#cb15-1"></a>cap which rcall</span>
-<span id="cb15-2"><a href="lis-data.html#cb15-2"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
-<span id="cb15-3"><a href="lis-data.html#cb15-3"></a>    cap which github</span>
-<span id="cb15-4"><a href="lis-data.html#cb15-4"></a>    <span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
-<span id="cb15-5"><a href="lis-data.html#cb15-5"></a>        net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span>
-<span id="cb15-6"><a href="lis-data.html#cb15-6"></a>    }</span>
-<span id="cb15-7"><a href="lis-data.html#cb15-7"></a>    github install haghish/rcall, stable</span>
-<span id="cb15-8"><a href="lis-data.html#cb15-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="lis-data.html#cb17-1"></a>cap which rcall</span>
+<span id="cb17-2"><a href="lis-data.html#cb17-2"></a><span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb17-3"><a href="lis-data.html#cb17-3"></a>    cap which github</span>
+<span id="cb17-4"><a href="lis-data.html#cb17-4"></a>    <span class="kw">if</span> (<span class="dt">_rc</span>) {</span>
+<span id="cb17-5"><a href="lis-data.html#cb17-5"></a>        net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span>
+<span id="cb17-6"><a href="lis-data.html#cb17-6"></a>    }</span>
+<span id="cb17-7"><a href="lis-data.html#cb17-7"></a>    github install haghish/rcall, stable</span>
+<span id="cb17-8"><a href="lis-data.html#cb17-8"></a>}</span></code></pre></div>
 </div>
 <div id="personal-drive" class="section level3 unnumbered" number="">
 <h3>2. Personal Drive<a class="anchor" aria-label="anchor" href="#personal-drive"><i class="fas fa-link"></i></a>
 </h3>
 <p>Make sure to add your UPI to the appropriate sections by typing
 <code>disp lower("`c(username)'")</code> , following the example below,</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="lis-data.html#cb16-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">"`c(username)'"</span>) == <span class="st">"wbxxxxx"</span>) {</span>
-<span id="cb16-2"><a href="lis-data.html#cb16-2"></a>    <span class="kw">local</span> <span class="ot">dir</span> <span class="st">"c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data"</span></span>
-<span id="cb16-3"><a href="lis-data.html#cb16-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="lis-data.html#cb18-1"></a><span class="kw">if</span> (<span class="fu">lower</span>(<span class="st">"`c(username)'"</span>) == <span class="st">"wbxxxxx"</span>) {</span>
+<span id="cb18-2"><a href="lis-data.html#cb18-2"></a>    <span class="kw">local</span> <span class="ot">dir</span> <span class="st">"c:/Users/wbxxxxx/OneDrive - WBG/WorldBank/DECDG/PovcalNet Team/LIS_data"</span></span>
+<span id="cb18-3"><a href="lis-data.html#cb18-3"></a>}</span></code></pre></div>
 </div>
 <div id="directives-of-the-code" class="section level3 unnumbered" number="">
 <h3>3. Directives of the code<a class="anchor" aria-label="anchor" href="#directives-of-the-code"><i class="fas fa-link"></i></a>
 </h3>
 <p>This do-file works like an ado-file in the sense that the output depends on the
 value of some local macros,</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="lis-data.html#cb17-1"></a><span class="kw">global</span> update_surveynames = 1 <span class="co">// 1 to update survey names.</span></span>
-<span id="cb17-2"><a href="lis-data.html#cb17-2"></a><span class="kw">global</span> <span class="kw">replace</span>            = 0 <span class="co">// 1 to replace data in memory even if it has not changed</span></span>
-<span id="cb17-3"><a href="lis-data.html#cb17-3"></a><span class="kw">global</span> p_drive_output_dir = 0 <span class="co">// 1 to use default Vintage_control folder</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="lis-data.html#cb19-1"></a><span class="kw">global</span> update_surveynames = 1 <span class="co">// 1 to update survey names.</span></span>
+<span id="cb19-2"><a href="lis-data.html#cb19-2"></a><span class="kw">global</span> <span class="kw">replace</span>            = 0 <span class="co">// 1 to replace data in memory even if it has not changed</span></span>
+<span id="cb19-3"><a href="lis-data.html#cb19-3"></a><span class="kw">global</span> p_drive_output_dir = 0 <span class="co">// 1 to use default Vintage_control folder</span></span></code></pre></div>
 <p>If local <code>update_surveynames</code> is set to 1, the code will load the sheet
 <code>LIS_survname</code> from the file <code>02.data/_aux/LIS datasets.xlsx</code> and updated
 the file <code>02.data/_aux/LIS_survname.dta</code>. If <code>replace</code> is set to 1, the code
@@ -272,7 +272,7 @@ for this part? If we do, we need to add them to the repository.</span></p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-28.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2020-12-31.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

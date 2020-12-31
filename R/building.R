@@ -7,11 +7,15 @@
 #
 # file <- "data_visualization_flourish.Rmd"
 # file <- "primus.Rmd"
+# file <- "group_data.Rmd"
 
 # file <- "update_microdata.Rmd"
 # bookdown::render_book(file, "bookdown::gitbook",
 #                       preview = TRUE)
-file <- "group_data.Rmd"
+
+
+
+file <- "prepare_data_for_update.Rmd"
 bookdown::render_book(file, "bookdown::bs4_book")
 
 # render the whole book
