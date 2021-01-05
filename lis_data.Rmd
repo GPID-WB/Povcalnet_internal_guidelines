@@ -124,7 +124,7 @@ probably too large. Remove one country and try again.
 **5.** Copy the entire text in the output e-mail you receive for each
 round, open your notepad and paste. Save each round in the
 ***\\00.LIS_output*** folder. Save each text file with the name
-**LISSY_Dec202\@\_\#.txt**, [where @ is the year and \# the round].
+**LISSY_Dec202\@\_\#.txt**, [where \@ is the year and \# the round].
 Consistency with this naming format is important for the next step
 (`02.LIS_organize_output.do` file)
 
@@ -227,19 +227,58 @@ one of these three variables is different to 1.
 
 ## The Excel file `LIS datasets.xlsx`
 
-::: {.bg-light-green}
-::: {.dark-red}
-Marthis:
+With each LIS data update performed, we must first identify from LIS the
+new surveys (countries and/or years) they had recently added. LIS send
+users e-mails informing about new datasets added, and also releases
+[newsletters](https://www.lisdatacenter.org/news-and-events/highlights/)
+with this information.
+
+Inside the *02.data* folder of your LIS_data GIT repository you will
+find a *\_aux* sub folder, and the `LIS datasets.xlsx` file placed in
+there. We must **manually** update the tab **LIS_survname tab** adding
+new rows to the sheet. All necessary information to fill up this
+metadata (household size, currency, etc.) can be found in
+[METIS](http://www.lisdatacenter.org/frontend#/home).
+
+::: {.bg-gray}
+::: {.tl}
+**ACRONYMS:** The column survey_acronym is created by us. If you come
+across a new survey for which an acronym has not been previously
+established, the rules applied in the past by the team were the
+following:
+
+-   Acronyms are created based on the ENGLISH name of the survey. (Ex:
+    *German Transfer Survey (Germany)* is "GTS", followed by the suffix
+    -LIS; thus GTS-LIS.
+
+-   For the surveys that were Microcensus, we created the acronym "MC",
+    and for Denmark's Law Model, "LM".
+
+-   All acronyms are created in capital letters.
+:::
 :::
 
-Explanation of the Excel file with the name of the surveys.
-:::
+Finally, while the survey names in METIS are in English, some of the
+acronyms in parenthesis are still in the original language. In those
+cases we translated them to English. For instance, the survey name
+"*Household Budget Survey (BdF) (France)*" from METIS was changed to
+"*Household Budget Survey (**HBS**) (France)*" in the column
+**surveyname** of the excel.
 
 ## Prepare data for the Poverty GP
 
-Finally, do-file `04.Append_new_LIS_bases.do` prepares the data to be
-shared with the Poverty GP.
+Finally, the do-file `04.Append_new_LIS_bases.do` prepares the data to
+be shared with the Poverty GP. Note that this do-file ONLY appends the
+400 bins data of surveys that are **new** and those where **welfare
+changed**, which are identified in the previous step
+`/comparison_results.dta` as those `gn != 1`.
 
-[Marthis:Could please explain the whole process? Do we have additional
-do-files for this part? If we do, we need to add them to the
-repository.]{.bg-light-green .dark-red}
+Before running the code, make sure to **change the output file name** to
+the **date** of your update (last one saved was
+"LIS_bins_Dec_21_2020.dta"). The output is saved in
+`P:\01.PovcalNet\03.QA\06.LIS\04.Share_with_GP.`
+
+Finally, quickly prepare a short .dta file importing the metadata
+already created in the LIS_survname tab from the Excel, keeping ONLY the
+surveys of the append output you just run and send both files to Minh
+Cong Nguyen \<mnguyen3\@worldbank.org\> from the Poverty GP.
