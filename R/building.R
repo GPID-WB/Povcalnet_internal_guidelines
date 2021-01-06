@@ -15,7 +15,7 @@
 
 
 
-file <- "prepare_data_for_update.Rmd"
+file <- "lis_data.Rmd"
 bookdown::render_book(file, "bookdown::bs4_book")
 
 # render the whole book
