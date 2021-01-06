@@ -33,6 +33,10 @@ fs::dir_tree("p:/01.PovcalNet/03.QA/03.Population/data",
              recurse = FALSE)
 ```
 
+The main file shared by Emi has data gaps for KWT, PSE, and SXM. 
+She shared another file that fills these gaps, which is saved in the above folder as `population_missing_2020_12_01.xlsx`.
+It is unlikely that this file will change, given that the data gaps concern historical figures. Right now this 'missing' file is automatically accounted for when updating the master file (see below). In the unlikely case that these data will be updated, the code in pcn_master_update.ado needs to be updated manually to reflect the newer file.
+
 ### update master file
 
 Once the new raw population data is in the folder `./data` it is necessary to
