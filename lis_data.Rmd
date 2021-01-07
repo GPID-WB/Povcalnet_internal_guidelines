@@ -125,7 +125,7 @@ the code.
 
 Before you execute this code, you need to ensure a few things,
 
-### 1. Get `rcall` working in your computer
+### 1. Get `rcall` working in your computer {.unnumbered}
 
 The processing of the text files is not done anymore on Stata but in R. To avoid
 changing systems, we need to execute R code directly from Stata. In order to do
