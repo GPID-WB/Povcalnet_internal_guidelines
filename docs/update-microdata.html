@@ -85,22 +85,7 @@ something like this,</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"p:/01.PovcalNet/01.Vintage_control/COL/"</span>, 
              regexp <span class="op">=</span> <span class="st">"COL/COL_2015_GEIH"</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; p:/01.PovcalNet/01.Vintage_control/COL/
-#&gt; \-- COL_2015_GEIH
-#&gt;     +-- COL_2015_GEIH_V01_M_V02_A_GMD
-#&gt;     |   \-- Data
-#&gt;     |       +-- COL_2015_GEIH_V01_M_V02_A_GMD_GPWG.dta
-#&gt;     |       +-- COL_2015_GEIH_V01_M_V02_A_GMD_GPWG.dtasig
-#&gt;     |       +-- COL_2015_GEIH_v01_M_v02_A_GMD_PCN.dta
-#&gt;     |       +-- COL_2015_GEIH_v01_M_v02_A_GMD_PCN.dtasig
-#&gt;     |       \-- COL_2015_GEIH_v01_M_v02_A_GMD_PCN.txt
-#&gt;     \-- COL_2015_GEIH_V01_M_V03_A_GMD
-#&gt;         \-- Data
-#&gt;             +-- COL_2015_GEIH_V01_M_V03_A_GMD_GPWG.dta
-#&gt;             +-- COL_2015_GEIH_V01_M_V03_A_GMD_GPWG.dtasig
-#&gt;             +-- COL_2015_GEIH_v01_M_v03_A_GMD_PCN.dta
-#&gt;             +-- COL_2015_GEIH_v01_M_v03_A_GMD_PCN.dtasig
-#&gt;             \-- COL_2015_GEIH_v01_M_v03_A_GMD_PCN.txt</code></pre>
+<pre><code>#&gt; Error: [ENOENT] Failed to search directory 'P:/01.PovcalNet/01.Vintage_control/COL': no such file or directory</code></pre>
 <p>Within the Colombian surveys (COL), there are as many folders as surveys
 available in this country. Each folder has three components, <code>CCC_YYYY_SSSS</code>,
 where <code>CCC</code> stands for the country code, <code>yyyy</code> for the year, and <code>SSSS</code> for the
@@ -316,7 +301,7 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-06.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

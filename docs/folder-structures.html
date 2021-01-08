@@ -86,50 +86,7 @@
 <li>
 <code>01.povcalnet</code>has four main subfulders and follow the structure below:</li>
 </ul>
-<pre><code>#&gt;                             levelName
-#&gt; 1  P:                                
-#&gt; 2   °--01.PovcalNet                  
-#&gt; 3       ¦--00.Master                 
-#&gt; 4       ¦   ¦--_aux                  
-#&gt; 5       ¦   ¦--_vintage_control.xlsx 
-#&gt; 6       ¦   ¦--01.current            
-#&gt; 7       ¦   ¦--02.vintage            
-#&gt; 8       ¦   ¦--03.metadata           
-#&gt; 9       ¦   °--Master.xlsm           
-#&gt; 10      ¦--01.Vintage_control        
-#&gt; 11      ¦   ¦--_aux                  
-#&gt; 12      ¦   ¦   ¦--countries         
-#&gt; 13      ¦   ¦   ¦--cpi               
-#&gt; 14      ¦   ¦   ¦--info              
-#&gt; 15      ¦   ¦   ¦--pcn_create        
-#&gt; 16      ¦   ¦   °--price_framework   
-#&gt; 17      ¦   °--AGO                   
-#&gt; 18      ¦       ¦--AGO_2000_HBS      
-#&gt; 19      ¦       ¦--AGO_2008_IBEP-MICS
-#&gt; 20      ¦       °--AGO_2018_IDREA    
-#&gt; 21      ¦--02.Production             
-#&gt; 22      ¦   ¦--_aux                  
-#&gt; 23      ¦   ¦--2014_OCT              
-#&gt; 24      ¦   ¦--2015_OCT              
-#&gt; 25      ¦   ¦--2016_OCT              
-#&gt; 26      ¦   ¦--2017_OCT              
-#&gt; 27      ¦   ¦--2018_APR              
-#&gt; 28      ¦   ¦--2018_SEP              
-#&gt; 29      ¦   ¦--2019_MAR              
-#&gt; 30      ¦   ¦--2020_JUL              
-#&gt; 31      ¦   ¦--2020_SM               
-#&gt; 32      ¦   °--2021_MAR              
-#&gt; 33      ¦--03.QA                     
-#&gt; 34      ¦   ¦--01.GroupData          
-#&gt; 35      ¦   ¦--02.PRIMUS             
-#&gt; 36      ¦   ¦--03.Population         
-#&gt; 37      ¦   ¦--04.NationalAccounts   
-#&gt; 38      ¦   ¦--05.PCN_estimates      
-#&gt; 39      ¦   ¦--06.LIS                
-#&gt; 40      ¦   ¦--07.historical         
-#&gt; 41      ¦   ¦--08.DLW                
-#&gt; 42      ¦   °--09.CPI                
-#&gt; 43      °--04.admin</code></pre>
+<pre><code>#&gt; Error in strsplit(mypath, pathDelimiter, fixed = TRUE)[[1]]: subscript out of bounds</code></pre>
 <ul>
 <li><p><code>/00.Master</code> contains everything related to the master.xlsx file that is uploaded into the PovcalNet system. This file has its own way for proper use and requires a separate explanation.</p></li>
 <li><p><code>/01.Vintage_control</code> contains the historical data of PovcalNet. Eventually, this would be folder accessible through <code>datalibweb</code>.</p></li>
@@ -137,24 +94,7 @@
 <li><p><code>/03.QA</code> is a working folder that is getting constantly modified. Each subfolder here contains the necessary material to work on particular stages of the PovcalNet process</p></li>
 <li><p><code>02.personal</code> contains one folder for each member of the team. The name of the folder is the UPI of the user preceded by the the letters <code>wb</code>.</p></li>
 </ul>
-<pre><code>#&gt;              levelName
-#&gt; 1  P:                 
-#&gt; 2   °--02.personal    
-#&gt; 3       ¦--_handover  
-#&gt; 4       ¦   ¦--Espen  
-#&gt; 5       ¦   ¦--Prem   
-#&gt; 6       ¦   °--Rebecca
-#&gt; 7       ¦--wb020687   
-#&gt; 8       ¦--wb108988   
-#&gt; 9       ¦--wb372541   
-#&gt; 10      ¦--wb384996   
-#&gt; 11      ¦--wb424681   
-#&gt; 12      ¦--wb463998   
-#&gt; 13      ¦--wb499754   
-#&gt; 14      ¦--wb514665   
-#&gt; 15      ¦--wb537472   
-#&gt; 16      ¦--wb548542   
-#&gt; 17      °--wb562318</code></pre>
+<pre><code>#&gt; Error in strsplit(mypath, pathDelimiter, fixed = TRUE)[[1]]: subscript out of bounds</code></pre>
 <div id="steps" class="section level3" number="2.1.1">
 <h3>
 <span class="header-section-number">2.1.1</span> Steps to map drives<a class="anchor" aria-label="anchor" href="#steps"><i class="fas fa-link"></i></a>
@@ -224,30 +164,7 @@ net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
 <p>You are <strong>not</strong> supposed to use the <code>C:/</code> for anything. Some programs like R of Python save their packages or libraries in the <code>C:/</code>, which is fine. But the <code>C:/</code> drive is not for storing data, MS files, or anything personal. If you need to save something on the <code>C:/</code> drive, please let leads of the povcalnet team know.</p>
 <p>The <code>P:/</code> is fully accessible through the server, so any code pointing to the <code>P:/</code> drive in your computer will work effortlessly in the server.</p>
 <p>The <code>P:/</code> drive is a high speed drive to store big data or large ammount of files to execute fast. This is <strong>NOT</strong> and storage drive, since its capacity is limited. All your data should be stored in the <code>P:/</code> and copied to the <code>E:/</code> drive temporally for fast execution. Once you’re done with your analysis, you can copy back any results to the <code>P:/</code> drive and empty the <code>E:/</code> to allow others to use it. Ideally, we would increase the size of the <code>E:/</code> drive but that is not a possibility now.</p>
-<pre><code>#&gt;                     levelName
-#&gt; 1  E:                        
-#&gt; 2   ¦--01.personal           
-#&gt; 3   ¦   ¦--02.core_team      
-#&gt; 4   ¦   ¦--wb020687          
-#&gt; 5   ¦   ¦--wb108988          
-#&gt; 6   ¦   ¦--wb372541          
-#&gt; 7   ¦   ¦--wb384996          
-#&gt; 8   ¦   ¦--wb424681          
-#&gt; 9   ¦   ¦--wb499754          
-#&gt; 10  ¦   ¦--wb537472          
-#&gt; 11  ¦   ¦--wb548542          
-#&gt; 12  ¦   ¦--wb561460          
-#&gt; 13  ¦   ¦--wb562318          
-#&gt; 14  ¦   °--wb562350          
-#&gt; 15  ¦--03.pcn_update         
-#&gt; 16  ¦   ¦--00.Master         
-#&gt; 17  ¦   ¦--01.QA             
-#&gt; 18  ¦   ¦--02.Vintage_control
-#&gt; 19  ¦   °--03.Production     
-#&gt; 20  ¦--04.projects           
-#&gt; 21  ¦--05.CPI                
-#&gt; 22  ¦--06.National_accounts  
-#&gt; 23  °--07.ProjectX</code></pre>
+<pre><code>#&gt; Error in strsplit(mypath, pathDelimiter, fixed = TRUE)[[1]]: subscript out of bounds</code></pre>
 <p>In the subfolder <code>E:/01.personal</code> you may place all the date files you need for highspeed performance. For some particular projects, you will be asked to place the folders in the folder <code>E:/02.core_team</code>.</p>
 </div>
 </div>
@@ -376,7 +293,7 @@ net use E: \\wbgmsddg001\PovcalNet /PERSISTENT:YES</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-06.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
