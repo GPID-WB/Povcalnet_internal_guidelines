@@ -95,17 +95,11 @@ is built and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in
 <code>./data/original</code>. Then, the file is copied again into the folder <code>./data</code> with
 the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the
 official release date of the population data. As of today,
-January 06, 2021, the files available in the system are,</p>
+January 08, 2021, the files available in the system are,</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"p:/01.PovcalNet/03.QA/03.Population/data"</span>, 
              recurse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; p:/01.PovcalNet/03.QA/03.Population/data
-#&gt; +-- original
-#&gt; +-- population_aggregate_2019-07-01.xlsx
-#&gt; +-- population_country_2019-07-01.xlsx
-#&gt; +-- population_country_2020-07-01.xlsx
-#&gt; +-- population_country_2020-12-01.xlsx
-#&gt; \-- population_missing_2020-12-01.xlsx</code></pre>
+<pre><code>#&gt; Error: [ENOENT] Failed to search directory 'P:/01.PovcalNet/03.QA/03.Population/data': no such file or directory</code></pre>
 <p>The main file shared by Emi has data gaps for KWT, PSE, and SXM.
 She shared another file that fills these gaps, which is saved in the above folder as <code>population_missing_2020_12_01.xlsx</code>.
 It is unlikely that this file will change, given that the data gaps concern historical figures. Right now this ‘missing’ file is automatically accounted for when updating the master file (see below). In the unlikely case that these data will be updated, the code in pcn_master_update.ado needs to be updated manually to reflect the newer file.</p>
@@ -410,7 +404,7 @@ in
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-06.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

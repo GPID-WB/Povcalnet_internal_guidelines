@@ -101,7 +101,6 @@ the-lis_data-repository
 interacting-with-lissy
 getting-the-400-bins-from-lissy
 from-text-file-to-datalibweb-structure
-get-rcall-working-in-your-computer
 compare-new-lis-data-to-datalibweb-inventory
 the-excel-file-lis-datasets.xlsx
 prepare-data-for-the-poverty-gp
