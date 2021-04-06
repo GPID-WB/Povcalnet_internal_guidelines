@@ -96,7 +96,7 @@ update-master-file-1
 cpi-and-ppp
 cpicaution
 different-cpi-datasets
-SurveyInfo-master-file
+surveyinfo
 new-surveys-from-primus
 merging-new-rows-into-surveyinfo-sheet
 manual-updates

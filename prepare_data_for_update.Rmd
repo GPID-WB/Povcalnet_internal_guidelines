@@ -297,7 +297,7 @@ as mention [above](#cpicaution), you will need to update the corresponding lines
 in
 [pcn_master_update.ado](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L71-L164).
 
-## Updating the "SurveyInfo" sheet of the Master file {#SurveyInfo-master-file}
+## Updating the "SurveyInfo" sheet of the Master file {#surveyinfo}
 
 Updating the SurveyInfo sheet in the Master file comprises three general steps:
 
