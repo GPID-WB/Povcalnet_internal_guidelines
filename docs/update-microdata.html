@@ -285,8 +285,90 @@ the PRIMUS catalog, you create all the corresponding PCN files.</p>
 <h2>
 <span class="header-section-number">9.3</span> China synthetic files<a class="anchor" aria-label="anchor" href="#china-synthetic-files"><i class="fas fa-link"></i></a>
 </h2>
-<p><span style=".red .bg-light-blue">To be updated by David.</span></p>
-<p>blah blah</p>
+<p>For the early years of Indonesia and India, and a large part of China’s, we
+calculate the national inequality measures using separate urban and rural
+grouped data. This data is synthetic data created following a simple process:</p>
+<ol style="list-style-type: decimal">
+<li>Query the fitted Lorenz curve parameters for these country-years.</li>
+</ol>
+<p>For this kind of data (grouped data), Povcalnet fits a Lorenz curve using
+two functional forms: a linear approximation and the other using a quadratic one.
+By Querying Povcalnet, one can recover the critical parameters used to fit the curve
+over the data. These estimated parameters and the poverty estimates of each country-year
+are provided for both urban and rural areas following a simple query:</p>
+<p>“<a href="http://iresearch.worldbank.org/PovcalNet/Detail.aspx?Format=Detail&amp;C0=CHN_2&amp;PPP0=3.0392219&amp;PL0=1.90&amp;Y0=1981&amp;NumOfCountries=1" class="uri">http://iresearch.worldbank.org/PovcalNet/Detail.aspx?Format=Detail&amp;C0=CHN_2&amp;PPP0=3.0392219&amp;PL0=1.90&amp;Y0=1981&amp;NumOfCountries=1</a>”</p>
+<p>Checking the query in some detail shows that it is composed of a few key components:</p>
+<ul>
+<li><p>The server root: This is the first part of the query. In the example, it corresponds
+to “<a href="http://iresearch.worldbank.org/PovcalNet" class="uri">http://iresearch.worldbank.org/PovcalNet</a>.” This root indicates the Povacalnet server
+to be used to query the data. Keep in mind that there are a few servers: the production
+and the dev or internal. The example uses the production server; in case you intend to
+use the dev server, change the root to “<a href="http://wbgmsrech001/povcalnet" class="uri">http://wbgmsrech001/povcalnet</a>.”</p></li>
+<li><p>The country: Following the server definition, the API query deepens on details,
+just after “Format=Detail.” The first one to appear is “CO,” which refers to the country.
+To query a given country, following the “=” symbols, add the country’s three-letter code.
+In our case, add CHN to query data for China.</p></li>
+<li><p>The coverage level: Just after the country code and the "_" follows a number. This number
+indicates the data coverage level, urban or rural. If the desired level is rural, this
+number must be one (1); otherwise, if the sought level is urban, the number should set
+to two (2). The example queries data at the urban level.</p></li>
+<li><p>The PPP: The next component is the PPP. The PPP is set after “&amp;PPP0=.”
+In the example, the PPP to be used is 3.0392219.</p></li>
+<li><p>The poverty line: The poverty line is set following the characters “&amp;PL0.”
+In the example, the line is set to the extreme poverty line of 1.90.</p></li>
+<li><p>The year: Is set using “&amp;Y0=.” In the example query, the requested year is 1981.</p></li>
+</ul>
+<p>Once a given observation is queried from Povcalnet, the estimated parameters are recovered and stored. An auxiliary ado file carries out all this, “lorenz_query.ado.” The extraction is close to a web scrapping process. Using regular expressions, each of the values of interest is stored and returned as a scalar. For example, the piece of code that recovers the Lorenz estimates is as follows:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="update-microdata.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> sec <span class="kw">in</span> GQ beta final {</span>
+<span id="cb38-2"><a href="update-microdata.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="update-microdata.html#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" A[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>c_A = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-4"><a href="update-microdata.html#cb38-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" B[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>c_B = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-5"><a href="update-microdata.html#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" C[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>c_C = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-6"><a href="update-microdata.html#cb38-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb38-7"><a href="update-microdata.html#cb38-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">if</span> (<span class="st">"`sec'"</span> == <span class="st">"beta"</span>){</span>
+<span id="cb38-8"><a href="update-microdata.html#cb38-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" Theta:[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>_theta = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-9"><a href="update-microdata.html#cb38-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" Gamma:[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>_gamma = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-10"><a href="update-microdata.html#cb38-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">if</span> <span class="fu">regexm</span>(<span class="ot">`sec'</span>,<span class="st">" Delta:[ ]+([0-9|\.|-]+)"</span>) <span class="fu">scalar</span> <span class="ot">`sec'</span>_delta = <span class="fu">regexs</span>(1)</span>
+<span id="cb38-11"><a href="update-microdata.html#cb38-11" aria-hidden="true" tabindex="-1"></a>        }</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Estimate the slope parameters
+The following code estimates the slope parameters:</li>
+</ol>
+<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="update-microdata.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> cv <span class="kw">of</span> <span class="kw">local</span> cover{</span>
+<span id="cb39-2"><a href="update-microdata.html#cb39-2" aria-hidden="true" tabindex="-1"></a>        loc cvl = <span class="fu">substr</span>(<span class="st">"`cv'"</span>, 1,1) <span class="co">// level_sufix</span></span>
+<span id="cb39-3"><a href="update-microdata.html#cb39-3" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb39-4"><a href="update-microdata.html#cb39-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// - Create parameters to calculate the slope of the GQ lorenz curve </span></span>
+<span id="cb39-5"><a href="update-microdata.html#cb39-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> e_<span class="ot">`cvl'</span> = -(<span class="ot">`=scalar(GQcoeffA_`cvl'</span>)' + <span class="ot">`=scalar(GQcoeffB_`cvl'</span>)' + <span class="ot">`=scalar(GQcoeffC_`cvl'</span>)' + 1)</span>
+<span id="cb39-6"><a href="update-microdata.html#cb39-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> m_<span class="ot">`cvl'</span> = (<span class="ot">`=scalar(GQcoeffB_`cvl'</span>)')^2 - 4*<span class="ot">`=scalar(GQcoeffA_`cvl'</span>)'</span>
+<span id="cb39-7"><a href="update-microdata.html#cb39-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> n_<span class="ot">`cvl'</span> =2*<span class="ot">`=scalar(GQcoeffB_`cvl'</span>)'*<span class="ot">`=scalar(e_`cvl'</span>)'-4*<span class="ot">`=scalar(GQcoeffC_`cvl'</span>)'</span>
+<span id="cb39-8"><a href="update-microdata.html#cb39-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> r_<span class="ot">`cvl'</span> =((<span class="ot">`=scalar(n_`cvl'</span>)')^2-4*<span class="ot">`=scalar(m_`cvl'</span>)'*((<span class="ot">`=scalar(e_`cvl'</span>)')^2))^(0.5)</span>
+<span id="cb39-9"><a href="update-microdata.html#cb39-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb39-10"><a href="update-microdata.html#cb39-10" aria-hidden="true" tabindex="-1"></a>        <span class="co">// - Convert GQ mean from monthly to daily </span></span>
+<span id="cb39-11"><a href="update-microdata.html#cb39-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> GQmean_<span class="ot">`cvl'</span> = <span class="ot">`=scalar(GQmean_`cvl'</span>)' * 12 / 365</span>
+<span id="cb39-12"><a href="update-microdata.html#cb39-12" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> betamean_<span class="ot">`cvl'</span> = <span class="ot">`=scalar(betamean_`cvl'</span>)' * 12 / 365</span>
+<span id="cb39-13"><a href="update-microdata.html#cb39-13" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<p>Notice that these parameters are created using the parameters delivered by the API. Namely, all the scalars, which name starts by GQcoeff, in the previous chunck of code.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Simulate the data
+For each coverage level, urban and rural, 100 000 observations are simulated; and the observations’ weights are simply the population by coverage level.</li>
+</ol>
+<div class="sourceCode" id="cb40"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a href="update-microdata.html#cb40-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">clear</span></span>
+<span id="cb40-2"><a href="update-microdata.html#cb40-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span> <span class="dv">type</span> <span class="kw">double</span></span>
+<span id="cb40-3"><a href="update-microdata.html#cb40-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span> <span class="dv">seed</span> 12345</span>
+<span id="cb40-4"><a href="update-microdata.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="update-microdata.html#cb40-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> nobs=100000</span>
+<span id="cb40-6"><a href="update-microdata.html#cb40-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> first=1/(2*<span class="ot">`=nobs'</span>)</span>
+<span id="cb40-7"><a href="update-microdata.html#cb40-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">scalar</span> <span class="fu">last</span>=1-(1/(2*<span class="ot">`=nobs'</span>))</span>
+<span id="cb40-8"><a href="update-microdata.html#cb40-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">set</span> <span class="kw">obs</span> <span class="ot">`=nobs'</span>                 </span>
+<span id="cb40-9"><a href="update-microdata.html#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">range</span> _F  <span class="ot">`=first'</span> <span class="ot">`=last'</span></span></code></pre></div>
+<p>Now using the slope parameters previously calculated the Lorenz curve, the simulated incomes are calculated in the following lines:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="update-microdata.html#cb41-1" aria-hidden="true" tabindex="-1"></a>** Calculate the slope <span class="kw">of</span> GQ lorenz curve and income (= mu * slope <span class="kw">of</span> LC)</span>
+<span id="cb41-2"><a href="update-microdata.html#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="kw">gen</span> <span class="kw">double</span> x_F_GQ = <span class="ot">`=scalar(GQmean_`cvl'</span>)'*(-(<span class="ot">`=scalar(GQcoeffB_`cvl'</span>)')/2 -(2*<span class="ot">`=scalar(m_`cvl'</span>)'*(_F)+<span class="ot">`=scalar(n_`cvl'</span>)')*(<span class="ot">`=scalar(m_`cvl'</span>)'*(_F)^2+<span class="ot">`=scalar(n_`cvl'</span>)'*(_F)+(<span class="ot">`=scalar(e_`cvl'</span>)')^2)^(-0.5)/4)</span>
+<span id="cb41-3"><a href="update-microdata.html#cb41-3" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb41-4"><a href="update-microdata.html#cb41-4" aria-hidden="true" tabindex="-1"></a>** Calculate the slope <span class="kw">of</span> beta lorenz curve and income (= mu * slope <span class="kw">of</span> LC)</span>
+<span id="cb41-5"><a href="update-microdata.html#cb41-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">gen</span> <span class="kw">double</span> x_F_beta = <span class="ot">`=scalar(betamean_`cvl'</span>)'*(1-<span class="ot">`=scalar(betatheta_`cvl'</span>)'*((_F)^<span class="ot">`=scalar(betagamma_`cvl'</span>)')*((1-(_F))^<span class="ot">`=scalar(betadelta_`cvl'</span>)')*((<span class="ot">`=scalar(betagamma_`cvl'</span>)'/(_F)) - (<span class="ot">`=scalar(betadelta_`cvl'</span>)'/(1-(_F)))))</span></code></pre></div>
+<p>The simlated incomes are just the mean times the Lorenz curve slope, for both the linear and cuadratic approach.</p>
+<p>Once this is calculated, only the weights (population) and simulated income values are kept in memory. This is it, that’s the simulated data used we use.</p>
 
 </div>
 </div>

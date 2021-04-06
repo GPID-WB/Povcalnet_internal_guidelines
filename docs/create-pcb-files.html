@@ -132,7 +132,7 @@ run it, the logic behind, and what to do in case it needs to be fixed. Let’s
 start by installing the minimum necessary packages. The <em>00.master.R</em> file
 assumes you already have them installed, so you should run the code below before
 you start.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># pkg_load &lt;- knitr::combine_words(pkgs, before = "`")</span>
 <span class="va">pkgs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"janitor"</span>, <span class="st">"data.table"</span>, <span class="st">"tidyverse"</span>, <span class="st">"writexl"</span>, <span class="st">"readxl"</span>, <span class="st">"here"</span>, <span class="st">"devtools"</span><span class="op">)</span>
 <span class="va">no_installed</span> <span class="op">&lt;-</span> <span class="va">pkgs</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">pkgs</span>  <span class="op">%in%</span>  <span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>
@@ -150,7 +150,7 @@ you start.</p>
 As of today (2020-11-20), the <code>datadir</code> directory is for <code>2020_JUL</code> as it was
 the last release of PovcalNet. However, make sure you create a new folder with
 the year and month of the “tentative” release.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">datadir</span>   <span class="op">&lt;-</span> <span class="st">"p:/01.PovcalNet/02.Production/2020_JUL/"</span>
 <span class="va">cpi_path</span>  <span class="op">&lt;-</span> <span class="st">"p:/01.PovcalNet/01.Vintage_control/_aux/price_framework/price_framework.dta"</span>
 <span class="va">sheet</span>     <span class="op">&lt;-</span> <span class="st">"SurveyMean"</span>
@@ -162,14 +162,14 @@ the year and month of the “tentative” release.</p>
 </h3>
 <p>Now, we have to specify what countries/years have been added or changed to the
 PovcalNet repository. We recommend you do this country by country.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#--------- to modify in each round ---------</span>
 <span class="va">countries</span> <span class="op">&lt;-</span> <span class="st">"CHN"</span>
 <span class="va">years</span>     <span class="op">&lt;-</span> <span class="cn">NULL</span></code></pre></div>
 <p>If you leave the argument <code>years</code> equal to <code>NULL</code>, the code will update all the
 years for the country select. In this case, CHN. However, you could
 specify what years to update for that particular country, like,</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">countries</span> <span class="op">&lt;-</span> <span class="st">"IND"</span>
 <span class="va">years</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1993</span>, <span class="fl">2004</span>, <span class="fl">2009</span>, <span class="fl">2012</span><span class="op">)</span></code></pre></div>
 <p>It is important to note that <em>unless you want to update all the years available</em>
@@ -186,7 +186,7 @@ directory path and filenames of the corresponding countries in variable
 lets you know if there is any particular data that could not be loaded. Object
 <code>pcn</code> contains a data frame with the metadata of the countries and years
 selected above.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Find countries</span>
 <span class="va">tmp</span>       <span class="op">&lt;-</span> <span class="fu">pcn_datafind</span><span class="op">(</span>country <span class="op">=</span> <span class="va">countries</span><span class="op">)</span>
 <span class="va">pcn_fails</span> <span class="op">&lt;-</span> <span class="va">tmp</span><span class="op">$</span><span class="va">fail</span>
@@ -213,14 +213,14 @@ those those cases if the resulting reference year is incorrect.</p>
 </h3>
 <p>Now that the metadata is ready, we can create the .pcb file. This is done with
 this code,</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="create-pcb-files.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------- Create PCB --------------------</span></span>
-<span id="cb43-2"><a href="create-pcb-files.html#cb43-2" aria-hidden="true" tabindex="-1"></a>replace_file <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb43-3"><a href="create-pcb-files.html#cb43-3" aria-hidden="true" tabindex="-1"></a>pcb_status <span class="ot">&lt;-</span> </span>
-<span id="cb43-4"><a href="create-pcb-files.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate_pcb_files</span>(<span class="at">df          =</span> pcn, </span>
-<span id="cb43-5"><a href="create-pcb-files.html#cb43-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">countries    =</span> countries,</span>
-<span id="cb43-6"><a href="create-pcb-files.html#cb43-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">years        =</span> years, </span>
-<span id="cb43-7"><a href="create-pcb-files.html#cb43-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">replace_file =</span> replace_file,</span>
-<span id="cb43-8"><a href="create-pcb-files.html#cb43-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">datadir      =</span> datadir</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="create-pcb-files.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -------------------- Create PCB --------------------</span></span>
+<span id="cb47-2"><a href="create-pcb-files.html#cb47-2" aria-hidden="true" tabindex="-1"></a>replace_file <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb47-3"><a href="create-pcb-files.html#cb47-3" aria-hidden="true" tabindex="-1"></a>pcb_status <span class="ot">&lt;-</span> </span>
+<span id="cb47-4"><a href="create-pcb-files.html#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate_pcb_files</span>(<span class="at">df          =</span> pcn, </span>
+<span id="cb47-5"><a href="create-pcb-files.html#cb47-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">countries    =</span> countries,</span>
+<span id="cb47-6"><a href="create-pcb-files.html#cb47-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">years        =</span> years, </span>
+<span id="cb47-7"><a href="create-pcb-files.html#cb47-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">replace_file =</span> replace_file,</span>
+<span id="cb47-8"><a href="create-pcb-files.html#cb47-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">datadir      =</span> datadir</span></code></pre></div>
 <p>The function <code>generate_pcb_files</code> takes the directory paths of the microdata in
 the <code>pcn</code> object, loads the microdata, and, inside the <code>datadir</code> directory,
 creates the .pcb file into the <code>/01.pcb/</code> subdirectory and and .rds file (R
@@ -260,7 +260,7 @@ EU-SILC countries, or for tricky countries like … (Macedonia?).</p>
 </h3>
 <p>The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lf</span> <span class="op">&lt;-</span> 
   <span class="fu">update_master_info</span><span class="op">(</span>df       <span class="op">=</span> <span class="va">pcn</span>, 
                     countries <span class="op">=</span> <span class="va">countries</span>,
@@ -274,7 +274,7 @@ files generated in the previous step. This is done with the following code,</p>
 the status of each survey in the <code>update_master_info</code> process, whereas <code>df</code> is
 the actual metadata of the <em>new data</em>. Now, the following code loads the data in
 the most recent version of the Master file,</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lmf</span>     <span class="op">&lt;-</span> <span class="fu">load_masterfile</span><span class="op">(</span><span class="op">)</span>
 <span class="va">mf</span>      <span class="op">&lt;-</span> <span class="va">lmf</span><span class="op">$</span><span class="va">data</span><span class="op">$</span><span class="va">SurveyMean</span>
 
@@ -303,21 +303,21 @@ as one of the arguments of <code>survey_mean_info</code>. If it is necessary to 
 special cases, this object should be set to an empty string, <code>condition &lt;- ""</code>.
 Let’s see some examples of real cases in which we had to use the object
 <code>condition</code>.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">condition</span> <span class="op">&lt;-</span> <span class="st">'!(countrycode == "IND" &amp; year == 2012)'</span></code></pre></div>
 <p>In this case, we needed to remove the observation for India 2012, because even
 though the <code>CPI_Time</code> variable in the master file is 2012, the <code>SurveyTime</code>
 variable is 2011.5.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">condition</span> <span class="op">&lt;-</span> <span class="st">'!(countrycode == "CHN" &amp; grepl("A$", module))'</span></code></pre></div>
 <p>Here we needed to remove all the observations of China for which the module
 finished in a letter A.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">condition</span> <span class="op">&lt;-</span> <span class="st">'!(countrycode == "CHN" &amp; year &gt;= 1990 &amp; welfaretype3 == "y")'</span></code></pre></div>
 <p>Here, there was a problem in the metadata and we needed to remove all the
 observations for China after 1990 for which the welfare type was coded as
 income, when in reality it was consumption.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">condition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'!(countrycode  %in% '</span>, 
                     <span class="fu"><a href="https://rdrr.io/r/base/deparse.html">deparse</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span>,
                     <span class="st">' &amp; year  %in%  '</span>, 
