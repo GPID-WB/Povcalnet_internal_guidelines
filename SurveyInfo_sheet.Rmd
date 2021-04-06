@@ -1,4 +1,4 @@
-# Updating the "SurveyInfo" sheet {#master-file}
+# Updating the "SurveyInfo" sheet {#SurveyInfo-master-file}
 
 Updating the SurveyInfo sheet in the Master file comprises three general steps:
 
@@ -9,7 +9,7 @@ Updating the SurveyInfo sheet in the Master file comprises three general steps:
 **3.** manually updating columns E to L based on previous years information, as well as finding out the number of observations in the survey to update column I.
 
 ::: {.rmdbox .rmdtip}
-A set of short do-files have been written and saved in the folder **`P:\02.personal\wb463998\Master file work\`** to expedite this process. To work in a new update, **create a new folder** with Month and Year **copy the do-files** from the previous update.
+A set of short do-files have been written and saved in the folder **`p:\01.PovcalNet\03.QA\10.Master file work\`** to expedite this process. To work in a new update, **create a new folder** with Month and Year **copy the do-files** from the previous update.
 :::
 
 ## 1. New surveys from PRIMUS
