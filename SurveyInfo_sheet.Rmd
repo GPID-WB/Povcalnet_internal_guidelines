@@ -1,0 +1,53 @@
+# Updating the "SurveyInfo" sheet {#SurveyInfo-master-file}
+
+Updating the SurveyInfo sheet in the Master file comprises three general steps:
+
+**1.** Identifying the recently added country/year combinations (data points) from **PRIMUS**;
+
+**2.** merging new rows into the existing SurveyInfo sheet;
+
+**3.** manually updating columns E to L based on previous years information, as well as finding out the number of observations in the survey to update column I.
+
+::: {.rmdbox .rmdtip}
+A set of short do-files have been written and saved in the folder **`p:\01.PovcalNet\03.QA\10.Master file work\`** to expedite this process. To work in a new update, **create a new folder** with Month and Year **copy the do-files** from the previous update.
+:::
+
+## 1. New surveys from PRIMUS
+
+To identify the recently added data points, open do-file `01. primus dowload(approved & pending).do` and update with the following changes:
+
+1.  Adjust the **path** on top.
+2.  Set a `date_modified` **Steps I and II** usually to the past 3 months. For instance, for March updates, date is usually set it for December 1st of the previous year.
+
+```{stata, eval = FALSE}
+keep if date_modified > clock("2020-12-01", "YMD")
+```
+
+3.  Check **Step IV**. Some surveys like EU-SILC collect information on earnings from the "previous year". Thus, PovcalNet adjusts the survey year to **year-1** for published estimates. Make sure the list of modifications on this step is complete.
+4.  Save changes and run do-file.
+
+## 2. Merging new rows into SurveyInfo Sheet
+
+Open do-file `02. merge primus into SurveyInfo.do`, update the path on top and run. (This should run smoothly if excel files in the previous step remained unchanged).
+
+## 3. Manual updates
+
+The newly added surveys obtained from PRIMUS should be those identified as "**using only (2)**" in your column **\_merge** (O). The final step thus, consists of manually updating the information on columns E to M based on the information you have from previous years in each particular country.
+
+For most countries with a continuous series, the survey acronym has not changed from the previous year, so you can just copy and paste fields like the survey name and conductor. In the cases when the acronym is not the same from the past, some researching will be required (google, [microdatalibrary](https://microdata.worldbank.org/index.php/catalog), [IHSN](https://www.ihsn.org/), etc.) in order to obtain the official survey name and conducting institution.
+
+Finally, the **SampleSize** (column L) must be updated on a case by case basis. You can load the new databases with the command pcn and check observations. The do-file `_count obs in vintage ctrl bases.do`, can assist you to quickly run individual and household observations for a chunk of years in a particular country (*Note:* the module "mod" in line 13 might need adjustment depending on the case).
+
+## Save & Inform
+
+When you have finished all updates in the document, compare the number of rows in your new Excel with the ones in the Master SurveyInfo sheet.
+
+Update the Master:
+
+-   Open **ONLY** SurveyInfo sheet from the latest vintage,
+
+-   Copy and Paste from your file into the Master omitting columns N & O (overall_status and \_merge). Make sure columns A to M are in the same order.
+
+-   Go to **Management tab** -\> click on **Save in Master** -\> add a short note describing your updates -\> click on "**OK**".
+
+**Inform the team managers** that Master file has been updated, indicating the number of new surveys (rows) added.

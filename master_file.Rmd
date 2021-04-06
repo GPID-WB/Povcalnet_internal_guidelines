@@ -9,7 +9,7 @@ specific location in which we explain how to update each spreadsheet.
 -   ***RegionLookup**.* Updated manually
 
 -   ***CountryList**.* Updated manually. Right now, it is the source of the
-    country\_list auxiliary file in PIP. [Is there a way to update this
+    country_list auxiliary file in PIP. [Is there a way to update this
     automatically? Is this information somewhere else?]{.red}
 
 -   ***CountyLooskUp**.* Updated manually.
@@ -28,7 +28,7 @@ specific location in which we explain how to update each spreadsheet.
 
 -   ***PCE**.* Section \@ref(gdp-and-consumption-pce).
 
--   ***SurveyInfo**.* Updated manually.
+-   ***SurveyInfo**.* Section @ref(SurveyInfo-master-file).
 
 -   ***SurveyMean**.* Section \@ref(master-objectives).
 

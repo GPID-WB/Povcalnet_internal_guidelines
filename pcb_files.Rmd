@@ -40,13 +40,13 @@ PCB files contain four pieces of information:
 
 ![PCB file represention](images/pcb_8202.PNG)
 
-## The povcalnet\_update repository
+## The povcalnet_update repository
 
 Once you have updated all the sheets in the master file--besides the
 "SurveyMean" sheet--and have updated the microdata in the P drive, the next step
 is to create the .pcb files and update the "SurveyMean" sheet. All of this is
 done with the
-[PovcalNet-Team/povcalnet\_update](https://github.com/PovcalNet-Team/povcalnet_update)
+[PovcalNet-Team/povcalnet_update](https://github.com/PovcalNet-Team/povcalnet_update)
 repository. Make sure you clone the repo and open it as a [project in
 Rstudio](https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner's-guide/).
 You will find the project has three .R files only. If everything goes as
@@ -55,7 +55,7 @@ expected, you'll only need to use the file *00.master.R*.
 In rare cases, you will need to modify the functions in the other two files. The
 *utils.R* file has generic functions such as loading the master file into the
 system, or creating survey IDs. These functions are used all along the process.
-The *process\_functions.R* file contains functions for specific parts of the
+The *process_functions.R* file contains functions for specific parts of the
 projects which are executed usually once along the whole process. Basically, the
 *00.master.R* calls these functions in order in the same way that a master
 do-file calls other do-files that do specific things.
@@ -195,7 +195,7 @@ in between. This is specially important for countries with urban/rural coverage
 like China, India, or Indonesia; for countries with lagging reference years like
 EU-SILC countries, or for tricky countries like ... (Macedonia?).
 
-### Updatint the "SurveyMean" sheet
+### Updating the "SurveyMean" sheet {.unnumbered}
 
 The first step is to extract some important metadata information from the .rds
 files generated in the previous step. This is done with the following code,
