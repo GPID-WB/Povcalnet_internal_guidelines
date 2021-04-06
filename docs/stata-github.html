@@ -8,10 +8,10 @@
 <meta name="author" content="PovcalNet team">
 <meta name="author" content="Development Data Group">
 <meta name="author" content="World Bank Group">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
 <script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -82,14 +82,14 @@ in .ado file. When you execute a command, Stata begins to search for your
 command in a set of directories stored in the global macro <code>${S_ADO}</code>, which is
 known in Stata documentation as the <strong>ado-path</strong>. An easy way to see your
 <strong>ado-path</strong> is to type, <code>adopath</code> in Stata.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="stata-github.html#cb6-1"></a><span class="kw">adopath</span></span>
-<span id="cb6-2"><a href="stata-github.html#cb6-2"></a>. <span class="kw">adopath</span></span>
-<span id="cb6-3"><a href="stata-github.html#cb6-3"></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
-<span id="cb6-4"><a href="stata-github.html#cb6-4"></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
-<span id="cb6-5"><a href="stata-github.html#cb6-5"></a>  [3]              <span class="st">"."</span></span>
-<span id="cb6-6"><a href="stata-github.html#cb6-6"></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
-<span id="cb6-7"><a href="stata-github.html#cb6-7"></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
-<span id="cb6-8"><a href="stata-github.html#cb6-8"></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="stata-github.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">adopath</span></span>
+<span id="cb6-2"><a href="stata-github.html#cb6-2" aria-hidden="true" tabindex="-1"></a>. <span class="kw">adopath</span></span>
+<span id="cb6-3"><a href="stata-github.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  [1]  (<span class="kw">BASE</span>)      <span class="st">"C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do</span><span class="ch">\b</span><span class="st">ase/"</span></span>
+<span id="cb6-4"><a href="stata-github.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  [2]  (<span class="kw">SITE</span>)      <span class="st">"C:\Program Files\Stata16</span><span class="ch">\a</span><span class="st">do\site/"</span></span>
+<span id="cb6-5"><a href="stata-github.html#cb6-5" aria-hidden="true" tabindex="-1"></a>  [3]              <span class="st">"."</span></span>
+<span id="cb6-6"><a href="stata-github.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  [4]  (<span class="ot">PERSONAL</span>)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\personal/"</span></span>
+<span id="cb6-7"><a href="stata-github.html#cb6-7" aria-hidden="true" tabindex="-1"></a>  [5]  (<span class="ot">PLUS</span>)      <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\plus/"</span></span>
+<span id="cb6-8"><a href="stata-github.html#cb6-8" aria-hidden="true" tabindex="-1"></a>  [6]  (OLDPLACE)  <span class="st">"c:</span><span class="ch">\a</span><span class="st">do/"</span></span></code></pre></div>
 <p>The folder in which you placed your ado-file is important because Stata searches
 throughout the folders in the order in which they are listed in the
 <strong>ado-path</strong>. So, if you have two ado-files with the same name, one in
@@ -107,13 +107,13 @@ commands, but not the ones you have added manually. Also, for some reason, it
 does not list the directories in the order in which Stata search inside of them.
 Notice that when you type <code>sysdir</code> the directories are not numbered, in contrast
 to <code>adopath</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="stata-github.html#cb7-1"></a>. <span class="ot">sysdir</span></span>
-<span id="cb7-2"><a href="stata-github.html#cb7-2"></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata16\</span>
-<span id="cb7-3"><a href="stata-github.html#cb7-3"></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata16\ado\base\</span>
-<span id="cb7-4"><a href="stata-github.html#cb7-4"></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata16\ado\site\</span>
-<span id="cb7-5"><a href="stata-github.html#cb7-5"></a>    <span class="ot">PLUS</span>:  c:\ado\plus\</span>
-<span id="cb7-6"><a href="stata-github.html#cb7-6"></a><span class="ot">PERSONAL</span>:  c:\ado\<span class="kw">personal</span>\</span>
-<span id="cb7-7"><a href="stata-github.html#cb7-7"></a>OLDPLACE:  c:\ado\</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="stata-github.html#cb7-1" aria-hidden="true" tabindex="-1"></a>. <span class="ot">sysdir</span></span>
+<span id="cb7-2"><a href="stata-github.html#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="kw">STATA</span>:  C:\Program Files\Stata16\</span>
+<span id="cb7-3"><a href="stata-github.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">BASE</span>:  C:\Program Files\Stata16\ado\base\</span>
+<span id="cb7-4"><a href="stata-github.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SITE</span>:  C:\Program Files\Stata16\ado\site\</span>
+<span id="cb7-5"><a href="stata-github.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="ot">PLUS</span>:  c:\ado\plus\</span>
+<span id="cb7-6"><a href="stata-github.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ot">PERSONAL</span>:  c:\ado\<span class="kw">personal</span>\</span>
+<span id="cb7-7"><a href="stata-github.html#cb7-7" aria-hidden="true" tabindex="-1"></a>OLDPLACE:  c:\ado\</span></code></pre></div>
 </div>
 <div id="install-github" class="section level2" number="4.2">
 <h2>
@@ -139,7 +139,7 @@ the <code>net</code> command to install commands from github. Not surprisingly, 
 the command is <code>github</code>. And, as you have probably guessed it, you will install
 it using the <code>net</code> if you don’t have <code>github</code> installed already.</p>
 <p>In order to install the <code>github</code> command, you can type</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata-github.html#cb8-1"></a>net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="stata-github.html#cb8-1" aria-hidden="true" tabindex="-1"></a>net install github, from(<span class="st">"https://haghish.github.io/github/"</span>)</span></code></pre></div>
 <p>Now, you can install any command in Github typing <code>github install username/ccc</code>
 , where <code>username</code> refers to the Github username and <code>ccc</code> to the name of the
 Github repository, which, ideally, should be the same as the name of your
@@ -154,7 +154,7 @@ page</a>.</p>
 <span class="header-section-number">4.2.2</span> Alternative method<a class="anchor" aria-label="anchor" href="#alternative-method"><i class="fas fa-link"></i></a>
 </h3>
 <p>Alternatively you could install the package by typing the following line,</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="stata-github.html#cb9-1"></a>net install ccc, from(<span class="st">"https://raw.githubusercontent.com/username/ccc/master/"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="stata-github.html#cb9-1" aria-hidden="true" tabindex="-1"></a>net install ccc, from(<span class="st">"https://raw.githubusercontent.com/username/ccc/master/"</span>)</span></code></pre></div>
 <p>This method is reliable but you don’t get the nice features of the <code>github</code>
 command. Please note that the path is a little different from the one you used
 to install the <code>github</code> command. Just notice the where <code>username/ccc</code> part is in
@@ -232,7 +232,7 @@ blog</a>.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-08.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-04-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

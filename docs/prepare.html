@@ -8,10 +8,10 @@
 <meta name="author" content="PovcalNet team">
 <meta name="author" content="Development Data Group">
 <meta name="author" content="World Bank Group">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.3/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
 <script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -95,14 +95,24 @@ is built and shared by <code>Emi Suzuki &lt;esuzuki1@worldbank.org&gt;</code> in
 <code>./data/original</code>. Then, the file is copied again into the folder <code>./data</code> with
 the name <code>population_country_yyyy-mm-dd.xlsx</code> where <code>yyyy-mm-dd</code> refers to the
 official release date of the population data. As of today,
-January 08, 2021, the files available in the system are,</p>
+April 06, 2021, the files available in the system are,</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="http://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"p:/01.PovcalNet/03.QA/03.Population/data"</span>, 
              recurse <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; Error: [ENOENT] Failed to search directory 'P:/01.PovcalNet/03.QA/03.Population/data': no such file or directory</code></pre>
-<p>The main file shared by Emi has data gaps for KWT, PSE, and SXM.
-She shared another file that fills these gaps, which is saved in the above folder as <code>population_missing_2020_12_01.xlsx</code>.
-It is unlikely that this file will change, given that the data gaps concern historical figures. Right now this ‘missing’ file is automatically accounted for when updating the master file (see below). In the unlikely case that these data will be updated, the code in pcn_master_update.ado needs to be updated manually to reflect the newer file.</p>
+<pre><code>#&gt; p:/01.PovcalNet/03.QA/03.Population/data
+#&gt; +-- original
+#&gt; +-- population_aggregate_2019-07-01.xlsx
+#&gt; +-- population_country_2019-07-01.xlsx
+#&gt; +-- population_country_2020-07-01.xlsx
+#&gt; +-- population_country_2020-12-01.xlsx
+#&gt; \-- population_missing_2020-12-01.xlsx</code></pre>
+<p>The main file shared by Emi has data gaps for KWT, PSE, and SXM. She shared
+another file that fills these gaps, which is saved in the above folder as
+<code>population_missing_2020_12_01.xlsx</code>. It is unlikely that this file will change,
+given that the data gaps concern historical figures. Right now this ‘missing’
+file is automatically accounted for when updating the master file (see below).
+In the unlikely case that these data will be updated, the code in
+pcn_master_update.ado needs to be updated manually to reflect the newer file.</p>
 </div>
 <div id="update-master-file" class="section level3" number="6.1.2">
 <h3>
@@ -111,25 +121,25 @@ It is unlikely that this file will change, given that the data gaps concern hist
 <p>Once the new raw population data is in the folder <code>./data</code> it is necessary to
 update the <code>population</code> sheet in the master file. This can be done by just
 typing,</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="prepare.html#cb12-1"></a>pcn master, update(population)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="prepare.html#cb12-1" aria-hidden="true" tabindex="-1"></a>pcn master, update(population)</span></code></pre></div>
 <p>Finally, you can check the differences between the two versions by using the
 following code,</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="prepare.html#cb13-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
-<span id="cb13-2"><a href="prepare.html#cb13-2"></a><span class="kw">rename</span> population pop2</span>
-<span id="cb13-3"><a href="prepare.html#cb13-3"></a></span>
-<span id="cb13-4"><a href="prepare.html#cb13-4"></a><span class="kw">tempfile</span> pop2</span>
-<span id="cb13-5"><a href="prepare.html#cb13-5"></a><span class="kw">save</span> <span class="ot">`pop2'</span></span>
-<span id="cb13-6"><a href="prepare.html#cb13-6"></a></span>
-<span id="cb13-7"><a href="prepare.html#cb13-7"></a><span class="co">// 'the version to compare with must change depending on the vintage available</span></span>
-<span id="cb13-8"><a href="prepare.html#cb13-8"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(-1) </span>
-<span id="cb13-9"><a href="prepare.html#cb13-9"></a><span class="kw">rename</span> population pop1</span>
-<span id="cb13-10"><a href="prepare.html#cb13-10"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2'</span>, <span class="kw">gen</span>(checkpop)  <span class="co">// '</span></span>
-<span id="cb13-11"><a href="prepare.html#cb13-11"></a></span>
-<span id="cb13-12"><a href="prepare.html#cb13-12"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> (checkpop == 2)</span>
-<span id="cb13-13"><a href="prepare.html#cb13-13"></a><span class="kw">tab</span> countryname <span class="kw">if</span> (checkpop == 2 &amp; <span class="fu">year</span> &lt; 2019)</span>
-<span id="cb13-14"><a href="prepare.html#cb13-14"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
-<span id="cb13-15"><a href="prepare.html#cb13-15"></a><span class="kw">sum</span> diffpop</span>
-<span id="cb13-16"><a href="prepare.html#cb13-16"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)'</span>*2*<span class="ot">`r(sd)'</span> &amp; diffpop != .</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="prepare.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pcn master, <span class="kw">load</span>(Population) </span>
+<span id="cb13-2"><a href="prepare.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> population pop2</span>
+<span id="cb13-3"><a href="prepare.html#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="prepare.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="kw">tempfile</span> pop2</span>
+<span id="cb13-5"><a href="prepare.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">save</span> <span class="ot">`pop2'</span></span>
+<span id="cb13-6"><a href="prepare.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="prepare.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 'the version to compare with must change depending on the vintage available</span></span>
+<span id="cb13-8"><a href="prepare.html#cb13-8" aria-hidden="true" tabindex="-1"></a>pcn master, <span class="kw">load</span>(Population) <span class="kw">version</span>(-1) </span>
+<span id="cb13-9"><a href="prepare.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">rename</span> population pop1</span>
+<span id="cb13-10"><a href="prepare.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="kw">merge</span> 1:1 countrycode coveragetype <span class="fu">year</span> <span class="kw">using</span> <span class="ot">`pop2'</span>, <span class="kw">gen</span>(checkpop)  <span class="co">// '</span></span>
+<span id="cb13-11"><a href="prepare.html#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="prepare.html#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> <span class="fu">year</span> <span class="kw">if</span> (checkpop == 2)</span>
+<span id="cb13-13"><a href="prepare.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="kw">tab</span> countryname <span class="kw">if</span> (checkpop == 2 &amp; <span class="fu">year</span> &lt; 2019)</span>
+<span id="cb13-14"><a href="prepare.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> diffpop = pop1 - pop2</span>
+<span id="cb13-15"><a href="prepare.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="kw">sum</span> diffpop</span>
+<span id="cb13-16"><a href="prepare.html#cb13-16" aria-hidden="true" tabindex="-1"></a>br <span class="kw">if</span> <span class="fu">abs</span>(diffpop) &gt; <span class="ot">`r(mean)'</span>*2*<span class="ot">`r(sd)'</span> &amp; diffpop != .</span></code></pre></div>
 <p>Keep in mind that option <code><a href="https://rdrr.io/r/base/Version.html">version(-1)</a></code> refers to one version before the current
 one. If it were <code><a href="https://rdrr.io/r/base/Version.html">version(-2)</a></code>, it would be two versions before the current one.
 Keep in mind that the negative integer in this function refers to the version of
@@ -143,7 +153,7 @@ there is no way to track the versions of each sheet in the Master file.</p>
 </h2>
 <p>GDP and consumption data are used to measure economic growth for the
 interpolation and extrapolation calculations. PCE refers to “per capita
-expenditure”, more conventionally known as household final consumption
+expenditure,” more conventionally known as household final consumption
 expenditure (HFCE).</p>
 <div id="raw-data-1" class="section level3" number="6.2.1">
 <h3>
@@ -154,55 +164,48 @@ expenditure (HFCE).</p>
 capita–constant 2010 US$) and for PCE the indicator used is
 <code>NE.CON.PRVT.PC.KD</code> (Households Final Consumption Expenditure per
 capita–constant 2010 US$). For some countries, however, the economic growth
-data is not available in WDI, so it has to be gathered from other sources
-besides WDI. You can see <a href="prepare.html#scnac">below</a> a deeper explanation and process on how
-to update the auxiliary files of these <em>special cases</em>.</p>
-<p><span class="red"><strong>TODO:</strong> Talk about the Maddisson data</span>.</p>
-<div id="scnac" class="section level4 unnumbered" number="">
-<h4>National accounts for “special cases”<a class="anchor" aria-label="anchor" href="#scnac"><i class="fas fa-link"></i></a>
+data is not available in WDI, in which case we use data from WEO, the Maddison
+project, and country specific sources, in that order. You can see
+<a href="prepare.html#scnac">below</a> a deeper explanation and process on how to update the auxiliary
+files for these special cases.</p>
+<div id="scnac" class="section level4 unnumbered">
+<h4>Preparing for updating of master file<a class="anchor" aria-label="anchor" href="#scnac"><i class="fas fa-link"></i></a>
 </h4>
-<p>The <em>Special Cases</em> can be found in the folder
-<code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</code>. This folder contains all the
-different versions previously used in <strong>PovcalNet</strong> with national accounts info
-on special cases. Each file is called <code>NAS special_YYYY-mm-dd.xlsx</code>, where
-<code>YYYY</code> refers to year, <code>mm</code>to month, and <code>dd</code>to day (identifying the vintage of
-the file). When you update the information of these files make sure you,</p>
+<p>In order to prepare the data before the master file can be updated, do the
+following,</p>
 <ol style="list-style-type: decimal">
-<li>open the most recent version,</li>
-<li>save with the current date</li>
-<li>edit it as needed</li>
-</ol>
-<p>In order to update the <em>special cases</em> file, do the following,</p>
-<ol style="list-style-type: decimal">
-<li>Get the relevant data from the latest versions of the <a href="https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending">World Economic
+<li>Get the data from the latest version of the <a href="https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending">World Economic
 Outlook</a>
-(WEO). The WEO series for GDP is <strong>NGDPRPC</strong>. If <strong>NGDPRPC</strong> is not
-available, use the growth rate provided in <strong>NGDPRPPPPCPCH</strong> to splice on
-the series. Consumption data are not available in (the public version of)
-WEO.</li>
-<li>Update the non-missing observations in the PCE and GDP series. <em>Make sure
-there is no observation where both PCE and GDP are missing</em>. Venezuela is an
-exception to this rule: In this case, we simply use the series available in
-WDI, which is missing in recent years.</li>
-<li>In the Excel file for the national accounts, you will find the source of
-data and clues on how best to update each observation. Unless otherwise
-instructed by R.Andrés Castañeda or Christoph Lakner, use the source in the
-latest version of the national accounts to update the relevant observations.
-IMPORTANT: You should check whether the country-year is still a special
-case; e.g. the standard WDI source may have been extended to cover
-additional years. Similarly, there could be new special cases (i.e. WDI
-observations were available in a previous vintage, but no longer are).</li>
-<li>For India, update the latest Excel file with pass-through calculations,
-which can be found at <code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data/_aux</code>.
-Follow instructions in the Excel file and Daniel Mahler to update rural and
-urban PCE.</li>
-<li>Make sure you have the exact variables (countryname coverage countrycode
-year GDP PCE sourceGDP sourcePCE) as in the previous Excel file for the
-special cases national accounts.The variable names are case-sensitive.</li>
+(WEO). Save it in the folder
+<code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</code> with the name
+<code>WEO_YYYY-mm-dd.xls</code>, where <code>YYYY</code> refers to year, <code>mm</code>to month, and <code>dd</code>to
+day (identifying the vintage of the file).</li>
+<li>Make sure that the Maddison data used in the pcn_master_update.ado is the
+most recent vintage available of the Maddison Database:
+<a href="https://www.rug.nl/ggdc/historicaldevelopment/maddison/data" class="uri">https://www.rug.nl/ggdc/historicaldevelopment/maddison/data</a>. If it is not,
+change the line in the pcn_master_update.ado accordingly.</li>
+<li>Check with Andrés, Christoph, or Daniel on whether any things need to be
+changed for the countries that use country specific sources. These <em>Special
+Cases</em> can be found in the folder
+<code>P:/01.PovcalNet/03.QA/04.NationalAccounts/data</code>. This folder contains all
+the different versions previously used in <strong>PovcalNet</strong> with national
+accounts info on special cases. Each file is called
+<code>NAS special_YYYY-mm-dd.xlsx</code>. When you update the information of these
+files make sure you, open the most recent version, save with the current
+date, edit it as needed. In the country-specific sheets, you will find the
+source of data and clues on how best to update each observation. IMPORTANT:
+You should check whether the country-year is still a special case; e.g. the
+standard WDI, WEO and Maddison sources may have been extended to cover
+additional years. Similarly, there could be new special cases (i.e.
+WDI/WEO/Maddison observations were available in a previous vintage, but no
+longer are).Make sure you have the exact variables (countryname coverage
+countrycode year GDP PCE sourceGDP sourcePCE) as in the previous Excel file
+for the special cases national accounts.The variable names are
+case-sensitive.</li>
 </ol>
 </div>
-<div id="description-of-series" class="section level4 unnumbered" number="">
-<h4>Description of series<a class="anchor" aria-label="anchor" href="#description-of-series"><i class="fas fa-link"></i></a>
+<div id="description-of-weo-series" class="section level4 unnumbered">
+<h4>Description of WEO series<a class="anchor" aria-label="anchor" href="#description-of-weo-series"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li><p><strong><em>NE.CON.PRVT.PC.KD</em></strong>: Household final consumption expenditure per capita
@@ -224,12 +227,12 @@ constant price purchasing-power parity (PPP) GDP by total population.</p></li>
 </h3>
 <p>Once the <em>special cases</em> file has been updated you must update the master file
 by using the following command lines,</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="prepare.html#cb14-1"></a>pcn master, update(gdp)</span>
-<span id="cb14-2"><a href="prepare.html#cb14-2"></a>pcn master, update(pce)</span></code></pre></div>
-<p>The <code>pcn</code> command integrates all the WDI, Maddisson, and Special Cases files in
-the correct format of the master file. You can run these lines even if only one
-of the sources gets updated. If you want to understand how these two sheets get
-updated, you can see the procedure in the file
+<div class="sourceCode" id="cb14"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="prepare.html#cb14-1" aria-hidden="true" tabindex="-1"></a>pcn master, update(gdp)</span>
+<span id="cb14-2"><a href="prepare.html#cb14-2" aria-hidden="true" tabindex="-1"></a>pcn master, update(pce)</span></code></pre></div>
+<p>The <code>pcn</code> command integrates all the WDI, WEO, Maddison, and Special Cases files
+in the correct format of the master file. You can run these lines even if only
+one of the sources gets updated. If you want to understand how these two sheets
+get updated, you can see the procedure in the file
 <a href="https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado"><em>pcn_master_update.ado</em></a><em>.</em>
 In particular, you can see <a href="https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L170-L354">these
 lines</a>
@@ -247,20 +250,20 @@ process we use the most recent version provided by <code>datalibweb</code> (DLW)
 provides a curated, clean, and organized file with all the CPIs and PPPs values
 for all the countries and years. If you want to load the most recent version
 directly from DLW, you use the following lines of code,</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="prepare.html#cb15-1"></a><span class="kw">local</span> cpipath <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\personal\Datalibweb\data\GMD\SUPPORT\SUPPORT_2005_CPI"</span></span>
-<span id="cb15-2"><a href="prepare.html#cb15-2"></a><span class="kw">local</span> cpidirs: <span class="ot">dir</span> <span class="st">"`cpipath'"</span> dirs <span class="st">"*CPI_*_M"</span></span>
-<span id="cb15-3"><a href="prepare.html#cb15-3"></a></span>
-<span id="cb15-4"><a href="prepare.html#cb15-4"></a><span class="kw">local</span> cpivins <span class="st">"0"</span></span>
-<span id="cb15-5"><a href="prepare.html#cb15-5"></a><span class="kw">foreach</span> cpidir <span class="kw">of</span> <span class="kw">local</span> cpidirs {</span>
-<span id="cb15-6"><a href="prepare.html#cb15-6"></a>    <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">"`cpidir'"</span>, <span class="st">"cpi_v([0-9]+)_m"</span>) <span class="kw">local</span> cpivin = <span class="fu">regexs</span>(1)</span>
-<span id="cb15-7"><a href="prepare.html#cb15-7"></a>    <span class="kw">local</span> cpivins <span class="st">"`cpivins', `cpivin'"</span></span>
-<span id="cb15-8"><a href="prepare.html#cb15-8"></a>}</span>
-<span id="cb15-9"><a href="prepare.html#cb15-9"></a><span class="kw">local</span> cpivin = <span class="fu">max</span>(<span class="ot">`cpivins'</span>)</span>
-<span id="cb15-10"><a href="prepare.html#cb15-10"></a></span>
-<span id="cb15-11"><a href="prepare.html#cb15-11"></a></span>
-<span id="cb15-12"><a href="prepare.html#cb15-12"></a>cap datalibweb, country(Support) <span class="fu">year</span>(2005) <span class="dv">type</span>(GMDRAW) <span class="co">/*</span></span>
-<span id="cb15-13"><a href="prepare.html#cb15-13"></a><span class="co">*/</span>  surveyid(Support_2005_CPI_v0<span class="ot">`cpivin'</span>_M) <span class="co">/* </span></span>
-<span id="cb15-14"><a href="prepare.html#cb15-14"></a><span class="co">*/</span>  filename(Final_CPI_PPP_to_be_used.dta)  </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="prepare.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> cpipath <span class="st">"c:</span><span class="ch">\a</span><span class="st">do\personal\Datalibweb\data\GMD\SUPPORT\SUPPORT_2005_CPI"</span></span>
+<span id="cb15-2"><a href="prepare.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> cpidirs: <span class="ot">dir</span> <span class="st">"`cpipath'"</span> dirs <span class="st">"*CPI_*_M"</span></span>
+<span id="cb15-3"><a href="prepare.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="prepare.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> cpivins <span class="st">"0"</span></span>
+<span id="cb15-5"><a href="prepare.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">foreach</span> cpidir <span class="kw">of</span> <span class="kw">local</span> cpidirs {</span>
+<span id="cb15-6"><a href="prepare.html#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="fu">regexm</span>(<span class="st">"`cpidir'"</span>, <span class="st">"cpi_v([0-9]+)_m"</span>) <span class="kw">local</span> cpivin = <span class="fu">regexs</span>(1)</span>
+<span id="cb15-7"><a href="prepare.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">local</span> cpivins <span class="st">"`cpivins', `cpivin'"</span></span>
+<span id="cb15-8"><a href="prepare.html#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="prepare.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> cpivin = <span class="fu">max</span>(<span class="ot">`cpivins'</span>)</span>
+<span id="cb15-10"><a href="prepare.html#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="prepare.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="prepare.html#cb15-12" aria-hidden="true" tabindex="-1"></a>cap datalibweb, country(Support) <span class="fu">year</span>(2005) <span class="dv">type</span>(GMDRAW) <span class="co">/*</span></span>
+<span id="cb15-13"><a href="prepare.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span>  surveyid(Support_2005_CPI_v0<span class="ot">`cpivin'</span>_M) <span class="co">/* </span></span>
+<span id="cb15-14"><a href="prepare.html#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span>  filename(Final_CPI_PPP_to_be_used.dta)  </span></code></pre></div>
 <div id="cpicaution" class="section level3" number="6.3.1">
 <h3>
 <span class="header-section-number">6.3.1</span> Word of Caution<a class="anchor" aria-label="anchor" href="#cpicaution"><i class="fas fa-link"></i></a>
@@ -280,14 +283,14 @@ file and in the
 <p>The <code>pcn</code> command updates and loads <em>two</em> databases of the CPI and PPP, and
 thus, you need to update both datasets when the CPI or PPP data is updated in
 DLW.</p>
-<div id="special-cpi-cases" class="section level4 unnumbered" number="">
+<div id="special-cpi-cases" class="section level4 unnumbered">
 <h4>Special CPI cases<a class="anchor" aria-label="anchor" href="#special-cpi-cases"><i class="fas fa-link"></i></a>
 </h4>
 <p>The primary source of CPI data for PovcalNet updates is the IMF’s International
-Financial Statistics (IFS) database <span class="citation">(Lakner et al. <a href="references.html#ref-laknerConsumerPriceIndices2018a" role="doc-biblioref">2018</a>)</span>. When CPI
+Financial Statistics (IFS) database <span class="citation">(<a href="references.html#ref-laknerConsumerPriceIndices2018a" role="doc-biblioref">Lakner et al. 2018</a>)</span>. When CPI
 series from surveys are deemed more appropriate, they are used instead of IFS
 CPI series. Currently, six countries are in this category of ‘special CPI
-cases’, including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
+cases,’ including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.</p>
 <p>The datafiles and dofiles for the special CPI cases are stored in this path,
 <code>p:/01.PovcalNet/03.QA/09.CPI/Special CPI Cases/</code>.</p>
 <p>You should follow the steps below to update the special CPI cases:</p>
@@ -306,27 +309,27 @@ collated and organized by <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguy
 from monthly (or, in a few cases, quarterly) IFS data and annual World
 Economic Outlook (WEO) data. Use the code below to obtain the required data.</p></li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="prepare.html#cb16-1"></a></span>
-<span id="cb16-2"><a href="prepare.html#cb16-2"></a>dlw, country(support) <span class="fu">year</span>(2005) <span class="dv">type</span>(gmdraw) surveyid(Support_2005_CPI_v05_M) filename(Yearly_CPI_Final.dta)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="prepare.html#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="prepare.html#cb16-2" aria-hidden="true" tabindex="-1"></a>dlw, country(support) <span class="fu">year</span>(2005) <span class="dv">type</span>(gmdraw) surveyid(Support_2005_CPI_v05_M) filename(Yearly_CPI_Final.dta)</span></code></pre></div>
 <p>[Note that this code is for the current version of Datalibweb (i.e.,
 Support_2005_CPI_v05). Check with <a href="mailto:mnguyen3@worldbank.org">Minh Cong
 Nguyen</a> for the latest version and line of code
 to use.]</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Generate a final data set with label “ImputedCPIs_output_yyyymmdd.dta”.
-This file contains the final CPI series with the ICP reference year as base
-year, which is currently 2011. See the latest file for the required format.</p></li>
+<li><p>Generate a final data set with label “ImputedCPIs_output_yyyymmdd.dta.” This
+file contains the final CPI series with the ICP reference year as base year,
+which is currently 2011. See the latest file for the required format.</p></li>
 <li><p>As robustness checks, construct the final CPI series afresh as in
 sheet(Calculations) in “Compare Imputed CPIs yyyymmdd.xlsx” and compare the
 Excel results with the Stata output. You may compare the results using the
-dofile labelled “combine_countries_compare_results.do”.</p></li>
+dofile labelled “combine_countries_compare_results.do.”</p></li>
 <li><p>Send the Stata output to <a href="mailto:mnguyen3@worldbank.org">Minh Cong Nguyen</a>.
 He will integrate the file into his price framework.</p></li>
 <li><p>Save all datafiles and dofiles in a sub-folder in the P-drive [e.g.,
 P:\CPI\Special CPI Cases\PovcalNet Update Mar 2021].</p></li>
 </ol>
 </div>
-<div id="internal-data" class="section level4 unnumbered" number="">
+<div id="internal-data" class="section level4 unnumbered">
 <h4>Internal data<a class="anchor" aria-label="anchor" href="#internal-data"><i class="fas fa-link"></i></a>
 </h4>
 <p>This dataset is used only by the <em>PovcalNet</em> team and can be loaded in Stata by
@@ -338,7 +341,7 @@ the same, the format and labels are very different between the two. If you need
 to update the format of this dataset, you need to modify the file
 <a href="https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado">pcn_update_cpi.ado</a></p>
 </div>
-<div id="cpi-sheet-in-the-master-file" class="section level4 unnumbered" number="">
+<div id="cpi-sheet-in-the-master-file" class="section level4 unnumbered">
 <h4>
 <em>CPI</em> sheet in the Master file<a class="anchor" aria-label="anchor" href="#cpi-sheet-in-the-master-file"><i class="fas fa-link"></i></a>
 </h4>
@@ -357,8 +360,95 @@ in the master file. Keep in mind that if the CPI vintage control in DLW changes
 as mention <a href="prepare.html#cpicaution">above</a>, you will need to update the corresponding lines
 in
 <a href="https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L71-L164">pcn_master_update.ado</a>.</p>
-
 </div>
+</div>
+</div>
+<div id="SurveyInfo-master-file" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Updating the “SurveyInfo” sheet of the Master file<a class="anchor" aria-label="anchor" href="#SurveyInfo-master-file"><i class="fas fa-link"></i></a>
+</h2>
+<p>Updating the SurveyInfo sheet in the Master file comprises three general steps:</p>
+<p><strong>1.</strong> Identifying the recently added country/year combinations (data points)
+from <strong>PRIMUS</strong>;</p>
+<p><strong>2.</strong> merging new rows into the existing SurveyInfo sheet;</p>
+<p><strong>3.</strong> manually updating columns E to L based on previous years information, as
+well as finding out the number of observations in the survey to update column I.</p>
+<div class="rmdbox rmdtip">
+<p>A set of short do-files have been written and saved in the folder
+<strong><code>p:\01.PovcalNet\03.QA\10.Master file work\</code></strong> to expedite this process. To
+work in a new update, <strong>create a new folder</strong> with Month and Year <strong>copy the
+do-files</strong> from the previous update.</p>
+</div>
+<div id="new-surveys-from-primus" class="section level3" number="6.4.1">
+<h3>
+<span class="header-section-number">6.4.1</span> New surveys from PRIMUS<a class="anchor" aria-label="anchor" href="#new-surveys-from-primus"><i class="fas fa-link"></i></a>
+</h3>
+<p>To identify the recently added data points, open do-file
+<code>01. primus dowload(approved &amp; pending).do</code> and update with the following
+changes:</p>
+<ol style="list-style-type: decimal">
+<li>Adjust the <strong>path</strong> on top.</li>
+<li>Set a <code>date_modified</code> <strong>Steps I and II</strong> usually to the past 3 months. For
+instance, for March updates, date is usually set it for December 1st of the
+previous year.</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="prepare.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> <span class="kw">if</span> date_modified &gt; clock(<span class="st">"2020-12-01"</span>, <span class="st">"YMD"</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Check <strong>Step IV</strong>. Some surveys like EU-SILC collect information on earnings
+from the “previous year.” Thus, PovcalNet adjusts the survey year to
+<strong>year-1</strong> for published estimates. Make sure the list of modifications on
+this step is complete.</li>
+<li>Save changes and run do-file.</li>
+</ol>
+</div>
+<div id="merging-new-rows-into-surveyinfo-sheet" class="section level3" number="6.4.2">
+<h3>
+<span class="header-section-number">6.4.2</span> Merging new rows into SurveyInfo Sheet<a class="anchor" aria-label="anchor" href="#merging-new-rows-into-surveyinfo-sheet"><i class="fas fa-link"></i></a>
+</h3>
+<p>Open do-file <code>02. merge primus into SurveyInfo.do</code>, update the path on top and
+run. (This should run smoothly if excel files in the previous step remained
+unchanged).</p>
+</div>
+<div id="manual-updates" class="section level3" number="6.4.3">
+<h3>
+<span class="header-section-number">6.4.3</span> Manual updates<a class="anchor" aria-label="anchor" href="#manual-updates"><i class="fas fa-link"></i></a>
+</h3>
+<p>The newly added surveys obtained from PRIMUS should be those identified as
+“<strong>using only (2)</strong>” in your column <strong>_merge</strong> (O). The final step thus,
+consists of manually updating the information on columns E to M based on the
+information you have from previous years in each particular country.</p>
+<p>For most countries with a continuous series, the survey acronym has not changed
+from the previous year, so you can just copy and paste fields like the survey
+name and conductor. In the cases when the acronym is not the same from the past,
+some researching will be required (google,
+<a href="https://microdata.worldbank.org/index.php/catalog">microdatalibrary</a>,
+<a href="https://www.ihsn.org/">IHSN</a>, etc.) in order to obtain the official survey name
+and conducting institution.</p>
+<p>Finally, the <strong>SampleSize</strong> (column L) must be updated on a case by case basis.
+You can load the new databases with the command pcn and check observations. The
+do-file <code>_count obs in vintage ctrl bases.do</code>, can assist you to quickly run
+individual and household observations for a chunk of years in a particular
+country (<em>Note:</em> the module “mod” in line 13 might need adjustment depending on
+the case).</p>
+</div>
+<div id="save-inform" class="section level3" number="6.4.4">
+<h3>
+<span class="header-section-number">6.4.4</span> Save &amp; Inform<a class="anchor" aria-label="anchor" href="#save-inform"><i class="fas fa-link"></i></a>
+</h3>
+<p>When you have finished all updates in the document, compare the number of rows
+in your new Excel with the ones in the Master SurveyInfo sheet.</p>
+<p>Update the Master:</p>
+<ul>
+<li><p>Open <strong>ONLY</strong> SurveyInfo sheet from the latest vintage,</p></li>
+<li><p>Copy and Paste from your file into the Master omitting columns N &amp; O
+(overall_status and _merge). Make sure columns A to M are in the same
+order.</p></li>
+<li><p>Go to <strong>Management tab</strong> -&gt; click on <strong>Save in Master</strong> -&gt; add a short
+note describing your updates -&gt; click on “<strong>OK</strong>.”</p></li>
+</ul>
+<p><strong>Inform the team managers</strong> that Master file has been updated, indicating the
+number of new surveys (rows) added.</p>
+
 </div>
 </div>
 </div>
@@ -387,6 +477,14 @@ in
 <li><a class="nav-link" href="#different-cpi-datasets"><span class="header-section-number">6.3.2</span> Different CPI datasets</a></li>
 </ul>
 </li>
+<li>
+<a class="nav-link" href="#SurveyInfo-master-file"><span class="header-section-number">6.4</span> Updating the “SurveyInfo” sheet of the Master file</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#new-surveys-from-primus"><span class="header-section-number">6.4.1</span> New surveys from PRIMUS</a></li>
+<li><a class="nav-link" href="#merging-new-rows-into-surveyinfo-sheet"><span class="header-section-number">6.4.2</span> Merging new rows into SurveyInfo Sheet</a></li>
+<li><a class="nav-link" href="#manual-updates"><span class="header-section-number">6.4.3</span> Manual updates</a></li>
+<li><a class="nav-link" href="#save-inform"><span class="header-section-number">6.4.4</span> Save &amp; Inform</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -404,7 +502,7 @@ in
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-01-08.</p>
+    <p>"<strong>PovcalNet Internal Guidelines and Protocols</strong>" was written by PovcalNet team, Development Data Group, World Bank Group. It was last built on 2021-04-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -96,6 +96,11 @@ update-master-file-1
 cpi-and-ppp
 cpicaution
 different-cpi-datasets
+SurveyInfo-master-file
+new-surveys-from-primus
+merging-new-rows-into-surveyinfo-sheet
+manual-updates
+save-inform
 lis-data
 the-lis_data-repository
 interacting-with-lissy
@@ -127,7 +132,6 @@ init-params
 prepare-metadata
 generate-.pcb-files
 master-objectives
-updatint-the-surveymean-sheet
 DMSystem
 upload-the-master-file
 pcb-files

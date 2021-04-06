@@ -28,7 +28,7 @@ specific location in which we explain how to update each spreadsheet.
 
 -   ***PCE**.* Section \@ref(gdp-and-consumption-pce).
 
--   ***SurveyInfo**.* @ref(SurveyInfo-master-file).
+-   ***SurveyInfo**.* Section @ref(SurveyInfo-master-file).
 
 -   ***SurveyMean**.* Section \@ref(master-objectives).
 
