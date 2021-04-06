@@ -1,17 +1,15 @@
 # Prepare data for PovcalNet update {#prepare}
 
-In this chapter we briefly describe what needs to be done with each
-auxiliary dataset used to update PovcalNet. Each of the next sections
-describes one dataset and, in general, they are divided in **Raw Data**
-and **Update Master File** subsection.
+In this chapter we briefly describe what needs to be done with each auxiliary
+dataset used to update PovcalNet. Each of the next sections describes one
+dataset and, in general, they are divided in **Raw Data** and **Update Master
+File** subsection.
 
 Most of the updating of the master file is carried by the
-`pcn master, udpate(sheet)` command in Stata, where `sheet` refers to
-name of the sheet in the master file. If you need to make any
-modification, please make sure to create a new branch from the most
-recent of the master branch in the
-[PovcalNet-Team/pcn](https://github.com/PovcalNet-Team/pcn) Github
-repository.
+`pcn master, udpate(sheet)` command in Stata, where `sheet` refers to name of
+the sheet in the master file. If you need to make any modification, please make
+sure to create a new branch from the most recent of the master branch in the
+[PovcalNet-Team/pcn](https://github.com/PovcalNet-Team/pcn) Github repository.
 
 ## Population
 
@@ -20,38 +18,41 @@ repository.
 Everything related population data should be placed in the folder
 `p:/01.PovcalNet/03.QA/03.Population`, hereafter (`./`).
 
-Population data is saved in the folder `./data`. The data may come from
-two different sources, WDI or from an internal source in DECDG. Right
-now, the data is built and shared by
-`Emi Suzuki <esuzuki1@worldbank.org>` in an Excel file.
+Population data is saved in the folder `./data`. The data may come from two
+different sources, WDI or from an internal source in DECDG. Right now, the data
+is built and shared by `Emi Suzuki <esuzuki1@worldbank.org>` in an Excel file.
 
-The file shared by Emi should be placed without modification in the
-folder `./data/original`. Then, the file is copied again into the folder
-`./data` with the name `population_country_yyyy-mm-dd.xlsx` where
-`yyyy-mm-dd` refers to the official release date of the population data.
-As of today, `r format(Sys.time(), "%B %d, %Y")`, the files available in
-the system are,
+The file shared by Emi should be placed without modification in the folder
+`./data/original`. Then, the file is copied again into the folder `./data` with
+the name `population_country_yyyy-mm-dd.xlsx` where `yyyy-mm-dd` refers to the
+official release date of the population data. As of today,
+`r format(Sys.time(), "%B %d, %Y")`, the files available in the system are,
 
 ```{r}
 fs::dir_tree("p:/01.PovcalNet/03.QA/03.Population/data", 
              recurse = FALSE)
 ```
-The main file shared by Emi has data gaps for KWT, PSE, and SXM. 
-She shared another file that fills these gaps, which is saved in the above folder as `population_missing_2020_12_01.xlsx`.
-It is unlikely that this file will change, given that the data gaps concern historical figures. Right now this 'missing' file is automatically accounted for when updating the master file (see below). In the unlikely case that these data will be updated, the code in pcn_master_update.ado needs to be updated manually to reflect the newer file.
+
+The main file shared by Emi has data gaps for KWT, PSE, and SXM. She shared
+another file that fills these gaps, which is saved in the above folder as
+`population_missing_2020_12_01.xlsx`. It is unlikely that this file will change,
+given that the data gaps concern historical figures. Right now this 'missing'
+file is automatically accounted for when updating the master file (see below).
+In the unlikely case that these data will be updated, the code in
+pcn_master_update.ado needs to be updated manually to reflect the newer file.
 
 ### update master file
 
-Once the new raw population data is in the folder `./data` it is
-necessary to update the `population` sheet in the master file. This can
-be done by just typing,
+Once the new raw population data is in the folder `./data` it is necessary to
+update the `population` sheet in the master file. This can be done by just
+typing,
 
 ```{stata, eval = FALSE}
 pcn master, update(population)
 ```
 
-Finally, you can check the differences between the two versions by using
-the following code,
+Finally, you can check the differences between the two versions by using the
+following code,
 
 ```{stata, eval = FALSE}
 pcn master, load(Population) 
@@ -73,12 +74,11 @@ br if abs(diffpop) > `r(mean)'*2*`r(sd)' & diffpop != .
 
 ```
 
-Keep in mind that option `version(-1)` refers to one version before the
-current one. If it were `version(-2)`, it would be two versions before
-the current one. Keep in mind that the negative integer in this function
-refers to the version of the master file and not to the version of the
-sheet you're loading. Currently, there is no way to track the versions
-of each sheet in the Master file.
+Keep in mind that option `version(-1)` refers to one version before the current
+one. If it were `version(-2)`, it would be two versions before the current one.
+Keep in mind that the negative integer in this function refers to the version of
+the master file and not to the version of the sheet you're loading. Currently,
+there is no way to track the versions of each sheet in the Master file.
 
 ## GDP and Consumption (PCE)
 
@@ -89,84 +89,80 @@ expenditure (HFCE).
 
 ### Raw data
 
-The raw data of GDP and PCE data comes from WDI through the Stata
-command `wbopendata`. For GDP the indicator is `NY.GDP.PCAP.KD` (GDP per
+The raw data of GDP and PCE data comes from WDI through the Stata command
+`wbopendata`. For GDP the indicator is `NY.GDP.PCAP.KD` (GDP per
 capita--constant 2010 US\$) and for PCE the indicator used is
 `NE.CON.PRVT.PC.KD` (Households Final Consumption Expenditure per
-capita--constant 2010 US\$). For some countries, however, the economic
-growth data is not available in WDI, in which case we use data from WEO,
-the Maddison project, and country specific sources, in that order. You
-can see [below](#scnac) a deeper explanation and process on how to
-update the auxiliary files for these special cases.
+capita--constant 2010 US\$). For some countries, however, the economic growth
+data is not available in WDI, in which case we use data from WEO, the Maddison
+project, and country specific sources, in that order. You can see
+[below](#scnac) a deeper explanation and process on how to update the auxiliary
+files for these special cases.
 
 #### Preparing for updating of master file {#scnac .unnumbered}
 
-In order to prepare the data before the master file can be updated, do
-the following,
+In order to prepare the data before the master file can be updated, do the
+following,
 
 1.  Get the data from the latest version of the [World Economic
     Outlook](https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases#sort=%40imfdate%20descending)
     (WEO). Save it in the folder
     `P:/01.PovcalNet/03.QA/04.NationalAccounts/data` with the name
-    `WEO_YYYY-mm-dd.xls`, where `YYYY` refers to year, `mm`to month, and
-    `dd`to day (identifying the vintage of the file).
-2.  Make sure that the Maddison data used in the pcn_master_update.ado
-    is the most recent vintage available of the Maddison Database:
-    <https://www.rug.nl/ggdc/historicaldevelopment/maddison/data>. If it
-    is not, change the line in the pcn_master_update.ado accordingly.
-3.  Check with Andrés, Christoph, or Daniel on whether any things need
-    to be changed for the countries that use country specific sources.
-    These *Special Cases* can be found in the folder
-    `P:/01.PovcalNet/03.QA/04.NationalAccounts/data`. This folder
-    contains all the different versions previously used in **PovcalNet**
-    with national accounts info on special cases. Each file is called
-    `NAS special_YYYY-mm-dd.xlsx`. When you update the information of
-    these files make sure you, open the most recent version, save with
-    the current date, edit it as needed. In the country-specific sheets,
-    you will find the source of data and clues on how best to update
-    each observation. IMPORTANT: You should check whether the
-    country-year is still a special case; e.g. the standard WDI, WEO and
-    Maddison sources may have been extended to cover additional years.
-    Similarly, there could be new special cases (i.e. WDI/WEO/Maddison
-    observations were available in a previous vintage, but no longer
-    are).Make sure you have the exact variables (countryname coverage
-    countrycode year GDP PCE sourceGDP sourcePCE) as in the previous
-    Excel file for the special cases national accounts.The variable
-    names are case-sensitive.
+    `WEO_YYYY-mm-dd.xls`, where `YYYY` refers to year, `mm`to month, and `dd`to
+    day (identifying the vintage of the file).
+2.  Make sure that the Maddison data used in the pcn_master_update.ado is the
+    most recent vintage available of the Maddison Database:
+    <https://www.rug.nl/ggdc/historicaldevelopment/maddison/data>. If it is not,
+    change the line in the pcn_master_update.ado accordingly.
+3.  Check with Andrés, Christoph, or Daniel on whether any things need to be
+    changed for the countries that use country specific sources. These *Special
+    Cases* can be found in the folder
+    `P:/01.PovcalNet/03.QA/04.NationalAccounts/data`. This folder contains all
+    the different versions previously used in **PovcalNet** with national
+    accounts info on special cases. Each file is called
+    `NAS special_YYYY-mm-dd.xlsx`. When you update the information of these
+    files make sure you, open the most recent version, save with the current
+    date, edit it as needed. In the country-specific sheets, you will find the
+    source of data and clues on how best to update each observation. IMPORTANT:
+    You should check whether the country-year is still a special case; e.g. the
+    standard WDI, WEO and Maddison sources may have been extended to cover
+    additional years. Similarly, there could be new special cases (i.e.
+    WDI/WEO/Maddison observations were available in a previous vintage, but no
+    longer are).Make sure you have the exact variables (countryname coverage
+    countrycode year GDP PCE sourceGDP sourcePCE) as in the previous Excel file
+    for the special cases national accounts.The variable names are
+    case-sensitive.
 
 #### Description of WEO series {.unnumbered}
 
--   ***NE.CON.PRVT.PC.KD***: Household final consumption expenditure per
-    capita (constant 2010 US\$).
+-   ***NE.CON.PRVT.PC.KD***: Household final consumption expenditure per capita
+    (constant 2010 US\$).
 
--   ***NY.GDP.PCAP.KD***: GDP per capita is gross domestic product
-    divided by midyear population. Data are in constant 2010 U.S.
-    dollars.
+-   ***NY.GDP.PCAP.KD***: GDP per capita is gross domestic product divided by
+    midyear population. Data are in constant 2010 U.S. dollars.
 
--   ***NGDPRPC***: Gross domestic product per capita, constant prices.
-    GDP is expressed in constant national currency per person. Data are
-    derived by dividing constant price GDP by total population.
+-   ***NGDPRPC***: Gross domestic product per capita, constant prices. GDP is
+    expressed in constant national currency per person. Data are derived by
+    dividing constant price GDP by total population.
 
--   ***NGDPRPPPPCPCH***: Gross domestic product per capita, constant
-    prices (purchasing power parity; percent change). Data are derived
-    by dividing constant price purchasing-power parity (PPP) GDP by
-    total population.
+-   ***NGDPRPPPPCPCH***: Gross domestic product per capita, constant prices
+    (purchasing power parity; percent change). Data are derived by dividing
+    constant price purchasing-power parity (PPP) GDP by total population.
 
 ### Update master file
 
-Once the *special cases* file has been updated you must update the
-master file by using the following command lines,
+Once the *special cases* file has been updated you must update the master file
+by using the following command lines,
 
 ```{stata, eval = FALSE}
 pcn master, update(gdp)
 pcn master, update(pce)
 ```
 
-The `pcn` command integrates all the WDI, WEO, Maddison, and Special
-Cases files in the correct format of the master file. You can run these
-lines even if only one of the sources gets updated. If you want to
-understand how these two sheets get updated, you can see the procedure
-in the file
+The `pcn` command integrates all the WDI, WEO, Maddison, and Special Cases files
+in the correct format of the master file. You can run these lines even if only
+one of the sources gets updated. If you want to understand how these two sheets
+get updated, you can see the procedure in the file
 [*pcn_master_update.ado*](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado)*.*
 In particular, you can see [these
 lines](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L170-L354)
@@ -176,12 +172,11 @@ for PCE.
 
 ## CPI and PPP
 
-Even though the CPI and PPP come from different sources, in the
-PovcalNet update process we use the most recent version provided by
-`datalibweb` (DLW). DLW provides a curated, clean, and organized file
-with all the CPIs and PPPs values for all the countries and years. If
-you want to load the most recent version directly from DLW, you use the
-following lines of code,
+Even though the CPI and PPP come from different sources, in the PovcalNet update
+process we use the most recent version provided by `datalibweb` (DLW). DLW
+provides a curated, clean, and organized file with all the CPIs and PPPs values
+for all the countries and years. If you want to load the most recent version
+directly from DLW, you use the following lines of code,
 
 ```{stata, eval = FALSE}
 local cpipath "c:\ado\personal\Datalibweb\data\GMD\SUPPORT\SUPPORT_2005_CPI"
@@ -203,53 +198,48 @@ cap datalibweb, country(Support) year(2005) type(GMDRAW) /*
 
 ### Word of Caution {#cpicaution}
 
-Be aware that as of today (2020-11-17) the `datalibweb` system is being
-updating and it is likely that the convention used to vintage control
-the CPI data will change in the following month. That is, Dec 2020. If
-that is the case, the code above would be obsolete and it will need to
-be updated in the
+Be aware that as of today (2020-11-17) the `datalibweb` system is being updating
+and it is likely that the convention used to vintage control the CPI data will
+change in the following month. That is, Dec 2020. If that is the case, the code
+above would be obsolete and it will need to be updated in the
 [pcn_update_cpi.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado)
 file and in the
 [pcn_master_update.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_master_update.ado).
 
 ### Different CPI datasets
 
-The `pcn` command updates and loads *two* databases of the CPI and PPP,
-and thus, you need to update both datasets when the CPI or PPP data is
-updated in DLW.
+The `pcn` command updates and loads *two* databases of the CPI and PPP, and
+thus, you need to update both datasets when the CPI or PPP data is updated in
+DLW.
 
 #### Special CPI cases {.unnumbered}
 
-The primary source of CPI data for PovcalNet updates is the IMF's
-International Financial Statistics (IFS) database
-[@laknerConsumerPriceIndices2018a]. When CPI series from surveys are
-deemed more appropriate, they are used instead of IFS CPI series.
-Currently, six countries are in this category of 'special CPI cases',
-including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.
+The primary source of CPI data for PovcalNet updates is the IMF's International
+Financial Statistics (IFS) database [@laknerConsumerPriceIndices2018a]. When CPI
+series from surveys are deemed more appropriate, they are used instead of IFS
+CPI series. Currently, six countries are in this category of 'special CPI
+cases', including Bangladesh, Ghana, Lao, Malawi, Tajikistan, and Zimbabwe.
 
-The datafiles and dofiles for the special CPI cases are stored in this
-path, `p:/01.PovcalNet/03.QA/09.CPI/Special CPI Cases/`.
+The datafiles and dofiles for the special CPI cases are stored in this path,
+`p:/01.PovcalNet/03.QA/09.CPI/Special CPI Cases/`.
 
 You should follow the steps below to update the special CPI cases:
 
-1.  Get CPI input file labeled as "Imputed_CPI_input.xlsx" from the
-    P-drive. This file contains raw CPI series imputed from survey to
-    survey.
+1.  Get CPI input file labeled as "Imputed_CPI_input.xlsx" from the P-drive.
+    This file contains raw CPI series imputed from survey to survey.
 
-2.  Update the CPI input file if necessary. This file is updated when
-    there is a new survey from which a new CPI can be imputed. (A
-    country is not always a special case: A new survey may use the IFS
-    CPI; the imputed CPIs are only used in exceptional cases.) The new
-    CPIs are provided by poverty economists (PE's). [Daniel Gerszon
-    Mahler](mailto:dmahler@worldbank.org) currently liaises with PE's to
-    get the correct CPI and survey year. You may contact him for
-    guidance and ideas for the whole exercise.
+2.  Update the CPI input file if necessary. This file is updated when there is a
+    new survey from which a new CPI can be imputed. (A country is not always a
+    special case: A new survey may use the IFS CPI; the imputed CPIs are only
+    used in exceptional cases.) The new CPIs are provided by poverty economists
+    (PE's). [Daniel Gerszon Mahler](mailto:dmahler@worldbank.org) currently
+    liaises with PE's to get the correct CPI and survey year. You may contact
+    him for guidance and ideas for the whole exercise.
 
-3.  Get yearly annual CPI series from Datalibweb. The yearly annual
-    series are collated and organized by [Minh Cong
-    Nguyen](mailto:mnguyen3@worldbank.org) from monthly (or, in a few
-    cases, quarterly) IFS data and annual World Economic Outlook (WEO)
-    data. Use the code below to obtain the required data.
+3.  Get yearly annual CPI series from Datalibweb. The yearly annual series are
+    collated and organized by [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org)
+    from monthly (or, in a few cases, quarterly) IFS data and annual World
+    Economic Outlook (WEO) data. Use the code below to obtain the required data.
 
 ```{stata, eval = FALSE}
 
@@ -259,55 +249,137 @@ dlw, country(support) year(2005) type(gmdraw) surveyid(Support_2005_CPI_v05_M) f
 
 [Note that this code is for the current version of Datalibweb (i.e.,
 Support_2005_CPI_v05). Check with [Minh Cong
-Nguyen](mailto:mnguyen3@worldbank.org) for the latest version and line
-of code to use.]
+Nguyen](mailto:mnguyen3@worldbank.org) for the latest version and line of code
+to use.]
 
-4.  Generate a final data set with label
-    "ImputedCPIs_output_yyyymmdd.dta". This file contains the final CPI
-    series with the ICP reference year as base year, which is
-    currently 2011. See the latest file for the required format.
+4.  Generate a final data set with label "ImputedCPIs_output_yyyymmdd.dta". This
+    file contains the final CPI series with the ICP reference year as base year,
+    which is currently 2011. See the latest file for the required format.
 
 5.  As robustness checks, construct the final CPI series afresh as in
-    sheet(Calculations) in "Compare Imputed CPIs yyyymmdd.xlsx" and
-    compare the Excel results with the Stata output. You may compare the
-    results using the dofile labelled
-    "combine_countries_compare_results.do".
+    sheet(Calculations) in "Compare Imputed CPIs yyyymmdd.xlsx" and compare the
+    Excel results with the Stata output. You may compare the results using the
+    dofile labelled "combine_countries_compare_results.do".
 
-6.  Send the Stata output to [Minh Cong
-    Nguyen](mailto:mnguyen3@worldbank.org). He will integrate the file
-    into his price framework.
+6.  Send the Stata output to [Minh Cong Nguyen](mailto:mnguyen3@worldbank.org).
+    He will integrate the file into his price framework.
 
 7.  Save all datafiles and dofiles in a sub-folder in the P-drive [e.g.,
     P:\\CPI\\Special CPI Cases\\PovcalNet Update Mar 2021].
 
 #### Internal data {.unnumbered}
 
-This dataset is used only by the *PovcalNet* team and can be loaded in
-Stata by using the `pcn load cpi, clear` directive and updated by using
-the directive `pcn update cpi`. This dataset is intended to be used for
-general purposes that require deflation such as reports, papers, or even
-internal tests. However, it can't be used to update the *CPI* sheet in
-the master file. Though the data is the same, the format and labels are
-very different between the two. If you need to update the format of this
-dataset, you need to modify the file
+This dataset is used only by the *PovcalNet* team and can be loaded in Stata by
+using the `pcn load cpi, clear` directive and updated by using the directive
+`pcn update cpi`. This dataset is intended to be used for general purposes that
+require deflation such as reports, papers, or even internal tests. However, it
+can't be used to update the *CPI* sheet in the master file. Though the data is
+the same, the format and labels are very different between the two. If you need
+to update the format of this dataset, you need to modify the file
 [pcn_update_cpi.ado](https://github.com/PovcalNet-Team/pcn/blob/master/pcn_update_cpi.ado)
 
 #### *CPI* sheet in the Master file {.unnumbered}
 
-This dataset can be loaded though the directive,
-`pcn master, load(cpi)`. By default the data will be loaded in Stata in
-wide form, which is the original format in the master file. You can load
-it in Stata basically for testing and checking purposes but it is highly
-discouraged to use this data for any data work. It comes in a very
-unfriendly format that is only useful for the PovcalNet system. `pcn`,
-however, provides the option `pcn master, load(cpi) shape(long)` that
-attempts to reshape the data in long format for ease of use, but it is
+This dataset can be loaded though the directive, `pcn master, load(cpi)`. By
+default the data will be loaded in Stata in wide form, which is the original
+format in the master file. You can load it in Stata basically for testing and
+checking purposes but it is highly discouraged to use this data for any data
+work. It comes in a very unfriendly format that is only useful for the PovcalNet
+system. `pcn`, however, provides the option `pcn master, load(cpi) shape(long)`
+that attempts to reshape the data in long format for ease of use, but it is
 still not as nice and friendly as the data loaded from `pcn load cpi`.
 
 In order to updated the *CPI* sheet in the master file, you must use the
-directives `pcn master, update(cpi)` and `pcn master, update(ppp)`. Even
-though the CPI and PPP come from the same file, they are split in two
-different sheets in the master file. Keep in mind that if the CPI
-vintage control in DLW changes as mention [above](#cpicaution), you will
-need to update the corresponding lines in
+directives `pcn master, update(cpi)` and `pcn master, update(ppp)`. Even though
+the CPI and PPP come from the same file, they are split in two different sheets
+in the master file. Keep in mind that if the CPI vintage control in DLW changes
+as mention [above](#cpicaution), you will need to update the corresponding lines
+in
 [pcn_master_update.ado](https://github.com/PovcalNet-Team/pcn/blob/790a1b1fc721199dfe1cdbbc103d399174785cc9/pcn_master_update.ado#L71-L164).
+
+## Updating the "SurveyInfo" sheet of the Master file {#SurveyInfo-master-file}
+
+Updating the SurveyInfo sheet in the Master file comprises three general steps:
+
+**1.** Identifying the recently added country/year combinations (data points)
+from **PRIMUS**;
+
+**2.** merging new rows into the existing SurveyInfo sheet;
+
+**3.** manually updating columns E to L based on previous years information, as
+well as finding out the number of observations in the survey to update column I.
+
+::: {.rmdbox .rmdtip}
+A set of short do-files have been written and saved in the folder
+**`p:\01.PovcalNet\03.QA\10.Master file work\`** to expedite this process. To
+work in a new update, **create a new folder** with Month and Year **copy the
+do-files** from the previous update.
+:::
+
+### New surveys from PRIMUS
+
+To identify the recently added data points, open do-file
+`01. primus dowload(approved & pending).do` and update with the following
+changes:
+
+1.  Adjust the **path** on top.
+2.  Set a `date_modified` **Steps I and II** usually to the past 3 months. For
+    instance, for March updates, date is usually set it for December 1st of the
+    previous year.
+
+```{stata, eval = FALSE}
+keep if date_modified > clock("2020-12-01", "YMD")
+```
+
+3.  Check **Step IV**. Some surveys like EU-SILC collect information on earnings
+    from the "previous year". Thus, PovcalNet adjusts the survey year to
+    **year-1** for published estimates. Make sure the list of modifications on
+    this step is complete.
+4.  Save changes and run do-file.
+
+### Merging new rows into SurveyInfo Sheet
+
+Open do-file `02. merge primus into SurveyInfo.do`, update the path on top and
+run. (This should run smoothly if excel files in the previous step remained
+unchanged).
+
+### Manual updates
+
+The newly added surveys obtained from PRIMUS should be those identified as
+"**using only (2)**" in your column **\_merge** (O). The final step thus,
+consists of manually updating the information on columns E to M based on the
+information you have from previous years in each particular country.
+
+For most countries with a continuous series, the survey acronym has not changed
+from the previous year, so you can just copy and paste fields like the survey
+name and conductor. In the cases when the acronym is not the same from the past,
+some researching will be required (google,
+[microdatalibrary](https://microdata.worldbank.org/index.php/catalog),
+[IHSN](https://www.ihsn.org/), etc.) in order to obtain the official survey name
+and conducting institution.
+
+Finally, the **SampleSize** (column L) must be updated on a case by case basis.
+You can load the new databases with the command pcn and check observations. The
+do-file `_count obs in vintage ctrl bases.do`, can assist you to quickly run
+individual and household observations for a chunk of years in a particular
+country (*Note:* the module "mod" in line 13 might need adjustment depending on
+the case).
+
+### Save & Inform
+
+When you have finished all updates in the document, compare the number of rows
+in your new Excel with the ones in the Master SurveyInfo sheet.
+
+Update the Master:
+
+-   Open **ONLY** SurveyInfo sheet from the latest vintage,
+
+-   Copy and Paste from your file into the Master omitting columns N & O
+    (overall_status and \_merge). Make sure columns A to M are in the same
+    order.
+
+-   Go to **Management tab** -\> click on **Save in Master** -\> add a short
+    note describing your updates -\> click on "**OK**".
+
+**Inform the team managers** that Master file has been updated, indicating the
+number of new surveys (rows) added.
